@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .btn {
+    @apply py-2.5 px-5 me-2 mb-2 text-2xl font-tajawal bg-btn_bg font-bold transition duration-300 ease-in-out text-btn_color;
+  }
+}
