@@ -1,0 +1,47 @@
+---
+
+import data from "../../data.json";
+
+const home = data.home["hero"].subtitle;
+
+---
+
+<div class="grid grid-cols-1 md:grid-cols-60/40 w-full h-auto lg:h-screen ">
+    <div class="w-full h-full" id="hero-img">
+        <img src="/images/home.jpg" alt="hero" class="w-full h-full object-cover "/>
+    </div>
+    <div class="flex w-full flex-col justify-start md:justify-center place-items-center mt-5">
+        <div class="-translate-y-5 md:-translate-y-0 md:-translate-x-14 flex flex-col items-center md:items-start">
+            <h2 class="text-8xl font-blackstone text-black">I'm Tricia</h2>
+            <p class="font-prata font-normal my-10 px-14 md:px-0 text-center md:text-left" id="hero-p">
+            {home}
+            </p>
+        </div>
+        <div class="flex flex-col justify-center w-3/4">
+            <h3 class="font-tajawal capitalize text-xl font-semibold text-hero_h3 ">
+                taking you from hesitant new biz owner to confident and crushing it vet.
+            </h3>
+
+        </div>
+
+        <div class="flex my-10 w-1/2">
+            <button class="py-2.5 px-5 me-2 mb-2 text-lg border border-gray-200 font-tajawal font-bold" id="btn-hero">
+            Get my 5 secrets to greater confidence
+            </button>
+        </div>
+    </div>
+</div>
+
+
+<style>
+#hero-p {
+    line-height: 1.4;
+    font-size: 38px;
+}
+
+#btn-hero {
+    background-color: #e7cdcc;
+    color: white;
+    text-transform: uppercase;
+}
+</style>

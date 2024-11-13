@@ -1,0 +1,37 @@
+{
+  "home": {
+    "hero": {
+      "title": "I'm Tricia",
+      "subtitle": "Ready to partner with you on your path to healing and moving on with your life!",
+      "description": "Taking you from the pain of the past to all they joys of the future awaiting you.",
+      "image": "/images/hero.jpg"
+    },
+    "user_pain_points": {
+      "tittle": "You've just had the rug pulled out from under you! You want to move on but not sure how best to do so?",
+      "subtitle": "Let me guess, right now you're...",
+      "pain_points": [
+        "Struggling with overwhelming emotions and the isolation that often accompanies them.",
+        "Feeling you've lost a core part of your identity and purpose.",
+        "Trying to figure out how to rebuild a life that feels whole and fulfilling."
+      ],
+      "testimonials": [
+        {
+          "quote": "Tricia is a compassionate and skilled therapist who has helped me navigate the emotional rollercoaster of grief and loss. She has a gift for helping people reconnect with their sense of self and purpose, and create a life that feels whole and fulfilling.",
+          "author": "Jane Doe"
+        },
+        {
+          "quote": "Tricia is a compassionate and skilled therapist who has helped me navigate the emotional rollercoaster of grief and loss. She has a gift for helping people reconnect with their sense of self and purpose, and create a life that feels whole and fulfilling.",
+          "author": "Jane Doe"
+        }
+      ]
+    },
+    "benefits": {
+      "title": "I've been there and I know how to help you move forward",
+      "benefits": [
+        "Together we’ll tackle those intense emotions like anger,sadness and fear, so you can process them in a way that brings you clarity and peace of mind.",
+        "Heal the old patterns that kept you in toxic relationships and break free ready to create healthier, happier connections.",
+        "You’ll move beyond feeling stuck or defeated, finding renewed confidence and feeling empowered to create a fresh vision for your future."
+      ]
+    }
+  }
+}

@@ -1,0 +1,77 @@
+---
+const menuPath = [
+  ["/", "Home"],
+  ["/coaching", "Coaching"],
+  ["/about", "About Me"],
+  ["/book", "Book Now"],
+  ["/contact", "Contact"],
+  ] as const;
+
+
+---
+
+<header class="m-0 p-5 bg-header flex items-center justify-between">
+
+      <div class="flex w-full flex-col gap-3 justify-center m-1">
+        <h1 class="text-5xl font-blackstone ">
+            Tricia Rago
+        </h1>
+        <p class="font-figtree uppercase font-thin leading-regular text-sm w-full">Conscious Relationship Coach</p>
+      </div>
+
+
+    {/* Hamburger Icon for Mobile */}
+    <button
+      class="text-black md:hidden"
+      id="menu-toggle"
+      aria-label="Toggle menu"
+    >
+      <svg
+        class="w-8 h-8"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16m-7 6h7"
+        />
+      </svg>
+    </button>
+
+    {/* Navigation Menu */}
+    <nav class="w-full md:flex hidden justify-end" id="menu">
+      <ul class="flex flex-col md:flex-row justify-end gap-4">
+        {menuPath.map(([to, rout]) => (
+          <li class="mr-6 ease-in-out duration-300 hover:text-gray-700 font-tajawal text-sm font-semibold hover:text-menu_item uppercase tracking-widest">
+            <a href={to} class="text-black">
+              {rout}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+</header>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const button = document.getElementById("menu-toggle") as HTMLButtonElement;
+    const menu = document.getElementById("menu") as HTMLElement;
+
+    button.addEventListener("click", function(event: MouseEvent) {
+      event.stopPropagation();
+      menu.classList.toggle("hidden");
+    });
+
+    // Hide the menu if clicked outside
+    document.addEventListener("click", function(event: MouseEvent) {
+      const target = event.target as HTMLElement;
+      if (!menu.contains(target) && !button.contains(target)) {
+        menu.classList.add("hidden");
+      }
+    });
+  });
+</script>
