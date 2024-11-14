@@ -21,6 +21,7 @@ export default {
         regular: "1.5",
         12: "3rem",
         15: "35px",
+        14: "30px",
       },
       fontSize: {
         custom_size: "0.9rem",
