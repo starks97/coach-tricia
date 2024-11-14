@@ -5,12 +5,13 @@ import data from "../../data.json";
 const subtitle = data.home["hero"].subtitle;
 const title = data.home["hero"].title;
 const description = data.home["hero"].description;
+const heroImg = data.home["hero"].image;
 
 ---
 
 <div class="grid grid-cols-1 md:grid-cols-60/40 w-full h-auto lg:h-screen ">
-    <div class="w-full h-full" id="hero-img">
-        <img src="/images/home.jpg" alt="hero" class="w-full h-full object-cover "/>
+    <div class="w-full h-auto  flex items-center justify-center" id="hero-img">
+        <img src={heroImg} alt="hero"  class="h-svh w-svw object-cover"/>
     </div>
     <div class="flex w-full flex-col justify-start md:justify-center place-items-center mt-5">
         <div class="-translate-y-5 md:-translate-y-0 md:-translate-x-14 flex flex-col items-center md:items-start">
