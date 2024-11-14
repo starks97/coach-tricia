@@ -1,0 +1,26 @@
+---
+import data from "../../data.json";
+
+const title = data.coaching["hero"].title;
+const image = data.coaching["hero"].image;
+---
+
+<div class="flex flex-col justify-center items-center">
+    <div class="w-full  flex items-center justify-center" id="image">
+        <img src={image} alt="hero image" class="object-cover"/>
+    </div>
+
+    <div class=" bg-hero_bg2  w-8/12 p-10 -translate-y-24 h-auto" >
+        <h1 class="text-5xl text-center font-light font-prata">{title}</h1>
+    </div>
+
+</div>
+
+<style>
+    #image img{
+        height: 650px;
+        width: 100%;
+        object-fit:cover;
+        object-position: top;
+    }
+</style>

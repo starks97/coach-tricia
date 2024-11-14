@@ -33,5 +33,11 @@
         "Move beyond feeling stuck or defeated, finding renewed confidence and feeling empowered to create a fresh vision for your future."
       ]
     }
+  },
+  "coaching": {
+    "hero": {
+      "title": "I'm on a mission to help you build a life that you love!",
+      "image": "/images/coach_hero.jpg"
+    }
   }
 }
