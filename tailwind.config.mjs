@@ -25,6 +25,13 @@ export default {
       },
       fontSize: {
         custom_size: "0.9rem",
+        custom_title: [
+          "2.3rem",
+          {
+            lineHeight: "45px",
+            letterSpacing: "0.07em",
+          },
+        ],
       },
       letterSpacing: {
         custom_spacing: "0.2em",
@@ -48,6 +55,7 @@ export default {
       header: "#efe5e3",
       header2: "#e7cdcc",
       custom_gray: "#525252",
+      menu_items: "#ffff",
     },
   },
   plugins: [],
