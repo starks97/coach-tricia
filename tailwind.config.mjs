@@ -32,6 +32,23 @@ export default {
             letterSpacing: "0.07em",
           },
         ],
+        custom_subtitle: [
+          "2rem",
+          {
+            lineHeight: "40px",
+            letterSpacing: "0.03em",
+          },
+        ],
+        custom_subtitle2: [
+          "2.5rem",
+          {
+            lineHeight: "50px",
+            letterSpacing: "0.05em",
+          },
+        ],
+        hero_title: ["4.5rem"],
+        hero_title_mobile: ["4.9rem"],
+        regular: ["1rem"],
       },
       letterSpacing: {
         custom_spacing: "0.2em",
@@ -56,6 +73,14 @@ export default {
       header2: "#e7cdcc",
       custom_gray: "#525252",
       menu_items: "#ffff",
+      subtitle: "#757575",
+    },
+
+    screens: {
+      mobile: "640px",
+      tablet: "768px",
+      laptop: "1024px",
+      desktop: "1280px",
     },
   },
   plugins: [],

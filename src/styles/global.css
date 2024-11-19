@@ -9,4 +9,11 @@
   .pain-points {
     @apply text-custom_size tracking-custom_spacing font-thin text-custom_gray;
   }
+  .general-layout {
+    @apply grid grid-cols-1 tablet:grid-cols-2 gap-5 bg-hero_bg mx-auto items-center min-h-screen p-5 tablet:p-10 laptop:p-14 tablet:min-h-max;
+  }
+
+  .general-layout__b {
+    @apply grid grid-cols-1 tablet:grid-cols-2 gap-5 bg-hero_bg mx-auto items-center min-h-screen p-5 tablet:p-10 laptop:p-14 tablet:min-h-max;
+  }
 }

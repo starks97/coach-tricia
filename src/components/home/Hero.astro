@@ -1,5 +1,4 @@
 ---
-
 import data from "../../data.json";
 
 const subtitle = data.home["hero"].subtitle;
@@ -8,43 +7,29 @@ const description = data.home["hero"].description;
 const heroImg = data.home["hero"].image;
 
 ---
-
-<div class="grid grid-cols-1 md:grid-cols-60/40 w-full h-auto md:h-screen lg:h-screen ">
-    <div class="w-full h-auto  flex items-center justify-center" id="hero-img">
-        <img src={heroImg} alt="hero"  class="h-svh w-svw object-cover"/>
+<div class="grid grid-cols-1 tablet:grid-cols-2 w-full h-auto laptop:h-screen desktop:h-screen">
+    <!-- Hero Image Section -->
+    <div class="w-full h-full flex items-center justify-center" id="hero-img-container">
+        <img src={heroImg} alt="hero" class="object-cover object-top w-full h-full" />
     </div>
-    <div class="flex w-full flex-col justify-start md:justify-center place-items-center mt-5">
-        <div class="-translate-y-5 md:-translate-y-0 md:-translate-x-14 flex flex-col items-center md:items-start">
-            <h2 class="text-8xl font-blackstone text-black">{title}</h2>
-            <p class="font-prata font-normal my-10 px-14 md:px-0 text-center md:text-left" id="hero-p">
-            {subtitle}
+
+    <!-- Content Section -->
+    <div class="flex flex-col justify-start tablet:justify-center items-center mt-5 tablet:mt-0 text-left w-full tablet:w-full laptop:w-3/4 desktop:w-3/4 bg-white tablet:py-5">
+        <div class="flex flex-col items-center tablet:items-start w-full px-10 tablet:px-0 tablet:-translate-x-16 -translate-y-16 tablet:translate-y-10 laptop:translate-y-0 gap-5">
+            <h2 class="text-hero_title_mobile tablet:text-hero_title laptop:text-8xl font-blackstone text-black">
+                {title}
+            </h2>
+            <p class="font-prata font-normal text-custom_title tablet:text-custom_subtitle laptop:text-custom_subtitle2 my-5 text-center tablet:text-left">
+                {subtitle}
             </p>
         </div>
-        <div class="flex flex-col justify-center w-3/4">
-            <h3 class="font-tajawal capitalize text-xl font-semibold text-hero_h3 ">
+        <div class="flex flex-col items-center w-full gap-5 my-10 px-20 tablet:px-10">
+            <h3 class="font-tajawal capitalize text-base tablet:text-lg laptop:text-xl font-semibold text-hero_h3 text-center">
                 {description}
             </h3>
-
-        </div>
-
-        <div class="flex my-10 w-1/2">
-            <button class="py-2.5 px-5 me-2 mb-2 text-lg border border-gray-200 font-tajawal font-bold" id="btn-hero">
-            Get my 5 secrets to greater confidence
+            <button class="py-2.5 px-5 mb-2 text-lg font-tajawal font-bold w-3/4 desktop:w-1/2 bg-[#e7cdcc] text-white uppercase" id="btn-hero">
+                About me
             </button>
         </div>
     </div>
 </div>
-
-
-<style>
-#hero-p {
-    line-height: 1.4;
-    font-size: 38px;
-}
-
-#btn-hero {
-    background-color: #e7cdcc;
-    color: white;
-    text-transform: uppercase;
-}
-</style>

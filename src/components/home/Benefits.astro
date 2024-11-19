@@ -5,15 +5,15 @@ const title = data.home["benefits"].title;
 const benefits = data.home["benefits"].benefits;
 
 ---
-<div class="container mx-auto p-5 md:p-10 lg:p-15 min-h-screen ">
+<div class="container mx-auto p-5 tablet:p-10 laptop:p-15 min-h-screen ">
     <div class="flex justify-center my-10">
-        <h3 class="font-prata text-custom_title text-center w-full md:w-8/12  text-hero_color2">
+        <h3 class="font-prata text-custom_title text-center w-full tablet:w-8/12  text-hero_color2">
             {title}
         </h3>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-40/60 justify-center gap-5">
+    <div class="grid grid-cols-1 laptop:grid-cols-40/60 justify-center gap-5">
         <div class="">
-            <img src="/images/hero.jpg" alt="hero" class="w-full h-auto object-cover hidden md:flex"/>
+            <img src="/images/hero.jpg" alt="hero" class="w-full h-auto object-cover hidden laptop:flex"/>
         </div>
         <div class="bg-hero_bg2 h-auto  p-10 flex flex-col gap-10 justify-center  ">
         {benefits.map((benefit) => (<li class="flex items-start">
