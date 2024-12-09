@@ -1,0 +1,24 @@
+---
+
+import data from "../../data.json";
+
+const image = data["home"].coaching_info.image;
+---
+
+<section aria-label="Contact page" class="general-layout__b">
+    <div class="flex flex-col justify-center items-center ">
+        <img src={image} alt="foots images" class="w-auto h-96 tablet:w-96 tablet:h-96 object-cover">
+    </div>
+    <div class="layout__g">
+        <h1 class="title__h">
+            let's chat
+        </h1>
+        <h5 class="subtitle__a text-2xl">
+            Ready to chat about your business? I'd love to get to know you and your needs!
+        </h5>
+        <p class="text__d ">
+        I'm here to help take you to that next level you've been dreaming about!
+        </p>
+    </div>
+
+</section>

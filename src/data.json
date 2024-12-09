@@ -44,6 +44,47 @@
     "hero": {
       "title": "I'm on a mission to help you build a life that you love!",
       "image": "/images/coach_hero.jpg"
-    }
+    },
+    "description": [
+      {
+        "id": 1,
+        "title": "First pain point",
+        "description": "Tricia is a compassionate and skilled therapist who has helped me navigate the emotional rollercoaster of grief and loss."
+      },
+      {
+        "id": 2,
+        "title": "Second pain point",
+        "description": "Tricia is a compassionate and skilled therapist who has helped me navigate the emotional rollercoaster of grief and loss."
+      },
+      {
+        "id": 3,
+        "title": "Third pain point",
+        "description": "Tricia is a compassionate and skilled therapist who has helped me navigate the emotional rollercoaster of grief and loss."
+      }
+    ]
+  },
+  "contact": {
+    "hero": {
+      "title": "let's chat",
+      "subtitle": "Ready to chat about your business? I'd love to get to know you and your needs!",
+      "description": "I'm here to help take you to that next level you've been dreaming about!"
+    },
+    "contact-form": [
+      {
+        "id": 1,
+        "title": "Hours",
+        "subtitle": "Monday-Thursday | 9am - 3pm CTS"
+      },
+      {
+        "id": 2,
+        "title": "Location",
+        "subtitle": "6 Red Barn Road, Riverhead, NY, 11901"
+      },
+      {
+        "id": 3,
+        "title": "Email",
+        "subtitle": "triciarago@gmail.com"
+      }
+    ]
   }
 }

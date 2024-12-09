@@ -74,6 +74,7 @@ export default {
       custom_gray: "#525252",
       menu_items: "#ffff",
       subtitle: "#757575",
+      description_bg: "#fcf0ef",
     },
 
     screens: {

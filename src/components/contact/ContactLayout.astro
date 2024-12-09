@@ -1,0 +1,26 @@
+---
+import Form from "./Form.astro"
+
+import data from "../../data.json";
+
+const contact = data.contact["contact-form"]
+const image = data["home"].coaching_info.image;
+---
+
+<div class="general-layout__b">
+    <div class="layout__g">
+        {contact.map((ele) => (
+        <div class="layout__g">
+            <h4 class="subtitle__d text-center uppercase">{ele.title}</h4>
+            <p class="text-center">{ele.subtitle}</p>
+        </div>
+        ))}
+        <div class=" justify-center items-center px-5 hidden tablet:flex flex-col">
+            <img src={image} alt="foots images" class="w-full h-40 object-cover">
+        </div>
+    </div>
+
+    <div>
+        <Form/>
+    </div>
+</div>

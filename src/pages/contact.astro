@@ -1,18 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
+import Hero from "../components/contact/hero.astro"
+import ContactLayout from "../components/contact/ContactLayout.astro";
+
 ---
 <Layout title='Contact | Tricia Rago Coaching' description='contact to Tricia Rago' image='example.jpg'>
-    <main>
-        <section aria-label="Contact page">
-            <h1>Contact Page</h1>
-        </section>
-    </main>
+    <Hero/>
+    <ContactLayout/>
 </Layout>
-
-
-<style >
-main {
-    @apply grid place-content-center p-20
-}
-</style>

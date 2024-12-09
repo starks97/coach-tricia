@@ -1,2 +1,29 @@
 ---
+import data from "../../data.json";
 ---
+
+<div class="general-layout__c">
+    <div class="layout__i">
+        <div class="w-full max-w-lg mx-auto h-auto">
+            <h1 class="title__g">
+                Another Headline here related to the problem they are facing.
+            </h1>
+        </div>
+        <div class="">
+        <h5 class="subtitle__d">
+            Vape chartreuse chicharrones thundercats craft beer dreamcatcher godard church-key sriracha roof party put a bird on it.
+        </h5>
+        </div>
+    </div>
+    <div class="border-2 border-solid w-full border-btn_bg h-auto p-3">
+        <div class="grid grid-cols-1 tablet:grid-cols-3 gap-10 p-10 bg-description_bg">
+            {data.coaching.description.map((ele) => (
+              <div class="space-y-5">
+                <p class="text-left font-prata font">{ele.id}</p>
+                <h4 class="text-left font-prata font text-2xl">{ele.title}</h4>
+                <p class="leading-7 font-tajawal">{ele.description}</p>
+              </div>
+            ))}
+        </div>
+    </div>
+</div>

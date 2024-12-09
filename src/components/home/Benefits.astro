@@ -5,47 +5,37 @@ const title = data.home["benefits"].title;
 const benefits = data.home["benefits"].benefits;
 
 ---
-<div class="container mx-auto p-5 tablet:p-10 laptop:p-15 min-h-screen ">
+<div class="general-layout__c">
+
     <div class="flex justify-center my-10">
-        <h3 class="font-prata text-custom_title text-center w-full tablet:w-8/12  text-hero_color2">
+        <h3 class="title__a">
             {title}
         </h3>
     </div>
-    <div class="grid grid-cols-1 laptop:grid-cols-40/60 justify-center gap-5">
-        <div class="">
-            <img src="/images/hero.jpg" alt="hero" class="w-full h-auto object-cover hidden laptop:flex"/>
+    <div class="layout__a">
+
+        <div class="hidden laptop:flex">
+            <img src="/images/hero.jpg" alt="hero" class="w-full h-auto object-cover "/>
         </div>
-        <div class="bg-hero_bg2 h-auto  p-10 flex flex-col gap-10 justify-center  ">
+        <div class="border-2 border-solid w-full laptop:hidden border-btn_bg"></div>
+        <div class="bg-hero_bg2 h-auto  p-10 flex flex-col gap-10 justify-center">
         {benefits.map((benefit) => (<li class="flex items-start">
                 <!-- SVG Icon -->
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 512 512"
-                    class="w-10 h-10 text-hero_color flex-shrink-0 mt-1"
-                    fill="currentColor"
-                    aria-hidden="true"
-                >
-                    <path d="M405 136.798L375.202 107 256 226.202 136.798 107 107 136.798 226.202 256 107 375.202 136.798 405 256 285.798 375.202 405 405 375.202 285.798 256"></path>
-                </svg>
+
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor" class="w-10 h-10 text-hero_color flex-shrink-0 mt-1"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
 
                 <!-- List Item Text -->
-                <p class="ml-4  font-tajawal pain-points uppercase font-extrabold leading-15">
+                <p class="ml-4 font-tajawal pain-points uppercase font-extrabold leading-15">
                     {benefit}
                 </>
          </li>))}
         </div>
     </div>
     <div class="flex justify-center my-10">
-        <button class="btn ">
-            <a href="/contact" class="font-tajawal uppercase pain-points text-hero_bg font-extrabold">Book a Consultation</a>
-        </button>
+        <a href="/contact">
+            <button class="btn__b">
+                Book a Consultation
+            </button>
+         </a>
     </div>
 </div>
-
-<style>
-#btn-hero {
-    background-color: #ce7c76;
-    color: white;
-    text-transform: uppercase;
-}
-</style>
