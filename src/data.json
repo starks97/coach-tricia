@@ -86,5 +86,12 @@
         "subtitle": "triciarago@gmail.com"
       }
     ]
+  },
+  "about": {
+    "hero": {
+      "title": "Lets get Personal",
+      "description": "Are you ready to make a shift? Its time to dream big.",
+      "image": "/images/about.jpg"
+    }
   }
 }
