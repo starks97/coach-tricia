@@ -2,16 +2,19 @@
 import data from "../../data.json";
 ---
 
-<div class="general-layout__c">
-    <div class="layout__i">
-        <div class="w-full max-w-lg mx-auto h-auto">
-            <h1 class="title__g">
-                Another Headline here related to the problem they are facing.
+<div class="container mx-auto px-5 ">
+    <div class="grid grid-cols-1 gap-5 justify-center items-center h-auto my-10 justify-items-center">
+        <div class="w-full h-auto space-y-5">
+            <h1 class="font-prata text-5xl tablet:text-7xl text-btn_bg text-center tablet:text-left;">
+                Conscious Uncoupling
             </h1>
+            <h5 class="ml-4 pain-points font-semibold leading-14 font-tajawal w-full text-xl tablet:text-2xl text-center">
+                5 Steps To Living Happly <span class="font-bold text-hero_color">Even</span> After.
+            </h5>
         </div>
         <div class="">
-        <h5 class="subtitle__d">
-            Vape chartreuse chicharrones thundercats craft beer dreamcatcher godard church-key sriracha roof party put a bird on it.
+        <h5 class="font-tajawal text-lg tablet:text-xl leading-9 font-semibold text-center uppercase tablet:normal-case">
+            A powerfull and deeply personal 10-week course.
         </h5>
         </div>
     </div>
@@ -20,8 +23,8 @@ import data from "../../data.json";
             {data.coaching.description.map((ele) => (
               <div class="space-y-5">
                 <p class="text-left font-prata font">{ele.id}</p>
-                <h4 class="text-left font-prata font text-2xl">{ele.title}</h4>
-                <p class="leading-7 font-tajawal">{ele.description}</p>
+                <h4 class="text-left font-prata font text-bigger w-full tablet:w-3/4 leading-10 tracking-wide">{ele.title}</h4>
+                <p class="leading-7 font-tajawal w-full tablet:w-3/4">{ele.description}</p>
               </div>
             ))}
         </div>

@@ -32,6 +32,13 @@ export default {
             letterSpacing: "0.07em",
           },
         ],
+        custom_coaching: [
+          "2.5rem",
+          {
+            lineHeight: "45px",
+            letterSpacing: "0.07em",
+          },
+        ],
         custom_subtitle: [
           "2rem",
           {
@@ -48,7 +55,8 @@ export default {
         ],
         hero_title: ["4.5rem"],
         hero_title_mobile: ["4.9rem"],
-        regular: ["1rem"],
+        regular: ["1.025rem"],
+        bigger: ["1.5rem"],
       },
       letterSpacing: {
         custom_spacing: "0.2em",

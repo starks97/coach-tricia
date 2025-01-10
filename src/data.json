@@ -3,7 +3,7 @@
     "hero": {
       "title": "I'm Tricia",
       "subtitle": "Ready to partner with you on your path to healing after a breakup and moving on with your life!",
-      "description": "Taking you from the pain of the past to the amazing future awating you.",
+      "description": "Taking you from the pain of the past to the amazing future wating for you.",
       "image": "/images/tricia-hero3.webp"
     },
     "user_pain_points": {
@@ -48,18 +48,18 @@
     "description": [
       {
         "id": 1,
-        "title": "First pain point",
-        "description": "Tricia is a compassionate and skilled therapist who has helped me navigate the emotional rollercoaster of grief and loss."
+        "title": "Finding Emotional Freedom",
+        "description": "Find the emotional space to move beyond the old painful patterns in love and use this shattering to radically evolve how you live and how you love."
       },
       {
         "id": 2,
-        "title": "Second pain point",
-        "description": "Tricia is a compassionate and skilled therapist who has helped me navigate the emotional rollercoaster of grief and loss."
+        "title": "Reclaim Your Power And Your Life",
+        "description": "Let go of being a wounded victim of love shifting your perspective away from blame to taking full responsibility for your part in what happened."
       },
       {
         "id": 3,
-        "title": "Third pain point",
-        "description": "Tricia is a compassionate and skilled therapist who has helped me navigate the emotional rollercoaster of grief and loss."
+        "title": "Break The Pattern",
+        "description": "Finally understand and break free of the painful experiences that have been at the heart of the repetitive patterns in your relationships and give yourself the opportunity to evolve beyond them."
       }
     ]
   },

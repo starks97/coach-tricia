@@ -44,7 +44,7 @@
   }
 
   .title__g {
-    @apply font-prata text-custom_title text-btn_bg text-center tablet:text-left;
+    @apply font-prata text-custom_coaching text-btn_bg text-center tablet:text-left;
   }
   .title__h {
     @apply title__d text-7xl text-hero_color2 text-center tablet:text-left;
@@ -104,7 +104,7 @@
     @apply flex flex-col gap-6 w-full max-w-lg mx-auto justify-center items-center p-8 bg-header rounded-lg shadow-md h-auto;
   }
   .layout__i {
-    @apply grid grid-cols-1 tablet:grid-cols-2 gap-5 justify-between items-center px-5 h-auto my-10;
+    @apply grid grid-cols-1 gap-5 justify-center items-center h-auto my-10;
   }
 
   /*btn*/
