@@ -1,0 +1,27 @@
+---
+import data from "../../data.json";
+
+const story = data["about"].story;
+
+---
+
+<div class="container mx-auto mt-24 px-5">
+    <div class="grid grid-cols-1 grid-rows-1 laptop:grid-cols-2 laptop:grid-rows-2 justify-items-center items-center gap-20 h-full">
+        <div>
+            <img src={story["first"].image} alt="hero" class="w-[400px] h-96 laptop:w-[420px] laptop:h-[450px] object-cover" />
+        </div>
+        <div class="space-y-5 ">
+            <h1 class="font-prata text-5xl text-center laptop:text-left">{story["first"].title}</h1>
+            <p class="text-lg font-tajawal text-left px-10 ">{story["first"].content}</p>
+        </div>
+        <div class="space-y-5 px-0 tablet:px-10 order-2 laptop:order-1">
+            <h1 class="font-tajawal text-xl text-center font-normal text-hero_color2 uppercase">{story["second"].title}</h1>
+            <h4 class="font-prata text-about_subtitle text-center ">{story["second"].description}</h4>
+            <p class="text-center laptop:text-left text-lg font-tajawal ">{story["second"].content}</p>
+        </div>
+        <div class="order-1 laptop:order-2">
+            <img src={story["second"].image} alt="hero" class="w-[400px] h-96 laptop:w-[420px] laptop:h-[450px] object-cover" />
+        </div>
+
+    </div>
+</div>

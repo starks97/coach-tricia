@@ -9,12 +9,12 @@ const image = data["about"].hero.image;
 
 
 <div class="h-auto max-h-[800px]">
-  <div class="grid grid-cols-1 tablet:grid-cols-2 w-full items-center justify-items-center ">
+  <div class="grid grid-cols-1 tablet:grid-cols-2 w-full items-center justify-items-center justify-center">
     <!-- Text Content -->
-    <div class="flex flex-col space-y-10 justify-center order-2 tablet:order-1">
-      <h1 class="title__d ">{title}</h1>
+    <div class="flex flex-col space-y-10 justify-center order-2 tablet:order-1 px-5">
+      <h1 class="font-blackstone text-black text-center text-hero_title_mobile tablet:text-hero_title laptop:text-8xl">{title}</h1>
       <div class="layout__b">
-        <h2 class="font-prata font-normal text-custom_subtitle2">{description}</h2>
+        <h2 class="font-prata font-normal text-custom_subtitle2  text-center tablet:text-left">{description}</h2>
       </div>
     </div>
     <!-- Image -->
@@ -22,4 +22,5 @@ const image = data["about"].hero.image;
       <img src={image} alt="hero" class="object-cover max-h-[400px] tablet:max-h-[700px] w-full" />
     </div>
   </div>
+  <div class="border-b-2 border-hero_color2 my-2"/>
 </div>

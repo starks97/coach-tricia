@@ -91,7 +91,20 @@
     "hero": {
       "title": "Lets get Personal",
       "description": "Are you ready to make a shift? Its time to dream big.",
-      "image": "/images/about.jpg"
+      "image": "/images/about-tricia.jpg"
+    },
+    "story": {
+      "first": {
+        "title": "Hey there, I'm Tricia.",
+        "content": "A certified Conscious Uncoupling and Relationship Coach, trained and personally mentored by Katherine Woodward Thomas, the New York Times bestselling author of Conscious Uncoupling: 5 Steps to Live Happily Even After. My mission is to uplift and inspire women as they navigate the often-devastating process of ending a significant relationship. Having been through this challenging path myself, I'm here to help others channel heartbreak into a powerful opportunity for growth, supporting them in creating fulfilling lives for themselves and brighter futures for their families. From Long Island, New York, I work globally, connecting with clients from all walks of life who are ready to rebuild with intention and hope.",
+        "image": "/images/story1.jpg"
+      },
+      "second": {
+        "title": "Where I started",
+        "description": "Sartorial Succulents Butcher Fanny Pack Church-Key Tote Bag Bushwick Jean Shorts.",
+        "content": "Before becoming a coach, I spent years as a professional chef, dedicated to making beautiful food and to creating warmth and connection around the table. Today, I bring that same sense of warmth and nourishment into my coaching, fostering an environment where my clients feel seen, supported, and encouraged to reach for a better, more fulfilling life. Just as a recipe can be transformed with care and the right ingredients, I believe that every woman has the potential to transform her life after loss and to rediscover her own strength, joy, and purpose.",
+        "image": "/images/story2.jpg"
+      }
     }
   }
 }

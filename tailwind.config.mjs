@@ -57,6 +57,7 @@ export default {
         hero_title_mobile: ["4.9rem"],
         regular: ["1.025rem"],
         bigger: ["1.5rem"],
+        about_subtitle: ["2rem"],
       },
       letterSpacing: {
         custom_spacing: "0.2em",
