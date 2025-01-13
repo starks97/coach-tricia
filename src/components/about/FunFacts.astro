@@ -1,0 +1,40 @@
+---
+import data from "../../data.json"
+
+const funFacts = data["about"]["fun-facts"]
+---
+
+<div class="container mx-auto my-32 h-auto">
+	<h1 class="flex w-full flex-col items-center justify-center text-center text-6xl text-hero_color">
+		Fun Facts About Me!
+	</h1>
+	<div class="mt-16 grid grid-cols-1 items-center justify-items-center gap-5 tablet:grid-cols-2">
+		{/* Column 1: First Half */}
+		<ul class="mx:auto w-full max-w-sm space-y-10">
+			{
+				funFacts.slice(0, Math.ceil(funFacts.length / 2)).map((value, index) => (
+					<li class="space-y-5">
+						<h3 class="text-center font-prata text-2xl font-semibold">{value.title}</h3>
+						<p class="w-full border-b border-hero_color text-center font-blackstone text-5xl">
+							{value.description}
+						</p>
+					</li>
+				))
+			}
+		</ul>
+
+		{/* Column 2: Second Half */}
+		<ul class="mx:auto w-full max-w-sm space-y-10">
+			{
+				funFacts.slice(Math.ceil(funFacts.length / 2)).map((value, index) => (
+					<li class="space-y-5">
+						<h3 class="text-center font-prata text-2xl font-semibold">{value.title}</h3>
+						<p class="border-b border-hero_color text-center font-blackstone text-5xl">
+							{value.description}
+						</p>
+					</li>
+				))
+			}
+		</ul>
+	</div>
+</div>

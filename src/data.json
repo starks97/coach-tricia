@@ -105,6 +105,38 @@
         "content": "Before becoming a coach, I spent years as a professional chef, dedicated to making beautiful food and to creating warmth and connection around the table. Today, I bring that same sense of warmth and nourishment into my coaching, fostering an environment where my clients feel seen, supported, and encouraged to reach for a better, more fulfilling life. Just as a recipe can be transformed with care and the right ingredients, I believe that every woman has the potential to transform her life after loss and to rediscover her own strength, joy, and purpose.",
         "image": "/images/story2.jpg"
       }
-    }
+    },
+    "fun-facts": [
+      {
+        "id": 1,
+        "title": "Favorite Happy Hour Drink",
+        "description": "Strawberry Marg"
+      },
+      {
+        "id": 2,
+        "title": "Favorite Happy Hour Drink",
+        "description": "Strawberry Marg"
+      },
+      {
+        "id": 3,
+        "title": "Favorite Happy Hour Drink",
+        "description": "Strawberry Marg"
+      },
+      {
+        "id": 4,
+        "title": "Favorite Happy Hour Drink",
+        "description": "Strawberry Marg"
+      },
+      {
+        "id": 5,
+        "title": "Favorite Happy Hour Drink",
+        "description": "Strawberry Marg"
+      },
+      {
+        "id": 6,
+        "title": "Favorite Happy Hour Drink",
+        "description": "Strawberry Marg"
+      }
+    ]
   }
 }
