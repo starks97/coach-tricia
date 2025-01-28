@@ -137,6 +137,27 @@
         "title": "Favorite Happy Hour Drink",
         "description": "Strawberry Marg"
       }
-    ]
+    ],
+    "enough": {
+      "title": "Enough about me, I'm here to help you...",
+      "help-points": [
+        {
+          "id": 1,
+          "title": "Vinyl portland heirloom hoodie forage organic pinterest 8-bit palo santo XOXO, fingerstache vice."
+        },
+        {
+          "id": 2,
+          "title": "Vinyl portland heirloom hoodie forage organic pinterest 8-bit palo santo XOXO, fingerstache vice."
+        },
+        {
+          "id": 3,
+          "title": "Vinyl portland heirloom hoodie forage organic pinterest 8-bit palo santo XOXO, fingerstache vice."
+        },
+        {
+          "id": 4,
+          "title": "Vinyl portland heirloom hoodie forage organic pinterest 8-bit palo santo XOXO, fingerstache vice."
+        }
+      ]
+    }
   }
 }

@@ -1,0 +1,53 @@
+---
+import data from "../../data.json"
+
+const helpPoints = data["about"]["enough"]
+---
+<div class="bg-header">
+  <div class="container mx-auto my-32 h-auto px-0 tablet:px-5 -translate-y-5">
+    <div class="grid grid-cols-1 items-start justify-items-center tablet:grid-cols-2 gap-10">
+      <!-- Image Section -->
+      <div class="">
+        <img
+          src="/images/hero.jpg"
+          alt="hero"
+          class="w-full h-auto object-cover tablet:w-[420px] tablet:h-[700px] laptop:h-[auto]"
+        />
+      </div>
+      <!-- Text Section -->
+      <div class="space-y-10 tablet:space-y-5 px-5">
+        <h3 class="text-center tablet:text-left font-prata text-4xl  mobile:text-3xl tablet:text-4xl laptop:text:5xl">
+          {helpPoints?.title}
+        </h3>
+        <ul class="space-y-4">
+          {helpPoints["help-points"]?.map((point) => (
+            <li class="flex items-start">
+              <!-- SVG Icon -->
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 -960 960 960"
+                fill="currentColor"
+                class="w-10 h-10 text-hero_color flex-shrink-0 mt-1"
+              >
+                <path
+                  d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"
+                />
+              </svg>
+              <!-- List Item Text -->
+              <p class="ml-4 font-tajawal pain-points font-extrabold leading-15">
+                {point?.title}
+              </p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+    <div class="flex justify-center my-10">
+        <a href="/contact">
+            <button class="btn__b">
+                Book a Consultation
+            </button>
+         </a>
+    </div>
+  </div>
+</div>
