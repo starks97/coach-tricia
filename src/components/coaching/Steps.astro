@@ -1,0 +1,61 @@
+---
+import data from "../../data.json"
+
+const steps = data.coaching["description"]
+const image = data.coaching["hero"].image
+---
+
+<div class="section mx-auto w-full space-y-5 px-10">
+	<!-- Section Title -->
+	<div class="h-auto w-full space-y-5">
+		<h1 class="tablet:text-left; text-center font-prata text-5xl text-btn_bg tablet:text-7xl">
+			Conscious Uncoupling
+		</h1>
+		<h5
+			class="pain-points ml-4 w-full text-center font-tajawal text-xl font-semibold leading-14 tablet:text-2xl"
+		>
+			5 Steps To Living Happly <span class="font-bold text-hero_color">Even</span> After.
+		</h5>
+	</div>
+	<div class="">
+		<h5
+			class="text-center font-tajawal text-lg font-semibold uppercase leading-9 tablet:text-xl tablet:normal-case"
+		>
+			A powerfull and deeply personal 10-week course.
+		</h5>
+	</div>
+
+	<!-- Steps Grid -->
+	<div class="grid h-auto grid-cols-1 justify-items-center gap-6 tablet:gap-10">
+		{
+			steps.map((item) => {
+				const isPair = item.id % 2 === 0
+				return (
+					<div
+						class={`flex flex-col items-center gap-4 tablet:flex-row ${isPair ? "tablet:flex-row-reverse" : ""}`}
+					>
+						{/* Text Content */}
+						<div class="flex-1 space-y-4" id={`${item.id}`}>
+							<span class="text-center font-bonVivant text-lg text-hero_color2 tablet:text-left">{`Step ${item.id}`}</span>
+							<h3
+								class={`font-prata text-2xl font-semibold ${isPair ? "text-center" : "text-center tablet:text-left"}`}
+							>
+								{item.title}
+							</h3>
+							<div class="border-black border-[1px] border-hero_color2" />
+							<p class="text-gray-700 mx-auto mt-5 max-w-lg text-center font-tajawal tablet:text-left">
+								{item.description}
+							</p>
+						</div>
+						{/* Image */}
+						<img
+							src={image}
+							alt="foot images"
+							class="h-64 w-full max-w-[300px] object-cover tablet:h-80 tablet:w-80"
+						/>
+					</div>
+				)
+			})
+		}
+	</div>
+</div>
