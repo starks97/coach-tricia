@@ -49,27 +49,32 @@
       {
         "id": 1,
         "title": "Finding Emotional Freedom",
-        "description": "Find the emotional space to move beyond the old painful patterns in love and use this shattering to radically evolve how you live and how you love."
+        "description": "Find the emotional space to move beyond the old painful patterns in love and use this shattering to radically evolve how you live and how you love.",
+        "image": "/images/step1.jpg"
       },
       {
         "id": 2,
         "title": "Reclaim Your Power And Your Life",
-        "description": "Let go of being a wounded victim of love shifting your perspective away from blame to taking full responsibility for your part in what happened."
+        "description": "Let go of being a wounded victim of love shifting your perspective away from blame to taking full responsibility for your part in what happened.",
+        "image": "/images/step2.jpg"
       },
       {
         "id": 3,
         "title": "Break The Pattern",
-        "description": "Finally understand and break free of the painful experiences that have been at the heart of the repetitive patterns in your relationships and give yourself the opportunity to evolve beyond them."
+        "description": "Finally understand and break free of the painful experiences that have been at the heart of the repetitive patterns in your relationships and give yourself the opportunity to evolve beyond them.",
+        "image": "/images/step3.jpg"
       },
       {
         "id": 4,
-        "title": "Break The Pattern",
-        "description": "Finally understand and break free of the painful experiences that have been at the heart of the repetitive patterns in your relationships and give yourself the opportunity to evolve beyond them."
+        "title": "Become A Love Alchemist",
+        "description": "Begin to make choices and take actions that graduate you from the painful patterns of the past. Radically transform the dynamics between you and your former partner allowing for the possible emergence of a healthy new form the relationship has the potential to take.",
+        "image": "/images/step4.jpg"
       },
       {
         "id": 5,
-        "title": "Break The Pattern",
-        "description": "Finally understand and break free of the painful experiences that have been at the heart of the repetitive patterns in your relationships and give yourself the opportunity to evolve beyond them."
+        "title": "Create Your Happily Even After Life",
+        "description": "Get the support you will need to make wise, healthy and life-affirming decisions as you take on the essential  tasks of reinventing your life.  Set up the vital new structures that will ensure that the new life you’re embracing will be greater than the one you are letting go of. ",
+        "image": "/images/step4.jpg"
       }
     ]
   },

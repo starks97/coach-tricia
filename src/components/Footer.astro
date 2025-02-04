@@ -10,12 +10,11 @@ const resources = [
 const socialLinks = [
 	{ name: "Facebook", icon: "/icons/facebook.svg", href: "https://facebook.com" },
 	{ name: "Instagram", icon: "/icons/instagram.svg", href: "https://instagram.com" },
-	{ name: "Twitter", icon: "/icons/twitter.svg", href: "https://twitter.com" },
 	{ name: "LinkedIn", icon: "/icons/linkedin.svg", href: "https://linkedin.com" },
 ]
 ---
 
-<footer class="text-black bg-hero_bg py-12">
+<footer class="text-black bg-header py-12">
 	<div
 		class="container mx-auto flex flex-col items-center justify-between gap-12 px-5 laptop:flex-row laptop:items-start"
 	>
@@ -24,8 +23,7 @@ const socialLinks = [
 			<h3
 				class="text-center font-prata text-xl font-bold leading-tight tablet:text-left tablet:text-2xl"
 			>
-				Mindset & confidence coaching for women who are looking to create the life and business of
-				their dreams.
+				Mindset & confidence coaching for women who are looking to create the life of their dreams.
 			</h3>
 			<h1 class="text-center font-blackstone text-5xl tablet:text-7xl">Tricia Rago</h1>
 		</div>
@@ -39,7 +37,7 @@ const socialLinks = [
 						<li>
 							<a
 								href={resource.href}
-								class="hover:text-pink-500 font-tajawal transition-colors duration-300"
+								class="font-tajawal transition-colors duration-300 hover:text-hero_color"
 							>
 								{resource.name}
 							</a>
@@ -60,7 +58,7 @@ const socialLinks = [
 								href={link.href}
 								target="_blank"
 								rel="noopener noreferrer"
-								class="hover:text-pink-500 flex items-center gap-4 font-tajawal text-lg transition-colors duration-300"
+								class="flex items-center gap-4 font-tajawal text-lg transition-colors duration-300 hover:text-hero_color"
 							>
 								<img src={link.icon} alt={link.name} class="h-8 w-8" />
 								{link.name}
