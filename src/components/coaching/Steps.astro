@@ -35,7 +35,7 @@ const steps = data.coaching["description"]
 				const isPair = item.id % 2 === 0
 				return (
 					<div
-						class={`flex flex-col max-w-[300px] px-0 tablet:px-10 tablet:max-w-full items-center gap-2 tablet:flex-row ${isPair ? "tablet:flex-row-reverse" : ""}`}
+						class={`flex flex-col  px-0 tablet:px-10  items-center gap-2 tablet:flex-row ${isPair ? "tablet:flex-row-reverse" : ""}`}
 					>
 						{/* Text Content */}
 						<div class="flex-1 space-y-2 " id={`${item.id}`}>
@@ -48,26 +48,26 @@ const steps = data.coaching["description"]
 							</span>
 
 							<h3
-								class={`font-prata text-2xl font-semibold ${isPair ? "text-center" : "text-center tablet:text-left"}`}
+								class={`font-prata text-xl tablet:lg laptop:text-2xl font-semibold ${isPair ? "text-center" : "text-center tablet:text-left"}`}
 							>
 								{item.title}
 							</h3>
 
-							<p class="text-gray-700 text-lg mx-auto mt-5 tablet:max-w-sm text-center font-tajawal tablet:text-left">
+							<p class="text-gray-700 text-lg tablet:text-[15px] laptop:text-xl mx-auto mt-5 tablet:max-w-sm text-center font-tajawal tablet:text-left">
 								{item.description}
 							</p>
 						</div>
 
 						{/* Image */}
 						<div class="z-10">
-						<div class="relative w-[300px] h-[300px] tablet:w-[450px] tablet:h-[450px] bg-[url('/images/tablet.png')] bg-contain bg-no-repeat">
-						  <img src={item.image} class="absolute w-[162px] h-[215px] top-[34px] left-[52px] tablet:top-[50px] tablet:right-[0px] tablet:left-[78px] tablet:w-[243px] tablet:h-[325px] object-cover rounded-lg"/>
+						<div class="relative w-[300px] h-[300px] tablet:w-[350px] tablet:h-[350px] laptop:w-[450px] laptop:h-[450px] bg-[url('/images/tablet.png')] bg-contain bg-no-repeat">
+						  <img src={item.image} class="absolute w-[162px] h-[215px] top-[34px] left-[52px] laptop:top-[50px] laptop:right-[0px] laptop:left-[78px] laptop:w-[243px] laptop:h-[325px] object-cover rounded-lg"/>
                         </div>
 						</div>
 
 					</div>
 					<div
-						class="border-black border-[1px] border-hero_color2 mx-auto max-w-5xl w-full translate-y-0 tablet:-translate-y-[80px]"
+						class="border-black border-[1px] border-hero_color2 mx-auto max-w-5xl w-full translate-y-0 tablet:-translate-y-[60px] laptop:-translate-y-[80px]"
 					/>
 				)
 			})
