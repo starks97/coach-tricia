@@ -125,54 +125,38 @@
       {
         "id": 1,
         "title": "Favorite Happy Hour Drink",
-        "description": "Strawberry Marg"
+        "description": "Limoncello Spritz"
       },
       {
         "id": 2,
-        "title": "Favorite Happy Hour Drink",
-        "description": "Strawberry Marg"
+        "title": "Favorite Place To Visit",
+        "description": "Anywhere Beachy"
       },
       {
         "id": 3,
-        "title": "Favorite Happy Hour Drink",
-        "description": "Strawberry Marg"
+        "title": "Favorite Movie",
+        "description": "Out of Africa"
       },
       {
         "id": 4,
-        "title": "Favorite Happy Hour Drink",
-        "description": "Strawberry Marg"
+        "title": "If I Could Travel Anywhere Tomorrow",
+        "description": "France or Italy"
       },
       {
         "id": 5,
-        "title": "Favorite Happy Hour Drink",
-        "description": "Strawberry Marg"
+        "title": "My Go-To Starbucks Drink",
+        "description": "Iced Pistachio Latte"
       },
       {
         "id": 6,
-        "title": "Favorite Happy Hour Drink",
-        "description": "Strawberry Marg"
+        "title": "Favorite Things To Do",
+        "description": "Cooking and Entertaining"
       }
     ],
+
     "enough": {
-      "title": "Enough about me, I'm here to help you...",
-      "help-points": [
-        {
-          "id": 1,
-          "title": "Vinyl portland heirloom hoodie forage organic pinterest 8-bit palo santo XOXO, fingerstache vice."
-        },
-        {
-          "id": 2,
-          "title": "Vinyl portland heirloom hoodie forage organic pinterest 8-bit palo santo XOXO, fingerstache vice."
-        },
-        {
-          "id": 3,
-          "title": "Vinyl portland heirloom hoodie forage organic pinterest 8-bit palo santo XOXO, fingerstache vice."
-        },
-        {
-          "id": 4,
-          "title": "Vinyl portland heirloom hoodie forage organic pinterest 8-bit palo santo XOXO, fingerstache vice."
-        }
-      ]
+      "title": "My 5-Step Journey to Freedom and Personal Power",
+      "about_course": "My approach combines a powerful fusion of intuitive and spiritual guidance with a proven, strategic 5-Step plan that can enable you to reclaim your purpose and create a life bigger and better than the one you are trying to leave behind. I’ve been where you are—on the edge of a breakthrough, yet confused and unsure of my next steps. But when I was introduced to the work of Katherine Woodward Thomas and her 5-Step process, I took a leap of faith, and that’s where my transformation began. Working closely with Katherine, I transitioned out of a toxic and unhappy marriage and stepped into my own personal power"
     }
   }
 }
