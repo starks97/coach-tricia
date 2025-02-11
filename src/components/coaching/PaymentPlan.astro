@@ -1,3 +1,46 @@
 ---
+import data from "../../data.json"
 
+const paymentPlan = data.coaching["payment_plan"]
+
+const colorAsigment: Record<number, string> = {
+	1: "#eee1e0",
+	2: "#eaeaea",
+	3: "#f1d9d5",
+}
 ---
+
+<div class="section mx-auto my-10 w-full space-y-5 px-10 tablet:max-w-6xl">
+	<div class="grid grid-cols-1 justify-items-center gap-10 tablet:grid-cols-3">
+		{
+			paymentPlan.map((payment) => {
+				const isPair = payment.id % 2 === 0
+				return (
+					<div
+						class={`relative w-full ${colorAsigment[payment.id]} items-center justify-center space-y-10 ${isPair ? "scale-110" : "scale-100"}`}
+						style={{ backgroundColor: colorAsigment[payment.id] }}
+					>
+						<div class="absolute -top-12 left-1/2 -translate-x-1/2 transform">
+							<div
+								class="flex h-20 w-20 items-center justify-center rounded-full shadow-lg"
+								style={{ backgroundColor: colorAsigment[payment.id] }}
+							>
+								<span class="text-white text-2xl">{payment.id}</span>
+							</div>
+						</div>
+						<h3 class="text-center font-prata text-2xl font-light tablet:text-center">
+							{payment.title}
+						</h3>
+						<p class="text-center font-tajawal text-lg tablet:text-center">{payment.description}</p>
+						<p class="ext-center font-tajawal text-lg tablet:text-center">{payment.price}</p>
+						<div class="flex justify-center">
+							<a href="/contact">
+								<button class="btn__b"> Book a Consultation </button>
+							</a>
+						</div>
+					</div>
+				)
+			})
+		}
+	</div>
+</div>

@@ -76,6 +76,26 @@
         "description": "Get the support you will need to make wise, healthy and life-affirming decisions as you take on the essential  tasks of reinventing your life.  Set up the vital new structures that will ensure that the new life you’re embracing will be greater than the one you are letting go of. ",
         "image": "/images/step4.jpg"
       }
+    ],
+    "payment_plan": [
+      {
+        "id": 1,
+        "title": "Single Session",
+        "price": "$150",
+        "description": "One 60-minute session"
+      },
+      {
+        "id": 2,
+        "title": "3 Sessions",
+        "price": "$400",
+        "description": "Three 60-minute sessions"
+      },
+      {
+        "id": 3,
+        "title": "5 Sessions",
+        "price": "$650",
+        "description": "Five 60-minute sessions"
+      }
     ]
   },
   "contact": {
