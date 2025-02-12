@@ -16,14 +16,14 @@ const colorBtnAssigment: Record<number, string> = {
 }
 ---
 
-<div class="section mx-auto my-10 w-full space-y-20 px-10 tablet:max-w-6xl">
+<div class="section mx-auto my-[10rem] h-auto w-full space-y-20 px-10 tablet:max-w-6xl">
 	<div class="h-auto w-full space-y-5">
 		<h1
 			class="pain-points ml-4 w-full text-center font-tajawal text-xl font-semibold leading-14 text-hero_color tablet:text-2xl"
 		>
 			Ready To Make A Move?
 		</h1>
-		<h5 class="tablet:text-left; text-center font-prata text-5xl tablet:text-6xl">
+		<h5 class="tablet:text-left; text-center font-prata text-4xl tablet:text-5xl laptop:text-6xl">
 			Yes! Can't wait to get started!
 		</h5>
 	</div>
@@ -33,7 +33,7 @@ const colorBtnAssigment: Record<number, string> = {
 				const isPair = payment.id % 2 === 0
 				return (
 					<div
-						class={`relative w-full ${colorAsigment[payment.id]} h-auto items-center justify-center space-y-10 py-5 transition-transform duration-300 hover:scale-105`}
+						class={`relative w-full ${colorAsigment[payment.id]} latop:py-5 h-auto items-center justify-center space-y-5 py-5 transition-transform duration-300 hover:scale-105 tablet:space-y-7 tablet:py-2 laptop:space-y-10 laptop:py-5`}
 						style={{ backgroundColor: colorAsigment[payment.id] }}
 					>
 						<div class="absolute -top-12 left-1/2 -translate-x-1/2 transform">

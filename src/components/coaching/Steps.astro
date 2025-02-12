@@ -39,10 +39,10 @@ const steps = data.coaching["description"]
 				const isPair = item.id % 2 === 0
 				return (
 					<div
-						class={`flex flex-col  px-0 tablet:px-10  items-center gap-2 tablet:flex-row ${isPair ? "tablet:flex-row-reverse" : ""}`}
+						class={`flex flex-col px-0 tablet:px-5 laptop:px-10 items-center gap-2 tablet:flex-row ${isPair ? "tablet:flex-row-reverse" : ""}`}
 					>
 						{/* Text Content */}
-						<div class="flex-1 space-y-2 " id={`${item.id}`}>
+						<div class="flex-1 space-y-2" id={`${item.id}`}>
 							<span
 								class={`w-full text-center font-bonVivant text-lg text-hero_color2 ${
 									isPair ? "tablet:text-center" : "tablet:text-left"
@@ -57,7 +57,7 @@ const steps = data.coaching["description"]
 								{item.title}
 							</h3>
 
-							<p class="text-gray-700 text-lg tablet:text-[15px] laptop:text-xl mx-auto mt-5 tablet:max-w-sm text-center font-tajawal tablet:text-left">
+							<p class="text-gray-700 text-lg tablet:text-[12px] leading-[20px] laptop:text-xl mx-auto mt-5 tablet:max-w-sm text-center font-tajawal tablet:text-left">
 								{item.description}
 							</p>
 						</div>
@@ -65,7 +65,7 @@ const steps = data.coaching["description"]
 						{/* Image */}
 						<div class="z-10">
 						<div class="relative w-[300px] h-[300px] tablet:w-[350px] tablet:h-[350px] laptop:w-[450px] laptop:h-[450px] bg-[url('/images/tablet.png')] bg-contain bg-no-repeat">
-						  <img src={item.image} class="absolute w-[162px] h-[215px] top-[34px] left-[52px] laptop:top-[50px] laptop:right-[0px] laptop:left-[78px] laptop:w-[243px] laptop:h-[325px] object-cover rounded-lg"/>
+						  <img src={item.image} class="absolute w-[162px] h-[215px] top-[34px] left-[52px] tablet:w-[190px] tablet:h-[253px] tablet:top-[39px] tablet:left-[60px] laptop:top-[50px] laptop:right-[0px] laptop:left-[78px] laptop:w-[243px] laptop:h-[325px] object-cover rounded-md"/>
                         </div>
 						</div>
 
