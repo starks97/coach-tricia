@@ -1,27 +1,47 @@
 ---
-import data from "../../data.json";
+import data from "../../data.json"
 
-const story = data["about"].story;
-
+const story = data["about"].story
 ---
 
 <div class="container mx-auto mt-24 px-5">
-    <div class="grid grid-cols-1 grid-rows-1 laptop:grid-cols-2 laptop:grid-rows-2 justify-items-center items-center gap-20 h-full">
-        <div>
-            <img src={story["first"].image} alt="hero" class="w-[400px] h-96 laptop:w-[420px] laptop:h-[450px] object-cover" />
-        </div>
-        <div class="space-y-5 ">
-            <h1 class="font-prata text-5xl text-center laptop:text-left">{story["first"].title}</h1>
-            <p class="text-lg font-tajawal text-left px-10 ">{story["first"].content}</p>
-        </div>
-        <div class="space-y-5 px-0 tablet:px-10 order-2 laptop:order-1">
-            <h1 class="font-tajawal text-xl text-center font-normal text-hero_color2 uppercase">{story["second"].title}</h1>
-            <h4 class="font-prata text-about_subtitle text-center ">{story["second"].description}</h4>
-            <p class="text-center laptop:text-left text-lg font-tajawal ">{story["second"].content}</p>
-        </div>
-        <div class="order-1 laptop:order-2">
-            <img src={story["second"].image} alt="hero" class="w-[400px] h-96 laptop:w-[420px] laptop:h-[450px] object-cover" />
-        </div>
-
-    </div>
+	<div
+		class="grid h-full grid-cols-1 grid-rows-1 items-center justify-items-center gap-10 laptop:grid-cols-2 laptop:grid-rows-2"
+	>
+		<div>
+			<img
+				src={story["first"].image}
+				alt="hero"
+				class="h-96 w-[400px] object-cover laptop:h-[450px] laptop:w-[400px]"
+			/>
+		</div>
+		<div class="mx-auto w-full space-y-5 tablet:max-w-lg">
+			<h1 class="text-center font-prata text-5xl laptop:text-left">
+				<i class="font-italic">{story["first"].title}</i>
+			</h1>
+			<p class="px-10 text-left font-tajawal text-[16px] text-[#515151]">
+				{story["first"].content.first}
+			</p>
+			<p class="px-10 text-left font-tajawal text-[16px] text-[#515151]">
+				{story["first"].content.second}
+			</p>
+			<p class="px-10 text-left font-tajawal text-[16px] font-bold uppercase text-[#515151]">
+				{story["first"].content.third}
+			</p>
+		</div>
+		<div class="order-2 space-y-5 px-0 tablet:px-10 laptop:order-1">
+			<h1 class="text-center font-tajawal text-xl font-normal uppercase text-hero_color2">
+				{story["second"].title}
+			</h1>
+			<h4 class="text-center font-prata text-about_subtitle">{story["second"].description}</h4>
+			<p class="text-center font-tajawal text-lg laptop:text-left">{story["second"].content}</p>
+		</div>
+		<div class="order-1 laptop:order-2">
+			<img
+				src={story["second"].image}
+				alt="hero"
+				class="h-96 w-[400px] object-cover laptop:h-[450px] laptop:w-[400px]"
+			/>
+		</div>
+	</div>
 </div>

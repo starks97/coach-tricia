@@ -1,40 +1,48 @@
 ---
+import Gallery from "./Gallery.astro"
+
 import data from "../../data.json"
 
 const funFacts = data["about"]["fun-facts"]
 ---
 
-<div class="container mx-auto my-32 h-auto">
-	<h1 class="flex w-full flex-col items-center justify-center text-center text-6xl text-hero_color">
-		Fun Facts About Me!
-	</h1>
-	<div class="mt-16 grid grid-cols-1 items-center justify-items-center gap-5 tablet:grid-cols-2">
-		{/* Column 1: First Half */}
-		<ul class="mx:auto w-full max-w-sm space-y-10">
-			{
-				funFacts.slice(0, Math.ceil(funFacts.length / 2)).map((value, index) => (
-					<li class="space-y-5">
-						<h3 class="text-center font-prata text-2xl font-semibold">{value.title}</h3>
-						<p class="w-full border-b border-hero_color text-center font-blackstone text-5xl">
-							{value.description}
-						</p>
-					</li>
-				))
-			}
-		</ul>
+<div class="box mx-auto mt-20 h-auto py-10">
+	<div class="mx-auto grid h-auto grid-cols-1 justify-items-center">
+		<div
+			class="flex scale-100 flex-col-reverse items-center justify-center space-y-10 tablet:flex-row tablet:space-y-0"
+		>
+			<Gallery />
+			<div
+				class="flex h-auto w-full flex-col items-center justify-center bg-[#fbf4f2] px-5 py-8 tablet:bg-none"
+			>
+				<h1
+					class="mb-10 w-full text-center font-blackstone text-5xl font-bold text-[#9f837a] tablet:text-start"
+				>
+					Fun Facts About Me!
+				</h1>
 
-		{/* Column 2: Second Half */}
-		<ul class="mx:auto w-full max-w-sm space-y-10">
-			{
-				funFacts.slice(Math.ceil(funFacts.length / 2)).map((value, index) => (
-					<li class="space-y-5">
-						<h3 class="text-center font-prata text-2xl font-semibold">{value.title}</h3>
-						<p class="border-b border-hero_color text-center font-blackstone text-5xl">
-							{value.description}
-						</p>
-					</li>
-				))
-			}
-		</ul>
+				<ul class="w-full space-y-10">
+					{
+						funFacts.map((item, index) => (
+							<li class="text-black w-full border-b-2 border-[#9f837a] text-center font-tajawal text-4xl last:border-0 tablet:text-start">
+								<span class="text-[#e7d9d2]">{index + 1} </span>
+								{item.title}
+							</li>
+						))
+					}
+				</ul>
+			</div>
+		</div>
 	</div>
 </div>
+
+<style>
+	.box {
+		background: linear-gradient(to left, #fbf4f2 67%, #ffff 67%);
+	}
+	@media (max-width: 768px) {
+		.box {
+			background: white;
+		}
+	}
+</style>
