@@ -25,7 +25,9 @@ const story = data["about"].story
 			<p class="px-10 text-left font-tajawal text-[16px] text-[#515151]">
 				{story["first"].content.second}
 			</p>
-			<p class="px-10 text-left font-tajawal text-[16px] font-bold uppercase text-[#515151]">
+			<p
+				class="px-10 text-left font-tajawal text-[16px] font-bold uppercase tracking-widest text-hero_color2"
+			>
 				{story["first"].content.third}
 			</p>
 		</div>
@@ -34,7 +36,9 @@ const story = data["about"].story
 				{story["second"].title}
 			</h1>
 			<h4 class="text-center font-prata text-about_subtitle">{story["second"].description}</h4>
-			<p class="text-center font-tajawal text-lg laptop:text-left">{story["second"].content}</p>
+			<p class="text-center font-tajawal text-[16px] text-[#515151] laptop:text-left">
+				{story["second"].content}
+			</p>
 		</div>
 		<div class="order-1 laptop:order-2">
 			<img
