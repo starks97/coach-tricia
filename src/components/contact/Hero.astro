@@ -1,24 +1,29 @@
 ---
+import data from "../../data.json"
 
-import data from "../../data.json";
-
-const image = data["home"].coaching_info.image;
+const image = data["home"].coaching_info.image
 ---
 
-<section aria-label="Contact page" class="general-layout__b">
-    <div class="flex flex-col justify-center items-center ">
-        <img src={image} alt="foots images" class="w-auto h-96 tablet:w-96 tablet:h-96 object-cover">
-    </div>
-    <div class="layout__g">
-        <h1 class="title__h">
-            let's chat
-        </h1>
-        <h5 class="subtitle__a text-2xl">
-            Ready to chat about your business? I'd love to get to know you and your needs!
-        </h5>
-        <p class="text__d ">
-        I'm here to help take you to that next level you've been dreaming about!
-        </p>
-    </div>
-
+<section
+	aria-label="Contact page"
+	class="mx-auto grid grid-cols-1 items-center gap-5 p-5 tablet:grid-cols-2 tablet:p-10 laptop:p-14"
+>
+	<div class="flex flex-col items-center justify-center">
+		<img src={image} alt="foots images" class="h-96 w-auto object-cover tablet:h-96 tablet:w-96" />
+	</div>
+	<div class="mx-auto w-full max-w-lg items-center gap-5 space-y-5 tablet:items-start">
+		<h1
+			class="text-black text-center font-blackstone text-7xl text-hero_title_mobile text-hero_color2 tablet:text-left tablet:text-hero_title laptop:text-8xl"
+		>
+			let's chat
+		</h1>
+		<h5
+			class="my-5 text-center font-prata text-2xl text-custom_title font-normal tablet:text-left tablet:text-custom_subtitle laptop:text-custom_subtitle2"
+		>
+			Ready to chat about your business? I'd love to get to know you and your needs!
+		</h5>
+		<p class="w-full text-center font-tajawal text-xl tablet:text-left">
+			I'm here to help take you to that next level you've been dreaming about!
+		</p>
+	</div>
 </section>

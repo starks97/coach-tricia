@@ -8,32 +8,41 @@ const menuPath = [
 ] as const
 ---
 
-<header class="m-0 flex items-center justify-between bg-description_bg p-5">
-	<div class="m-1 flex w-full flex-col justify-center gap-3">
+<header
+	class="flex items-center justify-between bg-[var(--color-cream)] p-5"
+	x-data="{ intersect: false }"
+	x-intersect:enter="intersect = true"
+	x-intersect:leave="intersect = false"
+>
+	<div
+		class="flex w-full flex-col justify-center gap-3 opacity-0"
+		:class="intersect ? 'animate-fade-right animate-duration-1000' : 'opacity-0'"
+	>
 		<h1 class="font-blackstone text-5xl">Tricia Rago</h1>
-		<p class="w-full font-figtree text-sm font-thin uppercase leading-regular">
+		<p class="font-figtree leading-regular text-sm font-thin uppercase">
 			Conscious Relationship Coach
 		</p>
 	</div>
 
 	{/* Hamburger Icon for Mobile */}
-	<button class="text-black tablet:hidden" id="menu-toggle" aria-label="Toggle menu">
+	<button class="tablet:hidden text-black" id="menu-toggle" aria-label="Toggle menu">
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
 			height="24px"
 			viewBox="0 -960 960 960"
 			width="24px"
 			fill="#5D0E07"
-			><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"></path></svg
 		>
+			<path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"></path>
+		</svg>
 	</button>
 
 	{/* Navigation Menu */}
-	<nav class="hidden w-full justify-end tablet:flex" id="menu">
-		<ul class="flex flex-col justify-end gap-4 tablet:flex-row">
+	<nav class="tablet:flex hidden w-full justify-end" id="menu">
+		<ul class="tablet:flex-row flex flex-col justify-end gap-4">
 			{
-				menuPath.map(([to, rout]) => (
-					<li class="hover:text-gray-700 mr-6 font-tajawal text-sm font-light uppercase tracking-widest duration-300 ease-in-out hover:text-menu_items">
+				menuPath.map(([to, rout], index) => (
+					<li class="font-tajawal hover:text-menu_items text-sm font-light tracking-widest uppercase duration-300 ease-in-out hover:text-gray-700">
 						<a href={to} class="text-black">
 							{rout}
 						</a>
@@ -46,20 +55,22 @@ const menuPath = [
 
 <script>
 	document.addEventListener("DOMContentLoaded", () => {
-		const button = document.getElementById("menu-toggle") as HTMLButtonElement
-		const menu = document.getElementById("menu") as HTMLElement
+		const button = document.getElementById("menu-toggle")
+		const menu = document.getElementById("menu")
 
-		button.addEventListener("click", function (event: MouseEvent) {
-			event.stopPropagation()
-			menu.classList.toggle("hidden")
-		})
+		if (button && menu) {
+			// Check if elements exist
+			button.addEventListener("click", (event) => {
+				event.stopPropagation()
+				menu.classList.toggle("hidden")
+			})
 
-		// Hide the menu if clicked outside
-		document.addEventListener("click", function (event: MouseEvent) {
-			const target = event.target as HTMLElement
-			if (!menu.contains(target) && !button.contains(target)) {
-				menu.classList.add("hidden")
-			}
-		})
+			document.addEventListener("click", (event) => {
+				const target = event.target
+				if (target instanceof Element && !menu.contains(target) && !button.contains(target)) {
+					menu.classList.add("hidden")
+				}
+			})
+		}
 	})
 </script>

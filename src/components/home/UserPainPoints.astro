@@ -1,41 +1,43 @@
 ---
-import Testimonials from "./Testimonial.astro";
+import Icon from "../Icon.astro"
+import Wrapper from "../Wrapper.astro"
+import Testimonials from "./Testimonial.astro"
 
-import data from "../../data.json";
-const title = data.home["user_pain_points"].tittle;
-const subttitle = data.home["user_pain_points"].subtitle;
-const list = data.home["user_pain_points"].pain_points;
+import data from "../../data.json"
 
+const title = data.home["user_pain_points"].tittle
+const subttitle = data.home["user_pain_points"].subtitle
+const list = data.home["user_pain_points"].pain_points
 ---
-<div class="general-layout__a">
-    <div class="layout__b">
-        <h2 class="title__b" >
-            {title}
-        </h2>
 
-        <h3 class="subtitle__b">
-            {subttitle}
-        </h3>
-        {list.map((item) => (
-          <li class="flex items-start m-2">
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 512 512"
-                class="w-10 h-10 text-hero_color flex-shrink-0 mt-1"
-                fill="currentColor"
-                aria-hidden="true"
-                >
-                    <path d="M405 136.798L375.202 107 256 226.202 136.798 107 107 136.798 226.202 256 107 375.202 136.798 405 256 285.798 375.202 405 405 375.202 285.798 256"></path>
-            </svg>
-                <span class="text__a">
-                {item}
-                </span>
-            </li>))}
-    </div>
-    <div class="flex justify-center">
-        <Testimonials />
-    </div>
-</div>
+<Wrapper class="bg-light-gray tablet:grid-cols-2 grid grid-cols-1 items-center gap-5">
+	<div class="tablet:items-start mx-auto w-full max-w-lg space-y-7">
+		<h2
+			class="font-prata text-size-5 tablet:text-left tablet:text-[2rem] laptop:text-size-6 text-center text-black"
+		>
+			{title}
+		</h2>
 
+		<h3 class="font-prata text-taupe tablet:text-3xl tablet:text-left text-center text-2xl">
+			{subttitle}
+		</h3>
 
-<style>
+		<ul class="flex flex-col space-y-2">
+			{
+				list.map((item) => (
+					<li class="flex items-center gap-3">
+						<div class="flex h-[2em] items-center">
+							<Icon icon="x-mark" size="2em" color="#e89faa" />
+						</div>
+						<span class="font-tajawal text-dark-gray text-size-1 tablet:my-2 laptop:my-4 my-2 leading-7 font-semibold tracking-[.156em] uppercase">
+							{item}
+						</span>
+					</li>
+				))
+			}
+		</ul>
+	</div>
+	<aside class="tablet:justify-start flex justify-center">
+		<Testimonials />
+	</aside>
+</Wrapper>

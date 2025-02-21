@@ -1,41 +1,56 @@
 ---
-import data from "../../data.json";
+import data from "../../data.json"
+import CallToAction from "../CallToAction.astro"
+import Icon from "../Icon.astro"
+import Wrapper from "../Wrapper.astro"
 
-const title = data.home["benefits"].title;
-const benefits = data.home["benefits"].benefits;
-
+const title = data.home["benefits"].title
+const benefits = data.home["benefits"].benefits
 ---
-<div class="general-layout__c">
 
-    <div class="flex justify-center my-10">
-        <h3 class="title__a">
-            {title}
-        </h3>
-    </div>
-    <div class="layout__a">
+<Wrapper class="container flex flex-col items-center justify-center space-y-10">
+	<h3
+		class="font-prata text-taupe text-size-6 tablet:text-size-7 laptop:text-[3rem] tablet:w-8/12 w-full text-center leading-13"
+	>
+		{title}
+	</h3>
 
-        <div class="hidden laptop:flex">
-            <img src="/images/hero.jpg" alt="hero" class="w-full h-auto object-cover "/>
-        </div>
-        <div class="border-2 border-solid w-full laptop:hidden border-btn_bg"></div>
-        <div class="bg-hero_bg2 h-auto  p-10 flex flex-col gap-10 justify-center">
-        {benefits.map((benefit) => (<li class="flex items-start">
-                <!-- SVG Icon -->
+	<div
+		class="tablet:grid-cols-[var(--grid-40-60)] grid grid-cols-1 items-center justify-center gap-5"
+	>
+		<img
+			src="/images/hero.jpg"
+			alt="hero"
+			class="tablet:h-[400px] tablet:w-[300px] laptop:h-[500px] laptop:w-[400px] tablet:block hidden h-64 w-full object-cover"
+		/>
+		<div class="border-btn_bg tablet:hidden w-full border-2 border-solid"></div>
 
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor" class="w-10 h-10 text-hero_color flex-shrink-0 mt-1"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+		<div
+			class="bg-cream tablet:h-[400px] tablet:p-2 laptop:h-[500px] laptop:p-10 flex h-full flex-col justify-center p-5"
+		>
+			<ul class="flex h-full list-none flex-col justify-evenly space-y-1">
+				{
+					benefits.map(
+						(
+							benefit,
+							index // Added key prop
+						) => (
+							<li class="flex items-center gap-3">
+								<div class="flex h-[2em] items-center">
+									<Icon icon="check" size="2em" color="#e89faa" />
+								</div>
+								<p class="font-tajawal text-dark-gray text-size-1 tablet:my-0 laptop:text-lg laptop:leading-6 my-2 leading-5 font-semibold tracking-[.156em] uppercase">
+									{benefit}
+								</p>
+							</li>
+						)
+					)
+				}
+			</ul>
+		</div>
+	</div>
 
-                <!-- List Item Text -->
-                <p class="ml-4 font-tajawal pain-points uppercase font-extrabold leading-15">
-                    {benefit}
-                </>
-         </li>))}
-        </div>
-    </div>
-    <div class="flex justify-center my-10">
-        <a href="/contact">
-            <button class="btn__b">
-                Book a Consultation
-            </button>
-         </a>
-    </div>
-</div>
+	<div class="my-5 flex justify-center">
+		<CallToAction href="/contact">Book Free Consultation</CallToAction>
+	</div>
+</Wrapper>

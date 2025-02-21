@@ -1,132 +1,162 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Global variables */
+@import "tailwindcss";
+@import "tailwindcss-animated";
+@import "tailwindcss";
+@layer theme, base, components, utilities;
 
-@layer components {
-	.btn {
-		@apply mb-2 me-2 bg-btn_bg px-5 py-2.5 font-tajawal text-2xl font-bold text-btn_color transition duration-300 ease-in-out;
-	}
-	.pain-points {
-		@apply text-custom_size font-thin tracking-custom_spacing text-custom_gray;
-	}
-	.general-layout__a {
-		@apply mx-auto grid min-h-screen grid-cols-1 items-center gap-5 bg-hero_bg p-5 tablet:min-h-max tablet:grid-cols-2 tablet:p-10 laptop:p-14;
-	}
-	.general-layout__b {
-		@apply mx-auto grid grid-cols-1 items-center gap-5 p-5 tablet:grid-cols-2 tablet:p-10 laptop:p-14;
-	}
-	.general-layout__c {
-		@apply laptop:p-15 container mx-auto min-h-full p-5 tablet:p-10;
-	}
-	.general-layout__d {
-		@apply grid h-auto w-full grid-cols-1 tablet:grid-cols-2 laptop:h-screen desktop:h-screen;
-	}
-	/*titles*/
-	.title__a {
-		@apply w-full text-center font-prata text-custom_title text-hero_color2 tablet:w-8/12;
-	}
-	.title__b {
-		@apply text-center font-prata text-custom_title tablet:text-left;
-	}
+@theme {
+	/* Font Families */
+	--font-blackstone: "Blackstone";
+	--font-prata: "Prata";
+	--font-tajawal: "Tajawal";
+	--font-bonVivant: "BonVivant";
+	--font-figtree: "Figtree";
 
-	.title__c {
-		@apply w-full text-left font-prata text-custom_title font-bold text-hero_color2;
-	}
+	/* Grid Template Columns */
+	--grid-60-40: 55% 35%;
+	--grid-40-60: 35% 55%;
 
-	.title__d {
-		@apply text-black font-blackstone text-hero_title_mobile tablet:text-hero_title laptop:text-8xl;
-	}
-	.title__e {
-		@apply text-center font-tajawal text-base font-semibold capitalize text-hero_h3 tablet:text-lg laptop:text-xl;
-	}
-	.title__f {
-		@apply text-center font-prata text-lg font-semibold leading-tight mobile:text-2xl tablet:text-3xl;
-	}
+	/* padding */
+	--spacing-mobile: 1.25rem;
+	--spacing-tablet: 2.5rem;
+	--spacing-laptop: 3.5rem;
 
-	.title__g {
-		@apply text-center font-prata text-custom_coaching text-btn_bg tablet:text-left;
-	}
-	.title__h {
-		@apply title__d text-center text-7xl text-hero_color2 tablet:text-left;
-	}
+	/* Font Sizes */
+	--text-size-1: 0.875rem; /* --font-size-custom_size */
+	--text-size-2: 1rem; /* --font-size-custom_title */
+	--text-size-3: 1.125rem; /* --font-size-custom_coaching */
+	--text-size-4: 1.25rem; /* --font-size-custom_subtitle */
+	--text-size-5: 1.625rem; /* --font-size-custom_subtitle2 */
+	--text-size-6: 2.125rem; /* --font-size-hero_title */
+	--text-size-7: 2.625rem; /* --font-size-hero_title_mobile */
+	--text-size-8: 3.5rem; /* --font-size-regular */
+	--text-size-9: 4.5rem; /* --font-size-bigger */
+	--text-size-10: 5rem; /* --font-size-about_subtitle */
+	--text-size-11: 6rem; /* --font-size-about_title */
+	--text-size-12: 7rem; /* --font-size-about_title_mobile */
+	--text-size-13: 8rem; /* --font-size-about_title_mobile */
+	--text-size-14: 9rem; /* --font-size-about_title_mobile */
 
-	/*subtitle*/
-	.subtitle__a {
-		@apply my-5 text-center font-prata text-custom_title font-normal tablet:text-left tablet:text-custom_subtitle laptop:text-custom_subtitle2;
-	}
-	.subtitle__b {
-		@apply text-center font-prata text-xl text-hero_color2 mobile:text-left mobile:text-2xl tablet:text-3xl;
-	}
-	.subtitle__c {
-		@apply pain-points w-full text-left font-tajawal font-bold uppercase leading-14;
-	}
-	.subtitle__d {
-		@apply text-left font-tajawal text-lg font-semibold uppercase leading-9 tablet:normal-case;
-	}
+	/* Letter Spacing */
+	--letter-spacing-custom: 0.2em;
 
-	/*text*/
-	.text__a {
-		@apply pain-points ml-4 font-tajawal font-semibold uppercase leading-14;
-	}
-	.text__b {
-		@apply w-full text-left font-tajawal text-lg;
-	}
-	.text__c {
-		@apply text-black text-center font-tajawal text-base mobile:text-lg tablet:text-xl;
-	}
-	.text__d {
-		@apply w-full text-center font-tajawal text-xl tablet:text-left;
-	}
+	/* Font Weights */
+	--font-weight-100: 100;
 
-	/*sub layouts*/
-	.layout__a {
-		@apply grid grid-cols-1 justify-center gap-5 laptop:grid-cols-40/60;
-	}
-	.layout__b {
-		@apply mx-auto w-full max-w-lg items-center gap-5 space-y-7 tablet:items-start;
-	}
-	.layout__c {
-		@apply mx-auto min-h-screen items-center p-5 tablet:min-h-max tablet:p-10 laptop:p-14;
-	}
-	.layout__d {
-		@apply bg-white mt-5 flex w-full flex-col items-center justify-start text-left tablet:mt-0 tablet:w-full tablet:justify-center tablet:py-5 laptop:w-3/4 desktop:w-3/4;
-	}
-	.layout__e {
-		@apply flex w-full -translate-y-16 flex-col items-center gap-5 px-10 tablet:-translate-x-16 tablet:translate-y-10 tablet:items-start tablet:px-0 laptop:translate-y-0;
-	}
-	.layout__f {
-		@apply my-10 flex w-full flex-col items-center gap-5 px-20 tablet:px-10;
-	}
-	.layout__g {
-		@apply mx-auto w-full max-w-lg items-center gap-5 space-y-5 tablet:items-start;
-	}
-	.layout__h {
-		@apply mx-auto flex h-auto w-full max-w-lg flex-col items-center justify-center gap-6 rounded-lg bg-header p-8 shadow-md;
-	}
-	.layout__i {
-		@apply my-10 grid h-auto grid-cols-1 items-center justify-center gap-5;
-	}
+	/* Colors */
+	--color-light-cream: #fcfdf8; /* --color-header: Soft White, Light Cream */
+	--color-soft-beige: #eee4e3; /* --color-soft-beige: Soft Beige, Light Beige */
+	--color-olive-green: #6c7c6a; /* --color-footer: Olive Green, Muted Green */
+	--color-light-beige: #f3f3e8; /* --color-body: Light Beige, Off-White */
+	--color-dusty-rose: #bdabab; /* --color-menu_item: Dusty Rose, Muted Pink */
+	--color-dark-gray: #525252; /* --color-hero_h3, --color-custom_gray: Dark Gray, Charcoal */
+	--color-light-rose: #e1a2ad; /* --color-hero_color: Light Rose, Dusty Rose */
+	--color-light-gray: #f2f2f2; /* --color-hero_bg: Light Gray, Off-White */
+	--color-taupe: #bda198; /* --color-hero_color2: Taupe, Light Brown */
+	--color-cream: #fbefec; /* --color-hero_bg2, --color-description_bg: Light Beige, Cream */
+	--color-terracotta: #ce7c76; /* --color-btn_bg: Terracotta, Muted Red */
+	--color-white: #ffff; /* --color-btn_color, --color-menu_items: White */
+	--color-pale-rose: #e7cdcc; /* --color-header2: Pale Rose, Dusty Rose */
+	--color-medium-gray: #757575; /* --color-subtitle: Gray, Medium Gray */
 
-	/*btn*/
-	.btn__a {
-		@apply text-white mb-2 w-3/4 bg-[#e7cdcc] px-5 py-2.5 font-tajawal text-lg font-bold uppercase desktop:w-1/2;
+	/* Screens (Breakpoints) */
+	--breakpoint-*: initial;
+	--breakpoint-mobile: 640px;
+	--breakpoint-tablet: 768px;
+	--breakpoint-laptop: 1024px;
+	--breakpoint-desktop: 1280px;
+}
+
+/* Base Styles */
+body {
+	font-family: var(--font-figtree);
+	background-color: var(--color-light-beige);
+	color: var(--color-dark-gray);
+}
+
+/* In your CSS file (e.g., styles.css) */
+.hero_title {
+	font-family: var(--font-blackstone);
+	color: black;
+}
+
+.hero_subtitle {
+	font-family: var(--font-prata);
+	color: black;
+	font-weight: normal;
+	text-align: center; /* Default center, override for tablet/desktop */
+}
+
+.hero_description {
+	font-family: var(--font-tajawal);
+	font-weight: 600; /* font-semibold */
+	letter-spacing: 0.07em;
+	text-transform: uppercase;
+	text-align: center;
+}
+
+/* Mobile (Smallest Screens - typically phones) */
+@media (max-width: 767px) {
+	/* Up to 767px */
+	/* Mobile Styles Here */
+	.hero_title {
+		font-size: var(--text-size-9); /* Or your preferred size */
 	}
-	.btn__b {
-		@apply pain-points mb-2 border-2 px-5 py-2.5 font-tajawal text-lg font-extrabold uppercase text-hero_color2;
+	.hero_subtitle {
+		text-align: center;
+		font-size: var(--text-size-5); /* Or your preferred size */
+		line-height: var(--leading-10); /* Or your preferred line-height */
+	}
+	.hero_description {
+		font-size: var(--text-size-3);
 	}
 }
 
-@layer utilities {
-	.p-15 {
-		padding: 3.75rem;
+/* Tablet (Portrait and Landscape) */
+@media (min-width: 768px) and (max-width: 1023px) {
+	/* 768px to 1023px */
+	/* Tablet Styles Here */
+	.hero_title {
+		font-size: var(--text-size-9); /* Or your preferred size */
 	}
-	.bg-white {
-		background: #ffff;
+	.hero_subtitle {
+		text-align: left;
+		font-size: var(--text-size-5); /* Or your preferred size */
+		line-height: var(--leading-9); /* Or your preferred line-height */
 	}
-	.text-black {
-		color: black;
+	.hero_description {
+		font-size: var(--text-size-2);
 	}
-	.text-white {
-		color: #ffff;
+}
+
+/* Laptop (and smaller Desktops) */
+@media (min-width: 1024px) and (max-width: 1279px) {
+	/* 1024px to 1279px */
+	/* Laptop Styles Here */
+	.hero_title {
+		font-size: var(--text-size-10); /* Or your preferred size */
+	}
+	.hero_subtitle {
+		font-size: var(--text-size-5); /* Or your preferred size */
+		line-height: 2.5rem;
+	}
+	.hero_description {
+		font-size: var(--text-size-2);
+	}
+}
+
+/* Desktop (Larger Screens) */
+@media (min-width: 1280px) {
+	/* 1280px and larger */
+	/* Desktop Styles Here */
+	.hero_title {
+		font-size: var(--text-size-12); /* Or your preferred size */
+	}
+	.hero_subtitle {
+		font-size: var(--text-size-7); /* Or your preferred size */
+		line-height: var(--leading-12); /* Or your preferred line-height */
+	}
+	.hero_description {
+		font-size: var(--text-size-3);
 	}
 }

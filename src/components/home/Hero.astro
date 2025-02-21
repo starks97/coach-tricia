@@ -1,37 +1,31 @@
 ---
-import data from "../../data.json";
+import data from "../../data.json"
+import CallToAction from "../CallToAction.astro"
+import HomeHero from "../HomeHero.astro"
 
-const subtitle = data.home["hero"].subtitle;
-const title = data.home["hero"].title;
-const description = data.home["hero"].description;
-const heroImg = data.home["hero"].image;
-
+const subtitle = data.home["hero"].subtitle
+const title = data.home["hero"].title
+const description = data.home["hero"].description
+const heroImg = data.home["hero"].image
 ---
-<div class="general-layout__d">
-    <!-- Hero Image Section -->
-    <div class="w-full h-full flex items-center justify-center">
-        <img src={heroImg} alt="hero" class="object-cover object-top w-full h-full" />
-    </div>
 
-    <!-- Content Section -->
-    <div class="layout__d">
-        <div class="layout__e">
-            <h2 class="title__d">
-                {title}
-            </h2>
-            <p class="subtitle__a">
-                {subtitle}
-            </p>
-        </div>
-        <div class="layout__f">
-            <h3 class="ml-4 pain-points font-semibold leading-14 font-tajawal uppercase text-center text-regular">
-                {description}
-            </h3>
-            <a href="/about">
-                <button class="btn__b">
-                    About me
-                </button>
-            </a>
-        </div>
-    </div>
-</div>
+<HomeHero image={heroImg}>
+	<h1
+		slot="title"
+		class="hero_title opacity-0"
+		:class="intersect ? 'animate-fade-left animate-ease-in-out  animate-delay-300 ' : 'opacity-0'"
+	>
+		{title}
+	</h1>
+	<h5
+		slot="subtitle"
+		class="hero_subtitle opacity-0"
+		:class="intersect ? 'animate-fade-left animate-ease-in-out  animate-delay-700 ' : 'opacity-0'"
+	>
+		{subtitle}
+	</h5>
+	<h3 slot="description" class="hero_description">
+		{description}
+	</h3>
+	<CallToAction href="/about" slot="cta"> About Me </CallToAction>
+</HomeHero>

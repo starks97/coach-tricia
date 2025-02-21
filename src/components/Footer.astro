@@ -14,18 +14,18 @@ const socialLinks = [
 ]
 ---
 
-<footer class="text-black bg-description_bg py-12">
+<footer class="bg-[var(--color-cream)] py-12 text-black">
 	<div
-		class="container mx-auto flex flex-col items-center justify-between gap-12 px-5 laptop:flex-row laptop:items-start"
+		class="laptop:flex-row laptop:items-start container mx-auto flex flex-col items-center justify-between gap-12 px-5"
 	>
 		<!-- Left Section: Title -->
 		<div class="max-w-md space-y-6">
 			<h3
-				class="text-center font-prata text-xl font-bold leading-tight tablet:text-left tablet:text-2xl"
+				class="font-prata tablet:text-left tablet:text-2xl text-center text-xl leading-tight font-bold"
 			>
 				Mindset & confidence coaching for women who are looking to create the life of their dreams.
 			</h3>
-			<h1 class="text-center font-blackstone text-5xl tablet:text-7xl">Tricia Rago</h1>
+			<h1 class="font-blackstone tablet:text-7xl text-center text-5xl">Tricia Rago</h1>
 		</div>
 
 		<!-- Center Section: Resources -->
@@ -37,7 +37,7 @@ const socialLinks = [
 						<li>
 							<a
 								href={resource.href}
-								class="font-tajawal transition-colors duration-300 hover:text-hero_color"
+								class="font-tajawal hover:text-hero_color transition-colors duration-300"
 							>
 								{resource.name}
 							</a>
@@ -58,7 +58,7 @@ const socialLinks = [
 								href={link.href}
 								target="_blank"
 								rel="noopener noreferrer"
-								class="flex items-center gap-4 font-tajawal text-lg transition-colors duration-300 hover:text-hero_color"
+								class="font-tajawal hover:text-hero_color flex items-center gap-4 text-lg transition-colors duration-300"
 							>
 								<img src={link.icon} alt={link.name} class="h-8 w-8" />
 								{link.name}
@@ -70,7 +70,7 @@ const socialLinks = [
 		</div>
 	</div>
 	<div class="mt-6 text-center">
-		<p class="text-gray-500 text-sm">
+		<p class="text-sm text-gray-500">
 			&copy; {new Date().getFullYear()} Tricia Rago Coaching. All rights reserved.
 		</p>
 	</div>
