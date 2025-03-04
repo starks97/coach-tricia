@@ -1,14 +1,13 @@
 ---
-import data from "../../data.json";
+import data from "../../data.json"
 
-const title = data["about"].hero.title;
-const description = data["about"].hero.description;
-const image = data["about"].hero.image;
+const title = data["about"].hero.title
+const description = data["about"].hero.description
+const image = data["about"].hero.image
 
----
+import HeroWrapper from "../HeroWrapper.astro"
 
-
-<div class="h-auto max-h-[800px]">
+/*<div class="h-auto max-h-[800px]">
   <div class="grid grid-cols-1 tablet:grid-cols-2 w-full items-center justify-items-center justify-center">
     <!-- Text Content -->
     <div class="flex flex-col space-y-10 justify-center order-2 tablet:order-1 px-5">
@@ -23,4 +22,16 @@ const image = data["about"].hero.image;
     </div>
   </div>
   <div class="border-b-2 border-hero_color2 my-2"/>
-</div>
+</div> */
+---
+
+<HeroWrapper img={image} class="tablet:flex-row-reverse">
+	<h1 class="font-blackstone tablet:text-left text-size-9 text-center font-light">
+		{title}
+	</h1>
+	<h2 class="font-prata tablet:text-left text-size-7 text-center font-normal">
+		{description}
+	</h2>
+</HeroWrapper>
+
+/

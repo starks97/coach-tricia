@@ -1,45 +1,42 @@
 ---
-
+import CallToAction from "../CallToAction.astro"
 ---
 
 <section class="section mx-auto w-full space-y-10 bg-[#fbf4f2] p-10">
 	<div class="h-auto w-full">
 		<h1
-			class="pain-points text-black ml-4 w-full text-center font-tajawal text-xl font-semibold leading-14 tablet:text-2xl"
+			class="font-tajawal tablet:text-size-7 laptop:text-size-8 text-terracotta text-size-6 ml-4 w-full text-center leading-14 font-semibold"
 		>
 			Free Consultation
 		</h1>
 	</div>
 	<div class="mx-auto grid h-auto grid-cols-1 justify-items-center">
 		<div
-			class="flex scale-100 flex-col items-center justify-center space-y-10 tablet:flex-row tablet:space-y-0"
+			class="tablet:flex-row tablet:space-y-0 flex scale-100 flex-col items-center justify-center space-y-10"
 		>
 			<div
-				class="z-40 mx-auto flex w-full translate-x-0 flex-col space-y-3 bg-[#fcfdf8] p-10 tablet:max-w-sm tablet:translate-x-5 tablet:p-5 laptop:max-w-lg laptop:p-11"
+				class="tablet:max-w-sm tablet:translate-x-5 tablet:p-5 laptop:max-w-lg laptop:p-11 z-40 mx-auto flex w-full translate-x-0 flex-col space-y-3 bg-[#fcfdf8] p-10"
 			>
-				<h5 class="pain-points font-prata text-3xl tablet:text-3xl laptop:text-5xl">
+				<h5
+					class="font-prata text-size-5 tablet:text-size-6 laptop:text-size-7 tablet:text-left text-center text-3xl"
+				>
 					Excited to get started? Me too!
 				</h5>
-				<p class="font-tajawal text-xl text-hero_color tablet:text-xl laptop:text-3xl">
+				<p class="font-tajawal text-light-rose tablet:text-size-5 laptop:text-3xl text-xl">
 					Let's connect and discuss how best I can serve you.
 				</p>
-				<span class="font-tajawal text-sm tablet:text-lg">
+				<span class="font-tajawal tablet:text-lg text-size-3">
 					Mustache biodiesel post-ironic fanny pack occupy. Williamsburg gentrify synth health goth,
 					poke umami twee austin selvage palo santo master cleanse.
 				</span>
-				<a href="/contact" class="w-full">
-					<button
-						class="text-black border-black w-full border-[1px] px-5 py-3 font-prata capitalize"
-					>
-						30-Minute Free Consultation
-					</button>
-				</a>
+
+				<CallToAction href="/contact" slot="cta">30-minutes Free Consultation</CallToAction>
 			</div>
 
 			<img
 				src="/images/girl.jpg"
 				alt="hero image"
-				class="h-64 w-full translate-x-0 object-cover tablet:h-[400px] tablet:w-[400px] tablet:-translate-x-5 laptop:h-[500px] laptop:w-[500px]"
+				class="tablet:h-[400px] tablet:w-[400px] tablet:-translate-x-5 laptop:h-[500px] laptop:w-[500px] h-64 w-full translate-x-0 object-cover"
 			/>
 		</div>
 	</div>

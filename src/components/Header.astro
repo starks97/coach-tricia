@@ -1,21 +1,16 @@
 ---
-const menuPath = [
-	["/", "Home"],
-	["/coaching", "Coaching"],
-	["/about", "About"],
-	["/podcast", "Podcast"],
-	["/contact", "Contact"],
-] as const
+import Icon from "../components/Icon.astro"
+import { menuPath } from "../consts"
 ---
 
 <header
-	class="flex items-center justify-between bg-[var(--color-cream)] p-5"
+	class="tablet:px-12 tablet:py-5 laptop:px-16 laptop:py-5 flex items-center justify-evenly bg-[var(--color-cream)] px-10 py-5"
 	x-data="{ intersect: false }"
 	x-intersect:enter="intersect = true"
 	x-intersect:leave="intersect = false"
 >
 	<div
-		class="flex w-full flex-col justify-center gap-3 opacity-0"
+		class="flex w-full flex-col items-start gap-3 opacity-0"
 		:class="intersect ? 'animate-fade-right animate-duration-1000' : 'opacity-0'"
 	>
 		<h1 class="font-blackstone text-5xl">Tricia Rago</h1>
@@ -26,24 +21,19 @@ const menuPath = [
 
 	{/* Hamburger Icon for Mobile */}
 	<button class="tablet:hidden text-black" id="menu-toggle" aria-label="Toggle menu">
-		<svg
-			xmlns="http://www.w3.org/2000/svg"
-			height="24px"
-			viewBox="0 -960 960 960"
-			width="24px"
-			fill="#5D0E07"
-		>
-			<path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"></path>
-		</svg>
+		<Icon icon="hamburger_menu" size="2em" color="black" />
 	</button>
 
 	{/* Navigation Menu */}
 	<nav class="tablet:flex hidden w-full justify-end" id="menu">
-		<ul class="tablet:flex-row flex flex-col justify-end gap-4">
+		<ul class="tablet:flex-row tablet:gap-5 laptop:gap-10 flex flex-col gap-5">
 			{
 				menuPath.map(([to, rout], index) => (
-					<li class="font-tajawal hover:text-menu_items text-sm font-light tracking-widest uppercase duration-300 ease-in-out hover:text-gray-700">
-						<a href={to} class="text-black">
+					<li class="group transition duration-300 ease-in-out">
+						<a
+							href={to}
+							class="font-tajawal text-size-2 group-hover:text-terracotta tracking-widest text-black uppercase transition duration-300 ease-in-out group-hover:scale-105"
+						>
 							{rout}
 						</a>
 					</li>

@@ -9,14 +9,14 @@ const funFacts = data["about"]["fun-facts"]
 <div class="box mx-auto mt-20 h-auto py-10">
 	<div class="mx-auto grid h-auto grid-cols-1 justify-items-center">
 		<div
-			class="flex scale-100 flex-col-reverse items-center justify-center space-y-10 tablet:flex-row tablet:space-y-0"
+			class="tablet:flex-row tablet:space-y-0 flex scale-100 flex-col-reverse items-center justify-center space-y-10"
 		>
 			<Gallery />
 			<div
-				class="flex h-auto w-full flex-col items-center justify-center bg-[#fbf4f2] px-5 py-8 tablet:bg-none"
+				class="tablet:bg-none flex h-auto w-full flex-col items-center justify-center bg-[#fbf4f2] px-5 py-8"
 			>
 				<h1
-					class="mb-10 w-full text-center font-blackstone text-5xl font-bold text-[#9f837a] tablet:text-start"
+					class="font-blackstone tablet:text-start tablet:text-size-7 laptop:text-[4rem] mb-10 w-full text-center font-bold text-[#9f837a]"
 				>
 					Fun Facts About Me!
 				</h1>
@@ -24,7 +24,7 @@ const funFacts = data["about"]["fun-facts"]
 				<ul class="w-full space-y-10">
 					{
 						funFacts.map((item, index) => (
-							<li class="text-black w-full border-b-2 border-[#9f837a] text-center font-tajawal text-4xl last:border-0 tablet:text-start">
+							<li class="font-tajawal tablet:text-start w-full border-b-2 border-[#9f837a] text-center text-4xl text-black last:border-0">
 								<span class="text-[#e7d9d2]">{index + 1} </span>
 								{item.title}
 							</li>
@@ -38,7 +38,7 @@ const funFacts = data["about"]["fun-facts"]
 
 <style>
 	.box {
-		background: linear-gradient(to left, #fbf4f2 67%, #ffff 67%);
+		background: linear-gradient(to left, #fbf4f2 70%, #ffff 70%);
 	}
 	@media (max-width: 768px) {
 		.box {

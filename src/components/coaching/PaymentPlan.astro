@@ -3,60 +3,52 @@ import data from "../../data.json"
 
 const paymentPlan = data.coaching["payment_plan"]
 
-const colorAsigment: Record<number, string> = {
-	1: "#eee1e0",
-	2: "#eaeaea",
-	3: "#f1d9d5",
-}
-
-const colorBtnAssigment: Record<number, string> = {
-	1: "#c39e99",
-	2: "#bbbbbb",
-	3: "#ce7c75",
-}
+import { colorAsigment, colorBtnAssigment } from "../../consts"
 ---
 
-<div class="section mx-auto my-[10rem] h-auto w-full space-y-20 px-10 tablet:max-w-6xl">
+<div class="section tablet:max-w-6xl mx-auto my-[10rem] h-auto w-full space-y-20 px-10">
 	<div class="h-auto w-full space-y-5">
 		<h1
-			class="pain-points ml-4 w-full text-center font-tajawal text-xl font-semibold leading-14 text-hero_color tablet:text-2xl"
+			class="font-tajawal text-hero_color tablet:text-2xl ml-4 w-full text-center text-xl leading-14 font-semibold"
 		>
 			Ready To Make A Move?
 		</h1>
-		<h5 class="tablet:text-left; text-center font-prata text-4xl tablet:text-5xl laptop:text-6xl">
+		<h5 class="tablet:text-left; font-prata tablet:text-5xl laptop:text-6xl text-center text-4xl">
 			Yes! Can't wait to get started!
 		</h5>
 	</div>
-	<div class="grid grid-cols-1 justify-items-center gap-20 tablet:grid-cols-3 tablet:gap-10">
+	<div class="tablet:grid-cols-3 tablet:gap-10 grid grid-cols-1 justify-items-center gap-20">
 		{
 			paymentPlan.map((payment) => {
 				const isPair = payment.id % 2 === 0
 				return (
 					<div
-						class={`relative w-full ${colorAsigment[payment.id]} latop:py-5 h-auto items-center justify-center space-y-5 py-5 transition-transform duration-300 hover:scale-105 tablet:space-y-7 tablet:py-2 laptop:space-y-10 laptop:py-5`}
+						class={`relative flex w-full flex-col ${colorAsigment[payment.id]} latop:py-10 tablet:space-y-7 tablet:py-2 laptop:space-y-10 laptop:py-5 h-auto items-center justify-center space-y-5 py-10 transition-transform duration-300 hover:scale-105`}
 						style={{ backgroundColor: colorAsigment[payment.id] }}
 					>
-						<div class="absolute -top-12 left-1/2 -translate-x-1/2 transform">
+						<div class="absolute -top-12 left-1/2 mb-2 -translate-x-1/2 transform">
 							<div
 								class="flex h-20 w-20 items-center justify-center rounded-full shadow-lg"
 								style={{ backgroundColor: colorBtnAssigment[payment.id] }}
 							>
-								<span class="text-white text-2xl">{payment.id}</span>
+								<span class="text-2xl text-white">{payment.id}</span>
 							</div>
 						</div>
-						<h3 class="text-center font-prata text-2xl font-light tablet:text-center">
+
+						<h3 class="font-prata tablet:text-center text-center text-2xl font-light">
 							{payment.title}
 						</h3>
-						<p class="text-center font-tajawal text-2xl font-black tablet:text-center">
+						<p class="font-tajawal tablet:text-center text-size-4 tablet:text-size-4 laptop:text-size-5 text-center font-black">
 							{payment.description}
 						</p>
-						<p class="text-center font-prata text-3xl font-bold tablet:text-center">
+						<p class="font-prata tablet:text-center text-size-4 tablet:text-size-5 laptop:text-size-6 text-center font-bold">
 							{payment.price}
 						</p>
+
 						<div class="flex w-full justify-center px-5">
 							<a href="/contact" class="w-full">
 								<button
-									class="text-white w-full px-5 py-3 font-prata capitalize"
+									class="font-prata w-full px-5 py-3 text-white capitalize"
 									style={{ backgroundColor: colorBtnAssigment[payment.id] }}
 								>
 									ENROLL NOW

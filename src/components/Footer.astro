@@ -1,20 +1,8 @@
 ---
-const resources = [
-	{ name: "Home", href: "/" },
-	{ name: "Coaching", href: "/coaching" },
-	{ name: "About", href: "/about" },
-	{ name: "Podcast", href: "/podcast" },
-	{ name: "Contact", href: "/contact" },
-]
-
-const socialLinks = [
-	{ name: "Facebook", icon: "/icons/facebook.svg", href: "https://facebook.com" },
-	{ name: "Instagram", icon: "/icons/instagram.svg", href: "https://instagram.com" },
-	{ name: "LinkedIn", icon: "/icons/linkedin.svg", href: "https://linkedin.com" },
-]
+import { resources, socialLinks } from "../consts"
 ---
 
-<footer class="bg-[var(--color-cream)] py-12 text-black">
+<footer class="border-t-light-rose border-[2px] bg-[var(--color-cream)] py-12 text-black">
 	<div
 		class="laptop:flex-row laptop:items-start container mx-auto flex flex-col items-center justify-between gap-12 px-5"
 	>
@@ -29,15 +17,20 @@ const socialLinks = [
 		</div>
 
 		<!-- Center Section: Resources -->
-		<nav class="space-y-4 text-lg">
-			<h4 class="font-prata text-xl">Resources</h4>
+		<nav class="space-y-4">
+			<h4
+				class="font-prata text-size-4 tablet:text-left border-b-light-rose border-b-[2px] text-center"
+			>
+				Resources
+			</h4>
+
 			<ul class="space-y-2">
 				{
 					resources.map((resource) => (
-						<li>
+						<li class="tablet:text-left text-center">
 							<a
 								href={resource.href}
-								class="font-tajawal hover:text-hero_color transition-colors duration-300"
+								class="font-tajawal text-size-3 hover:text-light-rose transition-colors duration-300"
 							>
 								{resource.name}
 							</a>
@@ -49,7 +42,11 @@ const socialLinks = [
 
 		<!-- Right Section: Social Media -->
 		<div class="space-y-4">
-			<h4 class="font-prata text-xl">Follow Us</h4>
+			<h4
+				class="font-prata text-size-4 tablet:text-left border-b-light-rose border-b-[2px] text-center"
+			>
+				Follow Us
+			</h4>
 			<ul class="flex flex-col gap-4">
 				{
 					socialLinks.map((link) => (
@@ -58,9 +55,9 @@ const socialLinks = [
 								href={link.href}
 								target="_blank"
 								rel="noopener noreferrer"
-								class="font-tajawal hover:text-hero_color flex items-center gap-4 text-lg transition-colors duration-300"
+								class="font-tajawal hover:text-light-rose flex items-center gap-4 text-lg transition-colors duration-300"
 							>
-								<img src={link.icon} alt={link.name} class="h-8 w-8" />
+								<img src={link.icon} alt={link.name} class="hover:text-light-rose h-8 w-8" />
 								{link.name}
 							</a>
 						</li>

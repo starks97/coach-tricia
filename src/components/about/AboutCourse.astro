@@ -1,24 +1,25 @@
 ---
 import data from "../../data.json"
+import CallToAction from "../CallToAction.astro"
 
 const aboutCourse = data["about"]["enough"]
 ---
 
-<div class="bg-header">
-	<div class="container mx-auto my-32 h-auto -translate-y-5 px-0 tablet:px-5">
-		<div class="grid grid-cols-1 items-start justify-items-center gap-10 tablet:grid-cols-2">
+<div class="bg-light-cream">
+	<div class="tablet:px-5 container mx-auto my-32 h-auto -translate-y-5 px-0">
+		<div class="tablet:grid-cols-2 grid grid-cols-1 items-start justify-items-center gap-10">
 			<!-- Image Section -->
 			<div class="">
 				<img
 					src="/images/hero.jpg"
 					alt="hero"
-					class="h-auto w-full object-cover tablet:h-[700px] tablet:w-[420px] laptop:h-[auto]"
+					class="tablet:h-[700px] tablet:w-[420px] laptop:h-[auto] h-auto w-full object-cover"
 				/>
 			</div>
 			<!-- Text Section -->
-			<div class="space-y-10 px-5 tablet:space-y-5">
+			<div class="tablet:space-y-5 space-y-10 px-5">
 				<h3
-					class="laptop:text:5xl text-center font-prata text-4xl mobile:text-3xl tablet:text-left tablet:text-4xl"
+					class="laptop:text:5xl font-prata mobile:text-3xl tablet:text-left tablet:text-4xl text-center text-4xl"
 				>
 					{aboutCourse?.title}
 				</h3>
@@ -26,9 +27,7 @@ const aboutCourse = data["about"]["enough"]
 			</div>
 		</div>
 		<div class="my-10 flex justify-center">
-			<a href="/contact">
-				<button class="btn__b"> Book a Consultation </button>
-			</a>
+			<CallToAction href="/contact">Book a Consultation</CallToAction>
 		</div>
 	</div>
 </div>
