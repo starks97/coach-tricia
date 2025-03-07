@@ -4,7 +4,7 @@ import data from "../../data.json"
 const story = data["about"].story
 ---
 
-<div class="container mx-auto mt-24 px-5">
+<div class="container mx-auto mt-10 px-5">
 	<div
 		class="laptop:grid-cols-2 laptop:grid-rows-2 grid h-full grid-cols-1 grid-rows-1 items-center justify-items-center gap-10"
 	>
@@ -16,7 +16,7 @@ const story = data["about"].story
 			/>
 		</div>
 		<div class="tablet:max-w-lg mx-auto w-full space-y-5">
-			<h1 class="font-prata laptop:text-left text-size-7 text-center">
+			<h1 class="font-prata laptop:text-left text-size-6 tablet:text-size-7 text-center">
 				<i class="font-italic">{story["first"].title}</i>
 			</h1>
 			<p class="font-tajawal text-size-2 px-10 text-left text-[#515151]">
@@ -31,14 +31,14 @@ const story = data["about"].story
 				{story["first"].content.third}
 			</p>
 		</div>
-		<div class="tablet:px-10 laptop:order-1 order-2 space-y-5 px-0">
+		<div class="tablet:max-w-lg tablet:px-10 laptop:order-1 order-2 mx-auto space-y-5 px-0">
 			<h1 class="font-tajawal text-taupe text-size-4 text-center font-normal uppercase">
 				{story["second"].title}
 			</h1>
-			<h4 class="font-prata text-size-5 tablet:text-left text-center">
-				{story["second"].description}
+			<h4 class="font-prata text-size-5 tablet:text-size-6 tablet:text-left text-center">
+				<i class="font-italic">{story["second"].description}</i>
 			</h4>
-			<p class="font-tajawal laptop:text-left text-center text-[16px] text-[#515151]">
+			<p class="font-tajawal tablet:text-left text-center text-[16px] text-[#515151]">
 				{story["second"].content}
 			</p>
 		</div>

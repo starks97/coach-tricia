@@ -21,14 +21,14 @@ const benefits = data.home["benefits"].benefits
 		<img
 			src="/images/hero.jpg"
 			alt="hero"
-			class="tablet:h-[400px] tablet:w-[300px] laptop:h-[500px] laptop:w-[400px] tablet:block hidden h-64 w-full object-cover"
+			class="tablet:h-[400px] tablet:w-[300px] laptop:h-[400px] laptop:w-[400px] tablet:block hidden h-64 w-full object-cover"
 		/>
 		<div class="border-btn_bg tablet:hidden w-full border-2 border-solid"></div>
 
 		<div
-			class="bg-cream tablet:h-[400px] tablet:p-2 laptop:h-[500px] laptop:p-10 flex h-full flex-col justify-center p-5"
+			class="bg-cream tablet:h-[400px] tablet:p-2 laptop:h-[400px] laptop:p-7 flex h-full flex-col justify-center p-5"
 		>
-			<ul class="flex h-full list-none flex-col justify-evenly space-y-1">
+			<ul class="flex h-full list-none flex-col justify-evenly space-y-4">
 				{
 					benefits.map(
 						(
@@ -39,7 +39,7 @@ const benefits = data.home["benefits"].benefits
 								<div class="flex h-[2em] items-center">
 									<Icon icon="check" size="2em" color="#e89faa" />
 								</div>
-								<p class="font-tajawal text-dark-gray text-size-1 tablet:my-0 laptop:text-lg laptop:leading-6 my-2 leading-5 font-semibold tracking-[.156em] uppercase">
+								<p class="font-tajawal text-dark-gray text-size-1 tablet:my-0 laptop:text-size-1 laptop:leading-6 my-2 leading-5 font-semibold tracking-[.156em] uppercase">
 									{benefit}
 								</p>
 							</li>

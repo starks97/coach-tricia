@@ -6,14 +6,16 @@ const paymentPlan = data.coaching["payment_plan"]
 import { colorAsigment, colorBtnAssigment } from "../../consts"
 ---
 
-<div class="section tablet:max-w-6xl mx-auto my-[10rem] h-auto w-full space-y-20 px-10">
+<div class="section tablet:max-w-6xl mx-auto my-[7rem] h-auto w-full space-y-20 px-10">
 	<div class="h-auto w-full space-y-5">
 		<h1
 			class="font-tajawal text-hero_color tablet:text-2xl ml-4 w-full text-center text-xl leading-14 font-semibold"
 		>
 			Ready To Make A Move?
 		</h1>
-		<h5 class="tablet:text-left; font-prata tablet:text-5xl laptop:text-6xl text-center text-4xl">
+		<h5
+			class="tablet:text-left; font-prata tablet:text-size-7 laptop:text-[3rem] text-size-5 text-center"
+		>
 			Yes! Can't wait to get started!
 		</h5>
 	</div>
@@ -23,7 +25,7 @@ import { colorAsigment, colorBtnAssigment } from "../../consts"
 				const isPair = payment.id % 2 === 0
 				return (
 					<div
-						class={`relative flex w-full flex-col ${colorAsigment[payment.id]} latop:py-10 tablet:space-y-7 tablet:py-2 laptop:space-y-10 laptop:py-5 h-auto items-center justify-center space-y-5 py-10 transition-transform duration-300 hover:scale-105`}
+						class={`relative flex w-full flex-col ${colorAsigment[payment.id]} h-auto items-center justify-center transition-transform duration-300 hover:scale-105`}
 						style={{ backgroundColor: colorAsigment[payment.id] }}
 					>
 						<div class="absolute -top-12 left-1/2 mb-2 -translate-x-1/2 transform">
@@ -35,25 +37,26 @@ import { colorAsigment, colorBtnAssigment } from "../../consts"
 							</div>
 						</div>
 
-						<h3 class="font-prata tablet:text-center text-center text-2xl font-light">
-							{payment.title}
-						</h3>
-						<p class="font-tajawal tablet:text-center text-size-4 tablet:text-size-4 laptop:text-size-5 text-center font-black">
-							{payment.description}
-						</p>
-						<p class="font-prata tablet:text-center text-size-4 tablet:text-size-5 laptop:text-size-6 text-center font-bold">
-							{payment.price}
-						</p>
+						<div class="tablet:px-1 laptop:px-7 space-y-5 px-2 py-10">
+							<h3 class="font-prata tablet:text-center text-center text-2xl font-light">
+								{payment.title}
+							</h3>
+							<p class="font-tajawal tablet:text-center text-size-4 tablet:text-size-4 laptop:text-size-5 text-center font-black">
+								{payment.description}
+							</p>
+							<p class="font-prata tablet:text-center text-size-4 tablet:text-size-5 laptop:text-size-6 text-center font-bold">
+								{payment.price}
+							</p>
 
-						<div class="flex w-full justify-center px-5">
-							<a href="/contact" class="w-full">
-								<button
-									class="font-prata w-full px-5 py-3 text-white capitalize"
+							<div class="flex w-full justify-center px-5">
+								<a
+									href="/contact"
+									class="font-prata w-full px-5 py-3 text-center text-white capitalize transition duration-300 ease-in-out hover:text-black"
 									style={{ backgroundColor: colorBtnAssigment[payment.id] }}
 								>
 									ENROLL NOW
-								</button>
-							</a>
+								</a>
+							</div>
 						</div>
 					</div>
 				)

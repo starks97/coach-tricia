@@ -13,7 +13,7 @@
     "@astrojs/alpinejs": "^0.4.3",
     "@astrojs/check": "^0.9.4",
     "@astrojs/vercel": "^8.1.1",
-    "@tailwindcss/vite": "^4.0.9",
+    "@tailwindcss/vite": "^4.0.11",
     "@types/alpinejs": "^3.13.11",
     "alpinejs": "^3.14.8",
     "astro": "^5.4.2",
@@ -26,7 +26,8 @@
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-astro-organize-imports": "^0.4.11",
     "prettier-plugin-tailwindcss": "^0.6.11",
-    "tailwindcss": "^4.0.9",
+    "tailwindcss": "^4.0.11",
     "tailwindcss-animated": "^2.0.0"
-  }
+  },
+  "packageManager": "pnpm@10.6.0+sha512.df0136e797db0cfa7ec1084e77f3bdf81bacbae9066832fbf95cba4c2140ad05e64f316cde51ce3f99ea00a91ffc702d6aedd3c0f450f895e3e7c052fe573cd8"
 }

@@ -2,12 +2,13 @@
 import data from "../../data.json"
 
 const steps = data.coaching["description"]
+
 ---
 
 <div class="section mx-auto w-full px-10">
 	<!-- Section Title -->
 	<div class="h-auto w-full space-y-5">
-		<h1 class="tablet:text-left; text-center font-prata text-size-7 text-terracotta tablet:text-size-7 laptop:text-size-8">
+		<h1 class="tablet:text-left; text-center font-prata text-size-7 text-light-rose tablet:text-size-7 laptop:text-size-8">
 			Conscious Uncoupling
 		</h1>
 		<h5
@@ -43,21 +44,19 @@ const steps = data.coaching["description"]
 					>
 						{/* Text Content */}
 						<div class="flex-1 space-y-2" id={`${item.id}`}>
-							<span
-								class={`w-full text-center font-bonVivant text-lg text-taupe ${
-									isPair ? "tablet:text-center" : "tablet:text-left"
-								}`}
+							<p
+								class={`w-full font-bonVivant text-[1.5rem] text-light-rose text-center tablet:text-left`}
 							>
 								{`Step ${item.id}`}
-							</span>
+							</p>
 
 							<h3
-								class={`font-prata text-xl tablet:lg laptop:text-2xl font-semibold ${isPair ? "text-center" : "text-center tablet:text-left"}`}
+								class={`font-prata text-xl tablet:lg laptop:text-2xl font-semibold text-center tablet:text-left`}
 							>
 								{item.title}
 							</h3>
 
-							<p class="text-gray-700 text-lg tablet:text-[1.20rem] leading-[22px] laptop:text-xl mx-auto mt-5 tablet:max-w-sm text-center font-tajawal tablet:text-left">
+							<p class="text-gray-700 text-lg tablet:text-[1.20rem] leading-[22px] laptop:text-xl tablet:max-w-sm text-center font-tajawal tablet:text-left">
 								{item.description}
 							</p>
 						</div>

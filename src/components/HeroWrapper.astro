@@ -8,14 +8,14 @@ const { img, class: customClass = "" } = Astro.props
 ---
 
 <section class={`section mx-auto my-10 w-full space-y-5`}>
-	<div class={`mx-auto grid h-auto grid-cols-1 justify-items-center gap-10 p-10 `}>
+	<div class={`mx-auto grid h-auto grid-cols-1 justify-items-center p-10 `}>
 		<div
-			class={`tablet:flex-row tablet:space-x-10 laptop:space-x-20 flex flex-col items-center justify-center space-x-0 ${customClass}`}
+			class={`tablet:flex-row flex flex-col items-center justify-center space-x-0 gap-10 ${customClass}`}
 		>
 			<img
 				src={img}
 				alt="hero image"
-				class="tablet:h-[300px] tablet:w-[300px] laptop:h-[400px] laptop:w-[400px] h-64 w-full object-cover"
+				class="tablet:h-[300px] tablet:w-[300px] laptop:h-[550px] laptop:w-[470px] h-64 w-full object-cover"
 			/>
 			<div class={`tablet:max-w-xl mx-auto w-full flex-1 items-center justify-center space-y-5 `}>
 				<slot />

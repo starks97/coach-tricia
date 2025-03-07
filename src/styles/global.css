@@ -134,7 +134,7 @@ body {
 	/* 1024px to 1279px */
 	/* Laptop Styles Here */
 	.hero_title {
-		font-size: var(--text-size-10); /* Or your preferred size */
+		font-size: var(--text-size-8); /* Or your preferred size */
 	}
 	.hero_subtitle {
 		font-size: var(--text-size-5); /* Or your preferred size */
@@ -150,7 +150,7 @@ body {
 	/* 1280px and larger */
 	/* Desktop Styles Here */
 	.hero_title {
-		font-size: var(--text-size-12); /* Or your preferred size */
+		font-size: var(--text-size-10); /* Or your preferred size */
 	}
 	.hero_subtitle {
 		font-size: var(--text-size-7); /* Or your preferred size */
