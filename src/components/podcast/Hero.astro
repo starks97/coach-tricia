@@ -1,0 +1,25 @@
+---
+import data from "../../data.json"
+import HeroWrapper from "../HeroWrapper.astro"
+
+const title = data["about"].hero.title
+const description = data["about"].hero.description
+const image = data["about"].hero.image
+---
+
+<HeroWrapper img={image}>
+	<h1
+		class="font-blackstone tablet:text-left tablet:text-size-8 laptop:text-[4rem] text-center text-[3rem] font-light"
+	>
+		Work with Tricia
+	</h1>
+	<p
+		class="font-tajawal tablet:text-left text-size-6 tablet:text-size-5 laptop:text-4xl text-center text-2xl"
+	>
+		You’ve come to the right place and I’m glad you’re here. Let’s change your life for the better.
+	</p>
+	<p class="font-tajawal tablet:text-left laptop:text-2xl text-size-3 text-center">
+		We’ll spend an hour once a week for ten weeks in a private one-on-one session learning how to
+		live your happy <span class="font-tajawal font-bold"> even</span> after life and exploring new beginnings.
+	</p>
+</HeroWrapper>
