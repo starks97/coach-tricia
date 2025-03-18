@@ -6,39 +6,47 @@ import data from "../../data.json"
 const funFacts = data["about"]["fun-facts"]
 ---
 
-<div class="box mx-auto mt-20 h-auto py-10">
-	<div class="mx-auto grid h-auto grid-cols-1 justify-items-center">
-		<div
-			class="tablet:flex-row tablet:space-y-0 flex scale-100 flex-col-reverse items-center justify-center space-y-10"
-		>
-			<Gallery />
-			<div
-				class="tablet:bg-none flex h-auto w-full flex-col items-center justify-center bg-[#fbf4f2] px-5 py-8"
+<div class="box mx-auto mt-20 h-auto p-10">
+	<div class="tablet:grid-cols-2 grid h-auto grid-cols-1 justify-center justify-items-center">
+		<div class="justify-self-end">
+			<h1
+				class="font-blackstone tablet:text-start text-size-7 tablet:text-size-6 laptop:text-[4rem] tablet:hidden mb-10 w-full text-center font-bold text-[#9f837a]"
 			>
-				<h1
-					class="font-blackstone tablet:text-start tablet:text-size-7 laptop:text-[4rem] mb-10 w-full text-center font-bold text-[#9f837a]"
-				>
-					Fun Facts About Me!
-				</h1>
+				Fun Facts About Me!
+			</h1>
+			<Gallery />
+		</div>
+		<div class="mt-5 flex w-full flex-col">
+			<h1
+				class="font-blackstone tablet:text-start text-size-6 tablet:text-size-6 laptop:text-[3.5rem] tablet:[display:flex] mb-10 hidden w-full text-center font-bold text-[#9f837a]"
+			>
+				Fun Facts About Me!
+			</h1>
 
-				<ul class="w-full space-y-10">
-					{
-						funFacts.map((item, index) => (
-							<li class="font-tajawal tablet:text-start w-full border-b-2 border-[#9f837a] text-center text-4xl text-black last:border-0">
-								<span class="text-[#e7d9d2]">{index + 1} </span>
+			<ul class="laptop:max-w-xl w-full space-y-10">
+				{
+					funFacts.map((item, index) => (
+						<div class="flex flex-row items-center justify-center gap-5 border-b-2 border-[#9f837a] last:border-0">
+							<span class="text-size-7 font-prata w-2/12 font-bold text-[#e6dbd4]">
+								0{index + 1}
+							</span>
+							<li
+								value={index + 1}
+								class="font-tajawal text-size-3 tablet:text-size-3 laptop:text-[22px] w-full text-start text-black"
+							>
 								{item.title}
 							</li>
-						))
-					}
-				</ul>
-			</div>
+						</div>
+					))
+				}
+			</ul>
 		</div>
 	</div>
 </div>
 
 <style>
 	.box {
-		background: linear-gradient(to left, #fbf4f2 70%, #ffff 70%);
+		background: linear-gradient(to left, #fbf4f2 60%, #ffff 60%);
 	}
 	@media (max-width: 768px) {
 		.box {

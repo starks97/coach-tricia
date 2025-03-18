@@ -1,12 +1,14 @@
 ---
-import Layout from '../layouts/Layout.astro';
-
+import Hero from "../components/podcast/Hero.astro"
+import Layout from "../layouts/Layout.astro"
 ---
 
-<Layout title='Podcast | Tricia Rago Coaching' description='podcast with Tricia Rago' image='example.jpg'>
-<main>
-    <section aria-label="Book page">
-        <h1>Podcast</h1>
-    </section>
-</main>
+<Layout
+	title="Podcast | Tricia Rago Coaching"
+	description="podcast with Tricia Rago"
+	image="example.jpg"
+>
+	<main>
+		<Hero />
+	</main>
 </Layout>

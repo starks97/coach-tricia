@@ -56,3 +56,11 @@ import "../styles/global.css"
 		height: auto;
 	}
 </style>
+<script>
+	document.addEventListener("DOMContentLoaded", () => {
+		const menu = document.getElementById("menu")
+		if (menu && !menu.classList.contains("hidden")) {
+			menu.classList.add("hidden")
+		}
+	})
+</script>

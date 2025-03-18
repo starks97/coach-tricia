@@ -6,7 +6,7 @@ const pathName = Astro.url.pathname
 ---
 
 <header
-	class={`tablet:px-12 tablet:py-5 laptop:px-16 laptop:py-5  flex items-center justify-evenly  bg-[var(--color-cream)] px-10 py-5 ${pathName !== "/" ? "border-b-light-rose border-b-[2px]" : ""}`}
+	class={`tablet:px-12 tablet:py-5 laptop:px-16 laptop:py-5 flex items-center justify-evenly bg-[var(--color-cream)] px-10 py-5 ${pathName !== "/" ? "border-b-light-rose border-b-[2px]" : ""}`}
 	x-data="{ intersect: false }"
 	x-intersect:enter="intersect = true"
 	x-intersect:leave="intersect = false"
@@ -21,13 +21,35 @@ const pathName = Astro.url.pathname
 		</p>
 	</div>
 
-	{/* Hamburger Icon for Mobile */}
-	<button class="tablet:hidden text-black" id="menu-toggle" aria-label="Toggle menu">
-		<Icon icon="hamburger_menu" size="2em" color="black" />
-	</button>
+	<menu-button>
+		<template>
+			<button
+				class="menu-button tablet:hidden text-black"
+				aria-expanded="false"
+				aria-label="Toggle menu"
+			>
+				<Icon icon="hamburger_menu" size="2em" color="black" />
+			</button>
+		</template>
+	</menu-button>
+	<noscript>
+		<ul class="nav-items">
+			{
+				menuPath.map(([to, rout], index) => (
+					<li class="group transition duration-300 ease-in-out">
+						<a
+							href={to}
+							class="font-tajawal text-size-2 group-hover:text-terracotta tracking-widest text-black uppercase transition duration-300 ease-in-out group-hover:scale-105"
+						>
+							{rout}
+						</a>
+					</li>
+				))
+			}
+		</ul>
+	</noscript>
 
-	{/* Navigation Menu */}
-	<nav class="tablet:flex hidden w-full justify-end" id="menu">
+	<nav class="tablet:flex hidden w-full justify-end" id="menu-content">
 		<ul class="tablet:flex-row tablet:gap-5 laptop:gap-10 flex flex-col gap-5">
 			{
 				menuPath.map(([to, rout], index) => (
@@ -46,23 +68,59 @@ const pathName = Astro.url.pathname
 </header>
 
 <script>
-	document.addEventListener("DOMContentLoaded", () => {
-		const button = document.getElementById("menu-toggle")
-		const menu = document.getElementById("menu")
+	class MenuButton extends HTMLElement {
+		constructor() {
+			super()
 
-		if (button && menu) {
-			// Check if elements exist
-			button.addEventListener("click", (event) => {
-				event.stopPropagation()
-				menu.classList.toggle("hidden")
-			})
+			// Inyectar el botón de alternar el menú cuando se ejecuta JS.
+			this.appendChild(this.querySelector("template").content.cloneNode(true))
+			const btn = this.querySelector("button")
 
+			// Ocultar el menú (mostrado por defecto para admitir navegadores sin JS).
+			const menu = document.getElementById("menu-content")
+			menu.classList.add("hidden")
+
+			/** Establecer si el menú está actualmente expandido o contraído. */
+			const setExpanded = (expand) => {
+				btn.setAttribute("aria-expanded", expand ? "true" : "false")
+				menu.classList.toggle("hidden", !expand)
+			}
+
+			// Alternar la visibilidad del menú cuando se hace clic en el botón del menú.
+			btn.addEventListener("click", () => setExpanded(menu.classList.contains("hidden")))
+
+			const handleViewports = (e) => {
+				setExpanded(e.matches)
+				btn.hidden = e.matches
+			}
+			const mediaQueries = window.matchMedia("(min-width: 50em)")
+			handleViewports(mediaQueries)
+			mediaQueries.addEventListener("change", handleViewports)
+
+			// Cerrar el menú al hacer clic fuera
 			document.addEventListener("click", (event) => {
 				const target = event.target
-				if (target instanceof Element && !menu.contains(target) && !button.contains(target)) {
-					menu.classList.add("hidden")
+				if (
+					menu &&
+					!menu.contains(target) &&
+					!btn.contains(target) &&
+					!menu.classList.contains("hidden")
+				) {
+					setExpanded(false)
 				}
 			})
+
+			// Cerrar menu al cambiar de pagina
+			window.addEventListener("hashchange", closeMenu) // Para hash-based routing
+			window.addEventListener("popstate", closeMenu) // Para history API routing
+
+			function closeMenu() {
+				const menu = document.getElementById("menu-content")
+				if (menu && !menu.classList.contains("hidden")) {
+					menu.classList.add("hidden")
+				}
+			}
 		}
-	})
+	}
+	customElements.define("menu-button", MenuButton)
 </script>
