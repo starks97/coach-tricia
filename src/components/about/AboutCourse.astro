@@ -1,33 +1,36 @@
 ---
 import data from "../../data.json"
 import CallToAction from "../CallToAction.astro"
+import Wrapper from "../Wrapper.astro"
 
 const aboutCourse = data["about"]["enough"]
+
+const paragraph = aboutCourse.about_course.split("\n\n")
 ---
 
-<div class="bg-light-cream">
-	<div class="tablet:px-5 container mx-auto my-32 h-auto -translate-y-5 px-0">
-		<div class="tablet:grid-cols-2 grid grid-cols-1 items-start justify-items-center gap-10">
-			<!-- Image Section -->
-			<div class="">
-				<img
-					src="/images/hero.jpg"
-					alt="hero"
-					class="tablet:h-[700px] tablet:w-[420px] laptop:h-[auto] h-auto w-full object-cover"
-				/>
-			</div>
-			<!-- Text Section -->
-			<div class="tablet:space-y-5 space-y-10 px-5">
-				<h3
-					class="laptop:text:5xl font-prata mobile:text-3xl tablet:text-left tablet:text-4xl text-center text-4xl"
-				>
-					{aboutCourse?.title}
-				</h3>
-				<p class="font-tajawal text-lg">{aboutCourse.about_course}</p>
-			</div>
-		</div>
-		<div class="my-10 flex justify-center">
-			<CallToAction href="/contact">Book a Consultation</CallToAction>
+<Wrapper class="container flex w-full flex-col items-center justify-center space-y-10">
+	<div
+		class="laptop:grid-cols-2 grid grid-cols-1 items-center justify-center justify-items-center gap-2"
+	>
+		<!-- Image Section -->
+
+		<img
+			src="/images/hero.jpg"
+			alt="hero"
+			class="tablet:h-[300px] tablet:w-[300px] laptop:h-auto laptop:w-[470px] h-64 w-full object-cover"
+		/>
+
+		<!-- Text Section -->
+		<div class="space-y-3 px-5">
+			<h3
+				class="laptop:text-size-6 font-prata mobile:text-3xl tablet:text-center laptop:text-left tablet:text-4xl text-center text-4xl"
+			>
+				{aboutCourse?.title}
+			</h3>
+			{paragraph.map((paragraph) => <p class="font-tajawal text-lg text-[16px]">{paragraph}</p>)}
 		</div>
 	</div>
-</div>
+	<div class="my-10 flex justify-center">
+		<CallToAction href="/contact">Book a Consultation</CallToAction>
+	</div>
+</Wrapper>
