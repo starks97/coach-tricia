@@ -81,7 +81,7 @@ const pathName = Astro.url.pathname
 			menu.classList.add("hidden")
 
 			/** Establecer si el menú está actualmente expandido o contraído. */
-			const setExpanded = (expand) => {
+			const setExpanded = (expand: boolean) => {
 				btn.setAttribute("aria-expanded", expand ? "true" : "false")
 				menu.classList.toggle("hidden", !expand)
 			}
@@ -89,37 +89,13 @@ const pathName = Astro.url.pathname
 			// Alternar la visibilidad del menú cuando se hace clic en el botón del menú.
 			btn.addEventListener("click", () => setExpanded(menu.classList.contains("hidden")))
 
-			const handleViewports = (e) => {
+			const handleViewports = (e: MediaQueryList | MediaQueryListEvent) => {
 				setExpanded(e.matches)
 				btn.hidden = e.matches
 			}
 			const mediaQueries = window.matchMedia("(min-width: 50em)")
 			handleViewports(mediaQueries)
 			mediaQueries.addEventListener("change", handleViewports)
-
-			// Cerrar el menú al hacer clic fuera
-			document.addEventListener("click", (event) => {
-				const target = event.target
-				if (
-					menu &&
-					!menu.contains(target) &&
-					!btn.contains(target) &&
-					!menu.classList.contains("hidden")
-				) {
-					setExpanded(false)
-				}
-			})
-
-			// Cerrar menu al cambiar de pagina
-			window.addEventListener("hashchange", closeMenu) // Para hash-based routing
-			window.addEventListener("popstate", closeMenu) // Para history API routing
-
-			function closeMenu() {
-				const menu = document.getElementById("menu-content")
-				if (menu && !menu.classList.contains("hidden")) {
-					menu.classList.add("hidden")
-				}
-			}
 		}
 	}
 	customElements.define("menu-button", MenuButton)
