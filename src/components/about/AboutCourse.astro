@@ -8,7 +8,9 @@ const aboutCourse = data["about"]["enough"]
 const paragraph = aboutCourse.about_course.split("\n\n")
 ---
 
-<Wrapper class="container flex w-full flex-col items-center justify-center space-y-10">
+<Wrapper
+	class="container mx-auto mt-10 flex w-full flex-col items-center justify-center space-y-10 px-5"
+>
 	<div
 		class="laptop:grid-cols-2 grid grid-cols-1 items-center justify-center justify-items-center gap-2"
 	>
@@ -17,20 +19,21 @@ const paragraph = aboutCourse.about_course.split("\n\n")
 		<img
 			src="/images/hero.jpg"
 			alt="hero"
-			class="tablet:h-[300px] tablet:w-[300px] laptop:h-[550px] laptop:w-[470px] h-64 w-full object-cover"
+			class="tablet:h-[300px] tablet:w-[300px] laptop:h-[550px] laptop:w-[470px] object-coverp h-64 w-full"
 		/>
 
 		<!-- Text Section -->
-		<div class="space-y-3 px-5">
+		<div class="space-y-4 px-5">
 			<h3
-				class="laptop:text-size-6 font-prata mobile:text-3xl tablet:text-center laptop:text-left tablet:text-4xl text-center text-4xl"
+				class="font-prata laptop:text-size-6 tablet:text-[2rem] laptop:text-left text-center text-[1.5rem]"
 			>
-				{aboutCourse?.title}
+				My 5-Step Journey to Freedom and Personal Power
 			</h3>
+
 			{paragraph.map((paragraph) => <p class="font-tajawal text-lg text-[16px]">{paragraph}</p>)}
+			<div class="flex justify-center gap-5">
+				<CallToAction href="/contact">Book a Consultation</CallToAction>
+			</div>
 		</div>
-	</div>
-	<div class="my-10 flex justify-center">
-		<CallToAction href="/contact">Book a Consultation</CallToAction>
 	</div>
 </Wrapper>
