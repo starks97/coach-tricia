@@ -1,0 +1,47 @@
+---
+import data from "../../data.json"
+import CallToAction from "../CallToAction.astro"
+
+const podcastData = data.home["podcast"]
+---
+
+<div class="mx-auto h-auto p-10">
+	<div class="tablet:grid-cols-2 grid h-auto grid-cols-1 justify-center justify-items-center">
+		<div class="tablet:justify-self-end justify-self-center">
+			<h3
+				class="font-blackstone tablet:text-start text-size-8 tablet:hidden text-taupe mb-10 w-full text-center font-bold"
+			>
+				{podcastData.title}
+			</h3>
+			<img
+				src={podcastData.image}
+				alt="hero image"
+				class="tablet:h-[420px] tablet:w-[300px] laptop:h-[550px] laptop:w-[470px] h-80 w-full object-cover"
+			/>
+		</div>
+		<div class="mt-5 flex w-full flex-col space-y-2">
+			<h3
+				class="font-blackstone tablet:text-start tablet:text-[50px] laptop:text-[3.5rem] tablet:[display:flex] text-taupe mb-10 hidden w-full text-center font-bold"
+			>
+				{podcastData.title}
+			</h3>
+			<p class="font-tajawal laptop:text-size-4 text-size-3 laptop:max-w-lg w-full text-justify">
+				{podcastData.description}
+			</p>
+			<div class="tablet:justify-start flex w-full justify-center gap-5">
+				<CallToAction href="/contact">Listen Now</CallToAction>
+			</div>
+		</div>
+	</div>
+
+	<style>
+		.box {
+			background: linear-gradient(to right, #fbf4f2 40%, #ffff 40%);
+		}
+		@media (max-width: 768px) {
+			.box {
+				background: white;
+			}
+		}
+	</style>
+</div>

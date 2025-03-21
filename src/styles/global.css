@@ -84,7 +84,7 @@ body {
 	font-family: var(--font-prata);
 	color: black;
 	font-weight: normal;
-	text-align: center; /* Default center, override for tablet/desktop */
+	text-align: justify; /* Default center, override for tablet/desktop */
 }
 
 .hero_description {
@@ -92,7 +92,7 @@ body {
 	font-weight: 600; /* font-semibold */
 	letter-spacing: 0.07em;
 	text-transform: uppercase;
-	text-align: center;
+	text-align: justify;
 }
 
 /* Mobile (Smallest Screens - typically phones) */

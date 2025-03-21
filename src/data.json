@@ -38,6 +38,11 @@
       "subtitle": "Breakups, separations, and divorces can be some of life’s most challenging moments, but they also hold the potential for profound transformation.",
       "description": "My Conscious Uncoupling coaching program is built around a proven 5-step process designed to help you heal your heart, reclaim your personal power, and create a brighter, more fulfilling future. This journey is about more than just moving on—it’s about moving forward with intention, healing, and hope. Together, we’ll transform your pain into power and uncover the limitless potential that awaits on the other side of heartbreak.",
       "image": "/images/coaching.jpg"
+    },
+    "podcast": {
+      "title": "Learn & Listen",
+      "description": "Join Tricia as she shares her personal journey of healing and transformation after a heartbreak. Listen to her insights and strategies for moving forward with intention, healing, and hope. Discover how to transform your pain into power and uncover the limitless potential that awaits on the other side of heartbreak.",
+      "image": "/images/ipad.png"
     }
   },
   "coaching": {
@@ -124,7 +129,7 @@
   },
   "about": {
     "hero": {
-      "title": "let's get personal",
+      "title": "Let's Get Personal",
       "description": "Are you ready to make a shift? It's time to dream big.",
       "image": "/images/about-tricia.jpg"
     },

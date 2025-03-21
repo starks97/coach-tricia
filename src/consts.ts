@@ -1,7 +1,7 @@
 export const menuPath = [
 	["/", "Home"],
-	["/coaching", "Coaching"],
 	["/about", "About"],
+	["/coaching", "Coaching"],
 	["/podcast", "Podcast"],
 	["/contact", "Contact"],
 ] as const
