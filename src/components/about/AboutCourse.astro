@@ -8,9 +8,7 @@ const aboutCourse = data["about"]["enough"]
 const paragraph = aboutCourse.about_course.split("\n\n")
 ---
 
-<Wrapper
-	class="container mx-auto mt-10 flex w-full flex-col items-center justify-center space-y-10 px-5"
->
+<Wrapper class="container mt-10 flex w-full flex-col items-center justify-center space-y-10 px-5">
 	<div
 		class="laptop:grid-cols-2 grid grid-cols-1 items-center justify-center justify-items-center gap-2"
 	>
@@ -19,18 +17,20 @@ const paragraph = aboutCourse.about_course.split("\n\n")
 		<img
 			src="/images/hero.jpg"
 			alt="hero"
-			class="tablet:h-[300px] tablet:w-[300px] laptop:h-[550px] laptop:w-[470px] object-coverp h-64 w-full"
+			class="laptop:h-[550px] laptop:w-[470px] object-coverp h-96 w-[400px]"
 		/>
 
 		<!-- Text Section -->
-		<div class="space-y-4 px-5">
-			<h3
-				class="font-prata laptop:text-size-6 tablet:text-[2rem] laptop:text-left text-center text-[1.5rem]"
-			>
-				My 5-Step Journey to Freedom and Personal Power
+		<div class="tablet:max-w-lg laptop:max-w-full w-full space-y-4 px-5">
+			<h3 class="font-prata tablet:text-[2.3rem] laptop:text-left text-justify text-[1.85rem]">
+				{aboutCourse.title}
 			</h3>
 
-			{paragraph.map((paragraph) => <p class="font-tajawal text-lg text-[16px]">{paragraph}</p>)}
+			{
+				paragraph.map((paragraph) => (
+					<p class="font-tajawal text-justify text-lg text-[16px]">{paragraph}</p>
+				))
+			}
 			<div class="flex justify-center gap-5">
 				<CallToAction href="/contact">Book a Consultation</CallToAction>
 			</div>

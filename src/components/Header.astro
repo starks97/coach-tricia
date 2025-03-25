@@ -72,21 +72,17 @@ const pathName = Astro.url.pathname
 		constructor() {
 			super()
 
-			// Inyectar el botón de alternar el menú cuando se ejecuta JS.
 			this.appendChild(this.querySelector("template").content.cloneNode(true))
 			const btn = this.querySelector("button")
 
-			// Ocultar el menú (mostrado por defecto para admitir navegadores sin JS).
 			const menu = document.getElementById("menu-content")
 			menu.classList.add("hidden")
 
-			/** Establecer si el menú está actualmente expandido o contraído. */
 			const setExpanded = (expand: boolean) => {
 				btn.setAttribute("aria-expanded", expand ? "true" : "false")
 				menu.classList.toggle("hidden", !expand)
 			}
 
-			// Alternar la visibilidad del menú cuando se hace clic en el botón del menú.
 			btn.addEventListener("click", () => setExpanded(menu.classList.contains("hidden")))
 
 			const handleViewports = (e: MediaQueryList | MediaQueryListEvent) => {

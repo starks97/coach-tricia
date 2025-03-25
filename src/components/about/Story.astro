@@ -15,30 +15,30 @@ const story = data["about"].story
 				class="laptop:h-[450px] laptop:w-[400px] h-96 w-[400px] object-cover"
 			/>
 		</div>
-		<div class="tablet:max-w-lg mx-auto w-full space-y-5">
+		<div class="tablet:max-w-lg w-full space-y-5 px-5">
 			<h1 class="font-prata laptop:text-left text-size-6 tablet:text-size-7 text-center">
 				<i class="font-italic">{story["first"].title}</i>
 			</h1>
-			<p class="font-tajawal text-size-2 px-10 text-left text-[#515151]">
+			<p class="font-tajawal text-size-2 text-justify text-[#515151]">
 				{story["first"].content.first}
 			</p>
-			<p class="font-tajawal text-size-2 px-10 text-left text-[#515151]">
+			<p class="font-tajawal text-size-2 text-justify text-[#515151]">
 				{story["first"].content.second}
 			</p>
 			<p
-				class="font-tajawal text-taupe text-size-2 px-10 text-left font-bold tracking-widest uppercase"
+				class="font-tajawal text-taupe text-size-2 text-justify font-bold tracking-widest uppercase"
 			>
 				{story["first"].content.third}
 			</p>
 		</div>
-		<div class="tablet:max-w-xl tablet:px-10 laptop:order-1 order-2 mx-auto space-y-5 px-0">
+		<div class="tablet:max-w-lg laptop:order-1 order-2 space-y-5 px-5">
 			<h1 class="font-tajawal text-taupe text-size-5 text-center font-normal uppercase">
 				{story["second"].title}
 			</h1>
-			<h4 class="font-prata text-size-6 tablet:text-size-5 text-center">
+			<h4 class="font-prata text-size-6 tablet:text-size-7 text-center">
 				<i class="font-italic text-justify">{story["second"].description}</i>
 			</h4>
-			<p class="font-tajawal tablet:text-left text-center text-[16px] text-[#515151]">
+			<p class="font-tajawal tablet:text-left text-justify text-[16px] text-[#515151]">
 				{story["second"].content}
 			</p>
 		</div>

@@ -1,9 +1,7 @@
 ---
 import data from "../../data.json"
 
-const title = data["about"].hero.title
-const description = data["about"].hero.description
-const image = data["about"].hero.image
+const { title, description, image, paragraph } = data["about"].hero
 
 import HeroWrapper from "../HeroWrapper.astro"
 ---
@@ -14,12 +12,10 @@ import HeroWrapper from "../HeroWrapper.astro"
 	>
 		{title}
 	</h1>
-	<h2 class="font-prata laptop:text-left text-size-6 tablet:text-size-6 text-center">
+	<h2 class="font-prata laptop:text-left tablet:text-size-6 text-justify text-[2rem]">
 		<i class="font-italic">{description}</i>
 	</h2>
-	<p class="font-tajawal tablet:text-left text-center text-[20px]">
-		When life breaks you, it’s because you are ready to be put back together differently. Every
-		piece of you that feels shattered, is a piece that will find a new place, a new purpose, a new
-		meaning. Trust that the cracks are where the light gets in.
+	<p class="font-tajawal tablet:text-left text-justify text-[20px]">
+		{paragraph}
 	</p>
 </HeroWrapper>
