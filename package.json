@@ -10,13 +10,13 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/alpinejs": "^0.4.3",
+    "@astrojs/alpinejs": "^0.4.4",
     "@astrojs/check": "^0.9.4",
     "@astrojs/vercel": "^8.1.3",
-    "@tailwindcss/vite": "^4.0.15",
+    "@tailwindcss/vite": "^4.0.17",
     "@types/alpinejs": "^3.13.11",
     "alpinejs": "^3.14.9",
-    "astro": "^5.5.4",
+    "astro": "^5.5.5",
     "typescript": "^5.8.2"
   },
   "devDependencies": {
@@ -26,7 +26,7 @@
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-astro-organize-imports": "^0.4.11",
     "prettier-plugin-tailwindcss": "^0.6.11",
-    "tailwindcss": "^4.0.15",
+    "tailwindcss": "^4.0.17",
     "tailwindcss-animated": "^2.0.0"
   },
   "packageManager": "pnpm@10.6.0+sha512.df0136e797db0cfa7ec1084e77f3bdf81bacbae9066832fbf95cba4c2140ad05e64f316cde51ce3f99ea00a91ffc702d6aedd3c0f450f895e3e7c052fe573cd8",
