@@ -1,61 +1,48 @@
 ---
 import data from "../../data.json"
+import CallToAction from "../CallToAction.astro"
 
 const paymentPlan = data.coaching["payment_plan"]
 
-import { colorAsigment, colorBtnAssigment } from "../../consts"
+const heroImg = data.home["hero"].image
 ---
 
-<div class="section tablet:max-w-6xl mx-auto my-[7rem] h-auto w-full space-y-20 px-10">
+<div class="section tablet:max-w-5xl mx-auto my-[7rem] h-auto w-full space-y-20 px-10">
 	<div class="h-auto w-full space-y-5">
 		<h1
-			class="font-tajawal text-hero_color tablet:text-2xl ml-4 w-full text-center text-xl leading-14 font-semibold"
+			class="font-tajawal text-light-rose tablet:text-2xl ml-4 w-full text-center text-xl leading-14 font-semibold"
 		>
-			Ready To Make A Move?
+			Lets Work Together!
 		</h1>
 		<h5
 			class="tablet:text-left; font-prata tablet:text-size-7 laptop:text-[3rem] text-size-5 text-center"
 		>
-			Yes! Can't wait to get started!
+			Choose Your Experience
 		</h5>
 	</div>
-	<div class="tablet:grid-cols-3 tablet:gap-10 grid grid-cols-1 justify-items-center gap-20">
+	<div class={`mx-auto grid h-auto grid-cols-1 justify-items-center gap-0 tablet:gap-10 `}>
 		{
-			paymentPlan.map((payment) => {
-				const isPair = payment.id % 2 === 0
+			paymentPlan.map((item, id) => {
+				let isPair = item.id % 2 === 0
 				return (
 					<div
-						class={`relative flex w-full flex-col ${colorAsigment[payment.id]} h-auto items-center justify-center transition-transform duration-300 hover:scale-105`}
-						style={{ backgroundColor: colorAsigment[payment.id] }}
+						class={`tablet:flex-row flex flex-col items-stretch justify-center space-x-0 ${isPair ? "tablet:flex-row-reverse" : ""}`}
 					>
-						<div class="absolute -top-12 left-1/2 mb-2 -translate-x-1/2 transform">
-							<div
-								class="flex h-20 w-20 items-center justify-center rounded-full shadow-lg"
-								style={{ backgroundColor: colorBtnAssigment[payment.id] }}
-							>
-								<span class="text-2xl text-white">{payment.id}</span>
-							</div>
-						</div>
-
-						<div class="tablet:px-1 laptop:px-7 space-y-5 px-2 py-10">
-							<h3 class="font-prata tablet:text-center text-center text-2xl font-light">
-								{payment.title}
-							</h3>
-							<p class="font-tajawal tablet:text-center text-size-4 tablet:text-size-4 laptop:text-size-5 text-center font-black">
-								{payment.description}
-							</p>
-							<p class="font-prata tablet:text-center text-size-4 tablet:text-size-5 laptop:text-size-6 text-center font-bold">
-								{payment.price}
-							</p>
-
-							<div class="flex w-full justify-center px-5">
-								<a
-									href="/contact"
-									class="font-prata w-full px-5 py-3 text-center text-white capitalize transition duration-300 ease-in-out hover:text-black"
-									style={{ backgroundColor: colorBtnAssigment[payment.id] }}
-								>
-									ENROLL NOW
-								</a>
+						<img
+							src={heroImg}
+							alt="hero image"
+							class="tablet:h-[300px] tablet:w-[300px] laptop:h-[500px] laptop:w-[470px] h-64 w-full object-cover"
+						/>
+						<div
+							class={`tablet:p-15 w-full flex-1 p-7 ${isPair ? "bg-light-gray" : "bg-[#fbf4f2]"}`}
+						>
+							<div class="flex h-full w-full flex-col justify-center space-y-3">
+								<h3 class="text-size-5 tablet:text-size-6 w-full text-center">{item.title}</h3>
+								<p class="text-justify">{item.description}</p>
+								<i class="text-size-3 text-center font-bold">Cost: {item.price}</i>
+								<div class="tablet:justify-center flex w-full justify-center gap-5">
+									<CallToAction href="/contact">Enroll Now</CallToAction>
+								</div>
 							</div>
 						</div>
 					</div>

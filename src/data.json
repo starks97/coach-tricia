@@ -85,21 +85,15 @@
     "payment_plan": [
       {
         "id": 1,
-        "title": "Single Session",
-        "price": "$150",
-        "description": "One 60-minute session"
+        "title": "90-Day Coaching Package Includes:",
+        "price": "$1500",
+        "description": "3 months of 12 private one-on-one 60-minute sessions via Zoom"
       },
       {
         "id": 2,
-        "title": "3 Sessions",
-        "price": "$400",
-        "description": "Three 60-minute sessions"
-      },
-      {
-        "id": 3,
-        "title": "5 Sessions",
-        "price": "$650",
-        "description": "Five 60-minute sessions"
+        "title": "90-Day Coaching Package Plus One 2-Hour Jump Start Intensive Includes:",
+        "price": "$1750",
+        "description": "3 months of 12 private one-on-one 60-minute sessions plus one 2-hourintensive via Zoom"
       }
     ]
   },
@@ -138,7 +132,7 @@
       "first": {
         "title": "Hey there, I'm Tricia.",
         "content": {
-          "first": "A certified Conscious Uncoupling and Relationship Coach, trained and personally mentored by Katherine Woodward Thomas, the New York Times bestselling author of Conscious Uncoupling: 5 Steps to Living Happily Even After.",
+          "first": "A certified Conscious Uncoupling and Relationship Coach, trained and personally mentored by Katherine Woodward Thomas, the New York Times bestselling author of <b class=\"font-bold\">Conscious Uncoupling: 5 Steps to Living Happily Even After</b>.",
           "second": " My mission is to uplift and inspire women as they navigate the often-devastating process of ending a significant relationship. Having been down this challenging path myself, I'm here to help you channel your heartbreak into a powerful opportunity for growth, supporting you in creating a more fulfilling life.",
           "third": " From Long Island, New York, I work globally, connecting with clients from all walks of life who are ready to rebuild with intention and hope."
         },

@@ -22,7 +22,11 @@ import "../styles/global.css"
 		<BaseHead title={title} description={description} image={image} />
 		<ClientRouter />
 	</head>
-	<body>
+	<body
+		x-data="{ intersect: false }"
+		x-intersect:enter="intersect = true"
+		x-intersect:leave="intersect = false"
+	>
 		<Header />
 		<slot class="bg-body" />
 		<Footer />
