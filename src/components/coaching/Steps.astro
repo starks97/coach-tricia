@@ -1,7 +1,7 @@
 ---
 import data from "../../data.json"
 
-const steps = data.coaching["description"]
+const guide = data.coaching["guide"]
 
 ---
 
@@ -9,12 +9,12 @@ const steps = data.coaching["description"]
 	<!-- Section Title -->
 	<div class="h-auto w-full space-y-5">
 		<h1 class="tablet:text-left; text-center font-prata text-size-7 text-light-rose tablet:text-size-7 laptop:text-size-8">
-			Conscious Uncoupling
+			{guide.title}
 		</h1>
 		<h5
 			class="ml-4 w-full text-center font-tajawal text-xl font-semibold leading-14 tablet:text-2xl"
 		>
-			5 Steps To Living Happily <span class="font-bold text-light-rose">Even</span> After
+			{guide.subtitle}<span class="font-bold text-light-rose">Even</span> After
 		</h5>
 
 	</div>
@@ -22,11 +22,7 @@ const steps = data.coaching["description"]
 		<h5
 			class="text-justify font-tajawal text-size-2 font-thin leading-9 tablet:text-size-3"
 		>
-			A powerful 12-Week Course, the 5 Steps of my Conscious Uncoupling Coaching Program, offers you the roadmap for how
-			to turn the pain of your breakup into a genuine opportunity to recreate your life in a bigger
-			and better way. This deeply personal approach will guide you through the devastating storm of
-			the loss of love to finding emotional freedom, reclaiming your power and finally to getting
-			your life back on track!!
+			{guide.description}
 		</h5>
 	</div>
 	   <h3 class="text-center font-prata text-size-6 laptop:text-size-7 font-light leading-[4rem] mt-[4rem] w-full text-light-rose">Take a peek inside...</h3>
@@ -36,7 +32,7 @@ const steps = data.coaching["description"]
 	<!-- Steps Grid -->
 	<div class="grid h-auto grid-cols-1 justify-items-center">
 		{
-			steps.map((item) => {
+			guide.steps.map((item) => {
 				const isPair = item.id % 2 === 0
 				return (
 					<div
@@ -45,7 +41,7 @@ const steps = data.coaching["description"]
 						{/* Text Content */}
 						<div class="flex-1 space-y-2" id={`${item.id}`}>
 							<p
-								class={`w-full font-bonVivant text-[1.2rem] text-light-rose text-center tablet:text-left`}
+								class={`w-full font-bonVivant text-[1.5rem] text-light-rose text-center tablet:text-left`}
 							>
 								{`Step ${item.id}`}
 							</p>

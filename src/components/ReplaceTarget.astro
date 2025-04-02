@@ -1,0 +1,18 @@
+---
+interface ReplaceTargetProps {
+	target: string
+	str: string
+	className?: string
+}
+
+const { target, str, className } = Astro.props
+
+const replaceTarget = ({ target, str, className }: ReplaceTargetProps) => {
+	let pattern = new RegExp(target, "g")
+
+	return str.replace(pattern, `<b class="${className}">${target}</b>`)
+}
+const newText = replaceTarget({ target, str, className })
+---
+
+<p set:html={newText} />

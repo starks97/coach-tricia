@@ -8,10 +8,7 @@ const pathName = Astro.url.pathname
 <header
 	class={`tablet:px-12 tablet:py-5 laptop:px-16 laptop:py-5 flex items-center justify-evenly bg-[var(--color-cream)] px-10 py-5 ${pathName !== "/" ? "border-b-light-rose border-b-[2px]" : ""}`}
 >
-	<div
-		class="flex w-full flex-col items-start gap-3 opacity-0"
-		:class="intersect ? 'animate-fade-right animate-duration-1000' : 'opacity-0'"
-	>
+	<div class="flex w-full flex-col items-start gap-3">
 		<h1 class="font-blackstone text-5xl">Tricia Rago</h1>
 		<p class="font-figtree leading-regular text-sm font-thin uppercase">
 			Conscious Relationship Coach

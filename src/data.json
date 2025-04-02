@@ -47,41 +47,48 @@
   },
   "coaching": {
     "hero": {
-      "title": "The roadmap for turning the pain of your breakup into an opportunity to recreate your life.",
+      "title": "Work With Tricia",
+      "subtitle": "You’ve come to the right place and I’m glad you’re here. Let’s change your life for the better",
       "image": "/images/coach_hero.jpg"
     },
-    "description": [
-      {
-        "id": 1,
-        "title": "Finding Emotional Freedom",
-        "description": "Find the emotional space to move beyond the old painful patterns in love and use this shattering to radically evolve how you live and how you love.",
-        "image": "/images/step1.jpg"
-      },
-      {
-        "id": 2,
-        "title": "Reclaim Your Power And Your Life",
-        "description": "Let go of being a wounded victim of love shifting your perspective away from blame to taking full responsibility for your part in what happened.",
-        "image": "/images/step2.jpg"
-      },
-      {
-        "id": 3,
-        "title": "Break The Pattern",
-        "description": "Finally understand and break free of the painful experiences that have been at the heart of the repetitive patterns in your relationships and give yourself the opportunity to evolve beyond them.",
-        "image": "/images/step3.jpg"
-      },
-      {
-        "id": 4,
-        "title": "Become A Love Alchemist",
-        "description": "Begin to make choices and take actions that graduate you from the painful patterns of the past. Radically transform the dynamics between you and your former partner allowing for the possible emergence of a healthy new form the relationship has the potential to take.",
-        "image": "/images/step4.jpg"
-      },
-      {
-        "id": 5,
-        "title": "Create Your Happily Even After Life",
-        "description": "Get the support you will need to make wise, healthy and life-affirming decisions as you take on the essential  tasks of reinventing your life.  Set up the vital new structures that will ensure that the new life you’re embracing will be greater than the one you are letting go of. ",
-        "image": "/images/step4.jpg"
-      }
-    ],
+    "guide": {
+      "title": "Conscious Uncoupling",
+      "subtitle": "5 Steps To Living Happily",
+      "description": "A powerful 12-Week Course, the 5 Steps of my Conscious Uncoupling Coaching Program, offers you the roadmap for how to turn the pain of your breakup into a genuine opportunity to recreate your life in a bigger and better way. This deeply personal approach will guide you through the devastating storm of the loss of love to finding emotional freedom, reclaiming your power and finally to gettingyour life back on track!!",
+      "steps": [
+        {
+          "id": 1,
+          "title": "Finding Emotional Freedom",
+          "description": "Find the emotional space to move beyond the old painful patterns in love and use this shattering to radically evolve how you live and how you love.",
+          "image": "/images/step1.jpg"
+        },
+        {
+          "id": 2,
+          "title": "Reclaim Your Power And Your Life",
+          "description": "Let go of being a wounded victim of love shifting your perspective away from blame to taking full responsibility for your part in what happened.",
+          "image": "/images/step2.jpg"
+        },
+        {
+          "id": 3,
+          "title": "Break The Pattern",
+          "description": "Finally understand and break free of the painful experiences that have been at the heart of the repetitive patterns in your relationships and give yourself the opportunity to evolve beyond them.",
+          "image": "/images/step3.jpg"
+        },
+        {
+          "id": 4,
+          "title": "Become A Love Alchemist",
+          "description": "Begin to make choices and take actions that graduate you from the painful patterns of the past. Radically transform the dynamics between you and your former partner allowing for the possible emergence of a healthy new form the relationship has the potential to take.",
+          "image": "/images/step4.jpg"
+        },
+        {
+          "id": 5,
+          "title": "Create Your Happily Even After Life",
+          "description": "Get the support you will need to make wise, healthy and life-affirming decisions as you take on the essential  tasks of reinventing your life.  Set up the vital new structures that will ensure that the new life you’re embracing will be greater than the one you are letting go of. ",
+          "image": "/images/step4.jpg"
+        }
+      ]
+    },
+
     "payment_plan": [
       {
         "id": 1,
@@ -132,7 +139,7 @@
       "first": {
         "title": "Hey there, I'm Tricia.",
         "content": {
-          "first": "A certified Conscious Uncoupling and Relationship Coach, trained and personally mentored by Katherine Woodward Thomas, the New York Times bestselling author of <b class=\"font-bold\">Conscious Uncoupling: 5 Steps to Living Happily Even After</b>.",
+          "first": "A certified Conscious Uncoupling and Relationship Coach, trained and personally mentored by Katherine Woodward Thomas, the New York Times bestselling author of Conscious Uncoupling: 5 Steps to Living Happily Even After.",
           "second": " My mission is to uplift and inspire women as they navigate the often-devastating process of ending a significant relationship. Having been down this challenging path myself, I'm here to help you channel your heartbreak into a powerful opportunity for growth, supporting you in creating a more fulfilling life.",
           "third": " From Long Island, New York, I work globally, connecting with clients from all walks of life who are ready to rebuild with intention and hope."
         },

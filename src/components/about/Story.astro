@@ -1,5 +1,6 @@
 ---
 import data from "../../data.json"
+import ReplaceTarget from "../ReplaceTarget.astro"
 
 const story = data["about"].story
 ---
@@ -20,7 +21,11 @@ const story = data["about"].story
 				<i class="font-italic">{story["first"].title}</i>
 			</h1>
 			<p class="font-tajawal text-size-2 text-justify text-[#515151]">
-				{story["first"].content.first}
+				<ReplaceTarget
+					target={"Conscious Uncoupling: 5 Steps to Living Happily Even After"}
+					str={story["first"].content.first}
+					className="font-bold"
+				/>
 			</p>
 			<p class="font-tajawal text-size-2 text-justify text-[#515151]">
 				{story["first"].content.second}
