@@ -1,25 +1,34 @@
 ---
 import data from "../../data.json"
-import HeroWrapper from "../HeroWrapper.astro"
 
 const title = data["about"].hero.title
 const description = data["about"].hero.description
 const image = data["about"].hero.image
 ---
 
-<HeroWrapper img={image}>
-	<h1
-		class="font-blackstone tablet:text-left tablet:text-size-8 laptop:text-[4rem] text-center text-[3rem] font-light"
-	>
-		Work with Tricia
-	</h1>
-	<p
-		class="font-tajawal tablet:text-left text-size-6 tablet:text-size-5 laptop:text-4xl text-center text-2xl"
-	>
-		You’ve come to the right place and I’m glad you’re here. Let’s change your life for the better.
-	</p>
-	<p class="font-tajawal tablet:text-left laptop:text-2xl text-size-3 text-center">
-		We’ll spend an hour once a week for ten weeks in a private one-on-one session learning how to
-		live your happy <span class="font-tajawal font-bold"> even</span> after life and exploring new beginnings.
-	</p>
-</HeroWrapper>
+<section class={`section mx-auto my-10 w-full space-y-5  `}>
+	<div class={`mx-auto grid h-auto grid-cols-1 justify-items-center p-10`}>
+		<div class="relative flex flex-col items-center justify-center gap-10 space-x-0">
+			<img
+				src={"/images/hero_podcast.jpg"}
+				alt="hero image"
+				class="h-[600px] w-[1200px] object-cover"
+			/>
+			<div class="absolute -bottom-30">
+				<div class="flex h-auto max-w-2xl flex-col items-center space-y-5 bg-[#fbf4f2] px-25 py-10">
+					<h1 class="text-size-7 font-prata">
+						Looking for help with eating more intuitively and ditching the guilt?
+					</h1>
+					<p class="font-blackstone text-size-8">welcome to the paradise</p>
+				</div>
+				<div class="absolute top-10 -left-48">
+					<img
+						src={"/images/ipad.png"}
+						alt="ipad"
+						class="tablet:h-[420px] tablet:w-[300px] laptop:h-[400px] laptop:w-[270px] h-80 w-full -rotate-12 object-cover"
+					/>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
