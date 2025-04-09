@@ -10,7 +10,8 @@ const benefits = data.home["benefits"].benefits
 
 <Wrapper class="container flex flex-col items-center justify-center space-y-10">
 	<h3
-		class="font-prata text-taupe text-size-6 tablet:text-size-7 laptop:text-[3rem] tablet:w-8/12 w-full text-center leading-13"
+		class="font-prata text-taupe text-size-6 tablet:text-size-7 laptop:text-[3rem] tablet:w-8/12 w-full text-center leading-13 opacity-0"
+		:class="intersect ? 'animate-fade-up  animate-delay-200 ' : 'opacity-0'"
 	>
 		{title}
 	</h3>
@@ -50,7 +51,10 @@ const benefits = data.home["benefits"].benefits
 		</div>
 	</div>
 
-	<div class="my-5 flex justify-center">
+	<div
+		class="my-5 flex justify-center opacity-0"
+		:class="intersect ? 'animate-fade animate-delay-700 ' : 'opacity-0'"
+	>
 		<CallToAction href="/contact">Book Free Consultation</CallToAction>
 	</div>
 </Wrapper>

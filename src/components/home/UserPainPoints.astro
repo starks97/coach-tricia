@@ -13,16 +13,23 @@ const list = data.home["user_pain_points"].pain_points
 <Wrapper class="bg-light-gray tablet:grid-cols-2 grid grid-cols-1 items-center gap-5">
 	<div class="tablet:items-start mx-auto w-full max-w-lg space-y-7">
 		<h2
-			class="font-prata text-size-5 tablet:text-left tablet:text-[2rem] laptop:text-size-6 text-center text-black"
+			class="font-prata text-size-5 tablet:text-left tablet:text-[2rem] laptop:text-size-6 text-center text-black opacity-0"
+			:class="intersect ? 'animate-fade-up animate-ease-in  ' : 'opacity-0'"
 		>
 			{title}
 		</h2>
 
-		<h3 class="font-prata text-taupe tablet:text-3xl tablet:text-left text-center text-2xl">
+		<h3
+			class="font-prata text-taupe tablet:text-3xl tablet:text-left text-center text-2xl opacity-0"
+			:class="intersect ? 'animate-fade-left animate-ease-in  animate-delay-200 ' : 'opacity-0'"
+		>
 			{subttitle}
 		</h3>
 
-		<ul class="flex flex-col space-y-2">
+		<ul
+			class="flex flex-col space-y-2 opacity-0"
+			:class="intersect ? 'animate-fade-left animate-ease-in  animate-delay-200 ' : 'opacity-0'"
+		>
 			{
 				list.map((item) => (
 					<li class="flex items-center gap-3">

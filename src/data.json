@@ -16,10 +16,7 @@
       ],
       "testimonials": [
         {
-          "quote": "Tricia is a compassionate and skilled therapist who has helped me navigate the emotional rollercoaster of grief and loss. She has a gift for helping people reconnect with their sense of self and purpose, and create a life that feels whole and fulfilling.",
-          "author": "Jane Doe"
-        },
-        {
+          "title": "First Quote and Review",
           "quote": "Tricia is a compassionate and skilled therapist who has helped me navigate the emotional rollercoaster of grief and loss. She has a gift for helping people reconnect with their sense of self and purpose, and create a life that feels whole and fulfilling.",
           "author": "Jane Doe"
         }

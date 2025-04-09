@@ -12,16 +12,21 @@ const description = data["home"].coaching_info.description
 <Wrapper class="tablet:grid-cols-2 laptop:gap-5 grid grid-cols-1 items-center gap-11 bg-[#fbf4f2]">
 	<div class="tablet:items-start mx-auto w-full max-w-lg space-y-5">
 		<h3
-			class="font-prata text-taupe text-size-6 tablet:text-left tablet:text-size-7 laptop:text-[3rem] text-center font-bold"
+			class="font-prata text-taupe text-size-6 tablet:text-left tablet:text-size-7 laptop:text-[3rem] text-center font-bold opacity-0"
+			:class="intersect ? 'animate-fade-right  animate-delay-0 ' : 'opacity-0'"
 		>
 			{title}
 		</h3>
 		<p
-			class="font-tajawal tablet:text-left text-center leading-7 font-semibold tracking-[.156em] uppercase"
+			class="font-tajawal tablet:text-left text-center leading-7 font-semibold tracking-[.156em] uppercase opacity-0"
+			:class="intersect ? 'animate-fade  animate-delay-400 ' : 'opacity-0'"
 		>
 			{subtitle}
 		</p>
-		<p class="font-tajawal text-justify text-lg">
+		<p
+			class="font-tajawal text-justify text-lg opacity-0"
+			:class="intersect ? 'animate-fade  animate-delay-400 ' : 'opacity-0'"
+		>
 			{description}
 		</p>
 

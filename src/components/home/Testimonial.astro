@@ -1,4 +1,7 @@
 ---
+import data from "../../data.json"
+
+const testimonials = data.home["user_pain_points"].testimonials
 
 ---
 
@@ -6,20 +9,17 @@
 <div
 	class="bg-soft-beige mx-auto flex h-auto w-full max-w-lg flex-col items-center justify-center gap-6 rounded-lg p-8 shadow-md"
 >
-	<h3
+	{testimonials.map((item) => (<h3
 		class="font-prata mobile:text-2xl tablet:text-size-4 laptop:text-size-5 tablet:leading-8 laptop:leading-10 text-center text-lg font-semibold text-black"
 	>
-		"Seriously. Don't hesitate. Reese will help you not only with your business, but how to be more
-		confident in life!"
+		{item.title}
 	</h3>
 	<p
 		class="font-tajawal mobile:text-lg tablet:text-size-2 laptop:text-size-3 text-justify text-base text-black"
 	>
-		Thundercats stumptown direct trade crucifix, vinyl poke lumbersexual twee kickstarter bicycle
-		rights cloud bread enamel pin post-ironic waistcoat. Fixie etsy ugh, 90's direct trade pork
-		belly put a bird on it live-edge bitters organic succulents tote bag 8-bit chia vegan.
+		{item.quote}
 	</p>
 	<p class="font-tajawal mobile:text-lg tablet:text-xl text-center text-base text-black">
-		Angela, CEO of Angela's Bakery
-	</p>
+		{item.author}
+	</p>))}
 </div>

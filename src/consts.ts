@@ -2,7 +2,6 @@ export const menuPath = [
 	["/", "Home"],
 	["/about", "About"],
 	["/coaching", "Coaching"],
-	["/podcast", "Podcast"],
 	["/contact", "Contact"],
 ] as const
 
@@ -22,7 +21,6 @@ export const resources = [
 	{ name: "Home", href: "/" },
 	{ name: "Coaching", href: "/coaching" },
 	{ name: "About", href: "/about" },
-	{ name: "Podcast", href: "/podcast" },
 	{ name: "Contact", href: "/contact" },
 ]
 

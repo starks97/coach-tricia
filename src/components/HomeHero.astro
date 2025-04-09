@@ -9,6 +9,9 @@ const { image, class: customClass = "" } = Astro.props
 
 <section
 	class={`grid w-full h-auto tablet:grid-cols-2 tablet:h-auto laptop:h-auto desktop:h-screen ${customClass}`}
+	x-data="{ intersect: false }"
+	x-intersect:enter="intersect = true"
+	x-intersect:leave="intersect = false"
 >
 	{
 		image && (

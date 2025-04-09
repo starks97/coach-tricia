@@ -2,19 +2,30 @@
 import { resources, socialLinks } from "../consts"
 ---
 
-<footer class="border-t-light-rose border-t-[2px] bg-[var(--color-cream)] py-12 text-black">
+<footer
+	class="border-t-light-rose border-t-[2px] bg-[var(--color-cream)] py-12 text-black"
+	x-data="{ intersect: false }"
+	x-intersect:enter="intersect = true"
+	x-intersect:leave="intersect = false"
+>
 	<div
 		class="laptop:flex-row laptop:items-start container mx-auto flex flex-col items-center justify-between gap-12 px-5"
 	>
 		<!-- Left Section: Title -->
 		<div class="max-w-md space-y-6">
 			<h3
-				class="font-prata tablet:text-left tablet:text-2xl text-center text-xl leading-tight font-bold"
+				class="font-prata tablet:text-left tablet:text-2xl text-center text-xl leading-tight font-bold opacity-0"
+				:class="intersect ? 'animate-fade animate-ease-in  ' : 'opacity-0'"
 			>
 				Transformational relationship coaching for women who are looking to create the life of their
 				dreams.
 			</h3>
-			<h1 class="font-blackstone tablet:text-7xl text-center text-5xl">Tricia Rago</h1>
+			<h1
+				class="font-blackstone tablet:text-7xl text-center text-5xl opacity-0"
+				:class="intersect ? 'animate-fade-right animate-delay-200 animate-ease-in  ' : 'opacity-0'"
+			>
+				Tricia Rago
+			</h1>
 		</div>
 
 		<!-- Center Section: Resources -->

@@ -6,6 +6,11 @@ interface Props {
 const { class: customClass = "" } = Astro.props
 ---
 
-<section class={`tablet:p-10 laptop:p-14 mx-auto p-5 ${customClass}`}>
+<section
+	class={`tablet:p-10 laptop:p-14 mx-auto p-5 ${customClass}`}
+	x-data="{ intersect: false }"
+	x-intersect:enter="intersect = true"
+	x-intersect:leave="intersect = false"
+>
 	<slot />
 </section>
