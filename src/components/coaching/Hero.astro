@@ -7,17 +7,22 @@ const { title, subtitle, image } = data.coaching["hero"]
 
 <HeroWrapper img={image}>
 	<h1
-		class="font-blackstone tablet:text-left tablet:text-size-8 laptop:text-[4rem] text-light-rose text-center text-[3rem] font-light"
+		class="font-blackstone tablet:text-left tablet:text-size-8 laptop:text-[4rem] text-light-rose text-center text-[3rem] font-light opacity-0"
+		:class="intersect ? 'animate-fade-up animate-ease-in-out  animate-delay-200 ' : 'opacity-0'"
 	>
 		{title}
 	</h1>
 	<h2
-		class="font-prata tablet:text-left text-size-6 tablet:text-size-5 laptop:text-size-6 text-center"
+		class="font-prata tablet:text-left text-size-6 tablet:text-size-5 laptop:text-size-6 text-center opacity-0"
+		:class="intersect ? 'animate-fade-left animate-ease-in-out  animate-delay-300 ' : 'opacity-0'"
 	>
 		<i class="font-italic">{subtitle}</i>
 	</h2>
 
-	<p class="font-tajawal tablet:text-left laptop:text-2xl text-size-3 text-justify">
+	<p
+		class="font-tajawal tablet:text-left laptop:text-2xl text-size-3 text-justify opacity-0"
+		:class="intersect ? 'animate-fade-left animate-ease-in-out  animate-delay-300 ' : 'opacity-0'"
+	>
 		We’ll spend an hour once a week for twelve weeks in a private one-on-one session learning how to
 		live your happy <span class="font-tajawal text-light-rose font-bold">even</span> after life and exploring
 		new beginnings.

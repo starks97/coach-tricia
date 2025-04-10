@@ -5,7 +5,12 @@ import ReplaceTarget from "../ReplaceTarget.astro"
 const story = data["about"].story
 ---
 
-<div class="container mx-auto mt-10 px-5">
+<section
+	class="container mx-auto mt-10 px-5"
+	x-data="{ intersect: false }"
+	x-intersect:enter="intersect = true"
+	x-intersect:leave="intersect = false"
+>
 	<div
 		class="laptop:grid-cols-2 laptop:grid-rows-2 grid h-full grid-cols-1 grid-rows-1 items-center justify-items-center gap-5"
 	>
@@ -13,25 +18,36 @@ const story = data["about"].story
 			<img
 				src={story["first"].image}
 				alt="hero"
-				class="laptop:h-[450px] laptop:w-[400px] h-96 w-[400px] object-cover"
+				class="laptop:h-[450px] laptop:w-[400px] h-96 w-[400px] object-cover opacity-0"
+				:class="intersect ? 'animate-fade-right animate-ease-in  animate-delay-200 ' : 'opacity-0'"
 			/>
 		</div>
 		<div class="tablet:max-w-lg w-full space-y-5 px-5">
-			<h1 class="font-prata laptop:text-left text-size-6 tablet:text-size-7 text-center">
+			<h1
+				class="font-prata laptop:text-left text-size-6 tablet:text-size-7 text-center opacity-0"
+				:class="intersect ? 'animate-fade-left animate-ease-in  animate-delay-200 ' : 'opacity-0'"
+			>
 				<i class="font-italic">{story["first"].title}</i>
 			</h1>
-			<p class="font-tajawal text-size-2 text-justify text-[#515151]">
+			<p
+				class="font-tajawal text-size-2 text-justify text-[#515151] opacity-0"
+				:class="intersect ? 'animate-fade animate-ease-in animate-delay-400 ' : 'opacity-0'"
+			>
 				<ReplaceTarget
 					target={"Conscious Uncoupling: 5 Steps to Living Happily Even After"}
 					str={story["first"].content.first}
 					className="font-bold"
 				/>
 			</p>
-			<p class="font-tajawal text-size-2 text-justify text-[#515151]">
+			<p
+				class="font-tajawal text-size-2 text-justify text-[#515151] opacity-0"
+				:class="intersect ? 'animate-fade animate-ease-in-out  animate-delay-400 ' : 'opacity-0'"
+			>
 				{story["first"].content.second}
 			</p>
 			<p
-				class="font-tajawal text-taupe text-size-2 text-justify font-bold tracking-widest uppercase"
+				class="font-tajawal text-taupe text-size-2 text-justify font-bold tracking-widest uppercase opacity-0"
+				:class="intersect ? 'animate-fade animate-ease-in-out  animate-delay-400 ' : 'opacity-0'"
 			>
 				{story["first"].content.third}
 			</p>
@@ -52,7 +68,8 @@ const story = data["about"].story
 				src={story["second"].image}
 				alt="hero"
 				class="laptop:h-[450px] laptop:w-[400px] h-96 w-[400px] object-cover"
+				:class="intersect ? 'animate-fade-left animate-ease-in-out  animate-delay-400 ' : 'opacity-0'"
 			/>
 		</div>
 	</div>
-</div>
+</section>

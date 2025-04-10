@@ -7,7 +7,12 @@ interface Props {
 const { img, class: customClass = "" } = Astro.props
 ---
 
-<section class={`section mx-auto my-10 w-full space-y-5`}>
+<section
+	class={`section mx-auto my-10 w-full space-y-5`}
+	x-data="{ intersect: false }"
+	x-intersect:enter="intersect = true"
+	x-intersect:leave="intersect = false"
+>
 	<div class={`mx-auto grid h-auto grid-cols-1 justify-items-center p-10`}>
 		<div
 			class={`tablet:flex-row flex flex-col items-center justify-center space-x-0 gap-10 ${customClass}`}
@@ -15,7 +20,8 @@ const { img, class: customClass = "" } = Astro.props
 			<img
 				src={img}
 				alt="hero image"
-				class="tablet:h-[300px] tablet:w-[300px] laptop:h-[550px] laptop:w-[470px] h-64 w-full object-cover"
+				class="tablet:h-[300px] tablet:w-[300px] laptop:h-[550px] laptop:w-[470px] h-64 w-full object-cover opacity-0"
+				:class="intersect ? 'animate-fade animate-ease-in  animate-delay-100 ' : 'opacity-0'"
 			/>
 			<div class={`tablet:max-w-xl mx-auto w-full flex-1 items-center justify-center space-y-5 `}>
 				<slot />

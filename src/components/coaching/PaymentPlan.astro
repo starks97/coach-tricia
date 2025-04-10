@@ -7,8 +7,16 @@ const paymentPlan = data.coaching["payment_plan"]
 const heroImg = data.home["hero"].image
 ---
 
-<div class="section tablet:max-w-5xl mx-auto my-[7rem] h-auto w-full space-y-20 px-10">
-	<div class="h-auto w-full space-y-5">
+<section
+	class="section tablet:max-w-5xl mx-auto my-[7rem] h-auto w-full space-y-20 px-10"
+	x-data="{ intersect: false }"
+	x-intersect:enter="intersect = true"
+	x-intersect:leave="intersect = false"
+>
+	<div
+		class="h-auto w-full space-y-5"
+		:class="intersect ? 'animate-fade-up animate-ease-in  animate-delay-200 ' : 'opacity-0'"
+	>
 		<h1
 			class="font-tajawal text-light-rose tablet:text-2xl ml-4 w-full text-center text-xl leading-14 font-semibold"
 		>
@@ -52,4 +60,4 @@ const heroImg = data.home["hero"].image
 			})
 		}
 	</div>
-</div>
+</section>

@@ -22,16 +22,19 @@ const paragraph = aboutCourse.about_course.split("\n\n")
 
 		<!-- Text Section -->
 		<div class="tablet:max-w-lg laptop:max-w-full w-full space-y-4 px-5">
-			<h3 class="font-prata tablet:text-[2.3rem] laptop:text-left text-justify text-[1.85rem]">
+			<h3
+				class="font-prata tablet:text-[2.3rem] laptop:text-left text-justify text-[1.85rem] opacity-0"
+				:class="intersect ? 'animate-fade-up animate-ease-in-out  animate-delay-100 ' : 'opacity-0'"
+			>
 				{aboutCourse.title}
 			</h3>
 
 			{
 				paragraph.map((paragraph) => (
-					<p class="font-tajawal text-justify text-lg text-[16px]">{paragraph}</p>
+					<p class="font-tajawal text-justify text-lg text-[16px] opacity-0" :class="intersect ? 'animate-fade animate-ease-in  animate-delay-300 ' : 'opacity-0'">{paragraph}</p>
 				))
 			}
-			<div class="flex justify-center gap-5">
+			<div class="flex justify-center gap-5 opacity-0" :class="intersect ? 'animate-fade-up animate-ease-in  animate-delay-300 ' : 'opacity-0'">
 				<CallToAction href="/contact">Book a Consultation</CallToAction>
 			</div>
 		</div>

@@ -5,9 +5,12 @@ const guide = data.coaching["guide"]
 
 ---
 
-<div class="section mx-auto w-full px-10">
+<div class="section mx-auto w-full px-10"
+        x-data="{ intersect: false }"
+        x-intersect:enter="intersect = true"
+        x-intersect:leave="intersect = false">
 	<!-- Section Title -->
-	<div class="h-auto w-full space-y-5">
+	<div class="h-auto w-full space-y-5" >
 		<h1 class="tablet:text-left; text-center font-prata text-size-7 text-light-rose tablet:text-size-7 laptop:text-size-8">
 			{guide.title}
 		</h1>
@@ -18,7 +21,7 @@ const guide = data.coaching["guide"]
 		</h5>
 
 	</div>
-	<div class="mx-auto w-full tablet:max-w-lg laptop:max-w-3xl">
+	<div class="mx-auto w-full tablet:max-w-lg laptop:max-w-3xl opacity-0" 	:class="intersect ? 'animate-fade-up animate-ease-in-out  animate-delay-200 ' : 'opacity-0'">
 		<h5
 			class="text-justify font-tajawal text-size-2 font-thin leading-9 tablet:text-size-3"
 		>
@@ -37,6 +40,10 @@ const guide = data.coaching["guide"]
 				return (
 					<div
 						class={`flex flex-col px-0 tablet:px-5 laptop:px-10 items-center gap-2 tablet:flex-row ${isPair ? "tablet:flex-row-reverse" : ""}`}
+					 x-data="{ visible: false }"
+                    x-intersect:enter.once="visible = true"
+                    :class="{ 'opacity-100': visible }"
+                                      id={`${item.id}`}
 					>
 						{/* Text Content */}
 						<div class="flex-1 space-y-2" id={`${item.id}`}>

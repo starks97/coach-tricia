@@ -7,10 +7,40 @@ const contact = data.contact["contact-form"]
 const image = data["home"].coaching_info.image
 ---
 
-<div
-	class="tablet:grid-cols-2 tablet:p-10 laptop:p-14 mx-auto grid grid-cols-1 items-center gap-5 p-5"
+<section
+	class="section mx-auto w-full space-y-10 p-10"
+	x-data="{ intersect: false }"
+	x-intersect:enter="intersect = true"
+	x-intersect:leave="intersect = false"
 >
-	<div>
-		<Form />
+	<div
+		class="h-auto w-full opacity-0"
+		:class="intersect ? 'animate-fade-up animate-ease-in  animate-delay-200 ' : 'opacity-0'"
+	>
+		<h1
+			class="font-prata tablet:text-size-7 laptop:text-[3rem] text-size-5 w-full text-center leading-14 font-light"
+		>
+			Free Consultation
+		</h1>
 	</div>
-</div>
+	<div
+		class="mx-auto grid h-auto grid-cols-1 justify-items-center opacity-0"
+		:class="intersect ? 'animate-fade-left animate-ease-in-out  animate-delay-400 ' : 'opacity-0'"
+	>
+		<div
+			class="tablet:flex-row tablet:space-y-0 flex scale-100 flex-col items-center justify-center space-y-10"
+		>
+			<div
+				class="tablet:translate-x-5 tablet:p-5 laptop:translate-x-20 laptop:p-11 z-40 mx-auto flex w-full translate-x-0 flex-col p-10"
+			>
+				<Form />
+			</div>
+
+			<img
+				src="/images/girl.jpg"
+				alt="hero image"
+				class="tablet:h-[400px] tablet:w-[400px] tablet:-translate-x-5 laptop:h-[500px] laptop:w-[500px] h-64 w-full translate-x-0 object-cover"
+			/>
+		</div>
+	</div>
+</section>

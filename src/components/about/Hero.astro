@@ -8,16 +8,21 @@ import HeroWrapper from "../HeroWrapper.astro"
 
 <HeroWrapper img={image} class="tablet:flex-row-reverse">
 	<h1
-		class="font-blackstone tablet:text-left tablet:text-size-8 laptop:text-[4rem] text-light-rose text-center text-[3rem] font-light"
+		class="font-blackstone tablet:text-left tablet:text-size-8 laptop:text-[4rem] text-light-rose text-center text-[3rem] font-light opacity-0"
+		:class="intersect ? 'animate-fade-up animate-ease-in-out  animate-delay-200 ' : 'opacity-0'"
 	>
 		{title}
 	</h1>
 	<h2
-		class="font-prata laptop:text-left tablet:text-size-5 laptop:text-size-6 text-justify text-[2rem]"
+		class="font-prata laptop:text-left tablet:text-size-5 laptop:text-size-6 text-justify text-[2rem] opacity-0"
+		:class="intersect ? 'animate-fade-left animate-ease-in-out  animate-delay-300 ' : 'opacity-0'"
 	>
 		<i class="font-italic">{description}</i>
 	</h2>
-	<p class="font-tajawal tablet:text-left text-justify text-[20px]">
+	<p
+		class="font-tajawal tablet:text-left text-justify text-[20px] opacity-0"
+		:class="intersect ? 'animate-fade-left animate-ease-in-out  animate-delay-300 ' : 'opacity-0'"
+	>
 		{paragraph}
 	</p>
 </HeroWrapper>

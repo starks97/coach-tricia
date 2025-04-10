@@ -6,8 +6,16 @@ import data from "../../data.json"
 const funFacts = data["about"]["fun-facts"]
 ---
 
-<div class="box mx-auto mt-20 h-auto p-10">
-	<div class="tablet:grid-cols-2 grid h-auto grid-cols-1 justify-center justify-items-center">
+<div
+	class="box mx-auto mt-20 h-auto p-10"
+	x-data="{ intersect: false }"
+	x-intersect:enter="intersect = true"
+	x-intersect:leave="intersect = false"
+>
+	<div
+		class="tablet:grid-cols-2 grid h-auto grid-cols-1 justify-center justify-items-center opacity-0"
+		:class="intersect ? 'animate-fade-up animate-ease-in-out  animate-delay-400 ' : 'opacity-0'"
+	>
 		<div class="justify-self-end">
 			<h1
 				class="font-blackstone tablet:text-start text-size-7 tablet:text-size-6 laptop:text-[4rem] tablet:hidden text-taupe mb-10 w-full text-center font-bold"
