@@ -3,8 +3,14 @@
 ---
 
 <!-- This example is a static form. If you want to process the form on submission, you’ll need a server endpoint or a third-party service. -->
-<form method="POST" action="/api/contact" class="w-full rounded px-20 py-10 shadow-md">
-	<h2 class="text-size-6 font-prata mb-4 font-semibold">Contact Me</h2>
+<form
+	method="POST"
+	action="/api/contact"
+	class="laptop:w-5/12 tablet:w-[400px] tablet:p-5 laptop:p-10 w-full rounded bg-zinc-100 p-5 shadow-md"
+>
+	<h2 class="tablet:text-size-5 laptop:text-size-6 font-prata mb-4 text-[23px] font-semibold">
+		Contact Me
+	</h2>
 
 	<div class="mb-4">
 		<label for="name" class="font-tajawal text-size-4 mb-1 block font-medium">Name</label>
@@ -51,7 +57,9 @@
 			name="help"
 			required
 			class="h-24 w-full rounded border border-gray-300 px-3 py-2"
-			placeholder="Describe your issue or request here..."></textarea>
+			placeholder="Sign up for your free consultation or
+address any questions about enrollment"
+		></textarea>
 	</div>
 
 	<button

@@ -44,8 +44,8 @@ const heroImg = data.home["hero"].image
 						<div
 							class={`tablet:p-15 w-full flex-1 p-7 ${isPair ? "bg-light-gray" : "bg-[#fbf4f2]"}`}
 						>
-							<div class="flex h-full w-full flex-col justify-center space-y-3">
-								<h3 class="text-size-5 tablet:text-size-4 laptop:text-size-6 w-full text-center">
+							<div class="flex h-full w-full flex-col justify-center space-y-[10px]">
+								<h3 class="text-size-5 tablet:text-size-4 laptop:text-[30px] w-full text-center">
 									{item.title}
 								</h3>
 								<p class="text-justify">{item.description}</p>
@@ -53,6 +53,10 @@ const heroImg = data.home["hero"].image
 								<div class="tablet:justify-center flex w-full justify-center gap-5">
 									<CallToAction href="/contact">Enroll Now</CallToAction>
 								</div>
+
+								<p class="mt-2 text-center text-[13px] text-gray-600 italic">
+									*Individualized Payment Plan available upon request.
+								</p>
 							</div>
 						</div>
 					</div>

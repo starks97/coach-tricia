@@ -4,20 +4,28 @@ import data from "../../data.json"
 const image = data["home"].coaching_info.image
 
 import HeroWrapper from "../HeroWrapper.astro"
+
+const { title, description, subtitle } = data.contact["hero"]
 ---
 
-<HeroWrapper img={image} class="tablet:flex-row-reverse">
+<HeroWrapper img={image}>
 	<h1
-		class="font-blackstone text-hero_title_mobile text-hero_color2 tablet:text-left tablet:text-hero_title laptop:text-8xl text-center text-7xl text-black"
+		class="font-blackstone tablet:text-left tablet:text-size-8 laptop:text-[4rem] text-light-rose text-center text-[3rem] font-light opacity-0"
+		:class="intersect ? 'animate-fade-up animate-ease-in-out  animate-delay-200 ' : 'opacity-0'"
 	>
-		let's chat
+		{title}
 	</h1>
-	<h5
-		class="font-prata text-custom_title tablet:text-left tablet:text-custom_subtitle laptop:text-custom_subtitle2 my-5 text-center text-2xl font-normal"
+
+	<h2
+		class="font-prata laptop:text-left tablet:text-size-5 laptop:text-size-6 text-justify text-[2rem] opacity-0"
+		:class="intersect ? 'animate-fade-left animate-ease-in-out  animate-delay-300 ' : 'opacity-0'"
 	>
-		Ready to chat about your business? I'd love to get to know you and your needs!
-	</h5>
-	<p class="font-tajawal tablet:text-left w-full text-center text-xl">
-		I'm here to help take you to that next level you've been dreaming about!
-	</p>
+		<i class="font-italic">{subtitle} </i>
+		<p
+			class="font-tajawal tablet:text-left text-justify text-[20px] opacity-0"
+			:class="intersect ? 'animate-fade-left animate-ease-in-out  animate-delay-300 ' : 'opacity-0'"
+		>
+			{description}
+		</p>
+	</h2>
 </HeroWrapper>

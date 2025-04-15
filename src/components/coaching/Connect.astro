@@ -1,5 +1,7 @@
 ---
+import data from "../../data.json"
 import CallToAction from "../CallToAction.astro"
+const { title, description, subtitle } = data.coaching["connect"]
 ---
 
 <section
@@ -31,15 +33,13 @@ import CallToAction from "../CallToAction.astro"
 				<h5
 					class="font-prata text-size-5 tablet:text-size-6 laptop:text-size-7 tablet:text-left text-center text-3xl"
 				>
-					Excited to get started? Me too!
+					{title}
 				</h5>
 				<p class="font-tajawal text-light-rose tablet:text-size-5 laptop:text-3xl text-xl">
-					Let's connect and discuss how best I can serve you.
+					{subtitle}
 				</p>
 				<span class="font-tajawal tablet:text-lg text-size-3">
-					Let’s talk about what’s concerning you most and the thoughts that are keeping you up at
-					night. Share with me “the story” and how it unfolded, and let me help you to put the
-					pieces back together again.
+					{description}
 				</span>
 
 				<CallToAction href="/contact" slot="cta">30-minutes Free Consultation</CallToAction>

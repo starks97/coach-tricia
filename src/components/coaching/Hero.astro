@@ -1,8 +1,9 @@
 ---
 import data from "../../data.json"
 import HeroWrapper from "../HeroWrapper.astro"
+import ReplaceTarget from "../ReplaceTarget.astro"
 
-const { title, subtitle, image } = data.coaching["hero"]
+const { title, subtitle, image, description } = data.coaching["hero"]
 ---
 
 <HeroWrapper img={image}>
@@ -23,8 +24,10 @@ const { title, subtitle, image } = data.coaching["hero"]
 		class="font-tajawal tablet:text-left laptop:text-2xl text-size-3 text-justify opacity-0"
 		:class="intersect ? 'animate-fade-left animate-ease-in-out  animate-delay-300 ' : 'opacity-0'"
 	>
-		We’ll spend an hour once a week for twelve weeks in a private one-on-one session learning how to
-		live your happy <span class="font-tajawal text-light-rose font-bold">even</span> after life and exploring
-		new beginnings.
+		<ReplaceTarget
+			target="even"
+			str={description}
+			className="font-tajawal text-light-rose font-bold"
+		/>
 	</p>
 </HeroWrapper>

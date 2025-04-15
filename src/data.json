@@ -46,12 +46,13 @@
     "hero": {
       "title": "Work With Tricia",
       "subtitle": "You’ve come to the right place and I’m glad you’re here. Let’s change your life for the better",
+      "description": "We’ll spend an hour once a week for twelve weeks in a private one-on-one session learning how to live your happy even after life and exploring new beginnings.",
       "image": "/images/coach_hero.jpg"
     },
     "guide": {
       "title": "Conscious Uncoupling",
       "subtitle": "5 Steps To Living Happily",
-      "description": "A powerful 12-Week Course, the 5 Steps of my Conscious Uncoupling Coaching Program, offers you the roadmap for how to turn the pain of your breakup into a genuine opportunity to recreate your life in a bigger and better way. This deeply personal approach will guide you through the devastating storm of the loss of love to finding emotional freedom, reclaiming your power and finally to gettingyour life back on track!!",
+      "description": "A powerful 12-Week Course, the 5 Steps of my Conscious Uncoupling Coaching Program, offers you the roadmap for how to turn the pain of your breakup into a genuine opportunity to recreate your life in a bigger and better way. This deeply personal approach will guide you through the devastating storm of the loss of love to finding emotional freedom, reclaiming your power and finally to getting your life back on track!!",
       "steps": [
         {
           "id": 1,
@@ -99,13 +100,18 @@
         "price": "$1750",
         "description": "3 months of 12 private one-on-one 60-minute sessions plus one 2-hourintensive via Zoom"
       }
-    ]
+    ],
+    "connect": {
+      "title": "Excited to get started? Me too!",
+      "subtitle": "Let's connect and discuss how best I can serve you.",
+      "description": "Let’s talk about what’s concerning you most and the thoughts that are keeping you up at night. Share with me “the story” and how it unfolded, and let me help you to put the pieces back together again."
+    }
   },
   "contact": {
     "hero": {
       "title": "let's chat",
-      "subtitle": "Ready to chat about your business? I'd love to get to know you and your needs!",
-      "description": "I'm here to help take you to that next level you've been dreaming about!"
+      "subtitle": "Ready to chat about your needs? I’d love to get to know you and find out more about you.",
+      "description": "I’m here to help take you to take that next step and to move into that next level that you’ve been dreaming about!"
     },
     "contact-form": [
       {
@@ -145,7 +151,7 @@
       "second": {
         "title": "Where I started",
         "description": "Making Food The Language of Love",
-        "content": "Before becoming a coach, I spent years as a professional chef, dedicated to making beautiful food and to creating warmth and connection around the table.My Italian parents and their culinary heritage contributed significantly to my love of all things having to do with food. Today, I bring that same sense of warmth and nourishment into my coaching, fostering an environment where my clients feel seen, supported, and encouraged to reach for a better, more fulfilling life. Just as a recipe, with the right ingredients and care, can be transformed into something amazing, we can transform our lives in the very same way after loss.",
+        "content": "Before becoming a coach, I spent years as a professional chef, dedicated to making beautiful food and to creating warmth and connection around the table. My Italian parents and their culinary heritage contributed significantly to my love of all things having to do with food. Today, I bring that same sense of warmth and nourishment into my coaching, fostering an environment where my clients feel seen, supported, and encouraged to reach for a better, more fulfilling life. Just as a recipe, with the right ingredients and care, can be transformed into something amazing, we can transform our lives in the very same way after loss.",
         "image": "/images/story2.jpg"
       }
     },
@@ -170,7 +176,11 @@
 
     "enough": {
       "title": "My 5-Step Journey to Freedom\n\n and Personal Power",
-      "about_course": "My approach blends intuitive and spiritual guidance with a proven,strategic 5-step process designed to help you reclaim your purpose and create a life that's even bigger and better than the one you're leaving behind.\n\nI know the pain and uncertainty that comes with the loss of a significant relationship. I've been there-standing at the edge of a breakthrough but unsure of my next steps. When I discovered the Conscious Uncoupling process, I took a leap of faith, left an unhappy marriage, and stepped into my personal power. That decision set me on a path of profound transformation.\n\nToday, I'm living an expanded, fulfilling life- entertaining in my beautiful home, traveling the world, embracing new cultures, and redefining my relationship with my former husband in a way that fosters respect and friendship. Trust me, you can make this shift in your life too!"
+      "about_course": "My approach blends intuitive and spiritual guidance with a proven, strategic 5-step process designed to help you reclaim your purpose and create a life that's even bigger and better than the one you're leaving behind.\n\nI know the pain and uncertainty that comes with the loss of a significant relationship. I've been there-standing at the edge of a breakthrough but unsure of my next steps. When I discovered the Conscious Uncoupling process, I took a leap of faith, left an unhappy marriage, and stepped into my personal power. That decision set me on a path of profound transformation.\n\nToday, I'm living an expanded, fulfilling life- entertaining in my beautiful home, traveling the world, embracing new cultures, and redefining my relationship with my former husband in a way that fosters respect and friendship. Trust me, you can make this shift in your life too!"
     }
+  },
+  "footer": {
+    "title": "Transformational relationship coaching for women who are looking to create the life of their dreams.",
+    "subtitle": "Tricia Rago"
   }
 }
