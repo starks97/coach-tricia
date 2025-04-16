@@ -7,7 +7,6 @@ import vercel from "@astrojs/vercel";
 
 import solidJs from "@astrojs/solid-js";
 
-import node from "@astrojs/node";
 
 // https://astro.build/config
 export default defineConfig({
@@ -15,9 +14,7 @@ export default defineConfig({
       plugins: [tailwindcss()],
     },
   integrations: [alpine(), solidJs()],
-  adapter: node({
-    mode: "standalone"
-  }),
+  adapter: vercel(),
   env: {
     schema: {
       RESEND_API_KEY: envField.string({context: "server", access: "secret" })
