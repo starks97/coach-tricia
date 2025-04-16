@@ -1,13 +1,11 @@
 ---
 import Icon from "../Icon.astro"
 import Wrapper from "../Wrapper.astro"
-import Testimonials from "./Testimonial.astro"
 
 import data from "../../data.json"
+import Carousel from "./Carousel"
 
-const title = data.home["user_pain_points"].tittle
-const subttitle = data.home["user_pain_points"].subtitle
-const list = data.home["user_pain_points"].pain_points
+const { title, subtitle, pain_points } = data.home["user_pain_points"]
 ---
 
 <Wrapper class="bg-light-gray tablet:grid-cols-2 grid grid-cols-1 items-center gap-5">
@@ -23,7 +21,7 @@ const list = data.home["user_pain_points"].pain_points
 			class="font-prata text-taupe tablet:text-3xl tablet:text-left text-center text-2xl opacity-0"
 			:class="intersect ? 'animate-fade-left animate-ease-in  animate-delay-200 ' : 'opacity-0'"
 		>
-			{subttitle}
+			{subtitle}
 		</h3>
 
 		<ul
@@ -31,7 +29,7 @@ const list = data.home["user_pain_points"].pain_points
 			:class="intersect ? 'animate-fade-left animate-ease-in  animate-delay-200 ' : 'opacity-0'"
 		>
 			{
-				list.map((item) => (
+				pain_points.map((item) => (
 					<li class="flex items-center gap-3">
 						<div class="flex h-[2em] items-center">
 							<Icon icon="x-mark" size="2em" color="#e89faa" />
@@ -45,6 +43,6 @@ const list = data.home["user_pain_points"].pain_points
 		</ul>
 	</div>
 	<aside class="tablet:justify-start flex justify-center">
-		<Testimonials />
+		<Carousel client:load />
 	</aside>
 </Wrapper>

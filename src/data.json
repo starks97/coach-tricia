@@ -7,18 +7,28 @@
       "image": "/images/tricia-hero3.webp"
     },
     "user_pain_points": {
-      "tittle": "You've just had the rug pulled out from under you, right? You want to move on but not sure how best to do so?",
+      "title": "You've just had the rug pulled out from under you, right? You want to move on but not sure how best to do so?",
       "subtitle": "Let me guess, right now you're...",
       "pain_points": [
         "Struggling with overwhelming emotions and the isolation that often accompanies them.",
         "Feeling you've lost a core part of your identity and purpose.",
         "Trying to figure out how to rebuild a life that feels whole and fulfilling."
       ],
-      "testimonials": [
+      "reviews": [
         {
           "title": "First Quote and Review",
           "quote": "Tricia is a compassionate and skilled therapist who has helped me navigate the emotional rollercoaster of grief and loss. She has a gift for helping people reconnect with their sense of self and purpose, and create a life that feels whole and fulfilling.",
           "author": "Jane Doe"
+        },
+        {
+          "title": "Second Quote and Review",
+          "quote": "Feeling you've lost a core part of your identity and purpose.",
+          "author": "Paco"
+        },
+        {
+          "title": "Third Quote and Review",
+          "quote": "Trying to figure out how to rebuild a life that feels whole and fulfilling.",
+          "author": "Maria"
         }
       ]
     },
