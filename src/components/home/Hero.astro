@@ -3,13 +3,10 @@ import data from "../../data.json"
 import CallToAction from "../CallToAction.astro"
 import HomeHero from "../HomeHero.astro"
 
-const subtitle = data.home["hero"].subtitle
-const title = data.home["hero"].title
-const description = data.home["hero"].description
-const heroImg = data.home["hero"].image
+const { title, subtitle, description, image } = data.home["hero"]
 ---
 
-<HomeHero image={heroImg}>
+<HomeHero image={image}>
 	<h1
 		slot="title"
 		class="hero_title opacity-0"

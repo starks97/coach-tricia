@@ -16,19 +16,19 @@
       ],
       "reviews": [
         {
-          "title": "First Quote and Review",
-          "quote": "Tricia is a compassionate and skilled therapist who has helped me navigate the emotional rollercoaster of grief and loss. She has a gift for helping people reconnect with their sense of self and purpose, and create a life that feels whole and fulfilling.",
-          "author": "Jane Doe"
+          "title": "The best coaching experience",
+          "quote": "I loved the feeling of working with Coach Tricia to find myself. Being rather dazed and confused after emerging from a difficult 30-year marriage, I vasn't sure that the timing was right, as I felt I needed time to breathe a little. I now realize that it was the best possible undertaking, as I had someone taking my hand and guiding me through all the dark spaces because they knew the way.",
+          "author": "Sandy from Johannesburg, South Africa"
         },
         {
           "title": "Second Quote and Review",
-          "quote": "Feeling you've lost a core part of your identity and purpose.",
-          "author": "Paco"
+          "quote": "Working with Tricia has been a transformative experience. Her compassion and expertise have guided me through the depths of grief and loss, helping me rediscover my sense of self and purpose. She has a remarkable ability to support healing and growth, and I’m truly grateful for the more whole and fulfilling life I’m building with her help.",
+          "author": "CEO Paco de Lucia"
         },
         {
           "title": "Third Quote and Review",
-          "quote": "Trying to figure out how to rebuild a life that feels whole and fulfilling.",
-          "author": "Maria"
+          "quote": "Tricia is an incredibly compassionate and insightful therapist. During one of the most difficult times in my life, she provided the support and guidance I needed to process my grief and begin healing. Her ability to help me reconnect with myself and find new meaning has been truly life-changing.",
+          "author": "Maria Antonieta de las Nieves"
         }
       ]
     },
@@ -120,8 +120,8 @@
   "contact": {
     "hero": {
       "title": "let's chat",
-      "subtitle": "Ready to chat about your needs? I’d love to get to know you and find out more about you.",
-      "description": "I’m here to help take you to take that next step and to move into that next level that you’ve been dreaming about!"
+      "subtitle": "Ready to chat?  I’d love to get to know you and find out more about your needs.",
+      "description": "Don’t let heartbreak define your future.  Take the first step—right now—to choosing a new path. A path of healing. A path of empowerment. A path to the life you truly deserve."
     },
     "contact-form": [
       {

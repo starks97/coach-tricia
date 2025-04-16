@@ -4,8 +4,7 @@ import CallToAction from "../CallToAction.astro"
 import Icon from "../Icon.astro"
 import Wrapper from "../Wrapper.astro"
 
-const title = data.home["benefits"].title
-const benefits = data.home["benefits"].benefits
+const { title, benefits } = data.home["benefits"]
 ---
 
 <Wrapper class="container flex flex-col items-center justify-center space-y-10">
