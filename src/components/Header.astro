@@ -6,13 +6,11 @@ const pathName = Astro.url.pathname
 ---
 
 <header
-	class={`tablet:px-12 tablet:py-5 laptop:px-16 laptop:py-5 flex items-center justify-evenly bg-[var(--color-cream)] px-10 py-5 ${pathName !== "/" ? "border-b-light-rose border-b-[2px]" : ""}`}
+	class={`tablet:px-12 tablet:py-5 laptop:px-16 laptop:py-5 flex items-center justify-between bg-[var(--color-cream)] px-10 py-5 ${pathName !== "/" ? "border-b-light-rose border-b-[2px]" : ""}`}
 >
-	<div class="flex w-full flex-col items-start gap-3">
+	<div class="flex flex-col gap-2">
 		<h1 class="font-blackstone text-5xl">Tricia Rago</h1>
-		<p class="font-figtree leading-regular text-sm font-thin uppercase">
-			Conscious Relationship Coach
-		</p>
+		<p class="font-figtree text-sm font-thin uppercase">Conscious Relationship Coach</p>
 	</div>
 
 	<menu-button>
@@ -26,31 +24,16 @@ const pathName = Astro.url.pathname
 			</button>
 		</template>
 	</menu-button>
-	<noscript>
-		<ul class="nav-items">
-			{
-				menuPath.map(([to, rout], index) => (
-					<li class="group transition duration-300 ease-in-out">
-						<a
-							href={to}
-							class="font-tajawal text-size-2 group-hover:text-terracotta tracking-widest text-black uppercase transition duration-300 ease-in-out group-hover:scale-105"
-						>
-							{rout}
-						</a>
-					</li>
-				))
-			}
-		</ul>
-	</noscript>
 
-	<nav class="tablet:flex hidden w-full justify-end" id="menu-content">
-		<ul class="tablet:flex-row tablet:gap-5 laptop:gap-10 flex flex-col gap-5">
+	<!-- Desktop navigation -->
+	<nav class="tablet:flex hidden justify-end" id="menu-desktop">
+		<ul class="laptop:gap-10 flex flex-row gap-5">
 			{
-				menuPath.map(([to, rout], index) => (
+				menuPath.map(([to, rout]) => (
 					<li class="group transition duration-300 ease-in-out">
 						<a
 							href={to}
-							class="font-tajawal text-size-2 group-hover:text-terracotta tracking-widest text-black uppercase transition duration-300 ease-in-out group-hover:scale-105"
+							class="font-tajawal text-size-2 group-hover:text-terracotta tracking-widest text-black uppercase transition group-hover:scale-105"
 						>
 							{rout}
 						</a>
@@ -61,6 +44,24 @@ const pathName = Astro.url.pathname
 	</nav>
 </header>
 
+<!-- Mobile dropdown nav, shown below the header -->
+<nav class="tablet:hidden hidden bg-[var(--color-cream)] px-10 py-4" id="menu-mobile">
+	<ul class="flex flex-col gap-5">
+		{
+			menuPath.map(([to, rout]) => (
+				<li class="group transition duration-300 ease-in-out">
+					<a
+						href={to}
+						class="font-tajawal text-size-2 group-hover:text-terracotta tracking-widest text-black uppercase transition group-hover:scale-105"
+					>
+						{rout}
+					</a>
+				</li>
+			))
+		}
+	</ul>
+</nav>
+
 <script>
 	class MenuButton extends HTMLElement {
 		constructor() {
@@ -69,23 +70,31 @@ const pathName = Astro.url.pathname
 			this.appendChild(this.querySelector("template").content.cloneNode(true))
 			const btn = this.querySelector("button")
 
-			const menu = document.getElementById("menu-content")
-			menu.classList.add("hidden")
+			const menuMobile = document.getElementById("menu-mobile")
+			menuMobile.classList.add("hidden")
 
-			const setExpanded = (expand: boolean) => {
+			const setExpanded = (expand) => {
 				btn.setAttribute("aria-expanded", expand ? "true" : "false")
-				menu.classList.toggle("hidden", !expand)
+				menuMobile.classList.toggle("hidden", !expand)
 			}
 
-			btn.addEventListener("click", () => setExpanded(menu.classList.contains("hidden")))
+			btn.addEventListener("click", () => {
+				const isHidden = menuMobile.classList.contains("hidden")
+				setExpanded(isHidden)
+			})
 
-			const handleViewports = (e: MediaQueryList | MediaQueryListEvent) => {
-				setExpanded(e.matches)
-				btn.hidden = e.matches
+			const handleViewports = (e) => {
+				if (e.matches) {
+					menuMobile.classList.add("hidden")
+					btn.hidden = true
+				} else {
+					btn.hidden = false
+				}
 			}
-			const mediaQueries = window.matchMedia("(min-width: 50em)")
-			handleViewports(mediaQueries)
-			mediaQueries.addEventListener("change", handleViewports)
+
+			const mediaQuery = window.matchMedia("(min-width: 50em)")
+			handleViewports(mediaQuery)
+			mediaQuery.addEventListener("change", handleViewports)
 		}
 	}
 	customElements.define("menu-button", MenuButton)
