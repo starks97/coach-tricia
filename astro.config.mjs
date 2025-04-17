@@ -7,7 +7,6 @@ import vercel from "@astrojs/vercel";
 
 import solidJs from "@astrojs/solid-js";
 
-
 // https://astro.build/config
 export default defineConfig({
   vite: {
@@ -17,7 +16,8 @@ export default defineConfig({
   adapter: vercel(),
   env: {
     schema: {
-      RESEND_API_KEY: envField.string({context: "server", access: "secret" })
+      RESEND_API_KEY: envField.string({context: "server", access: "secret" }),
+      MONGO_DB_URI: envField.string({context: "server", access: "secret" }),
     }
   },
 })
