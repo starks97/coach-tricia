@@ -23,11 +23,11 @@ export default class MongoDB {
 	}
 
 	async connect(): Promise<Db> {
-		if (!this.client.connect()) {
+		if (!this.db) {
 			await this.client.connect()
-			this.db = this.client.db("CoachTricia")
+			this.db = this.client.db("pages")
 		}
-		return this.db
+		return this.db!
 	}
 
 	async disconnect(): Promise<void> {

@@ -67,25 +67,28 @@ const pathName = Astro.url.pathname
 		constructor() {
 			super()
 
-			this.appendChild(this.querySelector("template").content.cloneNode(true))
+			this.appendChild(this.querySelector("template")!.content.cloneNode(true))
+
 			const btn = this.querySelector("button")
 
 			const menuMobile = document.getElementById("menu-mobile")
-			menuMobile.classList.add("hidden")
+			menuMobile!.classList.add("hidden")
 
-			const setExpanded = (expand) => {
+			if (!btn || !menuMobile) return
+
+			const setExpanded = (expand: boolean) => {
 				btn.setAttribute("aria-expanded", expand ? "true" : "false")
-				menuMobile.classList.toggle("hidden", !expand)
+				menuMobile!.classList.toggle("hidden", !expand)
 			}
 
 			btn.addEventListener("click", () => {
-				const isHidden = menuMobile.classList.contains("hidden")
+				const isHidden = menuMobile!.classList.contains("hidden")
 				setExpanded(isHidden)
 			})
 
-			const handleViewports = (e) => {
+			const handleViewports = (e: MediaQueryListEvent | MediaQueryList) => {
 				if (e.matches) {
-					menuMobile.classList.add("hidden")
+					menuMobile!.classList.add("hidden")
 					btn.hidden = true
 				} else {
 					btn.hidden = false

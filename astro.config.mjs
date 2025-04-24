@@ -6,6 +6,7 @@ import alpine from "@astrojs/alpinejs"
 import vercel from "@astrojs/vercel";
 
 import solidJs from "@astrojs/solid-js";
+import path from "path";
 
 // https://astro.build/config
 export default defineConfig({
@@ -20,4 +21,7 @@ export default defineConfig({
       MONGO_DB_URI: envField.string({context: "server", access: "secret" }),
     }
   },
+
+  output: "server"
+
 })
