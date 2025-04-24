@@ -55,6 +55,7 @@ const seedData = async () => {
 						"Heal the old patterns that kept you in toxic relationships and break free ready to create healthier, happier connections.",
 						"Move beyond feeling stuck or defeated, finding renewed confidence and feeling empowered to create a fresh vision for your future.",
 					],
+					image: "/images/benefits.jpg",
 				},
 				coaching_info: {
 					title: "Coaching Info",
@@ -73,7 +74,7 @@ const seedData = async () => {
 			},
 		}
 
-		await mongoService.insertOne(data)
+		//await mongoService.insertOne(data)
 		console.log("Seed data inserted successfully.")
 	} catch (error) {
 		console.log(error)
