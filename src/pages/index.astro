@@ -12,8 +12,10 @@ const data = await getPage<HomePageZodSchemaType>("home_page_id", "home", HomePa
 
 const heroPage = data.sections.hero
 const coachingData = data.sections.coaching_info
+const benefitsData = data.sections.benefits
+const userPainPointsData = data.sections.user_pain_points
 
-Astro.response.headers.set("Cache-Control", "public, s-maxage=60, stale-while-revalidate=3600")
+Astro.response.headers.set("Cache-Control", "public, s-maxage=300, stale-while-revalidate=3600")
 ---
 
 <Layout title="Tricia Rago Coaching" description="hello to tricia coaching" image={heroPage.image}>
@@ -24,8 +26,17 @@ Astro.response.headers.set("Cache-Control", "public, s-maxage=60, stale-while-re
 			title={heroPage.title}
 			subtitle={heroPage.subtitle}
 		/>
-		<UserPainPoints />
-		<Benefits />
+		<UserPainPoints
+			title={userPainPointsData.title}
+			reviews={userPainPointsData.reviews}
+			pain_points={userPainPointsData.pain_points}
+			subtitle={userPainPointsData.subtitle}
+		/>
+		<Benefits
+			title={benefitsData.title}
+			image={benefitsData.image}
+			benefits={benefitsData.benefits}
+		/>
 		<CoachingInfo
 			image={coachingData.image}
 			title={coachingData.title}

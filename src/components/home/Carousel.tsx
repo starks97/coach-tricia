@@ -2,11 +2,7 @@ import { createSignal, onCleanup, onMount } from "solid-js"
 
 import type { Review } from "../../types"
 
-import data from "../../data.json"
-
-export default function Carousel() {
-	const reviews: Review[] = data.home["user_pain_points"].reviews
-
+export default function Carousel({ reviews }: { reviews: Review[] }) {
 	const [index, setIndex] = createSignal(0)
 	const [fade, setFade] = createSignal(true)
 

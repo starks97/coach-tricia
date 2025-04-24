@@ -2,10 +2,18 @@
 import Icon from "../Icon.astro"
 import Wrapper from "../Wrapper.astro"
 
-import data from "../../data.json"
 import Carousel from "./Carousel"
 
-const { title, subtitle, pain_points } = data.home["user_pain_points"]
+import type { Review } from "../../types"
+
+interface Props {
+	title: string
+	subtitle: string
+	pain_points: string[]
+	reviews: Review[]
+}
+
+const { title, subtitle, pain_points, reviews } = Astro.props as Props
 ---
 
 <Wrapper class="bg-light-gray tablet:grid-cols-2 grid grid-cols-1 items-center gap-5">
@@ -43,6 +51,6 @@ const { title, subtitle, pain_points } = data.home["user_pain_points"]
 		</ul>
 	</div>
 	<aside class="tablet:justify-start flex justify-center">
-		<Carousel client:load />
+		<Carousel reviews={reviews} client:load />
 	</aside>
 </Wrapper>
