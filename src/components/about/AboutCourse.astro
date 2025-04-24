@@ -1,11 +1,16 @@
 ---
-import data from "../../data.json"
 import CallToAction from "../CallToAction.astro"
 import Wrapper from "../Wrapper.astro"
 
-const aboutCourse = data["about"]["enough"]
+interface Props {
+  title: string;
+  aboutCourse: string;
+}
 
-const paragraph = aboutCourse.about_course.split("\n\n")
+const { title, aboutCourse } = Astro.props as Props;
+
+
+const paragraph = aboutCourse.split("\n\n")
 ---
 
 <Wrapper class="container mt-10 flex w-full flex-col items-center justify-center space-y-10 px-5">
@@ -26,7 +31,7 @@ const paragraph = aboutCourse.about_course.split("\n\n")
 				class="font-prata tablet:text-[2.3rem] laptop:text-left text-justify text-[1.85rem] opacity-0"
 				:class="intersect ? 'animate-fade-up animate-ease-in-out  animate-delay-100 ' : 'opacity-0'"
 			>
-				{aboutCourse.title}
+				{title}
 			</h3>
 
 			{

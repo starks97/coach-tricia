@@ -1,25 +1,30 @@
 ---
-
+const travel =
+	"https://res.cloudinary.com/dyrtdhsl0/image/upload/v1745522763/coach%20tricia/travel_gsnhkm.webp"
+const beach =
+	"https://res.cloudinary.com/dyrtdhsl0/image/upload/v1745522773/coach%20tricia/beach_ikx8gl.webp"
+const coffee =
+	"https://res.cloudinary.com/dyrtdhsl0/image/upload/v1745522756/coach%20tricia/coffee_w7uywe.webp"
 ---
 
 <div class="flex w-full flex-col gap-4">
 	<div class="tablet:flex-row flex w-full items-end gap-4">
 		<div class="tablet:w-1/3">
 			<img
-				src="/images/coffee.jpg"
+				src={coffee}
 				alt="gallery image"
 				class="tablet:h-[200px] laptop:h-[300px] w-full object-cover"
 			/>
 		</div>
 		<div class="tablet:w-3/6">
 			<img
-				src="/images/travel.jpg"
+				src={travel}
 				alt="gallery image"
 				class="tablet:h-[300px] laptop:h-[400px] w-full object-cover"
 			/>
 		</div>
 	</div>
 	<div class="w-5/6">
-		<img src="/images/beach.jpg" alt="gallery image" class="h-64 w-full object-cover" />
+		<img src={beach} alt="gallery image" class="h-64 w-full object-cover" />
 	</div>
 </div>

@@ -4,11 +4,28 @@ import FunFacts from "../components/about/FunFacts.astro"
 import Hero from "../components/about/Hero.astro"
 import Story from "../components/about/Story.astro"
 import Layout from "../layouts/Layout.astro"
+
+import { type AboutPageZodSchemaType, AboutPageSchema } from "../lib/models/about.ts"
+import getPage from "../lib/queries/getPage.ts"
+
+const data = await getPage<AboutPageZodSchemaType>("about_page_id", "about", AboutPageSchema)
+
+const heroData = data.sections.hero
+const storyData = data.sections.story
+const funFactsData = data.sections["fun-facts"]
+const aboutCourseData = data.sections.enough
+
+Astro.response.headers.set("Cache-Control", "public, s-maxage=300, stale-while-revalidate=3600")
 ---
 
 <Layout title="About | Tricia Rago Coaching" description="about tricia rago" image="example.jpg">
-	<Hero />
-	<Story />
-	<FunFacts />
-	<AboutCourse />
+	<Hero
+		title={heroData.title}
+		description={heroData.description}
+		image={heroData.image}
+		subtitle={heroData.subtitle}
+	/>
+	<Story first={storyData.first} second={storyData.second} />
+	<FunFacts funFacts={funFactsData} />
+	<AboutCourse title={aboutCourseData.title} aboutCourse={aboutCourseData.about_course} />
 </Layout>

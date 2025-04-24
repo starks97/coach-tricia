@@ -1,7 +1,12 @@
 ---
-import data from "../../data.json"
+interface Props {
+	title: string
+	description: string
+	image: string
+	subtitle: string
+}
 
-const { title, description, image, paragraph } = data["about"].hero
+const { title, description, image, subtitle } = Astro.props as Props
 
 import HeroWrapper from "../HeroWrapper.astro"
 ---
@@ -17,12 +22,12 @@ import HeroWrapper from "../HeroWrapper.astro"
 		class="font-prata laptop:text-left tablet:text-size-5 laptop:text-size-6 text-justify text-[2rem] opacity-0"
 		:class="intersect ? 'animate-fade-left animate-ease-in-out  animate-delay-300 ' : 'opacity-0'"
 	>
-		<i class="font-italic">{description}</i>
+		<i class="font-italic">{subtitle}</i>
 	</h2>
 	<p
 		class="font-tajawal tablet:text-left text-justify text-[20px] opacity-0"
 		:class="intersect ? 'animate-fade-left animate-ease-in-out  animate-delay-300 ' : 'opacity-0'"
 	>
-		{paragraph}
+		{description}
 	</p>
 </HeroWrapper>

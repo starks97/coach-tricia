@@ -1,8 +1,13 @@
 ---
-import data from "../../data.json"
+import { type Story } from "../../types"
 import ReplaceTarget from "../ReplaceTarget.astro"
 
-const story = data["about"].story
+interface Props {
+	first: Story["first"]
+	second: Story["second"]
+}
+
+const { first, second } = Astro.props as Props
 ---
 
 <section
@@ -16,7 +21,7 @@ const story = data["about"].story
 	>
 		<div>
 			<img
-				src={story["first"].image}
+				src={first.image}
 				alt="hero"
 				class="laptop:h-[450px] laptop:w-[400px] h-96 w-[400px] object-cover opacity-0"
 				:class="intersect ? 'animate-fade-right animate-ease-in  animate-delay-200 ' : 'opacity-0'"
@@ -27,7 +32,7 @@ const story = data["about"].story
 				class="font-prata laptop:text-left text-size-6 tablet:text-size-7 text-center opacity-0"
 				:class="intersect ? 'animate-fade-left animate-ease-in  animate-delay-200 ' : 'opacity-0'"
 			>
-				<i class="font-italic">{story["first"].title}</i>
+				<i class="font-italic">{first.title}</i>
 			</h1>
 			<p
 				class="font-tajawal text-size-2 text-justify text-[#515151] opacity-0"
@@ -35,7 +40,7 @@ const story = data["about"].story
 			>
 				<ReplaceTarget
 					target={"Conscious Uncoupling: 5 Steps to Living Happily Even After"}
-					str={story["first"].content.first}
+					str={first.content.first}
 					className="font-bold"
 				/>
 			</p>
@@ -43,31 +48,31 @@ const story = data["about"].story
 				class="font-tajawal text-size-2 text-justify text-[#515151] opacity-0"
 				:class="intersect ? 'animate-fade animate-ease-in-out  animate-delay-400 ' : 'opacity-0'"
 			>
-				{story["first"].content.second}
+				{first.content.second}
 			</p>
 			<p
 				class="font-tajawal text-taupe text-size-2 text-justify font-bold tracking-widest uppercase opacity-0"
 				:class="intersect ? 'animate-fade animate-ease-in-out  animate-delay-400 ' : 'opacity-0'"
 			>
-				{story["first"].content.third}
+				{first.content.third}
 			</p>
 		</div>
 		<div class="tablet:max-w-lg laptop:order-1 order-2 space-y-5 px-5">
 			<h1 class="font-tajawal text-taupe text-size-5 text-center font-normal uppercase">
-				{story["second"].title}
+				{second.title}
 			</h1>
 			<h4 class="font-prata text-size-6 tablet:text-size-7 text-center">
-				<i class="font-italic text-justify">{story["second"].description}</i>
+				<i class="font-italic text-justify">{second.description}</i>
 			</h4>
 			<p class="font-tajawal tablet:text-left text-justify text-[16px] text-[#515151]">
-				{story["second"].content}
+				{second.content}
 			</p>
 		</div>
 		<div class="laptop:order-2 order-1">
 			<img
-				src={story["second"].image}
+				src={second.image}
 				alt="hero"
-				class="laptop:h-[450px] laptop:w-[400px] h-96 w-[400px] object-cover"
+				class="laptop:h-[450px] laptop:w-[400px] h-96 w-[400px]"
 				:class="intersect ? 'animate-fade-left animate-ease-in-out  animate-delay-400 ' : 'opacity-0'"
 			/>
 		</div>

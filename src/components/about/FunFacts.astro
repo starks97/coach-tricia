@@ -1,9 +1,13 @@
 ---
 import Gallery from "./Gallery.astro"
 
-import data from "../../data.json"
+import { type FunFact } from "../../types"
 
-const funFacts = data["about"]["fun-facts"]
+interface Props {
+	funFacts: FunFact[]
+}
+
+const { funFacts } = Astro.props as Props
 ---
 
 <div
@@ -18,7 +22,7 @@ const funFacts = data["about"]["fun-facts"]
 	>
 		<div class="justify-self-end">
 			<h1
-				class="font-blackstone tablet:text-start text-size-7 tablet:text-size-6 laptop:text-[4rem] tablet:hidden text-taupe mb-10 w-full text-center font-bold"
+				class="font-blackstone tablet:text-start text-size-7 tablet:text-size-6 laptop:text-[4.5rem] tablet:hidden text-taupe mb-10 w-full text-center font-bold"
 			>
 				fun facts about me!
 			</h1>
@@ -26,7 +30,7 @@ const funFacts = data["about"]["fun-facts"]
 		</div>
 		<div class="mt-5 flex w-full flex-col">
 			<h1
-				class="font-blackstone tablet:text-start text-size-6 tablet:text-size-6 laptop:text-[3.5rem] tablet:[display:flex] text-taupe mb-10 hidden w-full text-center font-bold"
+				class="font-blackstone tablet:text-start text-size-6 tablet:text-size-6 laptop:text-[4.5rem] tablet:[display:flex] text-taupe mb-10 hidden w-full text-center font-bold"
 			>
 				fun facts about me!
 			</h1>

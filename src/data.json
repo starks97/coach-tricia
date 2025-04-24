@@ -144,8 +144,8 @@
   "about": {
     "hero": {
       "title": "Let's Get Personal",
-      "description": "Are you ready to make a shift? It's time to dream big.",
-      "paragraph": "When life breaks you, it’s because you are ready to be put back together differently. Every piece of you that feels shattered, is a piece that will find a new place, a new purpose, a new meaning. Trust that the cracks are where the light gets in.",
+      "subtitle": "Are you ready to make a shift? It's time to dream big.",
+      "description": "When life breaks you, it’s because you are ready to be put back together differently. Every piece of you that feels shattered, is a piece that will find a new place, a new purpose, a new meaning. Trust that the cracks are where the light gets in.",
       "image": "/images/about-tricia.jpg"
     },
     "story": {
