@@ -6,11 +6,13 @@ interface Props {
 	title: string
 	description: string
 	image: string
+	keywords: string[]
 }
 
-//const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const { title, description, image, keywords = [] } = Astro.props
 
-const { title, description, image } = Astro.props
+const keywordsString = keywords.join(', ')
+
 ---
 
 <!-- Global Metadata -->
@@ -42,12 +44,15 @@ const { title, description, image } = Astro.props
 
 <!-- Canonical URL -->
 
+
+
 <!-- Primary Meta Tags -->
 <title>{title}</title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />
 
 <!-- keywords -->
+<meta name="keywords" content={keywordsString} />
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
@@ -62,6 +67,21 @@ const { title, description, image } = Astro.props
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
+
+
+
+<!-- JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": {title},
+  "description": {description},
+  "url": {Astro.url},
+  "image": {new URL(image, Astro.url)}
+}
+</script>
+
 
 <!-- Alpine Plugins -->
 <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.x.x/dist/cdn.min.js"></script>

@@ -5,9 +5,10 @@ import Wrapper from "../Wrapper.astro"
 interface Props {
   title: string;
   aboutCourse: string;
+  image: string;
 }
 
-const { title, aboutCourse } = Astro.props as Props;
+const { title, aboutCourse, image } = Astro.props as Props;
 
 
 const paragraph = aboutCourse.split("\n\n")
@@ -20,7 +21,7 @@ const paragraph = aboutCourse.split("\n\n")
 		<!-- Image Section -->
 
 		<img
-			src="/images/hero.jpg"
+			src={image}
 			alt="hero"
 			class="laptop:h-[550px] laptop:w-[470px] object-coverp h-96 w-[400px]"
 		/>

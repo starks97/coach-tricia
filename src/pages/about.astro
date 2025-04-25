@@ -7,8 +7,11 @@ import Layout from "../layouts/Layout.astro"
 
 import { type AboutPageZodSchemaType, AboutPageSchema } from "../lib/models/about.ts"
 import getPage from "../lib/queries/getPage.ts"
+import getSEO from "../lib/queries/getSEO.ts"
 
 const data = await getPage<AboutPageZodSchemaType>("about_page_id", "about", AboutPageSchema)
+
+const seoData = await getSEO("seo_id", "seo", "about")
 
 const heroData = data.sections.hero
 const storyData = data.sections.story
@@ -18,7 +21,12 @@ const aboutCourseData = data.sections.enough
 Astro.response.headers.set("Cache-Control", "public, s-maxage=300, stale-while-revalidate=3600")
 ---
 
-<Layout title="About | Tricia Rago Coaching" description="about tricia rago" image="example.jpg">
+<Layout
+	title={seoData!.title}
+	description={seoData!.description}
+	image={heroData.image}
+	keywords={seoData!.keywords}
+>
 	<Hero
 		title={heroData.title}
 		description={heroData.description}
@@ -27,5 +35,9 @@ Astro.response.headers.set("Cache-Control", "public, s-maxage=300, stale-while-r
 	/>
 	<Story first={storyData.first} second={storyData.second} />
 	<FunFacts funFacts={funFactsData} />
-	<AboutCourse title={aboutCourseData.title} aboutCourse={aboutCourseData.about_course} />
+	<AboutCourse
+		title={aboutCourseData.title}
+		aboutCourse={aboutCourseData.about_course}
+		image={aboutCourseData.image}
+	/>
 </Layout>

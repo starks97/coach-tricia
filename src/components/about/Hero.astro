@@ -13,10 +13,10 @@ import HeroWrapper from "../HeroWrapper.astro"
 
 <HeroWrapper img={image} class="tablet:flex-row-reverse">
 	<h1
-		class="font-blackstone tablet:text-left tablet:text-size-8 laptop:text-[4rem] text-light-rose text-center text-[3rem] font-light opacity-0"
+		class="font-blackstone tablet:text-left tablet:text-size-8 laptop:text-[4.5rem] text-light-rose text-center text-[3rem] font-light opacity-0"
 		:class="intersect ? 'animate-fade-up animate-ease-in-out  animate-delay-200 ' : 'opacity-0'"
 	>
-		{title}
+		{title.toLowerCase()}
 	</h1>
 	<h2
 		class="font-prata laptop:text-left tablet:text-size-5 laptop:text-size-6 text-justify text-[2rem] opacity-0"

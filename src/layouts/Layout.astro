@@ -3,9 +3,10 @@ interface Props {
 	title: string
 	description: string
 	image: string
+	keywords: string[]
 }
 
-const { title, description, image } = Astro.props
+const { title, description, image, keywords } = Astro.props
 
 import { ClientRouter } from "astro:transitions"
 import BaseHead from "../components/BaseHead.astro"
@@ -19,7 +20,7 @@ import "../styles/global.css"
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title={title} description={description} image={image} />
+		<BaseHead title={title} description={description} image={image} keywords={keywords} />
 		<ClientRouter />
 	</head>
 	<body>

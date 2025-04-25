@@ -1,11 +1,36 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro"
 
+import ContactLayout from "../components/contact/ContactLayout.astro"
 import Hero from "../components/contact/Hero.astro"
-import ContactLayout from "../components/contact/ContactLayout.astro";
 
+import { type ContactPageZodSchemaType, ContactPageSchema } from "../lib/models/contact.ts"
+import getPage from "../lib/queries/getPage.ts"
+import getSEO from "../lib/queries/getSEO.ts"
+
+const data = await getPage<ContactPageZodSchemaType>(
+	"contact_page_id",
+	"contact",
+	ContactPageSchema
+)
+
+const seoData = await getSEO("seo_id", "seo", "coaching")
+const heroData = data.sections.hero
+
+Astro.response.headers.set("Cache-Control", "public, s-maxage=300, stale-while-revalidate=3600")
 ---
-<Layout title='Contact | Tricia Rago Coaching' description='contact to Tricia Rago' image='example.jpg'>
-    <Hero/>
-    <ContactLayout/>
+
+<Layout
+	title={seoData!.title}
+	description={seoData!.description}
+	image={heroData.image}
+	keywords={seoData!.keywords}
+>
+	<Hero
+		title={heroData.title}
+		description={heroData.description}
+		image={heroData.image}
+		subtitle={heroData.subtitle}
+	/>
+	<ContactLayout />
 </Layout>

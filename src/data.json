@@ -102,44 +102,31 @@
         "id": 1,
         "title": "90-Day Coaching Package Includes:",
         "price": "$1500",
-        "description": "3 months of 12 private one-on-one 60-minute sessions via Zoom"
+        "description": "3 months of 12 private one-on-one 60-minute sessions via Zoom",
+        "image": "/images/step4.jpg"
       },
       {
         "id": 2,
         "title": "90-Day Coaching Package Plus One 2-Hour Jump Start Intensive Includes:",
         "price": "$1750",
-        "description": "3 months of 12 private one-on-one 60-minute sessions plus one 2-hourintensive via Zoom"
+        "description": "3 months of 12 private one-on-one 60-minute sessions plus one 2-hour intensive via Zoom",
+        "image": "/images/step4.jpg"
       }
     ],
     "connect": {
       "title": "Excited to get started? Me too!",
       "subtitle": "Let's connect and discuss how best I can serve you.",
-      "description": "Let’s talk about what’s concerning you most and the thoughts that are keeping you up at night. Share with me “the story” and how it unfolded, and let me help you to put the pieces back together again."
+      "description": "Let’s talk about what’s concerning you most and the thoughts that are keeping you up at night. Share with me “the story” and how it unfolded, and let me help you to put the pieces back together again.",
+      "image": "/images/step4.jpg"
     }
   },
   "contact": {
     "hero": {
       "title": "let's chat",
       "subtitle": "Ready to chat?  I’d love to get to know you and find out more about your needs.",
-      "description": "Don’t let heartbreak define your future.  Take the first step—right now—to choosing a new path. A path of healing. A path of empowerment. A path to the life you truly deserve."
-    },
-    "contact-form": [
-      {
-        "id": 1,
-        "title": "Hours",
-        "subtitle": "Monday-Thursday | 9am - 3pm CTS"
-      },
-      {
-        "id": 2,
-        "title": "Location",
-        "subtitle": "6 Red Barn Road, Riverhead, NY, 11901"
-      },
-      {
-        "id": 3,
-        "title": "Email",
-        "subtitle": "triciarago@gmail.com"
-      }
-    ]
+      "description": "Don’t let heartbreak define your future.  Take the first step—right now—to choosing a new path. A path of healing. A path of empowerment. A path to the life you truly deserve.",
+      "image": "/images/step4.jpg"
+    }
   },
   "about": {
     "hero": {

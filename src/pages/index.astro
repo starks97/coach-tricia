@@ -6,9 +6,12 @@ import UserPainPoints from "../components/home/UserPainPoints.astro"
 import Layout from "../layouts/Layout.astro"
 
 import { type HomePageZodSchemaType, HomePageSchema } from "../lib/models/home.ts"
+
 import getPage from "../lib/queries/getPage.ts"
+import getSEO from "../lib/queries/getSEO.ts"
 
 const data = await getPage<HomePageZodSchemaType>("home_page_id", "home", HomePageSchema)
+const seoData = await getSEO("seo_id", "seo", "home")
 
 const heroPage = data.sections.hero
 const coachingData = data.sections.coaching_info
@@ -18,7 +21,12 @@ const userPainPointsData = data.sections.user_pain_points
 Astro.response.headers.set("Cache-Control", "public, s-maxage=300, stale-while-revalidate=3600")
 ---
 
-<Layout title="Tricia Rago Coaching" description="hello to tricia coaching" image={heroPage.image}>
+<Layout
+	title={seoData!.title}
+	description={seoData!.description}
+	image={heroPage.image}
+	keywords={seoData!.keywords}
+>
 	<main>
 		<Hero
 			image={heroPage.image}

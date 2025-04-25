@@ -4,12 +4,17 @@ import Hero from "../components/coaching/Hero.astro"
 import PaymentPlan from "../components/coaching/PaymentPlan.astro"
 import Steps from "../components/coaching/Steps.astro"
 import Layout from "../layouts/Layout.astro"
+
+import getSEO from "../lib/queries/getSEO.ts"
+
+const seoData = await getSEO("seo_id", "seo", "coaching")
 ---
 
 <Layout
-	title="Coaching | Tricia Rago Coaching"
-	description="Coaching Tricia Rago"
+	title={seoData!.title}
+	description={seoData!.description}
 	image="example.jpg"
+	keywords={seoData!.keywords}
 >
 	<main>
 		<Hero />

@@ -1,11 +1,14 @@
 ---
-import data from "../../data.json"
-
-const image = data["home"].coaching_info.image
-
 import HeroWrapper from "../HeroWrapper.astro"
 
-const { title, description, subtitle } = data.contact["hero"]
+interface Props {
+	title: string
+	description: string
+	subtitle: string
+	image: string
+}
+
+const { title, description, subtitle, image } = Astro.props as Props
 ---
 
 <HeroWrapper img={image}>

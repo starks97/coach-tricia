@@ -39,6 +39,7 @@ const funFactSchema = z.object({
 const enoughSchema = z.object({
 	title: z.string().min(1, "The title cannot be empty"),
 	about_course: z.string().min(1, "The course description cannot be empty"),
+	image: z.string().min(1).url("The image must be a valid URL"),
 })
 
 export const AboutPageSchema = z.object({
