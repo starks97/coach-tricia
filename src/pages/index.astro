@@ -1,22 +1,29 @@
 ---
-import Benefits from "../components/home/Benefits.astro"
-import CoachingInfo from "../components/home/CoachingInfo.astro"
-import Hero from "../components/home/Hero.astro"
-import UserPainPoints from "../components/home/UserPainPoints.astro"
+import Benefits from "@components/home/Benefits.astro"
+import CoachingInfo from "@components/home/CoachingInfo.astro"
+import Hero from "@components/home/Hero.astro"
+import UserPainPoints from "@components/home/UserPainPoints.astro"
 import Layout from "../layouts/Layout.astro"
 
+<<<<<<< HEAD
 import { type HomePageZodSchemaType, HomePageSchema } from "@lib/db/models/home.ts"
 
 import getPage from "@lib/db/queries/getPage.ts"
 import getSEO from "@lib/db/queries/getSEO.ts"
+=======
+import { SectionSchema } from "~/lib/models/sections"
 
-const data = await getPage<HomePageZodSchemaType>("home_page_id", "home", HomePageSchema)
+import getSection from "@lib/queries/getSection.ts"
+import getSEO from "@lib/queries/getSEO.ts"
+>>>>>>> cf2b7c4 (backend system)
+
+const data = await getSection<"home">("main", "sections", SectionSchema, "home")
 const seoData = await getSEO("seo_id", "seo", "home")
 
-const heroPage = data.sections.hero
-const coachingData = data.sections.coaching_info
-const benefitsData = data.sections.benefits
-const userPainPointsData = data.sections.user_pain_points
+const heroPage = data.hero
+const coachingData = data.coaching_info
+const benefitsData = data.benefits
+const userPainPointsData = data.user_pain_points
 
 Astro.response.headers.set("Cache-Control", "public, s-maxage=300, stale-while-revalidate=3600")
 ---

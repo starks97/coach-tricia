@@ -1,8 +1,13 @@
 import type { APIRoute } from "astro"
 import z from "zod"
 
+<<<<<<< HEAD
 import getPage from "@lib/db/queries/getPage.ts"
 import { schemaRouter } from "@lib/db/schemaRouter.ts"
+=======
+import getPage from "@lib/queries/getPage.ts"
+import { schemaRouter } from "@lib/schemaRouter.ts"
+>>>>>>> cf2b7c4 (backend system)
 
 export const GET: APIRoute = async ({ request }) => {
 	try {
@@ -33,3 +38,31 @@ export const GET: APIRoute = async ({ request }) => {
 		return new Response("Internal Server Error", { status: 500 })
 	}
 }
+
+/*import getSection from "../../lib/queries/getSection.ts"
+import { SectionSchema } from "../../lib/models/sections.ts"
+import type { SectionKey } from "~/types.ts"
+
+export const GET: APIRoute = async ({ request }) => {
+	try {
+		const { searchParams } = new URL(request.url)
+		const id = searchParams.get("id")
+		const section = searchParams.get("section") as SectionKey
+
+		if (!id || !section) {
+			return new Response("Bad Request", { status: 400 })
+		}
+
+		const result = await getSection<typeof section>(id, "sections", SectionSchema, section)
+		return new Response(JSON.stringify(result), {
+			headers: {
+				"Content-Type": "application/json",
+			},
+		})
+	} catch (error: any) {
+		console.error(error)
+
+		return new Response("Internal Server Error", { status: 500 })
+	}
+}
+*/

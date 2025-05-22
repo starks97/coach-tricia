@@ -5,18 +5,26 @@ import Hero from "../components/about/Hero.astro"
 import Story from "../components/about/Story.astro"
 import Layout from "../layouts/Layout.astro"
 
+<<<<<<< HEAD
 import { type AboutPageZodSchemaType, AboutPageSchema } from "@lib/db/models/about.ts"
 import getPage from "@lib/db/queries/getPage.ts"
 import getSEO from "@lib/db/queries/getSEO.ts"
+=======
+import { SectionSchema } from "~/lib/models/sections"
+>>>>>>> cf2b7c4 (backend system)
 
-const data = await getPage<AboutPageZodSchemaType>("about_page_id", "about", AboutPageSchema)
+import getSection from "@lib/queries/getSection.ts"
+
+import getSEO from "@lib/queries/getSEO.ts"
+
+const data = await getSection<"about">("main", "sections", SectionSchema, "about")
 
 const seoData = await getSEO("seo_id", "seo", "about")
 
-const heroData = data.sections.hero
-const storyData = data.sections.story
-const funFactsData = data.sections["fun-facts"]
-const aboutCourseData = data.sections.enough
+const heroData = data.hero
+const storyData = data.story
+const funFactsData = data["fun-facts"]
+const aboutCourseData = data.enough
 
 Astro.response.headers.set("Cache-Control", "public, s-maxage=300, stale-while-revalidate=3600")
 ---

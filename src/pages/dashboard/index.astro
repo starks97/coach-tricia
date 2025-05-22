@@ -1,0 +1,19 @@
+---
+import QueryProvider from "@components/dashboard/DashboardProvider.astro"
+
+import { SignedIn, UserButton } from "@clerk/astro/components"
+---
+
+<main>
+	<h1>Welcome to the Dashboard Tricia</h1>
+	<p>This is your personalized dashboard.</p>
+	<p>Here you can manage your tasks, view your progress, and track your achievements.</p>
+	<QueryProvider />
+
+	<section>
+		<h3>Here is your user info</h3>
+		<SignedIn>
+			<UserButton />
+		</SignedIn>
+	</section>
+</main>

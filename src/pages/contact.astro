@@ -1,21 +1,29 @@
 ---
 import Layout from "../layouts/Layout.astro"
 
-import ContactLayout from "../components/contact/ContactLayout.astro"
-import Hero from "../components/contact/Hero.astro"
+import ContactLayout from "@components/contact/ContactLayout.astro"
+import Hero from "@components/contact/Hero.astro"
 
+<<<<<<< HEAD
 import { type ContactPageZodSchemaType, ContactPageSchema } from "@lib/db/models/contact.ts"
 import getPage from "@lib/db/queries/getPage.ts"
 import getSEO from "@lib/db/queries/getSEO.ts"
+=======
+import getSection from "@lib/queries/getSection.ts"
+import getSEO from "@lib/queries/getSEO.ts"
+>>>>>>> cf2b7c4 (backend system)
 
-const data = await getPage<ContactPageZodSchemaType>(
-	"contact_page_id",
-	"contact",
-	ContactPageSchema
-)
+import { SectionSchema } from "~/lib/models/sections"
 
+const data = await getSection<"contact">("main", "sections", SectionSchema, "contact")
+
+<<<<<<< HEAD
 const seoData = await getSEO("seo_id", "seo", "contact")
 const heroData = data.sections.hero
+=======
+const seoData = await getSEO("seo_id", "seo", "coaching")
+const heroData = data.hero
+>>>>>>> cf2b7c4 (backend system)
 
 Astro.response.headers.set("Cache-Control", "public, s-maxage=300, stale-while-revalidate=3600")
 ---
