@@ -40,7 +40,7 @@ const podcastSchema = z.object({
 })
 
 export const HomePageSchema = z.object({
-	_id: z.string().length(24, "The _id must have 24 characters (valid ObjectId)"), // ObjectId de MongoDB
+	_id: z.string().min(5, "the id has to have at least 5 characters"), // ObjectId de MongoDB
 	page_name: z.string().min(1, "The page name cannot be empty"),
 	sections: z.object({
 		hero: heroSchema,
@@ -50,5 +50,15 @@ export const HomePageSchema = z.object({
 		podcast: podcastSchema,
 	}),
 })
+
+export const HomePageSectionSchema = z.object({
+	hero: heroSchema,
+	user_pain_points: userPainPointsSchema,
+	benefits: benefitsSchema,
+	coaching_info: coachingInfoSchema,
+	podcast: podcastSchema,
+})
+
+export type HomePageSectionSchemaType = z.infer<typeof HomePageSectionSchema>
 
 export type HomePageZodSchemaType = z.infer<typeof HomePageSchema>

@@ -1,6 +1,6 @@
 import { defineAction, ActionError } from "astro:actions"
 import { z } from "astro:schema"
-import { sendEmail } from "../utilities/email"
+import { sendEmail } from "../utils/email"
 
 export const server = {
 	sendEmail: defineAction({

@@ -1,4 +1,8 @@
-import { HomePageSchema } from "../lib/models/home.ts"
+import { HomePageSchema } from "@lib/models/home.ts"
+import { CoachingPageSchema } from "@lib/models/coaching.ts"
+import { ContactPageSchema } from "./models/contact.ts"
+import { SEODocumentSchema } from "./models/seo.ts"
+import { AboutPageSchema } from "./models/about.ts"
 import z from "zod"
 
 export function defineSchemaRouter<T extends z.ZodTypeAny>(config: {
@@ -14,4 +18,8 @@ export function defineSchemaRouter<T extends z.ZodTypeAny>(config: {
 
 export const schemaRouter = {
 	home: defineSchemaRouter({ schema: HomePageSchema, collection: "home" }),
+	coaching: defineSchemaRouter({ schema: CoachingPageSchema, collection: "coaching" }),
+	contact: defineSchemaRouter({ schema: ContactPageSchema, collection: "contact" }),
+	seo: defineSchemaRouter({ schema: SEODocumentSchema, collection: "seo" }),
+	about: defineSchemaRouter({ schema: AboutPageSchema, collection: "about" }),
 } as const
