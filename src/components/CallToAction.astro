@@ -2,14 +2,15 @@
 interface Props {
 	href: string
 	slot?: string
+	aria?: string
 }
 
-const { href, slot } = Astro.props
+const { href, slot, aria } = Astro.props
 ---
 
 <a
 	slot={slot}
 	href={href}
 	class="font-tajawal text-taupe mb-2 border-2 px-5 py-2.5 text-center text-xl font-extrabold tracking-[0.07em] uppercase"
-	><slot /></a
+	aria-label={aria}><slot /></a
 >

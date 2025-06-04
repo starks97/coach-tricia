@@ -30,5 +30,7 @@ const { title, subtitle, description, image } = Astro.props as Props
 	<h3 slot="description" class="hero_description">
 		{description}
 	</h3>
-	<CallToAction href="/about" slot="cta"> About Me </CallToAction>
+	<CallToAction href="/about" aria="About the life of Tricia Rago and how I started." slot="cta">
+		About Me
+	</CallToAction>
 </HomeHero>

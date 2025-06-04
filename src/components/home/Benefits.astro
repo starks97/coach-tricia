@@ -59,6 +59,8 @@ const { title, benefits, image } = Astro.props as Props
 		class="my-5 flex justify-center opacity-0"
 		:class="intersect ? 'animate-fade animate-delay-700 ' : 'opacity-0'"
 	>
-		<CallToAction href="/contact">Book Free Consultation</CallToAction>
+		<CallToAction href="/contact" aria="Book a free consultation with Tricia Rago."
+			>Book Free Consultation</CallToAction
+		>
 	</div>
 </Wrapper>

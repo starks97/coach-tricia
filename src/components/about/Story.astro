@@ -65,7 +65,11 @@ const { first, second } = Astro.props as Props
 				<i class="font-italic text-justify">{second.description}</i>
 			</h4>
 			<p class="font-tajawal tablet:text-left text-justify text-[16px] text-[#515151]">
-				{second.content}
+				<ReplaceTarget
+					target={" Just as a recipe, with the right ingredients and care, can be transformed into something amazing, we can transform our lives in the very same way after loss."}
+					str={second.content}
+					className="font-bold"
+				/>
 			</p>
 		</div>
 		<div class="laptop:order-2 order-1">

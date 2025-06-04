@@ -15,10 +15,10 @@ const { title, subtitle, image, description } = Astro.props as Props
 <Wrapper class="tablet:grid-cols-2 laptop:gap-5 grid grid-cols-1 items-center gap-11 bg-[#fbf4f2]">
 	<div class="tablet:items-start mx-auto w-full max-w-lg space-y-5">
 		<h3
-			class="font-prata text-taupe text-size-6 tablet:text-left tablet:text-size-7 laptop:text-[3rem] text-center font-bold opacity-0"
+			class="font-blackstone text-light-rose text-size-7 tablet:text-left tablet:text-size-6 laptop:text-[3.5rem] text-center opacity-0"
 			:class="intersect ? 'animate-fade-right  animate-delay-0 ' : 'opacity-0'"
 		>
-			{title}
+			I'm here to support you
 		</h3>
 		<p
 			class="font-tajawal tablet:text-left text-center leading-7 font-semibold tracking-[.156em] uppercase opacity-0"
@@ -34,7 +34,9 @@ const { title, subtitle, image, description } = Astro.props as Props
 		</p>
 
 		<div class="tablet:justify-start flex justify-center">
-			<CallToAction href="/coaching">Learn More</CallToAction>
+			<CallToAction href="/coaching" aria="Learn more about coaching services"
+				>Learn More</CallToAction
+			>
 		</div>
 	</div>
 	<figure class="flex flex-col items-center justify-center px-5">
