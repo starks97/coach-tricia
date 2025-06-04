@@ -1,9 +1,5 @@
 import { Switch, Match, For, Show, createSignal } from "solid-js"
 import type { Page, PageTypeMap, PageTypeKeys } from "@types"
-import { type HomePageZodSchemaType, HomePageSchema } from "~/lib/models/home"
-import { type CoachingPageZodSchemaType, CoachingPageSchema } from "~/lib/models/coaching"
-
-import EditableForm from "./EditableForm"
 
 export default function DynamicSectionCard<T extends PageTypeKeys>({
 	data,
@@ -12,12 +8,6 @@ export default function DynamicSectionCard<T extends PageTypeKeys>({
 	data: PageTypeMap[T]
 	sectionType: T
 }) {
-	const schemas = {
-		home: HomePageSchema,
-		coaching: CoachingPageSchema,
-		// ... otros esquemas
-	} as const
-
 	return (
 		<Switch>
 			<Match when={sectionType === "home"}>
@@ -35,6 +25,8 @@ export function HomePageContent({ data }: HomePageProps) {
 	const [editing, setEditing] = createSignal(false)
 
 	const sections = data.sections
+
+	console.log("data", sections)
 
 	const handleChange = () => {}
 
