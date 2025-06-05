@@ -76,7 +76,7 @@ const { first, second } = Astro.props as Props
 			<img
 				src={second.image}
 				alt="hero"
-				class="laptop:h-[450px] laptop:w-[400px] h-96 w-[400px]"
+				class="laptop:h-[450px] h-96 w-auto"
 				:class="intersect ? 'animate-fade-left animate-ease-in-out  animate-delay-400 ' : 'opacity-0'"
 			/>
 		</div>
