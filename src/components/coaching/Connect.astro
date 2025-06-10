@@ -1,7 +1,14 @@
 ---
-import data from "../../data.json"
 import CallToAction from "../CallToAction.astro"
-const { title, description, subtitle } = data.coaching["connect"]
+
+interface Props {
+	title: string
+	img: string
+	description: string
+	subtitle: string
+}
+
+const { title, img, description, subtitle } = Astro.props as Props
 ---
 
 <section
@@ -50,7 +57,7 @@ const { title, description, subtitle } = data.coaching["connect"]
 			</div>
 
 			<img
-				src="/images/girl.jpg"
+				src={img}
 				alt="hero image"
 				class="tablet:h-[400px] tablet:w-[400px] tablet:-translate-x-5 laptop:h-[500px] laptop:w-[500px] h-64 w-full translate-x-0 object-cover"
 			/>

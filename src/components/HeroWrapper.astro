@@ -20,7 +20,7 @@ const { img, class: customClass = "" } = Astro.props
 			<img
 				src={img}
 				alt="hero image"
-				class="tablet:h-[300px] tablet:w-[300px] laptop:h-[550px] laptop:w-[470px] h-64 w-full object-cover opacity-0"
+				class="tablet:h-[300px] tablet:w-[300px] laptop:h-[550px] laptop:w-[470px] h-64 w-full object-contain opacity-0"
 				:class="intersect ? 'animate-fade animate-ease-in  animate-delay-100 ' : 'opacity-0'"
 			/>
 			<div class={`tablet:max-w-xl mx-auto w-full flex-1 items-center justify-center space-y-5 `}>

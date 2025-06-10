@@ -1,7 +1,20 @@
 ---
-import data from "../../data.json"
 
-const guide = data.coaching["guide"]
+
+
+interface Props {
+  title: string,
+  subtitle: string,
+  description: string,
+  steps: {
+    id: number;
+    title: string;
+    description: string;
+    image: string;
+  }[];
+}
+
+const {title, subtitle, description, steps} = Astro.props as Props
 
 ---
 
@@ -12,12 +25,12 @@ const guide = data.coaching["guide"]
 	<!-- Section Title -->
 	<div class="h-auto w-full " >
 		<h1 class="w-full tablet:text-left; text-center font-prata text-[30px] text-light-rose tablet:text-size-6 laptop:text-size-7">
-			{guide.title}:
+			{title}:
 		</h1>
 		<h5
 			class="ml-4 w-full text-center font-tajawal text-xl font-semibold leading-14 tablet:text-2xl"
 		>
-			{guide.subtitle}<span class="font-bold text-light-rose"> Even</span> After
+			{subtitle}<span class="font-bold text-light-rose"> Even</span> After
 		</h5>
 
 	</div>
@@ -25,7 +38,7 @@ const guide = data.coaching["guide"]
 		<h5
 			class="text-justify font-tajawal text-size-2 font-thin leading-9 tablet:text-size-3"
 		>
-			{guide.description}
+			{description}
 		</h5>
 	</div>
 	   <h3 class="text-center font-prata text-size-6 laptop:text-size-7 font-light leading-[4rem] mt-[4rem] w-full text-light-rose">Take a peek inside...</h3>
@@ -35,15 +48,15 @@ const guide = data.coaching["guide"]
 	<!-- Steps Grid -->
 	<div class="grid h-auto grid-cols-1 justify-items-center">
 		{
-			guide.steps.map((item) => {
+			steps.map((item) => {
 				const isPair = item.id % 2 === 0
 				return (
 					<div
 						class={`flex flex-col px-0 tablet:px-5 laptop:px-10 items-center gap-2 tablet:flex-row ${isPair ? "tablet:flex-row-reverse" : ""}`}
-					 x-data="{ visible: false }"
-                    x-intersect:enter.once="visible = true"
-                    :class="{ 'opacity-100': visible }"
-                                      id={`${item.id}`}
+					    x-data="{ visible: false }"
+                        x-intersect:enter.once="visible = true"
+                        :class="{ 'opacity-100': visible }"
+                        id={`${item.id}`}
 					>
 						{/* Text Content */}
 						<div class="flex-1 space-y-2" id={`${item.id}`}>

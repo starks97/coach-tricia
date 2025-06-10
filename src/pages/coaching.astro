@@ -5,21 +5,45 @@ import PaymentPlan from "../components/coaching/PaymentPlan.astro"
 import Steps from "../components/coaching/Steps.astro"
 import Layout from "../layouts/Layout.astro"
 
+import getPage from "../lib/queries/getPage.ts"
 import getSEO from "../lib/queries/getSEO.ts"
 
+import { CoachingPageSchema, type CoachingPageZodSchemaType } from "../lib/models/coaching"
+
 const seoData = await getSEO("seo_id", "seo", "coaching")
+
+const data = await getPage<CoachingPageZodSchemaType>(
+	"coaching_page_id",
+	"coaching",
+	CoachingPageSchema
+)
+
+const { description, image, subtitle, title } = data.sections.hero
+const connect = data.sections.connect
+const guide = data.sections.guide
+Astro.response.headers.set("Cache-Control", "public, s-maxage=300, stale-while-revalidate=3600")
 ---
 
 <Layout
 	title={seoData!.title}
 	description={seoData!.description}
-	image="example.jpg"
+	image={image}
 	keywords={seoData!.keywords}
 >
 	<main>
-		<Hero />
-		<Steps />
-		<Connect />
+		<Hero title={title} description={description} image={image} subtitle={subtitle} />
+		<Steps
+			title={guide.title}
+			description={guide.description}
+			subtitle={guide.subtitle}
+			steps={guide.steps}
+		/>
+		<Connect
+			img={connect.image}
+			title={connect.title}
+			subtitle={connect.subtitle}
+			description={connect.description}
+		/>
 		<PaymentPlan />
 	</main>
 </Layout>

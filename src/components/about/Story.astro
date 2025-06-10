@@ -11,23 +11,41 @@ const { first, second } = Astro.props as Props
 ---
 
 <section
-	class="container mx-auto mt-10 px-5"
+	class="container mx-auto mt-10 px-10"
 	x-data="{ intersect: false }"
 	x-intersect:enter="intersect = true"
 	x-intersect:leave="intersect = false"
 >
-	<div
-		class="laptop:grid-cols-2 laptop:grid-rows-2 grid h-full grid-cols-1 grid-rows-1 items-center justify-items-center gap-5"
-	>
-		<div>
+	<div class="laptop:grid-cols-2 grid h-full grid-cols-1 items-center justify-items-center gap-5">
+		<div class="tablet:max-w-lg laptop:order-1 order-2 items-center space-y-3">
 			<img
 				src={first.image}
 				alt="hero"
-				class="laptop:h-[450px] laptop:w-[400px] h-96 w-[400px] object-cover opacity-0"
-				:class="intersect ? 'animate-fade-right animate-ease-in  animate-delay-200 ' : 'opacity-0'"
+				class="laptop:h-[400px] laptop:flex hidden h-96 w-auto"
+				:class="intersect ? 'animate-fade-left animate-ease-in-out  animate-delay-400 ' : 'opacity-0'"
+			/>
+			<h1 class="font-tajawal text-taupe text-size-5 text-center font-normal uppercase">
+				{second.title}
+			</h1>
+			<h4 class="font-prata text-size-6 tablet:text-size-7 text-center">
+				<i class="font-italic text-justify">{second.description}</i>
+			</h4>
+			<p class="font-tajawal tablet:text-left text-justify text-[16px] text-[#515151]">
+				<ReplaceTarget
+					target={" Just as a recipe, with the right ingredients and care, can be transformed into something amazing, we can transform our lives in the very same way after loss."}
+					str={second.content}
+					className="font-bold"
+				/>
+			</p>
+
+			<img
+				src={first.image}
+				alt="hero"
+				class="laptop:h-[400px] laptop:hidden flex h-96 w-auto"
+				:class="intersect ? 'animate-fade-left animate-ease-in-out  animate-delay-400 ' : 'opacity-0'"
 			/>
 		</div>
-		<div class="tablet:max-w-lg w-full space-y-5 px-5">
+		<div class="tablet:max-w-lg laptop:order-2 order-1 flex flex-col items-center space-y-3">
 			<h1
 				class="font-prata laptop:text-left text-size-6 tablet:text-size-7 text-center opacity-0"
 				:class="intersect ? 'animate-fade-left animate-ease-in  animate-delay-200 ' : 'opacity-0'"
@@ -56,29 +74,14 @@ const { first, second } = Astro.props as Props
 			>
 				{first.content.third}
 			</p>
-		</div>
-		<div class="tablet:max-w-lg laptop:order-1 order-2 space-y-5 px-5">
-			<h1 class="font-tajawal text-taupe text-size-5 text-center font-normal uppercase">
-				{second.title}
-			</h1>
-			<h4 class="font-prata text-size-6 tablet:text-size-7 text-center">
-				<i class="font-italic text-justify">{second.description}</i>
-			</h4>
-			<p class="font-tajawal tablet:text-left text-justify text-[16px] text-[#515151]">
-				<ReplaceTarget
-					target={" Just as a recipe, with the right ingredients and care, can be transformed into something amazing, we can transform our lives in the very same way after loss."}
-					str={second.content}
-					className="font-bold"
+			<div class="flex flex-col justify-center">
+				<img
+					src={second.image}
+					alt="hero"
+					class="laptop:h-[450px] h-96 w-auto opacity-0"
+					:class="intersect ? 'animate-fade-right animate-ease-in  animate-delay-200 ' : 'opacity-0'"
 				/>
-			</p>
-		</div>
-		<div class="laptop:order-2 order-1">
-			<img
-				src={second.image}
-				alt="hero"
-				class="laptop:h-[450px] h-96 w-auto"
-				:class="intersect ? 'animate-fade-left animate-ease-in-out  animate-delay-400 ' : 'opacity-0'"
-			/>
+			</div>
 		</div>
 	</div>
 </section>
