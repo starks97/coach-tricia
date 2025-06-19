@@ -5,12 +5,18 @@
   "compilerOptions": {
     "jsx": "preserve",
     "jsxImportSource": "solid-js",
+    "baseUrl": ".",
     "paths": {
       "~/*": ["./src/*"],
-      "@components": ["./src/components/*"],
-      "@utils": ["./src/utilities/*"],
-      "lib": ["./src/lib/*"]
+      "@components/*": ["src/components/*"],
+      "@utils/*": ["src/utils/*"],
+      "@lib/*": ["src/lib/*"],
+      "@types": ["src/types.ts"],
+      "@consts": ["src/consts.ts"],
+      "@styles/*": ["src/styles/*"],
+      "@actions/*": ["src/actions/*"]
     },
+
     "strict": true
   }
 }

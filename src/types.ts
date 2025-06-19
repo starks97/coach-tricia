@@ -1,5 +1,5 @@
-import { type HomePageZodSchemaType } from "./lib/models/home.ts"
-import { schemaRouter } from "./lib/schemaRouter.ts"
+import { type HomePageZodSchemaType } from "@lib/db/models/home.ts"
+import { schemaRouter } from "@lib/db/schemaRouter.ts"
 import z from "zod"
 
 export type Review = {

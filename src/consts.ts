@@ -29,3 +29,6 @@ export const socialLinks = [
 	{ name: "Instagram", icon: "/icons/instagram.svg", href: "https://instagram.com" },
 	{ name: "LinkedIn", icon: "/icons/linkedin.svg", href: "https://linkedin.com" },
 ]
+
+export const subDomain: string = "<form@notifications.coachtriciarago.com>"
+export const myEmail: string = "patricia@coachtriciarago.com"

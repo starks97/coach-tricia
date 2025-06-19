@@ -1,8 +1,8 @@
 import type { APIRoute } from "astro"
 import z from "zod"
 
-import getPage from "../../lib/queries/getPage.ts"
-import { schemaRouter } from "../../lib/schemaRouter.ts"
+import getPage from "@lib/db/queries/getPage.ts"
+import { schemaRouter } from "@lib/db/schemaRouter.ts"
 
 export const GET: APIRoute = async ({ request }) => {
 	try {

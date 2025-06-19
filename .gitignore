@@ -1,3 +1,14 @@
-**/.env
+# Environment files
+.env
+.env.local
+.env.*.local
 
-**/node_modules
+# Dependency directories
+node_modules/
+
+# Build output
+dist/
+.astro/
+
+# Vercel-specific
+.vercel/

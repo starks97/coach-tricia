@@ -5,10 +5,10 @@ import PaymentPlan from "../components/coaching/PaymentPlan.astro"
 import Steps from "../components/coaching/Steps.astro"
 import Layout from "../layouts/Layout.astro"
 
-import getPage from "../lib/queries/getPage.ts"
-import getSEO from "../lib/queries/getSEO.ts"
+import getPage from "@lib/db/queries/getPage.ts"
+import getSEO from "@lib/db/queries/getSEO.ts"
 
-import { CoachingPageSchema, type CoachingPageZodSchemaType } from "../lib/models/coaching"
+import { CoachingPageSchema, type CoachingPageZodSchemaType } from "@lib/db/models/coaching"
 
 const seoData = await getSEO("seo_id", "seo", "coaching")
 

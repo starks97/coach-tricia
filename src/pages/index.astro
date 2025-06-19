@@ -5,10 +5,10 @@ import Hero from "../components/home/Hero.astro"
 import UserPainPoints from "../components/home/UserPainPoints.astro"
 import Layout from "../layouts/Layout.astro"
 
-import { type HomePageZodSchemaType, HomePageSchema } from "../lib/models/home.ts"
+import { type HomePageZodSchemaType, HomePageSchema } from "@lib/db/models/home.ts"
 
-import getPage from "../lib/queries/getPage.ts"
-import getSEO from "../lib/queries/getSEO.ts"
+import getPage from "@lib/db/queries/getPage.ts"
+import getSEO from "@lib/db/queries/getSEO.ts"
 
 const data = await getPage<HomePageZodSchemaType>("home_page_id", "home", HomePageSchema)
 const seoData = await getSEO("seo_id", "seo", "home")

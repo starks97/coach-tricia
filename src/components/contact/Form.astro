@@ -2,7 +2,6 @@
 
 ---
 
-<!-- This example is a static form. If you want to process the form on submission, you’ll need a server endpoint or a third-party service. -->
 <form
 	class="laptop:w-5/12 tablet:w-[400px] tablet:p-5 laptop:p-10 w-full rounded bg-zinc-100 p-5 shadow-md"
 >
@@ -63,14 +62,14 @@ address any questions about enrollment"
 
 	<button
 		type="submit"
-		class="font-tajawal text-taupe mb-2 w-full border-2 px-5 py-2.5 text-center text-xl font-extrabold tracking-[0.07em] uppercase"
+		class="font-tajawal text-taupe mb-2 w-full cursor-pointer border-2 px-5 py-2.5 text-center text-xl font-extrabold tracking-[0.07em] uppercase"
 	>
 		Send a message
 	</button>
 </form>
 
 <script>
-	/*import { actions } from "astro:actions"
+	import { actions } from "astro:actions"
 	import { navigate } from "astro:transitions/client"
 
 	const form = document.querySelector("form")
@@ -78,10 +77,12 @@ address any questions about enrollment"
 	form?.addEventListener("submit", async (event) => {
 		event.preventDefault()
 		const formData = new FormData(form)
-		const { error } = await actions.sendEmail(formData)
+		const { error } = await actions.email.send(formData)
+
 		if (error) {
+			formError!.textContent = error.message || "There is an error sending a message"
 		} else {
 			await navigate("/")
 		}
-		})*/
+	})
 </script>

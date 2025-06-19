@@ -5,9 +5,9 @@ import Hero from "../components/about/Hero.astro"
 import Story from "../components/about/Story.astro"
 import Layout from "../layouts/Layout.astro"
 
-import { type AboutPageZodSchemaType, AboutPageSchema } from "../lib/models/about.ts"
-import getPage from "../lib/queries/getPage.ts"
-import getSEO from "../lib/queries/getSEO.ts"
+import { type AboutPageZodSchemaType, AboutPageSchema } from "@lib/db/models/about.ts"
+import getPage from "@lib/db/queries/getPage.ts"
+import getSEO from "@lib/db/queries/getSEO.ts"
 
 const data = await getPage<AboutPageZodSchemaType>("about_page_id", "about", AboutPageSchema)
 

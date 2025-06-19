@@ -1,34 +1,31 @@
 import { createTransport, type SendMailOptions, type Transporter } from "nodemailer"
 import { RESEND_API_KEY } from "astro:env/server"
+import { subDomain } from "~/consts"
 
-export async function sendEmail(options: SendMailOptions): Promise<Transporter> {
+export async function sendEmail(options: SendMailOptions) {
 	const transporter = await getEmailTransporter()
 
-	return new Promise(async (resolve, reject) => {
-		const { to, subject, html, from } = options
-		const message = {
-			from,
-			to,
-			subject,
-			html,
-		}
-
-		transporter.sendMail(message, (err, info) => {
-			if (err) {
-				console.error(err)
-				reject(err)
-			} else {
-				resolve(info)
-			}
+	try {
+		const info = transporter.sendMail({
+			from: `"Coach Tricia" ${subDomain}`,
+			to: options.to,
+			subject: options.subject,
+			html: options.html,
+			replyTo: options.replyTo,
 		})
-	})
+
+		return { success: true, info }
+	} catch (error) {
+		console.error("Email sending failed:", error)
+		return { success: false, error }
+	}
 }
 
 async function getEmailTransporter(): Promise<Transporter> {
 	if (!RESEND_API_KEY) {
 		throw new Error("RESEND_API_KEY is not set")
 	}
-	return new Promise((resolve, reject) => {
+	return new Promise((resolve, _) => {
 		const transporter = createTransport({
 			host: "smtp.resend.com",
 			secure: true,

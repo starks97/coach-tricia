@@ -1,4 +1,4 @@
-import { HomePageSchema } from "../lib/models/home.ts"
+import { HomePageSchema } from "./models/home.ts"
 import z from "zod"
 
 export function defineSchemaRouter<T extends z.ZodTypeAny>(config: {

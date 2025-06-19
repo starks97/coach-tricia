@@ -4,9 +4,9 @@ import Layout from "../layouts/Layout.astro"
 import ContactLayout from "../components/contact/ContactLayout.astro"
 import Hero from "../components/contact/Hero.astro"
 
-import { type ContactPageZodSchemaType, ContactPageSchema } from "../lib/models/contact.ts"
-import getPage from "../lib/queries/getPage.ts"
-import getSEO from "../lib/queries/getSEO.ts"
+import { type ContactPageZodSchemaType, ContactPageSchema } from "@lib/db/models/contact.ts"
+import getPage from "@lib/db/queries/getPage.ts"
+import getSEO from "@lib/db/queries/getSEO.ts"
 
 const data = await getPage<ContactPageZodSchemaType>(
 	"contact_page_id",
@@ -14,7 +14,7 @@ const data = await getPage<ContactPageZodSchemaType>(
 	ContactPageSchema
 )
 
-const seoData = await getSEO("seo_id", "seo", "coaching")
+const seoData = await getSEO("seo_id", "seo", "contact")
 const heroData = data.sections.hero
 
 Astro.response.headers.set("Cache-Control", "public, s-maxage=300, stale-while-revalidate=3600")
