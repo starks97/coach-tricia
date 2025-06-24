@@ -42,7 +42,7 @@ export const CoachingPageSchema = z.object({
 	sections: z.object({
 		hero: heroCoachingSchema,
 		guide: guideSchema,
-		paymentPlan: z.array(paymentPlanSchema),
+		payment_plan: z.array(paymentPlanSchema),
 		connect: connectSchema,
 	}),
 })

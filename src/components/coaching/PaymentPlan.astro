@@ -1,10 +1,19 @@
 ---
-import data from "../../data.json"
 import CallToAction from "../CallToAction.astro"
 
-const paymentPlan = data.coaching["payment_plan"]
+type PaymentPlan = {
+	title: string
+	description: string
+	image: string
+	id: number
+	price: number
+}
 
-const heroImg = data.home["hero"].image
+interface Props {
+	payment: PaymentPlan[]
+}
+
+const { payment } = Astro.props as Props
 ---
 
 <section
@@ -30,14 +39,14 @@ const heroImg = data.home["hero"].image
 	</div>
 	<div class={`mx-auto grid h-auto grid-cols-1 justify-items-center gap-0 tablet:gap-10 `}>
 		{
-			paymentPlan.map((item) => {
+			payment.map((item) => {
 				let isPair = item.id % 2 === 0
 				return (
 					<div
 						class={`tablet:flex-row flex flex-col items-stretch justify-center space-x-0 ${isPair ? "tablet:flex-row-reverse" : ""}`}
 					>
 						<img
-							src={heroImg}
+							src={item.image}
 							alt="hero image"
 							class="tablet:h-full tablet:w-[342px] laptop:h-[500px] laptop:w-[470px] h-64 w-full object-cover"
 						/>
