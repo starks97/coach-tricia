@@ -1,3 +1,10 @@
+# Environment files
 **/.env
 
+# Dependency directories
 **/node_modules
+
+# Build directories
+dist/
+.vercel/
+.astro/
