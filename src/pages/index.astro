@@ -5,18 +5,22 @@ import Hero from "@components/home/Hero.astro"
 import UserPainPoints from "@components/home/UserPainPoints.astro"
 import Layout from "../layouts/Layout.astro"
 
-import { SectionSchema } from "~/lib/models/sections"
-
-import getSection from "@lib/queries/getSection.ts"
 import getSEO from "@lib/queries/getSEO.ts"
+import { HomePageSchema } from "~/lib/models/home"
+import getPage from "~/lib/queries/getPage"
+import { type pageStoreKeys } from "~/types"
 
-const data = await getSection<"home">("main", "sections", SectionSchema, "home")
+const homeId: pageStoreKeys = "home_page_id"
+
 const seoData = await getSEO("seo_id", "seo", "home")
+const data = await getPage(homeId, "home", HomePageSchema)
 
-const heroPage = data.hero
-const coachingData = data.coaching_info
-const benefitsData = data.benefits
-const userPainPointsData = data.user_pain_points
+const { sections } = data
+
+const heroPage = sections.hero
+const coachingData = sections.coaching_info
+const benefitsData = sections.benefits
+const userPainPointsData = sections.user_pain_points
 
 Astro.response.headers.set("Cache-Control", "public, s-maxage=300, stale-while-revalidate=3600")
 ---

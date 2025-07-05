@@ -1,6 +1,6 @@
 import type { PageTypeMap } from "~/types.ts"
 
-export async function fetchSectionPageData<T extends keyof PageTypeMap>(
+export async function fetchPageData<T extends keyof PageTypeMap>(
 	id: string,
 	page: T
 ): Promise<PageTypeMap[T]> {

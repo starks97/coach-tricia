@@ -4,15 +4,18 @@ import Layout from "../layouts/Layout.astro"
 import ContactLayout from "@components/contact/ContactLayout.astro"
 import Hero from "@components/contact/Hero.astro"
 
-import getSection from "@lib/queries/getSection.ts"
 import getSEO from "@lib/queries/getSEO.ts"
+import getPage from "~/lib/queries/getPage"
 
-import { SectionSchema } from "~/lib/models/sections"
+import { ContactPageSchema } from "~/lib/models/contact"
+import { type pageStoreKeys } from "~/types"
 
-const data = await getSection<"contact">("main", "sections", SectionSchema, "contact")
+const contactId: pageStoreKeys = "contact_page_id"
+
+const data = await getPage(contactId, "contact", ContactPageSchema)
 
 const seoData = await getSEO("seo_id", "seo", "coaching")
-const heroData = data.hero
+const heroData = data.sections.hero
 
 Astro.response.headers.set("Cache-Control", "public, s-maxage=300, stale-while-revalidate=3600")
 ---

@@ -29,3 +29,11 @@ export const socialLinks = [
 	{ name: "Instagram", icon: "/icons/instagram.svg", href: "https://instagram.com" },
 	{ name: "LinkedIn", icon: "/icons/linkedin.svg", href: "https://linkedin.com" },
 ]
+
+export const pageStoreID = {
+	home_page_id: "home",
+	coaching_page_id: "coaching",
+	about_page_id: "about",
+	contact_page_id: "contact",
+	seo_id: "seo",
+} as const

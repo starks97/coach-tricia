@@ -36,7 +36,7 @@ export function HomePageContent({ data }: HomePageProps) {
 	}
 	return (
 		<div class="space-y-4">
-			<Show when={editing()}>
+			<Show when={!editing()}>
 				<form class="">
 					<h2 class="text-4xl">Hero section</h2>
 					<div class="">
@@ -56,7 +56,7 @@ export function HomePageContent({ data }: HomePageProps) {
 			</Show>
 
 			<Show
-				when={editing()}
+				when={!editing()}
 				fallback={
 					<button onClick={() => setEditing(true)} class="text-blue-600">
 						✏️ Edit
