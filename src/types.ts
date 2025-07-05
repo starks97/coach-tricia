@@ -5,7 +5,7 @@ import { schemaRouter } from "@lib/db/schemaRouter.ts"
 import { schemaRouter } from "./lib/schemaRouter.ts"
 >>>>>>> cf2b7c4 (backend system)
 import z from "zod"
-import { type Document } from "mongodb"
+import { pageStoreID } from "./consts.ts"
 
 import { type HomePageZodSchemaType } from "@lib/models/home.ts"
 import { type CoachingPageZodSchemaType } from "@lib/models/coaching.ts"
@@ -67,13 +67,4 @@ export type PageSchemas = {
 	[K in keyof SchemaRouter]: z.infer<SchemaRouter[K]["schema"]>
 }
 
-export type HomePageDataResponseType = HomePageZodSchemaType
-
-export type PageID = "home_page_id" | "about_page_id"
-export type PageCollection = "home" | "collection"
-
-export type SectionName = "home" | "coaching" | "about" | "contact" | "seo"
-
-export type AllSections = Record<string, Document[]>
-
-export type SectionKey = "home" | "coaching" | "about" | "contact" | "seo"
+export type pageStoreKeys = keyof typeof pageStoreID

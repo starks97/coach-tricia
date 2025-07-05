@@ -1,7 +1,7 @@
-import { createSignal, Show, createEffect } from "solid-js"
+import { createSignal, Show } from "solid-js"
 import { useQuery } from "@tanstack/solid-query"
 
-import { fetchSectionPageData } from "@utils/fetchSection.ts"
+import { fetchPageData } from "~/utils/fetchPage.ts"
 
 import SectionSelector from "./SectionSelector.tsx"
 import DynamicSectionCard from "./SectionCard.tsx"
@@ -21,13 +21,8 @@ export default function SectionWrapper() {
 		const { key, value } = currentSection()
 		return {
 			queryKey: ["page", value],
-			queryFn: async () => await fetchSectionPageData(key, value),
+			queryFn: async () => await fetchPageData(key, value),
 		}
-	})
-
-	createEffect(() => {
-		console.log("Current data:", sectionQuery.data)
-		console.log("current section:", currentSection())
 	})
 
 	return (

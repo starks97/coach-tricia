@@ -16,7 +16,7 @@ export function defineSchemaRouter<T extends z.ZodTypeAny>(config: {
 	return {
 		schema: config.schema,
 		collection: config.collection,
-		schemaType: undefined as unknown as z.infer<T>,
+		schemaType: config.schema as z.infer<T>,
 	}
 }
 

@@ -6,6 +6,7 @@ import Story from "../components/about/Story.astro"
 import Layout from "../layouts/Layout.astro"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { type AboutPageZodSchemaType, AboutPageSchema } from "@lib/db/models/about.ts"
 import getPage from "@lib/db/queries/getPage.ts"
 import getSEO from "@lib/db/queries/getSEO.ts"
@@ -14,17 +15,27 @@ import { SectionSchema } from "~/lib/models/sections"
 >>>>>>> cf2b7c4 (backend system)
 
 import getSection from "@lib/queries/getSection.ts"
+=======
+import getPage from "~/lib/queries/getPage"
+>>>>>>> e5b7640 (Feature[change the arquitecture of the queries and improve the scalability])
 
 import getSEO from "@lib/queries/getSEO.ts"
+import { AboutPageSchema } from "~/lib/models/about"
 
-const data = await getSection<"about">("main", "sections", SectionSchema, "about")
+import { type pageStoreKeys } from "~/types"
+
+const aboutId: pageStoreKeys = "about_page_id"
+
+const data = await getPage(aboutId, "about", AboutPageSchema)
 
 const seoData = await getSEO("seo_id", "seo", "about")
 
-const heroData = data.hero
-const storyData = data.story
-const funFactsData = data["fun-facts"]
-const aboutCourseData = data.enough
+const { sections } = data
+
+const heroData = sections.hero
+const storyData = sections.story
+const funFactsData = sections["fun-facts"]
+const aboutCourseData = sections.enough
 
 Astro.response.headers.set("Cache-Control", "public, s-maxage=300, stale-while-revalidate=3600")
 ---
