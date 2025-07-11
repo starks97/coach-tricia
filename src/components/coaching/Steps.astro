@@ -1,7 +1,4 @@
 ---
-
-
-
 interface Props {
   title: string,
   subtitle: string,
@@ -15,6 +12,8 @@ interface Props {
 }
 
 const {title, subtitle, description, steps} = Astro.props as Props
+
+const ipad = "https://res.cloudinary.com/dyrtdhsl0/image/upload/v1752198057/tablet_xiuakr.webp"
 
 ---
 
@@ -79,7 +78,8 @@ const {title, subtitle, description, steps} = Astro.props as Props
 
 						{/* Image */}
 						<div class="z-10">
-						<div class="relative w-[300px] h-[300px] tablet:w-[350px] tablet:h-[350px] laptop:w-[450px] laptop:h-[450px] bg-[url('/images/tablet.png')] bg-contain bg-no-repeat">
+						<div class={`relative w-[300px] h-[300px] tablet:w-[350px] tablet:h-[350px] laptop:w-[450px] laptop:h-[450px]`}
+     style={{ backgroundImage: `url(${ipad})`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat' }}>
 						  <img src={item.image} class="absolute w-[162px] h-[215px] top-[34px] left-[52px] tablet:w-[190px] tablet:h-[253px] tablet:top-[39px] tablet:left-[60px] laptop:top-[50px] laptop:right-[0px] laptop:left-[78px] laptop:w-[243px] laptop:h-[325px] object-cover rounded-md"/>
                         </div>
 						</div>

@@ -23,7 +23,6 @@ const connect = data.sections.connect
 const guide = data.sections.guide
 const paymentPlan = data.sections.payment_plan
 
-console.log("payment", paymentPlan)
 Astro.response.headers.set("Cache-Control", "public, s-maxage=300, stale-while-revalidate=3600")
 ---
 
