@@ -53,13 +53,4 @@ export const AboutPageSchema = z.object({
 	}),
 })
 
-export const AboutPageSectionSchema = z.object({
-	"hero": heroAboutSchema,
-	"story": storySchema,
-	"fun-facts": z.array(funFactSchema),
-	"enough": enoughSchema,
-})
-
-export type AboutPageSectionSchemaType = z.infer<typeof AboutPageSectionSchema>
-
 export type AboutPageZodSchemaType = z.infer<typeof AboutPageSchema>

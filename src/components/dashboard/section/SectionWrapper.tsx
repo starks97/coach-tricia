@@ -7,10 +7,12 @@ import SectionSelector from "./SectionSelector.tsx"
 import DynamicSectionCard from "./SectionCard.tsx"
 import type { PageTypeKeys } from "~/types.ts"
 
+import { FormProvider } from "../FormProvider.tsx"
+
 export default function SectionWrapper() {
 	const defaultSection: { key: string; value: PageTypeKeys } = {
 		key: "home_page_id",
-		value: "home" as PageTypeKeys,
+		value: "home",
 	}
 	const [currentSection, setCurrentSection] = createSignal<{
 		key: string
@@ -29,7 +31,11 @@ export default function SectionWrapper() {
 		<div class="w-full">
 			<SectionSelector onSelect={setCurrentSection} />
 			<Show when={sectionQuery.data} fallback={<div>Loading...</div>}>
-				{(data) => <DynamicSectionCard data={data()} sectionType={currentSection().value} />}
+				{(data) => (
+					<FormProvider>
+						<DynamicSectionCard data={data} sectionPage={currentSection} />
+					</FormProvider>
+				)}
 			</Show>
 		</div>
 	)

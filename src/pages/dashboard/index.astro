@@ -1,7 +1,9 @@
 ---
 import QueryProvider from "@components/dashboard/DashboardProvider.astro"
 
-import { SignedIn, UserButton } from "@clerk/astro/components"
+/*	<SignedIn>
+			<UserButton />
+		</SignedIn> */
 ---
 
 <main>
@@ -12,8 +14,5 @@ import { SignedIn, UserButton } from "@clerk/astro/components"
 
 	<section>
 		<h3>Here is your user info</h3>
-		<SignedIn>
-			<UserButton />
-		</SignedIn>
 	</section>
 </main>

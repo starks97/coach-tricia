@@ -1,75 +1,60 @@
-import { Switch, Match, For, Show, createSignal } from "solid-js"
-import type { Page, PageTypeMap, PageTypeKeys } from "@types"
+import type { PageTypeMap, PageTypeKeys } from "@types"
+
+import { type Accessor, Show, For } from "solid-js"
+
+import { useForm } from "../FormProvider";
+type DynamicFormProps<T extends PageTypeKeys> = {
+	data: Accessor<PageTypeMap[T]>
+	sectionPage: Accessor<{
+		key: string
+		value: T
+	}>
+}
 
 export default function DynamicSectionCard<T extends PageTypeKeys>({
 	data,
-	sectionType,
-}: {
-	data: PageTypeMap[T]
-	sectionType: T
-}) {
+	sectionPage,
+}: DynamicFormProps<T>) {
+
+  const {homeForm } = useForm()
 	return (
-		<Switch>
-			<Match when={sectionType === "home"}>
-				<HomePageContent data={data as PageTypeMap["home"]} />
-			</Match>
-		</Switch>
-	)
-}
-
-interface HomePageProps {
-	data: PageTypeMap["home"]
-}
-
-export function HomePageContent({ data }: HomePageProps) {
-	const [editing, setEditing] = createSignal(false)
-
-	const sections = data.sections
-
-	console.log("data", sections)
-
-	const handleChange = () => {}
-
-	const handleSave = () => setEditing(false)
-	const handleCancel = () => {
-		setEditing(false)
-	}
-	return (
-		<div class="space-y-4">
-			<Show when={!editing()}>
-				<form class="">
-					<h2 class="text-4xl">Hero section</h2>
-					<div class="">
-						<label for="title" class="font-tajawal text-size-4 mb-1 block font-medium">
-							title
-						</label>
-						<input
-							class="w-full"
-							value={sections.hero.title}
-							placeholder="title"
-							type={"text"}
-							name={"title"}
-						/>
-						<input value={sections.hero.description} />
-					</div>
-				</form>
+		<div>
+			<Show when={sectionPage().value === "home"} keyed={true}>
+				<div>
+					{(data() as PageTypeMap["home"]).sections.benefits && (
+						<h2>{(data() as PageTypeMap["home"]).sections.benefits.title}</h2>
+					)}
+					<homeForm[0].
+				</div>
 			</Show>
 
-			<Show
-				when={!editing()}
-				fallback={
-					<button onClick={() => setEditing(true)} class="text-blue-600">
-						✏️ Edit
-					</button>
-				}
-			>
-				<div class="flex gap-2">
-					<button onClick={handleSave} class="text-green-600">
-						💾 Save
-					</button>
-					<button onClick={handleCancel} class="text-red-600">
-						✖️ Cancel
-					</button>
+			<Show when={sectionPage().value === "coaching"} keyed={true}>
+				{(data() as PageTypeMap["coaching"]).sections.guide && (
+					<h2>{(data() as PageTypeMap["coaching"]).sections.guide.title}</h2>
+				)}
+			</Show>
+
+			<Show when={sectionPage().value === "about"} keyed={true}>
+				<div>
+					{(data() as PageTypeMap["about"]).sections.enough && (
+						<h2>{(data() as PageTypeMap["about"]).sections.enough.title}</h2>
+					)}
+				</div>
+			</Show>
+
+			<Show when={sectionPage().value === "contact"} keyed={true}>
+				<div>
+					{(data() as PageTypeMap["contact"]).sections.hero && (
+						<h2>{(data() as PageTypeMap["contact"]).sections.hero.title}</h2>
+					)}
+				</div>
+			</Show>
+
+			<Show when={sectionPage().value === "seo"} keyed={true}>
+				<div>
+					{(data() as PageTypeMap["seo"]).sections.about && (
+						<h2>{(data() as PageTypeMap["seo"]).sections.about.keywords}</h2>
+					)}
 				</div>
 			</Show>
 		</div>

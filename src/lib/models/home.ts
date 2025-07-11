@@ -51,14 +51,4 @@ export const HomePageSchema = z.object({
 	}),
 })
 
-export const HomePageSectionSchema = z.object({
-	hero: heroSchema,
-	user_pain_points: userPainPointsSchema,
-	benefits: benefitsSchema,
-	coaching_info: coachingInfoSchema,
-	podcast: podcastSchema,
-})
-
-export type HomePageSectionSchemaType = z.infer<typeof HomePageSectionSchema>
-
 export type HomePageZodSchemaType = z.infer<typeof HomePageSchema>

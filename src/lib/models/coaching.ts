@@ -47,13 +47,4 @@ export const CoachingPageSchema = z.object({
 	}),
 })
 
-export const CoachingPageSectionSchema = z.object({
-	hero: heroCoachingSchema,
-	guide: guideSchema,
-	paymentPlan: z.array(paymentPlanSchema),
-	connect: connectSchema,
-})
-
-export type CoachingPageSectionSchemaType = z.infer<typeof CoachingPageSectionSchema>
-
 export type CoachingPageZodSchemaType = z.infer<typeof CoachingPageSchema>

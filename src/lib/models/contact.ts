@@ -15,10 +15,4 @@ export const ContactPageSchema = z.object({
 	}),
 })
 
-export const ContactPageSectionSchema = z.object({
-	hero: heroContactSchema,
-})
-
-export type ContactPageSectionSchemaType = z.infer<typeof ContactPageSectionSchema>
-
 export type ContactPageZodSchemaType = z.infer<typeof ContactPageSchema>
