@@ -13,6 +13,22 @@ import { type ContactPageZodSchemaType } from "@lib/models/contact.ts"
 import { type SeoDocument } from "@lib/models/seo.ts"
 import { type AboutPageZodSchemaType } from "@lib/models/about.ts"
 
+import { type JSX } from "solid-js"
+
+export type TextInputProps = {
+	name: string
+	type: "text" | "email" | "tel" | "password" | "url" | "date"
+	label?: string
+	placeholder?: string
+	value: string | undefined
+	error: string
+	required?: boolean
+	ref: (element: HTMLInputElement) => void
+	onInput: JSX.EventHandler<HTMLInputElement, InputEvent>
+	onChange: JSX.EventHandler<HTMLInputElement, Event>
+	onBlur: JSX.EventHandler<HTMLInputElement, FocusEvent>
+}
+
 export type Page =
 	| HomePageZodSchemaType
 	| CoachingPageZodSchemaType
@@ -23,7 +39,7 @@ export type Page =
 export type PageTypeMap = {
 	home: Omit<HomePageZodSchemaType, "_id">
 	coaching: Omit<CoachingPageZodSchemaType, "_id">
-	contact: Omit<CoachingPageZodSchemaType, "_id">
+	contact: Omit<ContactPageZodSchemaType, "_id">
 	seo: Omit<SeoDocument, "_id">
 	about: Omit<AboutPageZodSchemaType, "_id">
 }
@@ -68,3 +84,17 @@ export type PageSchemas = {
 }
 
 export type pageStoreKeys = keyof typeof pageStoreID
+
+export type FormFieldConfig = {
+	type: "text" | "textarea" | "url" | "number" | "array"
+	label: string
+}
+export type ArrayFieldConfig = {
+	type: "array"
+	label: string
+	itemConfig: FormFieldConfig
+}
+
+export type SectionConfig<T> = {
+	[K in keyof T]?: FormFieldConfig | ArrayFieldConfig
+}

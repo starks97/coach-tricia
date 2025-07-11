@@ -17,12 +17,4 @@ export const SEODocumentSchema = z.object({
 	}),
 })
 
-export const SeoDocumentSchema = z.object({
-	home: seoSectionSchema,
-	about: seoSectionSchema,
-	coaching: seoSectionSchema,
-	contact: seoSectionSchema,
-})
-export type SeoDocumentSchemaType = z.infer<typeof SeoDocumentSchema>
-
 export type SeoDocument = z.infer<typeof SEODocumentSchema>
