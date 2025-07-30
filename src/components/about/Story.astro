@@ -8,6 +8,8 @@ interface Props {
 }
 
 const { first, second } = Astro.props as Props
+
+const newImage = "https://res.cloudinary.com/dyrtdhsl0/image/upload/v1749081005/me_f4dpjb.webp"
 ---
 
 <section
@@ -76,7 +78,7 @@ const { first, second } = Astro.props as Props
 			</p>
 			<div class="flex flex-col justify-center">
 				<img
-					src={second.image}
+					src={newImage}
 					alt="hero"
 					class="laptop:h-[450px] h-96 w-auto opacity-0"
 					:class="intersect ? 'animate-fade-right animate-ease-in  animate-delay-200 ' : 'opacity-0'"

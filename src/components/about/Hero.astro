@@ -6,12 +6,15 @@ interface Props {
 	subtitle: string
 }
 
-const { title, description, image, subtitle } = Astro.props as Props
+const { title, description, subtitle } = Astro.props as Props
 
 import HeroWrapper from "../HeroWrapper.astro"
+
+const heroImage =
+	"https://res.cloudinary.com/dyrtdhsl0/image/upload/v1749081866/about_me_fapa4j.webp"
 ---
 
-<HeroWrapper img={image} class="tablet:flex-row-reverse">
+<HeroWrapper img={heroImage} class="tablet:flex-row-reverse">
 	<h1
 		class="font-blackstone tablet:text-left tablet:text-size-8 laptop:text-[4.5rem] text-light-rose text-center text-[3rem] font-light opacity-0"
 		:class="intersect ? 'animate-fade-up animate-ease-in-out  animate-delay-200 ' : 'opacity-0'"
