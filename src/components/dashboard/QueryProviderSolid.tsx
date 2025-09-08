@@ -7,9 +7,6 @@ import { SolidQueryDevtools } from "@tanstack/solid-query-devtools"
 import SectionWrapper from "./section/SectionWrapper.tsx"
 import { createQueryClient } from "./QueryClient.tsx"
 
-import "@styles/fonts.css"
-import "@styles/global.css"
-
 const queryClient = createQueryClient()
 
 export default function QueryProviderSolid() {

@@ -1,8 +1,8 @@
 import type { PageTypeMap, PageTypeKeys } from "@types"
 
-import { type Accessor, Show, For } from "solid-js"
+import { type Accessor, Show } from "solid-js"
+import HomeForm from "../forms/HomeForm"
 
-import { useForm } from "../FormProvider";
 type DynamicFormProps<T extends PageTypeKeys> = {
 	data: Accessor<PageTypeMap[T]>
 	sectionPage: Accessor<{
@@ -15,17 +15,12 @@ export default function DynamicSectionCard<T extends PageTypeKeys>({
 	data,
 	sectionPage,
 }: DynamicFormProps<T>) {
-
-  const {homeForm } = useForm()
 	return (
 		<div>
 			<Show when={sectionPage().value === "home"} keyed={true}>
-				<div>
-					{(data() as PageTypeMap["home"]).sections.benefits && (
-						<h2>{(data() as PageTypeMap["home"]).sections.benefits.title}</h2>
-					)}
-					<homeForm[0].
-				</div>
+				{(data() as PageTypeMap["home"]).sections.hero && (
+					<HomeForm data={data() as PageTypeMap["home"]} />
+				)}
 			</Show>
 
 			<Show when={sectionPage().value === "coaching"} keyed={true}>
