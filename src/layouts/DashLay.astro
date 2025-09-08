@@ -1,0 +1,43 @@
+---
+import "@styles/fonts.css"
+import "@styles/global.css"
+import { ClientRouter } from "astro:transitions"
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<ClientRouter />
+	</head>
+	<body>
+		<slot class="bg-body" />
+	</body>
+</html>
+
+<style>
+	* {
+		box-sizing: border-box;
+	}
+
+	body,
+	html {
+		margin: 0;
+		height: 100%;
+		background: white;
+	}
+
+	main {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		min-height: 100vh;
+	}
+
+	img,
+	video,
+	canvas {
+		max-width: 100%;
+		height: auto;
+	}
+</style>
