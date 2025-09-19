@@ -10,7 +10,7 @@ export const email = {
 			name: z.string(),
 			lastName: z.string(),
 			email: z.string().email(),
-			message: z.string().min(10).max(500),
+			message: z.string(),
 		}),
 		handler: async (input) => {
 			try {

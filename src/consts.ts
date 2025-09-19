@@ -31,4 +31,4 @@ export const socialLinks = [
 ]
 
 export const subDomain: string = "<form@notifications.coachtriciarago.com>"
-export const myEmail: string = "patricia@coachtriciarago.com"
+export const myEmail: string = "jeffersonespinoza45@gmail.com"
