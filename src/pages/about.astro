@@ -7,6 +7,7 @@ import Layout from "../layouts/Layout.astro"
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { type AboutPageZodSchemaType, AboutPageSchema } from "@lib/db/models/about.ts"
 import getPage from "@lib/db/queries/getPage.ts"
 import getSEO from "@lib/db/queries/getSEO.ts"
@@ -18,9 +19,12 @@ import getSection from "@lib/queries/getSection.ts"
 =======
 import getPage from "~/lib/queries/getPage"
 >>>>>>> e5b7640 (Feature[change the arquitecture of the queries and improve the scalability])
+=======
+import getPage from "~/lib/db/queries/getPage"
+>>>>>>> 5994448 (custom form from scratch)
 
-import getSEO from "@lib/queries/getSEO.ts"
-import { AboutPageSchema } from "~/lib/models/about"
+import getSEO from "@lib/db/queries/getSEO"
+import { AboutPageSchema } from "~/lib/db/models/about"
 
 import { type pageStoreKeys } from "~/types"
 

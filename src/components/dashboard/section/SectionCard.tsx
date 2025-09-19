@@ -1,7 +1,12 @@
 import type { PageTypeMap, PageTypeKeys } from "@types"
 
 import { type Accessor, Show } from "solid-js"
-import HomeForm from "../forms/HomeForm"
+import GeneralForm from "../forms/GeneralForm"
+import { HomePageSchema } from "~/lib/db/models/home"
+import { CoachingPageSchema } from "~/lib/db/models/coaching"
+import { AboutPageSchema } from "~/lib/db/models/about"
+import { ContactPageSchema } from "~/lib/db/models/contact"
+import { SEODocumentSchema } from "~/lib/db/models/seo"
 
 type DynamicFormProps<T extends PageTypeKeys> = {
 	data: Accessor<PageTypeMap[T]>
@@ -18,37 +23,37 @@ export default function DynamicSectionCard<T extends PageTypeKeys>({
 	return (
 		<div>
 			<Show when={sectionPage().value === "home"} keyed={true}>
-				{(data() as PageTypeMap["home"]).sections.hero && (
-					<HomeForm data={data() as PageTypeMap["home"]} />
+				{(data() as PageTypeMap["home"]) && (
+					<GeneralForm data={data() as PageTypeMap["home"]} schema={HomePageSchema} />
 				)}
 			</Show>
 
 			<Show when={sectionPage().value === "coaching"} keyed={true}>
-				{(data() as PageTypeMap["coaching"]).sections.guide && (
-					<h2>{(data() as PageTypeMap["coaching"]).sections.guide.title}</h2>
+				{(data() as PageTypeMap["coaching"]) && (
+					<GeneralForm data={data() as PageTypeMap["coaching"]} schema={CoachingPageSchema} />
 				)}
 			</Show>
 
 			<Show when={sectionPage().value === "about"} keyed={true}>
 				<div>
-					{(data() as PageTypeMap["about"]).sections.enough && (
-						<h2>{(data() as PageTypeMap["about"]).sections.enough.title}</h2>
+					{(data() as PageTypeMap["about"]) && (
+						<GeneralForm data={data() as PageTypeMap["about"]} schema={AboutPageSchema} />
 					)}
 				</div>
 			</Show>
 
 			<Show when={sectionPage().value === "contact"} keyed={true}>
 				<div>
-					{(data() as PageTypeMap["contact"]).sections.hero && (
-						<h2>{(data() as PageTypeMap["contact"]).sections.hero.title}</h2>
+					{(data() as PageTypeMap["contact"]) && (
+						<GeneralForm data={data() as PageTypeMap["contact"]} schema={ContactPageSchema} />
 					)}
 				</div>
 			</Show>
 
 			<Show when={sectionPage().value === "seo"} keyed={true}>
 				<div>
-					{(data() as PageTypeMap["seo"]).sections.about && (
-						<h2>{(data() as PageTypeMap["seo"]).sections.about.keywords}</h2>
+					{(data() as PageTypeMap["seo"]) && (
+						<GeneralForm data={data() as PageTypeMap["seo"]} schema={SEODocumentSchema} />
 					)}
 				</div>
 			</Show>

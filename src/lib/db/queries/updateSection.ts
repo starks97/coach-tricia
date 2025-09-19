@@ -1,13 +1,13 @@
 import { type OptionalUnlessRequiredId, ObjectId, type Filter } from "mongodb"
 import type { ZodObject, ZodRawShape } from "zod"
 
-import MongoService from "../mongoService.ts"
+import MongoService from "../mongoService"
 
 export default async function updateSection<T extends { _id: string | ObjectId }>(
 	sectionId: string,
 	collectionName: string,
 	update: Partial<T>,
-	schema?: ZodObject<ZodRawShape, any, any, OptionalUnlessRequiredId<T>, any>
+	schema?: ZodObject<ZodRawShape, any>
 ): Promise<boolean> {
 	try {
 		const mongoService = await MongoService.init<T>(collectionName, schema)

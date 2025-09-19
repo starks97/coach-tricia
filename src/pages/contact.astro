@@ -6,6 +6,7 @@ import Hero from "@components/contact/Hero.astro"
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { type ContactPageZodSchemaType, ContactPageSchema } from "@lib/db/models/contact.ts"
 import getPage from "@lib/db/queries/getPage.ts"
 import getSEO from "@lib/db/queries/getSEO.ts"
@@ -17,8 +18,12 @@ import getSEO from "@lib/queries/getSEO.ts"
 import getSEO from "@lib/queries/getSEO.ts"
 import getPage from "~/lib/queries/getPage"
 >>>>>>> e5b7640 (Feature[change the arquitecture of the queries and improve the scalability])
+=======
+import getSEO from "@lib/db/queries/getSEO.ts"
+import getPage from "~/lib/db/queries/getPage"
+>>>>>>> 5994448 (custom form from scratch)
 
-import { ContactPageSchema } from "~/lib/models/contact"
+import { ContactPageSchema } from "~/lib/db/models/contact"
 import { type pageStoreKeys } from "~/types"
 
 const contactId: pageStoreKeys = "contact_page_id"

@@ -1,17 +1,21 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { type HomePageZodSchemaType } from "@lib/db/models/home.ts"
 import { schemaRouter } from "@lib/db/schemaRouter.ts"
 =======
 import { schemaRouter } from "./lib/schemaRouter.ts"
 >>>>>>> cf2b7c4 (backend system)
+=======
+import { schemaRouter } from "./lib/db/schemaRouter.ts"
+>>>>>>> 5994448 (custom form from scratch)
 import z from "zod"
 import { pageStoreID } from "./consts.ts"
 
-import { type HomePageZodSchemaType } from "@lib/models/home.ts"
-import { type CoachingPageZodSchemaType } from "@lib/models/coaching.ts"
-import { type ContactPageZodSchemaType } from "@lib/models/contact.ts"
-import { type SeoDocument } from "@lib/models/seo.ts"
-import { type AboutPageZodSchemaType } from "@lib/models/about.ts"
+import { type HomePageZodSchemaType } from "~/lib/db/models/home.ts"
+import { type CoachingPageZodSchemaType } from "~/lib/db/models/coaching.ts"
+import { type ContactPageZodSchemaType } from "~/lib/db/models/contact.ts"
+import { type SeoDocument } from "~/lib/db/models/seo.ts"
+import { type AboutPageZodSchemaType } from "~/lib/db/models/about.ts"
 
 import { type JSX } from "solid-js"
 
@@ -37,7 +41,7 @@ export type Page =
 	| AboutPageZodSchemaType
 
 export type PageTypeMap = {
-	home: Omit<HomePageZodSchemaType, "_id">
+	home: HomePageZodSchemaType
 	coaching: Omit<CoachingPageZodSchemaType, "_id">
 	contact: Omit<ContactPageZodSchemaType, "_id">
 	seo: Omit<SeoDocument, "_id">
