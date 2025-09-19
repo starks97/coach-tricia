@@ -5,7 +5,7 @@ import PaymentPlan from "../components/coaching/PaymentPlan.astro"
 import Steps from "../components/coaching/Steps.astro"
 import Layout from "../layouts/Layout.astro"
 
-import getSEO from "../lib/queries/getSEO.ts"
+import getSEO from "@lib/db/queries/getSEO.ts"
 
 const seoData = await getSEO("seo_id", "seo", "coaching")
 ---

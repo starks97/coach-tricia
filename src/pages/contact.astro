@@ -4,10 +4,10 @@ import Layout from "../layouts/Layout.astro"
 import ContactLayout from "@components/contact/ContactLayout.astro"
 import Hero from "@components/contact/Hero.astro"
 
-import getSEO from "@lib/queries/getSEO.ts"
-import getPage from "~/lib/queries/getPage"
+import getSEO from "@lib/db/queries/getSEO.ts"
+import getPage from "~/lib/db/queries/getPage"
 
-import { ContactPageSchema } from "~/lib/models/contact"
+import { ContactPageSchema } from "~/lib/db/models/contact"
 import { type pageStoreKeys } from "~/types"
 
 const contactId: pageStoreKeys = "contact_page_id"

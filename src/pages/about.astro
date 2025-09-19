@@ -5,10 +5,10 @@ import Hero from "../components/about/Hero.astro"
 import Story from "../components/about/Story.astro"
 import Layout from "../layouts/Layout.astro"
 
-import getPage from "~/lib/queries/getPage"
+import getPage from "~/lib/db/queries/getPage"
 
-import getSEO from "@lib/queries/getSEO.ts"
-import { AboutPageSchema } from "~/lib/models/about"
+import getSEO from "@lib/db/queries/getSEO"
+import { AboutPageSchema } from "~/lib/db/models/about"
 
 import { type pageStoreKeys } from "~/types"
 

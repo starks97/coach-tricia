@@ -1,7 +1,7 @@
 import { describe, test, expect, beforeAll, afterAll } from "vitest"
 import { MongoMemoryServer } from "mongodb-memory-server"
 
-import MongoDB from "../src/lib/database.ts"
+import MongoDB from "../src/lib/db/database.ts"
 
 let mongoServer: MongoMemoryServer
 let uri: string

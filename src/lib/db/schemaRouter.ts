@@ -1,5 +1,5 @@
-import { HomePageSchema } from "@lib/models/home.ts"
-import { CoachingPageSchema } from "@lib/models/coaching.ts"
+import { HomePageSchema } from "~/lib/db/models/home.ts"
+import { CoachingPageSchema } from "~/lib/db/models/coaching.ts"
 import { ContactPageSchema } from "./models/contact.ts"
 import { SEODocumentSchema } from "./models/seo.ts"
 import { AboutPageSchema } from "./models/about.ts"
