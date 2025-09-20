@@ -31,4 +31,28 @@ export const socialLinks = [
 ]
 
 export const subDomain: string = "<form@notifications.coachtriciarago.com>"
-export const myEmail: string = "jeffersonespinoza45@gmail.com"
+export const myEmail: string = "patricia@coachtriciarago.com"
+
+export const emailBody = (
+	name: FormDataEntryValue,
+	lastName: FormDataEntryValue,
+	email: FormDataEntryValue,
+	message: FormDataEntryValue
+) => {
+	const body = `
+Hello,
+
+You have received a new contact message:
+
+Name: ${name}
+Last Name: ${lastName}
+Email: ${email}
+
+Message:
+${message}
+
+---
+This message was sent from coachtriciarago.com.
+            `
+	return encodeURIComponent(body)
+}
