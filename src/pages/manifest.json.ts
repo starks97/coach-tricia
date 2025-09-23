@@ -22,8 +22,8 @@ export const GET: APIRoute = async () => {
 	)
 
 	const manifest = {
-		name: "Your site title",
-		description: "Your site description",
+		name: "Coach Tricia Rago",
+		description: "Welcome to Coach Tricia Rago's website!",
 		start_url: "/",
 		display: "standalone",
 		id: "some-unique-id",

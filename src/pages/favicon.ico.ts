@@ -7,12 +7,20 @@ import path from "node:path"
 const faviconSrc = path.resolve("src/images/favicon.png")
 
 export const GET: APIRoute = async () => {
-	// resize to 32px PNG
-	const buffer = await sharp(faviconSrc).resize(32).toFormat("png").toBuffer()
-	// generate ico
-	const icoBuffer = ico.encode([buffer])
+	try {
+		const buffer = await sharp(faviconSrc).resize(32).toFormat("png").toBuffer()
 
-	return new Response(icoBuffer, {
-		headers: { "Content-Type": "image/x-icon" },
-	})
+		const icoBuffer = ico.encode([buffer])
+
+		const responseBuffer = Buffer.from(icoBuffer)
+
+		return new Response(responseBuffer, {
+			headers: {
+				"Content-Type": "image/x-icon",
+				"Content-Length": responseBuffer.length.toString(),
+			},
+		})
+	} catch (error) {
+		return new Response("Error generating favicon", { status: 500 })
+	}
 }
