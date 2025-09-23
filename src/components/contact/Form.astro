@@ -1,5 +1,4 @@
 ---
-import { myEmail, emailBody } from "~/consts";
 
 ---
 
@@ -71,7 +70,7 @@ address any questions about enrollment"
 </form>
 
 <script>
-	/*import { actions } from "astro:actions"
+	import { actions } from "astro:actions"
 	import { navigate } from "astro:transitions/client"
 
 	const form = document.querySelector("form")
@@ -86,50 +85,8 @@ address any questions about enrollment"
 		} else {
 			await navigate("/")
 		}
-	})*/
+	})
 
-	import {myEmail, emailBody } from "~/consts";
-
-	 document.addEventListener('DOMContentLoaded', function() {
-            const form = document.getElementById("contact-form");
-            const errorDiv = document.getElementById("form-error");
-            
-            if (form) {
-                form.addEventListener("submit", function(event) {
-                    event.preventDefault();
-                    
-					const name = (document.getElementById("name") as HTMLInputElement)?.value.trim();
-                    const lastName = (document.getElementById("lastName") as HTMLInputElement )?.value.trim();
-                    const email = (document.getElementById("email")  as HTMLInputElement).value.trim();
-                    const message = (document.getElementById("message")  as HTMLInputElement).value.trim();
-
-                    // Validación
-                    if (!name || !lastName || !email || !message) {
-                        errorDiv!.textContent = "Todos los campos son obligatorios";
-                        return;
-                    }
-                    
-                    // Validación de email
-                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                    if (!emailRegex.test(email)) {
-                        errorDiv!.textContent = "Por favor ingrese un correo electrónico válido";
-                        return;
-                    }
-                    
-                    // Limpiar mensajes de error
-                    errorDiv!.textContent = "";
-                    
-                    // Crear el enlace mailto
-                    const body = emailBody(name, lastName, email, message);
-                    const subject = encodeURIComponent("New message from your website");
-                    const mailtoLink = `mailto:${myEmail}?subject=${subject}&body=${body}`;
-                    
-                    // Abrir el cliente de correo
-                    window.location.href = mailtoLink;
-					
-                });
-            }
-        });
 
 
 </script>
