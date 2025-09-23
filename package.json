@@ -19,6 +19,7 @@
     "@astrojs/alpinejs": "^0.4.9",
     "@astrojs/check": "^0.9.4",
     "@astrojs/node": "^9.4.4",
+<<<<<<< HEAD
     "@astrojs/solid-js": "^5.1.1",
     "@astrojs/vercel": "^8.2.8",
     "@tailwindcss/vite": "^4.1.13",
@@ -40,16 +41,18 @@
 >>>>>>> 5994448 (custom form from scratch)
     "@astrojs/check": "^0.9.4",
     "@astrojs/node": "^9.4.3",
+=======
+>>>>>>> 5c5e047 (feature[new form ])
     "@astrojs/solid-js": "^5.1.1",
-    "@astrojs/vercel": "^8.2.7",
+    "@astrojs/vercel": "^8.2.8",
     "@clerk/astro": "^2.13.0",
     "@tailwindcss/vite": "^4.1.13",
-    "@tanstack/solid-query": "^5.89.0",
+    "@tanstack/solid-query": "^5.90.1",
     "alpinejs": "^3.15.0",
-    "astro": "^5.13.7",
+    "astro": "^5.13.10",
     "astro-cloudinary": "^1.3.4",
     "cloudinary": "^2.7.0",
-    "mongodb": "^6.19.0",
+    "mongodb": "^6.20.0",
     "nanostores": "^1.0.1",
     "nodemailer": "^6.10.1",
 <<<<<<< HEAD
@@ -71,16 +74,21 @@
     "solid-js": "^1.9.9",
     "typescript": "^5.9.2",
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 3876ba1 (temporary form)
     "zod": "^3.25.76"
 >>>>>>> 491cd70 (Fix[bug with the reactivity])
 =======
     "zod": "^4.1.9"
 >>>>>>> 5994448 (custom form from scratch)
+=======
+    "zod": "^4.1.11"
+>>>>>>> 5c5e047 (feature[new form ])
   },
   "devDependencies": {
-    "@tanstack/solid-query-devtools": "^5.89.0",
+    "@tanstack/solid-query-devtools": "^5.90.1",
     "@types/alpinejs": "^3.13.11",
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -91,6 +99,9 @@
     "@types/nodemailer": "^6.4.19",
 =======
     "@types/node": "^22.18.5",
+=======
+    "@types/node": "^22.18.6",
+>>>>>>> 5c5e047 (feature[new form ])
     "@types/nodemailer": "^6.4.19",
     "mongodb-memory-server": "^10.2.1",
 >>>>>>> 5994448 (custom form from scratch)

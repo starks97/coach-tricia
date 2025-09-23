@@ -18,7 +18,7 @@ const reviewSchema = z.object({
 const userPainPointsSchema = z.object({
 	title: z.string().min(1, "The title cannot be empty"),
 	subtitle: z.string().min(1, "The subtitle cannot be empty"),
-	pain_points: z.array(z.string().min(1, "Each pain point must be a non-empty string")),
+	pain_points: z.array(z.string().min(1, "The pain point cannot be empty")),
 	reviews: z.array(reviewSchema).min(1, "There must be at least one review"),
 })
 

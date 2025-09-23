@@ -24,22 +24,21 @@ import getPage from "~/lib/db/queries/getPage"
 >>>>>>> 5994448 (custom form from scratch)
 
 import getSEO from "@lib/db/queries/getSEO"
-import { AboutPageSchema } from "~/lib/db/models/about"
+import { AboutPageSchema, type AboutPageZodSchemaType } from "~/lib/db/models/about"
 
 import { type pageStoreKeys } from "~/types"
 
 const aboutId: pageStoreKeys = "about_page_id"
 
-const data = await getPage(aboutId, "about", AboutPageSchema)
+const data = await getPage(aboutId, "about", AboutPageSchema) as AboutPageZodSchemaType;
 
 const seoData = await getSEO("seo_id", "seo", "about")
 
-const { sections } = data
 
-const heroData = sections.hero
-const storyData = sections.story
-const funFactsData = sections["fun-facts"]
-const aboutCourseData = sections.enough
+const heroData = data.hero
+const storyData = data.story
+const funFactsData = data["fun-facts"]
+const aboutCourseData = data.enough
 
 Astro.response.headers.set("Cache-Control", "public, s-maxage=300, stale-while-revalidate=3600")
 ---

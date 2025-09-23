@@ -89,16 +89,12 @@ export type PageSchemas = {
 
 export type pageStoreKeys = keyof typeof pageStoreID
 
-export type FormFieldConfig = {
-	type: "text" | "textarea" | "url" | "number" | "array"
-	label: string
-}
-export type ArrayFieldConfig = {
-	type: "array"
-	label: string
-	itemConfig: FormFieldConfig
+export interface FieldErrors {
+	[key: string]: string
 }
 
-export type SectionConfig<T> = {
-	[K in keyof T]?: FormFieldConfig | ArrayFieldConfig
+//general form types
+export interface GeneralFormProps<T extends PageTypeKeys> {
+	data: PageTypeMap[T]
+	schema: z.ZodObject<z.ZodRawShape, any>
 }

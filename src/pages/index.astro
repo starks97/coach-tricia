@@ -24,7 +24,7 @@ import { HomePageSchema } from "~/lib/models/home"
 import getPage from "~/lib/queries/getPage"
 =======
 import getSEO from "@lib/db/queries/getSEO.ts"
-import { HomePageSchema } from "~/lib/db/models/home"
+import { HomePageSchema, type HomePageZodSchemaType } from "~/lib/db/models/home"
 import getPage from "~/lib/db/queries/getPage"
 >>>>>>> 5994448 (custom form from scratch)
 import { type pageStoreKeys } from "~/types"
@@ -33,14 +33,13 @@ const homeId: pageStoreKeys = "home_page_id"
 >>>>>>> e5b7640 (Feature[change the arquitecture of the queries and improve the scalability])
 
 const seoData = await getSEO("seo_id", "seo", "home")
-const data = await getPage(homeId, "home", HomePageSchema)
+const data = await getPage(homeId, "home", HomePageSchema) as HomePageZodSchemaType
 
-const { sections } = data
 
-const heroPage = sections.hero
-const coachingData = sections.coaching_info
-const benefitsData = sections.benefits
-const userPainPointsData = sections.user_pain_points
+const heroPage = data.hero
+const coachingData = data.coaching_info
+const benefitsData = data.benefits
+const userPainPointsData = data.user_pain_points
 
 Astro.response.headers.set("Cache-Control", "public, s-maxage=300, stale-while-revalidate=3600")
 ---
