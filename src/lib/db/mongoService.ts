@@ -6,15 +6,15 @@ import MongoDB from "./database.ts"
 
 export default class MongoService<T extends Document> {
 	private collection!: Collection<T>
-	schema: ZodObject<ZodRawShape, any>
+	schema: ZodObject<ZodRawShape, any, any, OptionalUnlessRequiredId<T>, any>
 
-	constructor(schema?: ZodObject<ZodRawShape, any>) {
+	constructor(schema?: ZodObject<ZodRawShape, any, any, OptionalUnlessRequiredId<T>, any>) {
 		this.schema = schema!
 	}
 
 	static async init<T extends Document>(
 		collectionName: string,
-		schema?: ZodObject<ZodRawShape, any>
+		schema?: ZodObject<ZodRawShape, any, any, OptionalUnlessRequiredId<T>, any>
 	): Promise<MongoService<T>> {
 		const service = new MongoService<T>(schema)
 		const client = MongoDB.getInstance()
@@ -24,14 +24,14 @@ export default class MongoService<T extends Document> {
 
 	async insertOne(doc: OptionalUnlessRequiredId<T>) {
 		if (this.schema) {
-			doc = this.schema.parse(doc) as OptionalUnlessRequiredId<T>
+			doc = this.schema.parse(doc)
 		}
 		return this.collection.insertOne(doc)
 	}
 
 	async insertMany(docs: OptionalUnlessRequiredId<T>[]) {
 		if (this.schema) {
-			docs = docs.map((doc) => this.schema!.parse(doc)) as OptionalUnlessRequiredId<T>[]
+			docs = docs.map((doc) => this.schema!.parse(doc))
 		}
 		return this.collection.insertMany(docs)
 	}

@@ -2,7 +2,7 @@ import { ObjectId, type Filter } from "mongodb"
 
 import { type SeoDocument } from "../models/seo.ts"
 
-import MongoService from "../mongoService"
+import MongoService from "../mongoService.ts"
 
 export default async function getSEO<K extends keyof SeoDocument["sections"]>(
 	id: string,

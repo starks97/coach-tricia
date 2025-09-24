@@ -1,18 +1,8 @@
 import type { APIRoute } from "astro"
 import z from "zod"
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 import getPage from "@lib/db/queries/getPage.ts"
 import { schemaRouter } from "@lib/db/schemaRouter.ts"
-=======
-import getPage from "@lib/queries/getPage.ts"
-import { schemaRouter } from "@lib/schemaRouter.ts"
->>>>>>> cf2b7c4 (backend system)
-=======
-import getPage from "@lib/db/queries/getPage.ts"
-import { schemaRouter } from "~/lib/db/schemaRouter"
->>>>>>> 5994448 (custom form from scratch)
 
 export const GET: APIRoute = async ({ request }) => {
 	try {

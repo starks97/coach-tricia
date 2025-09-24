@@ -1,27 +1,23 @@
 import { MongoClient, Db } from "mongodb"
 
-import {
-	MONGO_DB_URI as DEFAULT_URI,
-	MONGO_NAME_OF_DATABASE as DEFAULT_DATABASE,
-} from "astro:env/server"
+import { MONGO_DB_URI } from "astro:env/server"
+
+if (!MONGO_DB_URI) {
+	throw new Error("MONGO_DB_URI is not defined")
+}
 
 export default class MongoDB {
 	private static instance: MongoDB
 	private client: MongoClient
 	private db: Db | null = null
 
-	constructor(private uri: string = DEFAULT_URI) {
-		if (!this.uri) throw new Error("MONGO_DB_URI is not defined")
-		this.client = new MongoClient(uri)
+	constructor() {
+		this.client = new MongoClient(MONGO_DB_URI)
 	}
 
-	static getInstance(uri?: string): MongoDB {
-		if (!uri || uri.trim() === "") {
-			uri = DEFAULT_URI
-		}
-
+	static getInstance(): MongoDB {
 		if (!MongoDB.instance) {
-			MongoDB.instance = new MongoDB(uri)
+			MongoDB.instance = new MongoDB()
 		}
 		return MongoDB.instance
 	}
@@ -29,7 +25,7 @@ export default class MongoDB {
 	async connect(): Promise<Db> {
 		if (!this.db) {
 			await this.client.connect()
-			this.db = this.client.db(DEFAULT_DATABASE)
+			this.db = this.client.db("pages")
 		}
 		return this.db!
 	}
