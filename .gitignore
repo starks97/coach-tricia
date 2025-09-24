@@ -1,4 +1,5 @@
 # Environment files
+<<<<<<< HEAD
 .env
 .env.local
 .env.*.local
@@ -12,3 +13,14 @@ dist/
 
 # Vercel-specific
 .vercel/
+=======
+**/.env
+
+# Dependency directories
+**/node_modules
+
+# Build directories
+dist/
+.vercel/
+.astro/
+>>>>>>> e39b307 (Update gitignore and stop tracking dist, vercel, astro, node_modules, and .env files)

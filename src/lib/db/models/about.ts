@@ -43,14 +43,10 @@ const enoughSchema = z.object({
 })
 
 export const AboutPageSchema = z.object({
-	_id: z.string().length(24, "The _id must have 24 characters (valid ObjectId)"), // ObjectId de MongoDB
-	page_name: z.string().min(1, "The page name cannot be empty"),
-	sections: z.object({
-		"hero": heroAboutSchema,
-		"story": storySchema,
-		"fun-facts": z.array(funFactSchema),
-		"enough": enoughSchema,
-	}),
+	"hero": heroAboutSchema,
+	"story": storySchema,
+	"fun-facts": z.array(funFactSchema),
+	"enough": enoughSchema,
 })
 
 export type AboutPageZodSchemaType = z.infer<typeof AboutPageSchema>

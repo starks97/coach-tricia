@@ -1,21 +1,51 @@
 ---
 import Layout from "../layouts/Layout.astro"
 
-import ContactLayout from "../components/contact/ContactLayout.astro"
-import Hero from "../components/contact/Hero.astro"
+import ContactLayout from "@components/contact/ContactLayout.astro"
+import Hero from "@components/contact/Hero.astro"
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
 import { type ContactPageZodSchemaType, ContactPageSchema } from "@lib/db/models/contact.ts"
 import getPage from "@lib/db/queries/getPage.ts"
 import getSEO from "@lib/db/queries/getSEO.ts"
+=======
+import getSection from "@lib/queries/getSection.ts"
+import getSEO from "@lib/queries/getSEO.ts"
+>>>>>>> cf2b7c4 (backend system)
+=======
+import getSEO from "@lib/queries/getSEO.ts"
+import getPage from "~/lib/queries/getPage"
+>>>>>>> e5b7640 (Feature[change the arquitecture of the queries and improve the scalability])
+=======
+import getSEO from "@lib/db/queries/getSEO.ts"
+import getPage from "~/lib/db/queries/getPage"
+>>>>>>> 5994448 (custom form from scratch)
 
-const data = await getPage<ContactPageZodSchemaType>(
-	"contact_page_id",
-	"contact",
-	ContactPageSchema
-)
+import { ContactPageSchema, type ContactPageZodSchemaType } from "~/lib/db/models/contact"
+import { type pageStoreKeys } from "~/types"
 
+const contactId: pageStoreKeys = "contact_page_id"
+
+const data = await getPage(contactId, "contact", ContactPageSchema) as ContactPageZodSchemaType;
+
+<<<<<<< HEAD
+<<<<<<< HEAD
 const seoData = await getSEO("seo_id", "seo", "contact")
 const heroData = data.sections.hero
+=======
+const seoData = await getSEO("seo_id", "seo", "coaching")
+<<<<<<< HEAD
+const heroData = data.hero
+>>>>>>> cf2b7c4 (backend system)
+=======
+const heroData = data.sections.hero
+>>>>>>> e5b7640 (Feature[change the arquitecture of the queries and improve the scalability])
+=======
+const seoData = await getSEO("seo_id", "seo", "coaching")
+const heroData = data.hero
+>>>>>>> 5c5e047 (feature[new form ])
 
 Astro.response.headers.set("Cache-Control", "public, s-maxage=300, stale-while-revalidate=3600")
 ---

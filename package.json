@@ -8,12 +8,18 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "seed": "ts-node src/lib/seed.ts"
+    "seed": "ts-node src/lib/seed.ts",
+    "test": "vitest",
+    "test:watch": "vitest --watch",
+    "test:coverage": "vitest --coverage"
   },
   "dependencies": {
+<<<<<<< HEAD
+<<<<<<< HEAD
     "@astrojs/alpinejs": "^0.4.9",
     "@astrojs/check": "^0.9.4",
     "@astrojs/node": "^9.4.4",
+<<<<<<< HEAD
     "@astrojs/solid-js": "^5.1.1",
     "@astrojs/vercel": "^8.2.8",
     "@tailwindcss/vite": "^4.1.13",
@@ -28,28 +34,142 @@
     "solid-js": "^1.9.9",
     "typescript": "^5.9.2",
     "zod": "^3.25.76"
+=======
+    "@astrojs/alpinejs": "^0.4.8",
+=======
+    "@astrojs/alpinejs": "^0.4.9",
+>>>>>>> 5994448 (custom form from scratch)
+    "@astrojs/check": "^0.9.4",
+    "@astrojs/node": "^9.4.3",
+=======
+>>>>>>> 5c5e047 (feature[new form ])
+    "@astrojs/solid-js": "^5.1.1",
+    "@astrojs/vercel": "^8.2.8",
+    "@clerk/astro": "^2.13.2",
+    "@tailwindcss/vite": "^4.1.13",
+    "@tanstack/solid-query": "^5.90.2",
+    "alpinejs": "^3.15.0",
+    "astro": "^5.13.10",
+    "astro-cloudinary": "^1.3.4",
+    "cloudinary": "^2.7.0",
+    "mongodb": "^6.20.0",
+    "nanostores": "^1.0.1",
+    "nodemailer": "^6.10.1",
+<<<<<<< HEAD
+    "solid-js": "^1.9.7",
+    "typescript": "^5.8.3",
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+    "zod": "^3.25.17"
+>>>>>>> cf2b7c4 (backend system)
+=======
+    "zod": "^3.25.32"
+>>>>>>> 8dd5fb2 (queries update)
+=======
+    "zod": "^3.25.74"
+>>>>>>> e39b307 (Update gitignore and stop tracking dist, vercel, astro, node_modules, and .env files)
+=======
+=======
+    "solid-js": "^1.9.9",
+    "typescript": "^5.9.2",
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 3876ba1 (temporary form)
+    "zod": "^3.25.76"
+>>>>>>> 491cd70 (Fix[bug with the reactivity])
+=======
+    "zod": "^4.1.9"
+>>>>>>> 5994448 (custom form from scratch)
+=======
+    "zod": "^4.1.11"
+>>>>>>> 5c5e047 (feature[new form ])
   },
   "devDependencies": {
+    "@tanstack/solid-query-devtools": "^5.90.2",
     "@types/alpinejs": "^3.13.11",
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
     "@types/node": "^22.18.6",
     "@types/nodemailer": "^6.4.19",
+=======
+    "@types/node": "^22.18.5",
+=======
+    "@types/node": "^22.18.6",
+>>>>>>> 5c5e047 (feature[new form ])
+    "@types/nodemailer": "^6.4.19",
+    "mongodb-memory-server": "^10.2.1",
+>>>>>>> 5994448 (custom form from scratch)
     "prettier": "^3.6.2",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-astro-organize-imports": "^0.4.11",
     "prettier-plugin-tailwindcss": "^0.6.14",
     "tailwindcss": "^4.1.13",
+=======
+    "@types/node": "^22.15.21",
+=======
+    "@types/node": "^22.15.23",
+>>>>>>> 8dd5fb2 (queries update)
+=======
+    "@types/node": "^22.16.0",
+>>>>>>> e39b307 (Update gitignore and stop tracking dist, vercel, astro, node_modules, and .env files)
+=======
+    "@types/node": "^22.16.2",
+>>>>>>> 491cd70 (Fix[bug with the reactivity])
+    "@types/nodemailer": "^6.4.17",
+    "mongodb-memory-server": "^10.1.4",
+=======
+    "@types/node": "^22.18.1",
+    "@types/nodemailer": "^6.4.19",
+    "mongodb-memory-server": "^10.2.0",
+>>>>>>> 3876ba1 (temporary form)
+    "prettier": "^3.6.2",
+    "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-astro-organize-imports": "^0.4.11",
+<<<<<<< HEAD
+<<<<<<< HEAD
+    "prettier-plugin-tailwindcss": "^0.6.11",
+    "tailwindcss": "^4.1.7",
+>>>>>>> cf2b7c4 (backend system)
+=======
+    "prettier-plugin-tailwindcss": "^0.6.13",
+=======
+    "prettier-plugin-tailwindcss": "^0.6.14",
+<<<<<<< HEAD
+>>>>>>> 491cd70 (Fix[bug with the reactivity])
+    "tailwindcss": "^4.1.11",
+>>>>>>> e39b307 (Update gitignore and stop tracking dist, vercel, astro, node_modules, and .env files)
+=======
+    "tailwindcss": "^4.1.13",
+>>>>>>> 3876ba1 (temporary form)
     "tailwindcss-animated": "^2.0.0",
     "ts-node": "^10.9.2",
-    "tslib": "^2.8.1"
+    "tslib": "^2.8.1",
+    "vitest": "^3.2.4"
   },
+<<<<<<< HEAD
+<<<<<<< HEAD
   "packageManager": "pnpm@10.12.3+sha512.467df2c586056165580ad6dfb54ceaad94c5a30f80893ebdec5a44c5aa73c205ae4a5bb9d5ed6bb84ea7c249ece786642bbb49d06a307df218d03da41c317417",
+=======
+  "packageManager": "pnpm@10.10.0+sha512.d615db246fe70f25dcfea6d8d73dee782ce23e2245e3c4f6f888249fb568149318637dca73c2c5c8ef2a4ca0d5657fb9567188bfab47f566d1ee6ce987815c39",
+>>>>>>> cf2b7c4 (backend system)
+=======
+  "packageManager": "pnpm@10.11.0+sha512.6540583f41cc5f628eb3d9773ecee802f4f9ef9923cc45b69890fb47991d4b092964694ec3a4f738a420c918a333062c8b925d312f42e4f0c263eb603551f977",
+>>>>>>> 8dd5fb2 (queries update)
   "pnpm": {
     "ignoredBuiltDependencies": [
       "@tailwindcss/oxide",
       "esbuild",
+      "mongodb-memory-server",
       "sharp"
     ],
     "onlyBuiltDependencies": [
+      "@clerk/shared",
       "esbuild"
     ]
   }

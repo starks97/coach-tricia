@@ -6,8 +6,7 @@ export const seoSectionSchema = z.object({
 	keywords: z.array(z.string().min(1).max(255)).min(1).max(10),
 })
 
-export const seoDocumentSchema = z.object({
-	_id: z.string().length(24, "_id must be a 24-character valid ObjectId"),
+export const SEODocumentSchema = z.object({
 	sections: z.object({
 		home: seoSectionSchema,
 		about: seoSectionSchema,
@@ -16,4 +15,4 @@ export const seoDocumentSchema = z.object({
 	}),
 })
 
-export type SeoDocument = z.infer<typeof seoDocumentSchema>
+export type SeoDocument = z.infer<typeof SEODocumentSchema>

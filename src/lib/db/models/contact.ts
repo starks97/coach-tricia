@@ -8,11 +8,7 @@ const heroContactSchema = z.object({
 })
 
 export const ContactPageSchema = z.object({
-	_id: z.string().length(24, "The _id must have 24 characters (valid ObjectId)"),
-	page_name: z.string().min(1, "The page name cannot be empty"),
-	sections: z.object({
-		hero: heroContactSchema,
-	}),
+	hero: heroContactSchema,
 })
 
 export type ContactPageZodSchemaType = z.infer<typeof ContactPageSchema>
