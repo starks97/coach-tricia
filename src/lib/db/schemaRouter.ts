@@ -1,17 +1,11 @@
-<<<<<<< HEAD
-<<<<<<< HEAD:src/lib/db/schemaRouter.ts
 import { HomePageSchema } from "./models/home.ts"
-=======
-import { HomePageSchema } from "@lib/models/home.ts"
-import { CoachingPageSchema } from "@lib/models/coaching.ts"
-=======
-import { HomePageSchema } from "~/lib/db/models/home.ts"
+
 import { CoachingPageSchema } from "~/lib/db/models/coaching.ts"
->>>>>>> 5994448 (custom form from scratch)
+
 import { ContactPageSchema } from "./models/contact.ts"
 import { SEODocumentSchema } from "./models/seo.ts"
 import { AboutPageSchema } from "./models/about.ts"
->>>>>>> cf2b7c4 (backend system):src/lib/schemaRouter.ts
+
 import z from "zod"
 
 export function defineSchemaRouter<T extends z.ZodTypeAny>(config: {

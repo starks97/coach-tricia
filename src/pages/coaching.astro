@@ -5,27 +5,21 @@ import PaymentPlan from "../components/coaching/PaymentPlan.astro"
 import Steps from "../components/coaching/Steps.astro"
 import Layout from "../layouts/Layout.astro"
 
-<<<<<<< HEAD
 import getPage from "@lib/db/queries/getPage.ts"
 import getSEO from "@lib/db/queries/getSEO.ts"
 
 import { CoachingPageSchema, type CoachingPageZodSchemaType } from "@lib/db/models/coaching"
-=======
-import getSEO from "@lib/db/queries/getSEO.ts"
->>>>>>> 5994448 (custom form from scratch)
 
 const seoData = await getSEO("seo_id", "seo", "coaching")
 
-const data = await getPage<CoachingPageZodSchemaType>(
+const data = await getPage(
 	"coaching_page_id",
 	"coaching",
 	CoachingPageSchema
-)
+) as CoachingPageZodSchemaType
 
-const { description, image, subtitle, title } = data.sections.hero
-const connect = data.sections.connect
-const guide = data.sections.guide
-const paymentPlan = data.sections.payment_plan
+
+const {hero, connect, paymentPlan, guide} = data
 
 Astro.response.headers.set("Cache-Control", "public, s-maxage=300, stale-while-revalidate=3600")
 ---
@@ -33,11 +27,11 @@ Astro.response.headers.set("Cache-Control", "public, s-maxage=300, stale-while-r
 <Layout
 	title={seoData!.title}
 	description={seoData!.description}
-	image={image}
+	image={hero.image}
 	keywords={seoData!.keywords}
 >
 	<main>
-		<Hero title={title} description={description} image={image} subtitle={subtitle} />
+		<Hero title={hero.title} description={hero.description} image={hero.image} subtitle={hero.subtitle} />
 		<Steps
 			title={guide.title}
 			description={guide.description}

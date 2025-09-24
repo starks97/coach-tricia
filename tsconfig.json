@@ -16,19 +16,10 @@
       "@styles/*": ["src/styles/*"],
       "@actions/*": ["src/actions/*"]
     },
-<<<<<<< HEAD
-
-    "strict": true
-=======
     "strict": true,
     "target": "ES2020",
     "module": "ESNext",
-<<<<<<< HEAD
-    "lib": ["ES2020", "DOM"]
->>>>>>> cf2b7c4 (backend system)
-=======
     "lib": ["ES2020", "DOM"],
     "verbatimModuleSyntax": true
->>>>>>> 491cd70 (Fix[bug with the reactivity])
   }
 }

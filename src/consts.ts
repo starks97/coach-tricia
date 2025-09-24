@@ -30,10 +30,9 @@ export const socialLinks = [
 	{ name: "LinkedIn", icon: "/icons/linkedin.svg", href: "https://linkedin.com" },
 ]
 
-<<<<<<< HEAD
 export const subDomain: string = "<form@notifications.coachtriciarago.com>"
 export const myEmail: string = "patricia@coachtriciarago.com"
-=======
+
 export const pageStoreID = {
 	home_page_id: "home",
 	coaching_page_id: "coaching",
@@ -41,4 +40,3 @@ export const pageStoreID = {
 	contact_page_id: "contact",
 	seo_id: "seo",
 } as const
->>>>>>> e5b7640 (Feature[change the arquitecture of the queries and improve the scalability])

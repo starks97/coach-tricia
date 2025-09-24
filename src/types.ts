@@ -1,21 +1,15 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 import { type HomePageZodSchemaType } from "@lib/db/models/home.ts"
-import { schemaRouter } from "@lib/db/schemaRouter.ts"
-=======
-import { schemaRouter } from "./lib/schemaRouter.ts"
->>>>>>> cf2b7c4 (backend system)
-=======
-import { schemaRouter } from "./lib/db/schemaRouter.ts"
->>>>>>> 5994448 (custom form from scratch)
-import z from "zod"
-import { pageStoreID } from "./consts.ts"
 
-import { type HomePageZodSchemaType } from "~/lib/db/models/home.ts"
+import { schemaRouter } from "./lib/db/schemaRouter.ts"
+
+import z from "zod"
+
 import { type CoachingPageZodSchemaType } from "~/lib/db/models/coaching.ts"
 import { type ContactPageZodSchemaType } from "~/lib/db/models/contact.ts"
 import { type SeoDocument } from "~/lib/db/models/seo.ts"
 import { type AboutPageZodSchemaType } from "~/lib/db/models/about.ts"
+
+import { pageStoreID } from "./consts.ts"
 
 import { type JSX } from "solid-js"
 

@@ -37,21 +37,10 @@ const connectSchema = z.object({
 })
 
 export const CoachingPageSchema = z.object({
-<<<<<<< HEAD
-	_id: z.string().min(5, "the id has to have at least 5 characters"),
-	page_name: z.string().min(1, "The page name cannot be empty"),
-	sections: z.object({
-		hero: heroCoachingSchema,
-		guide: guideSchema,
-		payment_plan: z.array(paymentPlanSchema),
-		connect: connectSchema,
-	}),
-=======
 	hero: heroCoachingSchema,
 	guide: guideSchema,
 	paymentPlan: z.array(paymentPlanSchema),
 	connect: connectSchema,
->>>>>>> 5994448 (custom form from scratch)
 })
 
 export type CoachingPageZodSchemaType = z.infer<typeof CoachingPageSchema>

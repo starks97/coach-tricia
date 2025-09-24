@@ -5,32 +5,14 @@ import Hero from "@components/home/Hero.astro"
 import UserPainPoints from "@components/home/UserPainPoints.astro"
 import Layout from "../layouts/Layout.astro"
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-import { type HomePageZodSchemaType, HomePageSchema } from "@lib/db/models/home.ts"
 
-import getPage from "@lib/db/queries/getPage.ts"
-import getSEO from "@lib/db/queries/getSEO.ts"
-=======
-import { SectionSchema } from "~/lib/models/sections"
-
-import getSection from "@lib/queries/getSection.ts"
-import getSEO from "@lib/queries/getSEO.ts"
->>>>>>> cf2b7c4 (backend system)
-=======
-import getSEO from "@lib/queries/getSEO.ts"
-import { HomePageSchema } from "~/lib/models/home"
-import getPage from "~/lib/queries/getPage"
-=======
 import getSEO from "@lib/db/queries/getSEO.ts"
 import { HomePageSchema, type HomePageZodSchemaType } from "~/lib/db/models/home"
 import getPage from "~/lib/db/queries/getPage"
->>>>>>> 5994448 (custom form from scratch)
 import { type pageStoreKeys } from "~/types"
 
 const homeId: pageStoreKeys = "home_page_id"
->>>>>>> e5b7640 (Feature[change the arquitecture of the queries and improve the scalability])
+
 
 const seoData = await getSEO("seo_id", "seo", "home")
 const data = await getPage(homeId, "home", HomePageSchema) as HomePageZodSchemaType
