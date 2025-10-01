@@ -1,51 +1,56 @@
 import { z } from "zod"
-
-const requiredString = (message: string) =>
-	z
-		.string()
-		.min(1, message)
-		.refine((val) => val.trim().length > 0, message)
-
-const requiredUrl = (message: string) =>
-	z.url(message).refine((val) => val.trim().length > 0, message)
+import { ZodValidators as v } from "../../validator/zod-validators"
 
 const reviewSchema = z.object({
-	title: requiredString("The title cannot be empty"),
-	quote: requiredString("The quote cannot be empty"),
-	author: requiredString("The author cannot be empty"),
+	title: v.stringWithConstraints({ minLength: 5, emptyMessage: "The title can not be empty" }),
+	quote: v.stringWithConstraints({ minLength: 10, emptyMessage: "The quote can not be empty" }),
+	author: v.stringWithConstraints({ minLength: 3, emptyMessage: "The author can not be empty" }),
 })
 
 const userPainPointsSchema = z.object({
-	title: z.string().min(1, "The title cannot be empty"),
-	subtitle: z.string().min(1, "The subtitle cannot be empty"),
-	pain_points: z.array(z.string().min(1, "The pain point cannot be empty")),
+	title: v.stringWithConstraints({ minLength: 5, emptyMessage: "The title cannot be empty" }),
+	subtitle: v.stringWithConstraints({ minLength: 5, emptyMessage: "The subtitle cannot be empty" }),
+	pain_points: z.array(
+		v.stringWithConstraints({ minLength: 5, emptyMessage: "The pain point can not be empty" })
+	),
 	reviews: z.array(reviewSchema).min(1, "There must be at least one review"),
 })
 
 const heroSchema = z.object({
-	title: z.string().min(1, "The title cannot be empty"),
-	subtitle: z.string().min(1, "The subtitle cannot be empty"),
-	description: z.string().min(1, "The description cannot be empty"),
-	image: z.url("The image must be a valid URL"),
+	title: v.stringWithConstraints({ minLength: 5, emptyMessage: "The title cannot be empty" }),
+	subtitle: v.stringWithConstraints({ minLength: 5, emptyMessage: "The subtitle cannot be empty" }),
+	description: v.stringWithConstraints({
+		minLength: 10,
+		emptyMessage: "The description cannot be empty",
+	}),
+	image: v.url("The image must be a valid URL"),
 })
 
 const benefitsSchema = z.object({
-	title: z.string().min(1, "The title cannot be empty"),
-	benefits: z.array(z.string().min(1, "Each benefit must be a non-empty string")),
-	image: z.url("The image must be a valid URL"),
+	title: v.stringWithConstraints({ minLength: 5, emptyMessage: "The title cannot be empty" }),
+	benefits: z.array(
+		v.stringWithConstraints({ minLength: 5, emptyMessage: "The benefit can not be empty" })
+	),
+	image: v.url("The image must be a valid URL"),
 })
 
 const coachingInfoSchema = z.object({
-	title: z.string().min(1, "The title cannot be empty"),
-	subtitle: z.string().min(1, "The subtitle cannot be empty"),
-	description: z.string().min(1, "The description cannot be empty"),
-	image: z.url("The image must be a valid URL"),
+	title: v.stringWithConstraints({ minLength: 5, emptyMessage: "The title cannot be empty" }),
+	subtitle: v.stringWithConstraints({ minLength: 5, emptyMessage: "The subtitle cannot be empty" }),
+	description: v.stringWithConstraints({
+		minLength: 10,
+		emptyMessage: "The description cannot be empty",
+	}),
+	image: v.url("The image must be a valid URL"),
 })
 
 const podcastSchema = z.object({
-	title: z.string().min(1, "The title cannot be empty"),
-	description: z.string().min(1, "The description cannot be empty"),
-	image: z.url("The image must be a valid URL"),
+	title: v.stringWithConstraints({ minLength: 5, emptyMessage: "The title cannot be empty" }),
+	description: v.stringWithConstraints({
+		minLength: 10,
+		emptyMessage: "The description cannot be empty",
+	}),
+	image: v.url("The image must be a valid URL"),
 })
 
 export const HomePageSchema = z.object({

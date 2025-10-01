@@ -3,7 +3,7 @@ import type { ZodObject, ZodRawShape } from "zod"
 
 import MongoService from "../mongoService"
 
-export default async function updateSection<T extends { _id: string | ObjectId }>(
+export async function updateSection<T extends { _id: string | ObjectId }>(
 	sectionId: string,
 	collectionName: string,
 	update: Partial<T>,

@@ -11,7 +11,8 @@ import { type AboutPageZodSchemaType } from "~/lib/db/models/about.ts"
 
 import { pageStoreID } from "./consts.ts"
 
-import { type JSX } from "solid-js"
+import { type JSX, type Accessor } from "solid-js"
+import type { SetStoreFunction } from "solid-js/store"
 
 export type TextInputProps = {
 	name: string
@@ -91,4 +92,15 @@ export interface FieldErrors {
 export interface GeneralFormProps<T extends PageTypeKeys> {
 	data: PageTypeMap[T]
 	schema: z.ZodObject<z.ZodRawShape, any>
+	currentSection: string
+	currentSectionId: string
+}
+
+//for form
+export interface RenderFieldsProps<T extends PageTypeKeys> {
+	data: any
+	path: string
+	errors: FieldErrors
+	setFormData: SetStoreFunction<PageTypeMap[T]>
+	handleUpdateField: (path: string, value: any) => void
 }

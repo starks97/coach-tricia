@@ -1,57 +1,11 @@
-import { Show, For } from "solid-js"
-import type { SetStoreFunction } from "solid-js/store"
+import { For } from "solid-js"
 
-import type { FieldErrors, PageTypeKeys, PageTypeMap } from "~/types"
+import type { PageTypeKeys, RenderFieldsProps } from "~/types"
 
-interface RenderFieldsProps<T extends PageTypeKeys> {
-	data: any
-	path: string
-	errors: FieldErrors
-	setFormData: SetStoreFunction<PageTypeMap[T]>
-	handleUpdateField: (path: string, value: any) => void
-}
+import { BaseInput } from "./BaseInput"
 
-// Utilidad para formatear labels
-const formatLabel = (key: string): string => {
-	return key.replace(/_/g, " ").replace(/\b\w/g, (l) => l.toUpperCase())
-}
-
-// Componente para mostrar errores
-const ErrorMessage = ({ error }: { error: string }) => (
-	<Show when={error}>
-		<span class="mt-1 block text-sm text-red-500">{error}</span>
-	</Show>
-)
-
-// Componente base para inputs
-const BaseInput = ({
-	path,
-	value,
-	label,
-	onChange,
-	error,
-}: {
-	path: string
-	value: any
-	label: string
-	onChange: (path: string, value: any) => void
-	error: string
-}) => (
-	<div class="field-group mb-4">
-		<label class="font-tajawal text-size-3 mb-2 block font-medium text-black" for={path}>
-			{label}
-		</label>
-		<input
-			type={typeof value === "number" ? "number" : "text"}
-			id={path}
-			name={path}
-			value={value ?? ""}
-			onChange={(e) => onChange(path, e.currentTarget.value)}
-			class="w-full rounded border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none"
-		/>
-		<ErrorMessage error={error} />
-	</div>
-)
+import { formatLabel } from "~/utils/formatLabel"
+import Accordion from "../form-component/Accordion"
 
 export default function RenderFields<T extends PageTypeKeys>({
 	data,
@@ -60,8 +14,6 @@ export default function RenderFields<T extends PageTypeKeys>({
 	setFormData,
 	handleUpdateField,
 }: RenderFieldsProps<T>) {
-	// Verificación segura de la función updateField
-
 	if (!data || typeof data !== "object") {
 		return null
 	}
@@ -95,22 +47,33 @@ export default function RenderFields<T extends PageTypeKeys>({
 
 				// Caso: array
 				if (Array.isArray(value)) {
+					const errorIndexs = Object.keys(errors)
+						.filter((path) => path.startsWith(`${currentPath}.`))
+						.map((path) => {
+							const parts = path.split(".")
+							return parseInt(parts[parts.length - 1])
+						})
+						.filter((num) => !isNaN(num))
+
+					const allIndexes = [...new Set([...value.keys(), ...errorIndexs])].sort()
+
 					return (
 						<div class="array-section mb-6">
 							<h3 class="section-title font-prata text-taupe text-size-4 mb-3 font-semibold">
 								{label.toUpperCase()}
 							</h3>
-							<For each={value}>
-								{(item, index) => {
-									const arrayPath = `${currentPath}.${index()}`
-									const itemError = errors[arrayPath] ? errors[arrayPath] : ""
-									const itemLabel = `${label} #${index() + 1}`
+							<For each={allIndexes}>
+								{(arrayIndex) => {
+									const arrayPath = `${currentPath}.${arrayIndex}`
+									const itemError = errors[arrayPath] || ""
+									const itemValue = value[arrayIndex] !== undefined ? value[arrayIndex] : ""
+									const itemLabel = `${label} #${arrayIndex + 1}`
 
 									return (
 										<div class="array-item mb-4 rounded border border-gray-200 p-3">
-											{typeof item === "object" && item !== null ? (
+											{typeof itemValue === "object" && itemValue !== null ? (
 												<RenderFields
-													data={item}
+													data={itemValue}
 													path={arrayPath}
 													errors={errors}
 													setFormData={setFormData}
@@ -119,7 +82,7 @@ export default function RenderFields<T extends PageTypeKeys>({
 											) : (
 												<BaseInput
 													path={arrayPath}
-													value={item}
+													value={itemValue}
 													label={itemLabel}
 													onChange={handleUpdateField}
 													error={itemError}

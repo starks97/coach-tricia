@@ -24,20 +24,35 @@ export default function DynamicSectionCard<T extends PageTypeKeys>({
 		<div>
 			<Show when={sectionPage().value === "home"} keyed={true}>
 				{(data() as PageTypeMap["home"]) && (
-					<GeneralForm data={data() as PageTypeMap["home"]} schema={HomePageSchema} />
+					<GeneralForm
+						data={data() as PageTypeMap["home"]}
+						schema={HomePageSchema}
+						currentSection={sectionPage().value}
+						currentSectionId={sectionPage().key}
+					/>
 				)}
 			</Show>
 
 			<Show when={sectionPage().value === "coaching"} keyed={true}>
 				{(data() as PageTypeMap["coaching"]) && (
-					<GeneralForm data={data() as PageTypeMap["coaching"]} schema={CoachingPageSchema} />
+					<GeneralForm
+						data={data() as PageTypeMap["coaching"]}
+						schema={CoachingPageSchema}
+						currentSection={sectionPage().value}
+						currentSectionId={sectionPage().key}
+					/>
 				)}
 			</Show>
 
 			<Show when={sectionPage().value === "about"} keyed={true}>
 				<div>
 					{(data() as PageTypeMap["about"]) && (
-						<GeneralForm data={data() as PageTypeMap["about"]} schema={AboutPageSchema} />
+						<GeneralForm
+							data={data() as PageTypeMap["about"]}
+							schema={AboutPageSchema}
+							currentSection={sectionPage().value}
+							currentSectionId={sectionPage().key}
+						/>
 					)}
 				</div>
 			</Show>
@@ -45,7 +60,12 @@ export default function DynamicSectionCard<T extends PageTypeKeys>({
 			<Show when={sectionPage().value === "contact"} keyed={true}>
 				<div>
 					{(data() as PageTypeMap["contact"]) && (
-						<GeneralForm data={data() as PageTypeMap["contact"]} schema={ContactPageSchema} />
+						<GeneralForm
+							data={data() as PageTypeMap["contact"]}
+							schema={ContactPageSchema}
+							currentSection={sectionPage().value}
+							currentSectionId={sectionPage().key}
+						/>
 					)}
 				</div>
 			</Show>
@@ -53,7 +73,12 @@ export default function DynamicSectionCard<T extends PageTypeKeys>({
 			<Show when={sectionPage().value === "seo"} keyed={true}>
 				<div>
 					{(data() as PageTypeMap["seo"]) && (
-						<GeneralForm data={data() as PageTypeMap["seo"]} schema={SEODocumentSchema} />
+						<GeneralForm
+							data={data() as PageTypeMap["seo"]}
+							schema={SEODocumentSchema}
+							currentSection={sectionPage().value}
+							currentSectionId={sectionPage().key}
+						/>
 					)}
 				</div>
 			</Show>

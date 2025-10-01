@@ -33,6 +33,8 @@ function parsedZodError(error: z.ZodError) {
 		}
 	})
 
+	console.log(fieldErrors)
+
 	return fieldErrors
 }
 
