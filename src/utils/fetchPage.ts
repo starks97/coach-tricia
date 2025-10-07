@@ -1,4 +1,5 @@
-import type { PageTypeMap } from "~/types.ts"
+import type { UpdateResult } from "~/lib/db/types/update.types"
+import type { ApiResponse, Page, PageTypeMap } from "~/types.ts"
 
 export async function fetchPageData<T extends keyof PageTypeMap>(
 	id: string,
@@ -17,8 +18,8 @@ export async function fetchPageData<T extends keyof PageTypeMap>(
 export async function updateSectionData<T extends keyof PageTypeMap>(
 	id: string,
 	page: T,
-	data: Partial<any>
-): Promise<boolean> {
+	data: Partial<PageTypeMap[T]>
+): Promise<ApiResponse<UpdateResult<PageTypeMap[T]>>> {
 	try {
 		const res = await fetch(`http://localhost:4321/api/update?id=${id}&page=${page}`, {
 			method: "PATCH",
@@ -32,8 +33,9 @@ export async function updateSectionData<T extends keyof PageTypeMap>(
 			throw new Error(`Failed to update section: ${res.statusText}`)
 		}
 
-		const json = await res.json()
-		return json as boolean
+		const response: ApiResponse<UpdateResult<PageTypeMap[T]>> = await res.json()
+    	return response
+
 	} catch (error) {
 		console.error(error)
 		throw error

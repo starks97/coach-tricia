@@ -20,6 +20,7 @@
     "target": "ES2020",
     "module": "ESNext",
     "lib": ["ES2020", "DOM"],
-    "verbatimModuleSyntax": true
+    "verbatimModuleSyntax": true,
+    "ignoreDeprecations": "6.0"
   }
 }

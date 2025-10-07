@@ -2,6 +2,7 @@ import type { APIRoute } from "astro"
 import { updateSection } from "~/lib/db/queries/updateSection"
 
 import { schemaRouter } from "@lib/db/schemaRouter.ts"
+import type { UpdateParams } from "~/lib/db/types/update.types"
 
 export const PATCH: APIRoute = async ({ request }) => {
 	try {
@@ -24,15 +25,27 @@ export const PATCH: APIRoute = async ({ request }) => {
 			return new Response("Page not found", { status: 404 })
 		}
 
-		const update = await updateSection(id, route.collection, body, route.schema)
+		const updateParams:UpdateParams = {
+			id,
+			collectionName: route.collection,
+			update: body,
+			schema: route.schema
+		}
 
-		return new Response(JSON.stringify(update), {
-			headers: {
-				"Content-Type": "application/json",
-			},
-		})
+		const result = await updateSection(updateParams)
+
+		return new Response(JSON.stringify(result), {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      status: result.success ? 200 : 500
+    })
+
 	} catch (e) {
 		console.error(e)
-		return new Response("Internal Server Error", { status: 500 })
-	}
+    return new Response(JSON.stringify({ 
+      success: false, 
+      error: "Internal Server Error" 
+    }), { status: 500 })
+  }
 }

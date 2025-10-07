@@ -5,7 +5,7 @@ import type { PageTypeKeys, RenderFieldsProps } from "~/types"
 import { BaseInput } from "./BaseInput"
 
 import { formatLabel } from "~/utils/formatLabel"
-import Accordion from "../form-component/Accordion"
+
 
 export default function RenderFields<T extends PageTypeKeys>({
 	data,

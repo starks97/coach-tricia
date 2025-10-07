@@ -1,23 +1,31 @@
-import { type OptionalUnlessRequiredId, ObjectId, type Filter } from "mongodb"
-import type { ZodObject, ZodRawShape } from "zod"
+import {  ObjectId,type Filter} from "mongodb"
 
 import MongoService from "../mongoService"
+import type { UpdateParams, UpdateResult } from "../types/update.types"
 
 export async function updateSection<T extends { _id: string | ObjectId }>(
-	sectionId: string,
-	collectionName: string,
-	update: Partial<T>,
-	schema?: ZodObject<ZodRawShape, any>
-): Promise<boolean> {
+	params: UpdateParams<T>
+): Promise<UpdateResult<T>>{
+	const { id, update, collectionName, schema } = params
 	try {
 		const mongoService = await MongoService.init<T>(collectionName, schema)
 
-		const queryId = sectionId.match(/^[0-9a-fA-F]{24}$/) ? new ObjectId(sectionId) : sectionId
-
+		const queryId = id.match(/^[0-9a-fA-F]{24}$/) ? new ObjectId(id) : id
 		const updateResult = await mongoService.updateOne({ _id: queryId } as Filter<T>, update)
-		return updateResult.modifiedCount > 0
+		return {
+      success: true,
+      data: {
+        _id: id,
+        updatedFields: update,
+        modifiedCount: updateResult.modifiedCount
+      }
+    }
+
 	} catch (error) {
-		console.error(`Error updating section ${sectionId}:`, error)
-		return false
+		console.error(`Error updating section ${id}:`, error)
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : 'Unknown error'
+    }
 	}
 }
