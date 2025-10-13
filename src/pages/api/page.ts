@@ -21,6 +21,7 @@ export const GET: APIRoute = async ({ request }) => {
 
 		const result = await getPage(id, route.collection, route.schema)
 
+
 		return new Response(JSON.stringify(result), {
 			headers: {
 				"Content-Type": "application/json",

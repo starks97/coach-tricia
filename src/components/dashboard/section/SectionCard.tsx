@@ -27,8 +27,8 @@ export default function DynamicSectionCard<T extends PageTypeKeys>({
 					<GeneralForm
 						data={data() as PageTypeMap["home"]}
 						schema={HomePageSchema}
-						currentSection={sectionPage().value}
-						currentSectionId={sectionPage().key}
+						currentSection={sectionPage}
+					
 					/>
 				)}
 			</Show>
@@ -38,8 +38,8 @@ export default function DynamicSectionCard<T extends PageTypeKeys>({
 					<GeneralForm
 						data={data() as PageTypeMap["coaching"]}
 						schema={CoachingPageSchema}
-						currentSection={sectionPage().value}
-						currentSectionId={sectionPage().key}
+						currentSection={sectionPage}
+						
 					/>
 				)}
 			</Show>
@@ -50,8 +50,8 @@ export default function DynamicSectionCard<T extends PageTypeKeys>({
 						<GeneralForm
 							data={data() as PageTypeMap["about"]}
 							schema={AboutPageSchema}
-							currentSection={sectionPage().value}
-							currentSectionId={sectionPage().key}
+							currentSection={sectionPage}
+							
 						/>
 					)}
 				</div>
@@ -63,8 +63,8 @@ export default function DynamicSectionCard<T extends PageTypeKeys>({
 						<GeneralForm
 							data={data() as PageTypeMap["contact"]}
 							schema={ContactPageSchema}
-							currentSection={sectionPage().value}
-							currentSectionId={sectionPage().key}
+							currentSection={sectionPage}
+							
 						/>
 					)}
 				</div>
@@ -76,8 +76,8 @@ export default function DynamicSectionCard<T extends PageTypeKeys>({
 						<GeneralForm
 							data={data() as PageTypeMap["seo"]}
 							schema={SEODocumentSchema}
-							currentSection={sectionPage().value}
-							currentSectionId={sectionPage().key}
+							currentSection={sectionPage}
+							
 						/>
 					)}
 				</div>

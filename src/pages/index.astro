@@ -22,6 +22,7 @@ const heroPage = data.hero
 const coachingData = data.coaching_info
 const benefitsData = data.benefits
 const userPainPointsData = data.user_pain_points
+console.log("podcast data", data.podcast.title)
 
 Astro.response.headers.set("Cache-Control", "public, s-maxage=300, stale-while-revalidate=3600")
 ---

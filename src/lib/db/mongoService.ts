@@ -48,10 +48,6 @@ export default class MongoService<T extends Document> {
 	}
 
 	async updateOne(query: Filter<T>, update: Partial<T>) {
-		if (this.schema) {
-			update = this.schema.partial().parse(update) as Partial<T>
-		}
-
 		return this.collection.updateOne(query, { $set: update })
 	}
 
@@ -61,6 +57,10 @@ export default class MongoService<T extends Document> {
 
 	async deleteMany(query: Filter<T>) {
 		return this.collection.deleteMany(query)
+	}
+
+	async findOneAndUpdate(query: Filter<T>, update: Partial<T>, options: { returnDocument?: "before" | "after" } = { returnDocument: "after" }) {
+		return this.collection.findOneAndUpdate(query, { $set: update }, options)
 	}
 
 	//getters

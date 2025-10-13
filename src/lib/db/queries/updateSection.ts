@@ -4,20 +4,45 @@ import MongoService from "../mongoService"
 import type { UpdateParams, UpdateResult } from "../types/update.types"
 
 export async function updateSection<T extends { _id: string | ObjectId }>(
-	params: UpdateParams<T>
-): Promise<UpdateResult<T>>{
-	const { id, update, collectionName, schema } = params
+	params: UpdateParams
+): Promise<UpdateResult> {
+	const { id, update, collectionName, schema} = params
 	try {
+
 		const mongoService = await MongoService.init<T>(collectionName, schema)
 
 		const queryId = id.match(/^[0-9a-fA-F]{24}$/) ? new ObjectId(id) : id
-		const updateResult = await mongoService.updateOne({ _id: queryId } as Filter<T>, update)
+
+    const setObj: Record<string, any> = {};
+
+    for(const [pathKey, value] of Object.entries(update)){
+       if (value !== undefined) {
+        const fullPath = pathKey.startsWith('sections.') ? pathKey : `sections.${pathKey}`
+        setObj[fullPath] = value
+      }
+    
+    }
+
+    const result = await mongoService.findOneAndUpdate(
+      { _id: queryId } as Filter<T>, 
+      setObj as any,
+      { returnDocument: "after" }
+    )
+
+
+    if (!result) {
+      return {
+        success: false,
+        error: "No documents were updated. Please check the provided ID and update data."
+      }
+
+    }
+
 		return {
       success: true,
       data: {
         _id: id,
-        updatedFields: update,
-        modifiedCount: updateResult.modifiedCount
+        updatedFields: setObj
       }
     }
 

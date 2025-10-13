@@ -4,8 +4,6 @@ export const setDeepValue = (obj: any, path: string, value: any): any => {
 	const newObj = cloneDeepPlain(obj)
 	const keys = path.split(".").filter((key) => key !== "")
 
-	console.log("keys of the paths", keys)
-
 	let current = newObj
 
 	for (let i = 0; i < keys.length - 1; i++) {
@@ -17,8 +15,6 @@ export const setDeepValue = (obj: any, path: string, value: any): any => {
 		}
 		current = current[key]
 	}
-
-	console.log("despues del loop cuando encuentra las keys", current)
 
 	const lastKey = keys[keys.length - 1]
 

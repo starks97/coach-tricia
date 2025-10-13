@@ -1,7 +1,7 @@
-import { createSignal, Show } from "solid-js"
+import { createSignal, Show} from "solid-js"
 import { useQuery } from "@tanstack/solid-query"
 
-import { fetchPageData } from "~/utils/fetchPage.ts"
+import { fetchPageData } from "~/utils/queries.ts"
 
 import SectionSelector from "./SectionSelector.tsx"
 import DynamicSectionCard from "./SectionCard.tsx"
@@ -24,7 +24,6 @@ export default function SectionWrapper() {
 			queryFn: async () => await fetchPageData(key, value),
 		}
 	})
-
 	return (
 		<div class="w-full">
 			<SectionSelector onSelect={setCurrentSection} />

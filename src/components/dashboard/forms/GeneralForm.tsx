@@ -2,20 +2,28 @@ import { useMutation} from "@tanstack/solid-query"
 
 import { parseSchema } from "~/utils/parsedSchema"
 import { createStore, reconcile, produce } from "solid-js/store"
+import { createSignal } from "solid-js"
 import type { PageTypeMap, PageTypeKeys } from "~/types"
 import { setDeepValue } from "~/utils/setDeepVal"
 
 import type { FieldErrors, GeneralFormProps } from "~/types"
 import RenderFields from "./handlers/RenderFields"
 
-import { updateSectionData } from "~/utils/fetchPage"
+import { updateSectionData } from "~/utils/queries"
+import { set } from "zod"
 
 export default function GeneralForm<T extends PageTypeKeys>({ ...props }: GeneralFormProps<T>) {
 	const [formData, setFormData] = createStore<PageTypeMap[T]>(props.data)
 	const [errors, setErrors] = createStore<FieldErrors>({})
+	const [fieldChanged, setFieldChanged] = createSignal<Record<string, any> | null>(null);
+
 
 	const handleUpdateField = (path: string, value: any) => {
 		const newValue = value === "" ? null : value
+
+		//set the field that changed
+		setFieldChanged({ [path]: newValue });
+
 		//validation on real time
 		const newData = setDeepValue(formData, path, newValue)
 		const result = parseSchema(props.schema, newData)
@@ -33,30 +41,42 @@ export default function GeneralForm<T extends PageTypeKeys>({ ...props }: Genera
 		}
 	}
 
-	const mutation = useMutation<
-  boolean,                
-  Error,                  
-  PageTypeMap[T],         
-  unknown                 
->(() => ({
-		mutationFn: async (data: PageTypeMap[T]): Promise<boolean> => {
+	const mutation = useMutation(() => ({
+		mutationFn: async (variables: { id: string; page: keyof PageTypeMap; data: Record<string, any> }) => {
 			try{
-				const res = await updateSectionData(props.currentSectionId, props.currentSection, data)
+				const res = await updateSectionData(
+					variables.id,
+					variables.page,
+					variables.data
+				)
 				if (!res){
 					throw new Error("Failed to update data")
 				}
 				console.log("Update successful:", res);
 
-				return res;
+				return res.data!;
 
 			}catch(e){
 				if (e instanceof Error) {
-          throw e.message;
-        }
-        throw "An error occurred during updating the field.";
+		  throw e.message;
+		}
+		throw "An error occurred during updating the field.";
 
 			}
 		},
+		onMutate: async (variables) => {
+			setErrors({})
+			setFormData(reconcile({ ...formData, ...variables.data }))
+		},
+		onError: (error) => {
+			console.error("Error updating data:", error)
+		},
+		onSuccess: (data) => {
+			console.log("Data updated successfully:", data)
+		},
+		onSettled: async (res, error, variables, result, ctx) => {
+			await ctx.client.invalidateQueries({ queryKey: ["page", props.currentSection().value] })
+		}
 	}))
 
 	const handleSubmit = (e: Event) => {
@@ -65,11 +85,14 @@ export default function GeneralForm<T extends PageTypeKeys>({ ...props }: Genera
 		const result = parseSchema(props.schema, formData)
 
 		if (!result.success) {
-			console.log("keys of the errors", Object.entries(result.errors))
 			setErrors(result.errors)
 		}
 
-		result.success && mutation.mutate(formData)
+		result.success && mutation.mutate({
+			id: props.currentSection().key,
+			page: props.currentSection().value,
+			data: fieldChanged() ?? {}
+		})
 	}
 
 	return (
@@ -89,7 +112,7 @@ export default function GeneralForm<T extends PageTypeKeys>({ ...props }: Genera
 				<div class="form-actions">
 					<button
 						type="submit"
-						class="font-tajawal text-taupe mb-2 border-2 px-5 py-2.5 text-center text-xl font-extrabold tracking-[0.07em] uppercase"
+						class="font-tajawal text-taupe mb-2 border-2 px-5 py-2.5 text-center text-xl font-extrabold tracking-[0.07em] uppercase cursor-pointer hover:bg-taupe hover:text-white transition-colors duration-300"
 					>
 						Save Changes
 					</button>

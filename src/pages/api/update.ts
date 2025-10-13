@@ -2,7 +2,7 @@ import type { APIRoute } from "astro"
 import { updateSection } from "~/lib/db/queries/updateSection"
 
 import { schemaRouter } from "@lib/db/schemaRouter.ts"
-import type { UpdateParams } from "~/lib/db/types/update.types"
+import type { UpdateParams} from "~/lib/db/types/update.types"
 
 export const PATCH: APIRoute = async ({ request }) => {
 	try {
@@ -21,6 +21,7 @@ export const PATCH: APIRoute = async ({ request }) => {
 
 		const route = schemaRouter[page as keyof typeof schemaRouter]
 
+
 		if (!route) {
 			return new Response("Page not found", { status: 404 })
 		}
@@ -29,7 +30,7 @@ export const PATCH: APIRoute = async ({ request }) => {
 			id,
 			collectionName: route.collection,
 			update: body,
-			schema: route.schema
+			schema: route.schema,
 		}
 
 		const result = await updateSection(updateParams)

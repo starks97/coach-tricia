@@ -11,7 +11,7 @@ import { type AboutPageZodSchemaType } from "~/lib/db/models/about.ts"
 
 import { pageStoreID } from "./consts.ts"
 
-import { type JSX} from "solid-js"
+import type {JSX, Accessor} from "solid-js"
 import type { SetStoreFunction } from "solid-js/store"
 
 export type TextInputProps = {
@@ -37,10 +37,10 @@ export type Page =
 
 export type PageTypeMap = {
 	home: HomePageZodSchemaType
-	coaching: Omit<CoachingPageZodSchemaType, "_id">
-	contact: Omit<ContactPageZodSchemaType, "_id">
-	seo: Omit<SeoDocument, "_id">
-	about: Omit<AboutPageZodSchemaType, "_id">
+	coaching: CoachingPageZodSchemaType
+	contact: ContactPageZodSchemaType
+	seo: SeoDocument
+	about: AboutPageZodSchemaType
 }
 export type PageTypeKeys = keyof PageTypeMap
 
@@ -92,8 +92,10 @@ export interface FieldErrors {
 export interface GeneralFormProps<T extends PageTypeKeys> {
 	data: PageTypeMap[T]
 	schema: z.ZodObject<z.ZodRawShape, any>
-	currentSection: PageTypeKeys
-	currentSectionId: string
+	currentSection: Accessor<{
+    key: string;
+    value: PageTypeKeys;
+}>
 }
 
 //for form

@@ -28,5 +28,29 @@ export default {
         parser: "astro",
       },
     },
+    {
+      files: "*.html",
+      options: {
+        parser: "html",
+      },
+    },
+    {
+      files: "*.css",
+      options: {
+        parser: "css",
+      },
+    },
+    {
+      files: "*.ts",
+      options: {
+        parser: "typescript",
+      },
+    },
+    {
+      files: "*.tsx",
+      options: {
+        parser: "typescript",
+      },
+    }
   ],
 };

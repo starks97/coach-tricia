@@ -1,20 +1,20 @@
 import type { ZodObject, ZodRawShape } from "zod"
 
 // types/update.types.ts
-export interface UpdateResult<T = any> {
+export interface UpdateResult {
   success: boolean
   data?: {
     _id: string
-    updatedFields: Partial<T>
-    modifiedCount: number
+    updatedFields: Record<string, any>
   }
   error?: string
 }
 
-export interface UpdateParams<T = any> {
+export interface UpdateParams{
   id: string
   collectionName: string
-  update: Partial<T>
+  update: Record<string, any>
   schema?: ZodObject<ZodRawShape, any>
 }
+
 
