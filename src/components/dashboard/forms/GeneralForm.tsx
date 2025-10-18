@@ -1,4 +1,4 @@
-import { useMutation} from "@tanstack/solid-query"
+import { useMutation } from "@tanstack/solid-query"
 
 import { parseSchema } from "~/utils/parsedSchema"
 import { createStore, reconcile, produce } from "solid-js/store"
@@ -10,10 +10,9 @@ import type { FieldErrors, GeneralFormProps } from "~/types"
 import RenderFields from "./handlers/RenderFields"
 
 import { updateSectionData } from "~/utils/queries"
-import { set } from "zod"
+
 
 export default function GeneralForm<T extends PageTypeKeys>({ ...props }: GeneralFormProps<T>) {
-	const [formData, setFormData] = createStore<PageTypeMap[T]>(props.data)
 	const [errors, setErrors] = createStore<FieldErrors>({})
 	const [fieldChanged, setFieldChanged] = createSignal<Record<string, any> | null>(null);
 
@@ -24,11 +23,13 @@ export default function GeneralForm<T extends PageTypeKeys>({ ...props }: Genera
 		//set the field that changed
 		setFieldChanged({ [path]: newValue });
 
+		const currentData = props.data()
+
 		//validation on real time
-		const newData = setDeepValue(formData, path, newValue)
+		const newData = setDeepValue({ ...currentData }, path, newValue)
 		const result = parseSchema(props.schema, newData)
 
-		setFormData(newData)
+
 
 		if (!result.success) {
 			setErrors(reconcile(result.errors))
@@ -43,30 +44,29 @@ export default function GeneralForm<T extends PageTypeKeys>({ ...props }: Genera
 
 	const mutation = useMutation(() => ({
 		mutationFn: async (variables: { id: string; page: keyof PageTypeMap; data: Record<string, any> }) => {
-			try{
+			try {
 				const res = await updateSectionData(
 					variables.id,
 					variables.page,
 					variables.data
 				)
-				if (!res){
+				if (!res) {
 					throw new Error("Failed to update data")
 				}
 				console.log("Update successful:", res);
 
 				return res.data!;
 
-			}catch(e){
+			} catch (e) {
 				if (e instanceof Error) {
-		  throw e.message;
-		}
-		throw "An error occurred during updating the field.";
+					throw e.message;
+				}
+				throw "An error occurred during updating the field.";
 
 			}
 		},
 		onMutate: async (variables) => {
 			setErrors({})
-			setFormData(reconcile({ ...formData, ...variables.data }))
 		},
 		onError: (error) => {
 			console.error("Error updating data:", error)
@@ -82,7 +82,7 @@ export default function GeneralForm<T extends PageTypeKeys>({ ...props }: Genera
 	const handleSubmit = (e: Event) => {
 		e.preventDefault()
 
-		const result = parseSchema(props.schema, formData)
+		const result = parseSchema(props.schema, props.data())
 
 		if (!result.success) {
 			setErrors(result.errors)
@@ -102,9 +102,8 @@ export default function GeneralForm<T extends PageTypeKeys>({ ...props }: Genera
 				class="general-form border-taupe flex flex-col space-y-10 rounded border p-10"
 			>
 				<RenderFields
-					data={formData}
+					data={props.data()}
 					errors={errors}
-					setFormData={setFormData}
 					path=""
 					handleUpdateField={handleUpdateField}
 				/>

@@ -6,12 +6,11 @@ import { BaseInput } from "./BaseInput"
 
 import { formatLabel } from "~/utils/formatLabel"
 
-
+import Accordion from "@corvu/accordion";
 export default function RenderFields<T extends PageTypeKeys>({
 	data,
 	path,
 	errors,
-	setFormData,
 	handleUpdateField,
 }: RenderFieldsProps<T>) {
 	if (!data || typeof data !== "object") {
@@ -37,7 +36,6 @@ export default function RenderFields<T extends PageTypeKeys>({
 									data={value}
 									path={currentPath}
 									errors={errors}
-									setFormData={setFormData}
 									handleUpdateField={handleUpdateField}
 								/>
 							</div>
@@ -57,43 +55,96 @@ export default function RenderFields<T extends PageTypeKeys>({
 
 					const allIndexes = [...new Set([...value.keys(), ...errorIndexs])].sort()
 
+					const containsObjects = value.some(item =>
+						item && typeof item === "object" && !Array.isArray(item)
+					)
+
 					return (
-						<div class="array-section mb-6">
-							<h3 class="section-title font-prata text-taupe text-size-4 mb-3 font-semibold">
+						<div class="array-section ">
+							<h3 class="section-title font-prata text-taupe text-size-4  font-semibold">
 								{label.toUpperCase()}
 							</h3>
-							<For each={allIndexes}>
-								{(arrayIndex) => {
-									const arrayPath = `${currentPath}.${arrayIndex}`
-									const itemError = errors[arrayPath] || ""
-									const itemValue = value[arrayIndex] !== undefined ? value[arrayIndex] : ""
-									const itemLabel = `${label} #${arrayIndex + 1}`
+							{containsObjects ? (
+								// Array de objetos - usar acordeón
+								<Accordion collapseBehavior="hide">
+									<For each={allIndexes}>
+										{(arrayIndex) => {
+											const arrayPath = `${currentPath}.${arrayIndex}`
+											const itemError = errors[arrayPath] || ""
+											const itemValue = value[arrayIndex] !== undefined ? value[arrayIndex] : ""
+											const itemLabel = `${label} ${arrayIndex + 1}`
 
-									return (
-										<div class="array-item mb-4 rounded border border-gray-200 p-3">
-											{typeof itemValue === "object" && itemValue !== null ? (
-												<RenderFields
-													data={itemValue}
-													path={arrayPath}
-													errors={errors}
-													setFormData={setFormData}
-													handleUpdateField={handleUpdateField}
-												/>
-											) : (
-												<BaseInput
-													path={arrayPath}
-													value={itemValue}
-													label={itemLabel}
-													onChange={handleUpdateField}
-													error={itemError}
-												/>
-											)}
-										</div>
-									)
-								}}
-							</For>
+											const { id, ...restValues } = itemValue;
+
+
+											return (
+												<Accordion.Item>
+													<Accordion.Trigger class="flex w-full justify-between border-b border-corvu-300 bg-corvu-100 px-4 py-3 text-left font-medium transition-all duration-100 hover:bg-corvu-200 focus-visible:bg-corvu-200 focus-visible:outline-hidden">
+														{itemLabel}
+													</Accordion.Trigger>
+													<Accordion.Content>
+														<div class="array-item p-4 flex flex-col">
+															{typeof itemValue === "object" && itemValue !== null ? (
+																<RenderFields
+																	data={restValues}
+																	path={arrayPath}
+																	errors={errors}
+																	handleUpdateField={handleUpdateField}
+																/>
+															) : (
+																<BaseInput
+																	path={arrayPath}
+																	value={restValues}
+																	label={itemLabel}
+																	onChange={handleUpdateField}
+																	error={itemError}
+																	isArray={true}
+																/>
+															)}
+														</div>
+													</Accordion.Content>
+												</Accordion.Item>
+											)
+										}}
+									</For>
+								</Accordion>
+							) : (
+								// Array de valores primitivos - comportamiento original
+								<For each={allIndexes}>
+									{(arrayIndex) => {
+										const arrayPath = `${currentPath}.${arrayIndex}`
+										const itemError = errors[arrayPath] || ""
+										const itemValue = value[arrayIndex] !== undefined ? value[arrayIndex] : ""
+										const itemLabel = `${label} ${arrayIndex + 1}`
+
+										return (
+											<div class="array-item">
+												{typeof itemValue === "object" && itemValue !== null ? (
+													<RenderFields
+														data={itemValue}
+														path={arrayPath}
+														errors={errors}
+
+														handleUpdateField={handleUpdateField}
+													/>
+												) : (
+													<BaseInput
+														path={arrayPath}
+														value={itemValue}
+														label={itemLabel}
+														onChange={handleUpdateField}
+														error={itemError}
+														isArray={true}
+													/>
+												)}
+											</div>
+										)
+									}}
+								</For>
+							)}
 						</div>
 					)
+
 				}
 
 				// Caso: valor primitivo

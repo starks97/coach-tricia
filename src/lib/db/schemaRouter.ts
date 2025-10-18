@@ -6,16 +6,15 @@ import { ContactPageSchema } from "./models/contact.ts"
 import { SEODocumentSchema } from "./models/seo.ts"
 import { AboutPageSchema } from "./models/about.ts"
 
-import z from "zod"
 
-export function defineSchemaRouter<T extends z.ZodTypeAny>(config: {
+export function defineSchemaRouter<T>(config: {
 	schema: T
 	collection: string
 }) {
 	return {
 		schema: config.schema,
 		collection: config.collection,
-		schemaType: config.schema as z.infer<T>,
+		schemaType: config.schema,
 	}
 }
 

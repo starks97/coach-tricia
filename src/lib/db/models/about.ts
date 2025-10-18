@@ -1,29 +1,30 @@
 import { z } from "zod"
+import { ZodValidators as v } from "../../validator/zod-validators"
 
 const heroAboutSchema = z.object({
-	title: z.string().min(1, "The title cannot be empty"),
-	subtitle: z.string().min(1, "The subtitle cannot be empty"),
-	description: z.string().min(1, "The description cannot be empty"),
-	image: z.string().min(1).url("The image must be a valid URL"),
+	title: v.stringWithConstraints({ minLength: 1, emptyMessage: "The title cannot be empty" }),
+	subtitle: v.stringWithConstraints({ minLength: 1, emptyMessage: "The subtitle cannot be empty" }),
+	description: v.stringWithConstraints({ minLength: 1, emptyMessage: "The description cannot be empty" }),
+	image: v.url("The image must be a valid URL"),
 })
 
 const storyFirstContentSchema = z.object({
-	first: z.string().min(1, "First paragraph cannot be empty"),
-	second: z.string().min(1, "Second paragraph cannot be empty"),
-	third: z.string().min(1, "Third paragraph cannot be empty"),
+	first: v.stringWithConstraints({ minLength: 1, emptyMessage: "First paragraph cannot be empty" }),
+	second: v.stringWithConstraints({ minLength: 1, emptyMessage: "Second paragraph cannot be empty" }),
+	third: v.stringWithConstraints({ minLength: 1, emptyMessage: "Third paragraph cannot be empty" }),
 })
 
 const storyFirstSchema = z.object({
-	title: z.string().min(1, "The title cannot be empty"),
+	title: v.stringWithConstraints({ minLength: 1, emptyMessage: "The title cannot be empty" }),
 	content: storyFirstContentSchema,
-	image: z.string().min(1).url("The image must be a valid URL"),
+	image: v.url("The image must be a valid URL"),
 })
 
 const storySecondSchema = z.object({
-	title: z.string().min(1, "The title cannot be empty"),
-	description: z.string().min(1, "The description cannot be empty"),
-	content: z.string().min(1, "The content cannot be empty"),
-	image: z.string().min(1).url("The image must be a valid URL"),
+	title: v.stringWithConstraints({ minLength: 1, emptyMessage: "The title cannot be empty" }),
+	description: v.stringWithConstraints({ minLength: 1, emptyMessage: "The description cannot be empty" }),
+	content: v.stringWithConstraints({ minLength: 1, emptyMessage: "The content cannot be empty" }),
+	image: v.url("The image must be a valid URL"),
 })
 
 const storySchema = z.object({

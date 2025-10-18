@@ -13,7 +13,7 @@ const userPainPointsSchema = z.object({
 	pain_points: z.array(
 		v.stringWithConstraints({ minLength: 5, emptyMessage: "The pain point can not be empty" })
 	),
-	reviews: z.array(reviewSchema).min(1, "There must be at least one review"),
+	reviews: z.array(reviewSchema),
 })
 
 const heroSchema = z.object({

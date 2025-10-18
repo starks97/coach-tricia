@@ -12,6 +12,7 @@ import clerk from "@clerk/astro"
 export default defineConfig({
 	vite: {
 		plugins: [tailwindcss()],
+		
 	},
 	integrations: [alpine(), solidJs(), clerk()],
 	adapter: vercel(),

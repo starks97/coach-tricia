@@ -11,22 +11,8 @@ import { type AboutPageZodSchemaType } from "~/lib/db/models/about.ts"
 
 import { pageStoreID } from "./consts.ts"
 
-import type {JSX, Accessor} from "solid-js"
+import type { Accessor } from "solid-js"
 import type { SetStoreFunction } from "solid-js/store"
-
-export type TextInputProps = {
-	name: string
-	type: "text" | "email" | "tel" | "password" | "url" | "date"
-	label?: string
-	placeholder?: string
-	value: string | undefined
-	error: string
-	required?: boolean
-	ref: (element: HTMLInputElement) => void
-	onInput: JSX.EventHandler<HTMLInputElement, InputEvent>
-	onChange: JSX.EventHandler<HTMLInputElement, Event>
-	onBlur: JSX.EventHandler<HTMLInputElement, FocusEvent>
-}
 
 export type Page =
 	| HomePageZodSchemaType
@@ -90,12 +76,12 @@ export interface FieldErrors {
 
 //general form types
 export interface GeneralFormProps<T extends PageTypeKeys> {
-	data: PageTypeMap[T]
+	data: Accessor<PageTypeMap[T]>
 	schema: z.ZodObject<z.ZodRawShape, any>
 	currentSection: Accessor<{
-    key: string;
-    value: PageTypeKeys;
-}>
+		key: string
+		value: PageTypeKeys
+	}>
 }
 
 //for form
@@ -103,13 +89,11 @@ export interface RenderFieldsProps<T extends PageTypeKeys> {
 	data: any
 	path: string
 	errors: FieldErrors
-	setFormData: SetStoreFunction<PageTypeMap[T]>
 	handleUpdateField: (path: string, value: any) => void
 }
 
-
 export interface ApiResponse<T = any> {
-  success: boolean
-  data?: T
-  error?: string
+	success: boolean
+	data?: T
+	error?: string
 }

@@ -1,10 +1,11 @@
 import z from "zod"
+import { ZodValidators as v } from "../../validator/zod-validators"
 
 const heroContactSchema = z.object({
-	title: z.string().min(1, "The title cannot be empty"),
-	subtitle: z.string().min(1, "The subtitle cannot be empty"),
-	description: z.string().min(1, "The description cannot be empty"),
-	image: z.string().url("The image must be a valid URL"),
+	title: v.stringWithConstraints({ minLength: 1, emptyMessage: "The title cannot be empty" }),
+	subtitle: v.stringWithConstraints({ minLength: 1, emptyMessage: "The subtitle cannot be empty" }),
+	description: v.stringWithConstraints({ minLength: 1, emptyMessage: "The description cannot be empty" }),
+	image: v.url("The image must be a valid URL"),
 })
 
 export const ContactPageSchema = z.object({
