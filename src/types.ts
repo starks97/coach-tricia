@@ -86,7 +86,7 @@ export interface GeneralFormProps<T extends PageTypeKeys> {
 
 //for form
 export interface RenderFieldsProps<T extends PageTypeKeys> {
-	data: any
+	data: Accessor<PageTypeMap[T]>
 	path: string
 	errors: FieldErrors
 	handleUpdateField: (path: string, value: any) => void

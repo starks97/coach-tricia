@@ -22,6 +22,7 @@ export default function SectionWrapper() {
 		return {
 			queryKey: ["page", value],
 			queryFn: async () => await fetchPageData(key, value),
+			structuralSharing: false,
 		}
 	})
 

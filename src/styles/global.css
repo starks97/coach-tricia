@@ -22,20 +22,34 @@
 	--spacing-laptop: 3.5rem;
 
 	/* Font Sizes */
-	--text-size-1: 0.875rem; /* --font-size-custom_size */
-	--text-size-2: 1rem; /* --font-size-custom_title */
-	--text-size-3: 1.125rem; /* --font-size-custom_coaching */
-	--text-size-4: 1.25rem; /* --font-size-custom_subtitle */
-	--text-size-5: 1.625rem; /* --font-size-custom_subtitle2 */
-	--text-size-6: 2.125rem; /* --font-size-hero_title */
-	--text-size-7: 2.625rem; /* --font-size-hero_title_mobile */
-	--text-size-8: 3.5rem; /* --font-size-regular */
-	--text-size-9: 4.5rem; /* --font-size-bigger */
-	--text-size-10: 5rem; /* --font-size-about_subtitle */
-	--text-size-11: 6rem; /* --font-size-about_title */
-	--text-size-12: 7rem; /* --font-size-about_title_mobile */
-	--text-size-13: 8rem; /* --font-size-about_title_mobile */
-	--text-size-14: 9rem; /* --font-size-about_title_mobile */
+	--text-size-1: 0.875rem;
+	/* --font-size-custom_size */
+	--text-size-2: 1rem;
+	/* --font-size-custom_title */
+	--text-size-3: 1.125rem;
+	/* --font-size-custom_coaching */
+	--text-size-4: 1.25rem;
+	/* --font-size-custom_subtitle */
+	--text-size-5: 1.625rem;
+	/* --font-size-custom_subtitle2 */
+	--text-size-6: 2.125rem;
+	/* --font-size-hero_title */
+	--text-size-7: 2.625rem;
+	/* --font-size-hero_title_mobile */
+	--text-size-8: 3.5rem;
+	/* --font-size-regular */
+	--text-size-9: 4.5rem;
+	/* --font-size-bigger */
+	--text-size-10: 5rem;
+	/* --font-size-about_subtitle */
+	--text-size-11: 6rem;
+	/* --font-size-about_title */
+	--text-size-12: 7rem;
+	/* --font-size-about_title_mobile */
+	--text-size-13: 8rem;
+	/* --font-size-about_title_mobile */
+	--text-size-14: 9rem;
+	/* --font-size-about_title_mobile */
 
 	/* Letter Spacing */
 	--letter-spacing-custom: 0.2em;
@@ -44,20 +58,34 @@
 	--font-weight-100: 100;
 
 	/* Colors */
-	--color-light-cream: #fcfdf8; /* --color-header: Soft White, Light Cream */
-	--color-soft-beige: #eee4e3; /* --color-soft-beige: Soft Beige, Light Beige */
-	--color-olive-green: #6c7c6a; /* --color-footer: Olive Green, Muted Green */
-	--color-light-beige: #f3f3e8; /* --color-body: Light Beige, Off-White */
-	--color-dusty-rose: #bdabab; /* --color-menu_item: Dusty Rose, Muted Pink */
-	--color-dark-gray: #525252; /* --color-hero_h3, --color-custom_gray: Dark Gray, Charcoal */
-	--color-light-rose: #e1a2ad; /* --color-hero_color: Light Rose, Dusty Rose */
-	--color-light-gray: #f2f2f2; /* --color-hero_bg: Light Gray, Off-White */
-	--color-taupe: #bda198; /* --color-hero_color2: Taupe, Light Brown */
-	--color-cream: #fbefec; /* --color-hero_bg2, --color-description_bg: Light Beige, Cream */
-	--color-terracotta: #ce7c76; /* --color-btn_bg: Terracotta, Muted Red */
-	--color-white: #ffff; /* --color-btn_color, --color-menu_items: White */
-	--color-pale-rose: #e7cdcc; /* --color-header2: Pale Rose, Dusty Rose */
-	--color-medium-gray: #757575; /* --color-subtitle: Gray, Medium Gray */
+	--color-light-cream: #fcfdf8;
+	/* --color-header: Soft White, Light Cream */
+	--color-soft-beige: #eee4e3;
+	/* --color-soft-beige: Soft Beige, Light Beige */
+	--color-olive-green: #6c7c6a;
+	/* --color-footer: Olive Green, Muted Green */
+	--color-light-beige: #f3f3e8;
+	/* --color-body: Light Beige, Off-White */
+	--color-dusty-rose: #bdabab;
+	/* --color-menu_item: Dusty Rose, Muted Pink */
+	--color-dark-gray: #525252;
+	/* --color-hero_h3, --color-custom_gray: Dark Gray, Charcoal */
+	--color-light-rose: #e1a2ad;
+	/* --color-hero_color: Light Rose, Dusty Rose */
+	--color-light-gray: #f2f2f2;
+	/* --color-hero_bg: Light Gray, Off-White */
+	--color-taupe: #bda198;
+	/* --color-hero_color2: Taupe, Light Brown */
+	--color-cream: #fbefec;
+	/* --color-hero_bg2, --color-description_bg: Light Beige, Cream */
+	--color-terracotta: #ce7c76;
+	/* --color-btn_bg: Terracotta, Muted Red */
+	--color-white: #ffff;
+	/* --color-btn_color, --color-menu_items: White */
+	--color-pale-rose: #e7cdcc;
+	/* --color-header2: Pale Rose, Dusty Rose */
+	--color-medium-gray: #757575;
+	/* --color-subtitle: Gray, Medium Gray */
 
 	/* Screens (Breakpoints) */
 	--breakpoint-*: initial;
@@ -84,12 +112,14 @@ body {
 	font-family: var(--font-prata);
 	color: black;
 	font-weight: normal;
-	text-align: justify; /* Default center, override for tablet/desktop */
+	text-align: justify;
+	/* Default center, override for tablet/desktop */
 }
 
 .hero_description {
 	font-family: var(--font-tajawal);
-	font-weight: 600; /* font-semibold */
+	font-weight: 600;
+	/* font-semibold */
 	letter-spacing: 0.07em;
 	text-transform: uppercase;
 	text-align: justify;
@@ -102,16 +132,22 @@ body {
 
 /* Mobile (Smallest Screens - typically phones) */
 @media (max-width: 767px) {
+
 	/* Up to 767px */
 	/* Mobile Styles Here */
 	.hero_title {
-		font-size: var(--text-size-9); /* Or your preferred size */
+		font-size: var(--text-size-9);
+		/* Or your preferred size */
 	}
+
 	.hero_subtitle {
 		text-align: center;
-		font-size: var(--text-size-5); /* Or your preferred size */
-		line-height: var(--leading-10); /* Or your preferred line-height */
+		font-size: var(--text-size-5);
+		/* Or your preferred size */
+		line-height: var(--leading-10);
+		/* Or your preferred line-height */
 	}
+
 	.hero_description {
 		font-size: var(--text-size-3);
 	}
@@ -119,16 +155,22 @@ body {
 
 /* Tablet (Portrait and Landscape) */
 @media (min-width: 768px) and (max-width: 1023px) {
+
 	/* 768px to 1023px */
 	/* Tablet Styles Here */
 	.hero_title {
-		font-size: var(--text-size-9); /* Or your preferred size */
+		font-size: var(--text-size-9);
+		/* Or your preferred size */
 	}
+
 	.hero_subtitle {
 		text-align: left;
-		font-size: var(--text-size-5); /* Or your preferred size */
-		line-height: var(--leading-9); /* Or your preferred line-height */
+		font-size: var(--text-size-5);
+		/* Or your preferred size */
+		line-height: var(--leading-9);
+		/* Or your preferred line-height */
 	}
+
 	.hero_description {
 		font-size: var(--text-size-2);
 	}
@@ -136,15 +178,20 @@ body {
 
 /* Laptop (and smaller Desktops) */
 @media (min-width: 1024px) and (max-width: 1279px) {
+
 	/* 1024px to 1279px */
 	/* Laptop Styles Here */
 	.hero_title {
-		font-size: var(--text-size-8); /* Or your preferred size */
+		font-size: var(--text-size-8);
+		/* Or your preferred size */
 	}
+
 	.hero_subtitle {
-		font-size: var(--text-size-5); /* Or your preferred size */
+		font-size: var(--text-size-5);
+		/* Or your preferred size */
 		line-height: 2.5rem;
 	}
+
 	.hero_description {
 		font-size: var(--text-size-2);
 	}
@@ -152,15 +199,21 @@ body {
 
 /* Desktop (Larger Screens) */
 @media (min-width: 1280px) {
+
 	/* 1280px and larger */
 	/* Desktop Styles Here */
 	.hero_title {
-		font-size: var(--text-size-10); /* Or your preferred size */
+		font-size: var(--text-size-10);
+		/* Or your preferred size */
 	}
+
 	.hero_subtitle {
-		font-size: var(--text-size-7); /* Or your preferred size */
-		line-height: var(--leading-12); /* Or your preferred line-height */
+		font-size: var(--text-size-7);
+		/* Or your preferred size */
+		line-height: var(--leading-12);
+		/* Or your preferred line-height */
 	}
+
 	.hero_description {
 		font-size: var(--text-size-3);
 	}

@@ -1,8 +1,8 @@
-import { useMutation } from "@tanstack/solid-query"
+import { useMutation, useQueryClient } from "@tanstack/solid-query"
 
 import { parseSchema } from "~/utils/parsedSchema"
 import { createStore, reconcile, produce } from "solid-js/store"
-import { createSignal } from "solid-js"
+import { createSignal, createEffect } from "solid-js"
 import type { PageTypeMap, PageTypeKeys } from "~/types"
 import { setDeepValue } from "~/utils/setDeepVal"
 
@@ -12,9 +12,22 @@ import RenderFields from "./handlers/RenderFields"
 import { updateSectionData } from "~/utils/queries"
 
 
+
 export default function GeneralForm<T extends PageTypeKeys>({ ...props }: GeneralFormProps<T>) {
 	const [errors, setErrors] = createStore<FieldErrors>({})
+
 	const [fieldChanged, setFieldChanged] = createSignal<Record<string, any> | null>(null);
+
+	const [localFormData, setLocalFormData] = createStore<PageTypeMap[T]>(props.data())
+
+	const queryClient = useQueryClient();
+
+	createEffect(() => {
+		// Sync local form data when props.data changes, unless there are unsaved changes
+		if (Object.keys(fieldChanged).length === 0) {
+			setLocalFormData(reconcile(props.data()))
+		}
+	})
 
 
 	const handleUpdateField = (path: string, value: any) => {
@@ -23,13 +36,12 @@ export default function GeneralForm<T extends PageTypeKeys>({ ...props }: Genera
 		//set the field that changed
 		setFieldChanged({ [path]: newValue });
 
-		const currentData = props.data()
-
 		//validation on real time
-		const newData = setDeepValue({ ...currentData }, path, newValue)
+		const newData = setDeepValue({ ...localFormData }, path, newValue)
+
+		setLocalFormData(newData);
+
 		const result = parseSchema(props.schema, newData)
-
-
 
 		if (!result.success) {
 			setErrors(reconcile(result.errors))
@@ -53,7 +65,6 @@ export default function GeneralForm<T extends PageTypeKeys>({ ...props }: Genera
 				if (!res) {
 					throw new Error("Failed to update data")
 				}
-				console.log("Update successful:", res);
 
 				return res.data!;
 
@@ -65,24 +76,49 @@ export default function GeneralForm<T extends PageTypeKeys>({ ...props }: Genera
 
 			}
 		},
-		onMutate: async (variables) => {
+		onMutate: async (variables,) => {
 			setErrors({})
+
+			await queryClient.cancelQueries({ queryKey: ["page", props.currentSection().value] })
+
+			//save the previous data
+			const previousData = queryClient.getQueryData([
+				"page",
+				props.currentSection().value,
+			])
+
+			//update cache optimistically
+			queryClient.setQueryData(["page", props.currentSection().value],
+				(old: any) => {
+					if (!old) return old
+					const updated = { ...old }
+					Object.entries(variables.data).forEach(([path, value]) => {
+						setDeepValue(updated, path, value)
+					})
+					return updated
+				})
+
+			return { previousData }
+
 		},
-		onError: (error) => {
+		onError: (error, variables,) => {
 			console.error("Error updating data:", error)
+
 		},
 		onSuccess: (data) => {
 			console.log("Data updated successfully:", data)
 		},
-		onSettled: async (res, error, variables, result, ctx) => {
-			await ctx.client.invalidateQueries({ queryKey: ["page", props.currentSection().value] })
+		onSettled: async (error) => {
+			if (error?.error) {
+				await queryClient.invalidateQueries({ queryKey: ["page", props.currentSection().value] })
+			}
 		}
 	}))
 
 	const handleSubmit = (e: Event) => {
 		e.preventDefault()
 
-		const result = parseSchema(props.schema, props.data())
+		const result = parseSchema(props.schema, localFormData)
 
 		if (!result.success) {
 			setErrors(result.errors)
@@ -95,6 +131,7 @@ export default function GeneralForm<T extends PageTypeKeys>({ ...props }: Genera
 		})
 	}
 
+
 	return (
 		<div class="p-5">
 			<form
@@ -102,7 +139,7 @@ export default function GeneralForm<T extends PageTypeKeys>({ ...props }: Genera
 				class="general-form border-taupe flex flex-col space-y-10 rounded border p-10"
 			>
 				<RenderFields
-					data={props.data()}
+					data={() => localFormData}
 					errors={errors}
 					path=""
 					handleUpdateField={handleUpdateField}
