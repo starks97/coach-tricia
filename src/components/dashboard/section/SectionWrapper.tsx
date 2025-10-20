@@ -1,11 +1,11 @@
 import { createSignal, Show } from "solid-js"
 import { useQuery } from "@tanstack/solid-query"
 
-import { fetchPageData } from "~/utils/queries.ts"
+import { fetchPageData } from "@lib/api/client/document/queries.ts"
 
 import SectionSelector from "./SectionSelector.tsx"
 import DynamicSectionCard from "./SectionCard.tsx"
-import type { PageTypeKeys } from "~/types.ts"
+import type { PageTypeKeys } from "@lib/db/types.ts"
 
 export default function SectionWrapper() {
 	const defaultSection: { key: string; value: PageTypeKeys } = {

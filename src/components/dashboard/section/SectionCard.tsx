@@ -1,7 +1,7 @@
-import type { PageTypeMap, PageTypeKeys } from "@types"
+import type { PageTypeMap, PageTypeKeys } from "@lib/db/types"
 
 import { type Accessor, Show, createMemo } from "solid-js"
-import GeneralForm from "../forms/GeneralForm"
+import GeneralForm from "../form/form-component/GeneralForm"
 import { schemaRouter } from "~/lib/db/schemaRouter"
 
 type DynamicFormProps<T extends PageTypeKeys> = {

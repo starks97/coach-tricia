@@ -1,6 +1,9 @@
 import { For } from "solid-js"
 
-import type { PageTypeKeys, RenderFieldsProps } from "~/types"
+import type { PageTypeKeys } from "@lib/db/types"
+import type { RenderFieldsProps } from "../types"
+
+import { getDeepValue } from "~/utils/getDeepValue"
 
 import { BaseInput } from "./BaseInput"
 
@@ -179,13 +182,4 @@ export default function RenderFields<T extends PageTypeKeys>({
 	)
 }
 
-// 🔥 Necesitas esta función helper
-function getDeepValue(obj: any, path: string): any {
-	const keys = path.split('.').filter(key => key !== '')
-	let current = obj
-	for (const key of keys) {
-		if (current === undefined || current === null) return undefined
-		current = current[key]
-	}
-	return current
-}
+

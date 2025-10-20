@@ -1,6 +1,6 @@
-import { z } from "zod/v4"
+import { z } from "zod"
 
-import { type FieldErrors } from "~/types"
+import { type FieldErrors } from "@components/dashboard/form/types"
 
 /**
  * Transforms Zod validation errors into a flat field error object

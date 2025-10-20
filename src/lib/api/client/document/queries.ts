@@ -1,5 +1,5 @@
-import type { UpdateResult } from "~/lib/db/types/update.types"
-import type { ApiResponse, PageTypeMap } from "~/types.ts"
+import type { UpdateResult, PageTypeMap } from "@lib/db/types"
+import type { ApiResponse } from "../../types"
 
 export async function fetchPageData<T extends keyof PageTypeMap>(
 	id: string,
@@ -7,7 +7,7 @@ export async function fetchPageData<T extends keyof PageTypeMap>(
 ): Promise<PageTypeMap[T]> {
 	try {
 		const res = await fetch(`http://localhost:4321/api/page?id=${id}&page=${page}`)
-			
+
 		const json = await res.json()
 
 		return json as PageTypeMap[T]
@@ -20,7 +20,7 @@ export async function fetchPageData<T extends keyof PageTypeMap>(
 export async function updateSectionData<T extends keyof PageTypeMap>(
 	id: string,
 	page: T,
-	data: Record<string, any>,
+	data: Record<string, any>
 ): Promise<ApiResponse<UpdateResult>> {
 	try {
 		const res = await fetch(`http://localhost:4321/api/update?id=${id}&page=${page}`, {
@@ -36,8 +36,7 @@ export async function updateSectionData<T extends keyof PageTypeMap>(
 		}
 
 		const response: ApiResponse<UpdateResult> = await res.json()
-    	return response
-
+		return response
 	} catch (error) {
 		console.error(error)
 		throw error

@@ -1,7 +1,7 @@
 import { ObjectId, type Filter } from "mongodb"
 
 import MongoService from "../mongoService"
-import type { UpdateParams, UpdateResult } from "../types/update.types"
+import type { UpdateParams, UpdateResult } from "../types"
 
 export async function updateSection<T extends { _id: string | ObjectId }>(
 	params: UpdateParams
