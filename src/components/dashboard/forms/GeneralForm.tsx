@@ -4,7 +4,7 @@ import { parseSchema } from "~/utils/parsedSchema"
 import { createStore, reconcile, produce } from "solid-js/store"
 import { createSignal, createEffect } from "solid-js"
 import type { PageTypeMap, PageTypeKeys } from "~/types"
-import { setDeepValue } from "~/utils/setDeepVal"
+import { updateFormField } from "~/utils/setDeepVal"
 
 import type { FieldErrors, GeneralFormProps } from "~/types"
 import RenderFields from "./handlers/RenderFields"
@@ -37,7 +37,7 @@ export default function GeneralForm<T extends PageTypeKeys>({ ...props }: Genera
 		setFieldChanged({ [path]: newValue });
 
 		//validation on real time
-		const newData = setDeepValue({ ...localFormData }, path, newValue)
+		const newData = updateFormField({ ...localFormData }, path, newValue)
 
 		setLocalFormData(newData);
 
@@ -93,7 +93,7 @@ export default function GeneralForm<T extends PageTypeKeys>({ ...props }: Genera
 					if (!old) return old
 					const updated = { ...old }
 					Object.entries(variables.data).forEach(([path, value]) => {
-						setDeepValue(updated, path, value)
+						updateFormField(updated, path, value)
 					})
 					return updated
 				})

@@ -1,10 +1,10 @@
 import { createStore, reconcile, produce } from "solid-js/store"
-import { createSignal, createEffect } from "solid-js"
+import { createSignal } from "solid-js"
 
 import type { FieldErrors, SchemaType } from "../types"
 import type { PageTypeMap } from "~/lib/db/types"
 
-import { setDeepValue } from "~/utils/setDeepVal"
+import { updateFormField } from "~/utils/setDeepVal"
 import { parseSchema } from "@lib/validator/parsedSchema"
 
 export function useFormState<T extends keyof PageTypeMap>(
@@ -54,7 +54,7 @@ export function useFormState<T extends keyof PageTypeMap>(
 		)
 
 		//validation on real time
-		const newData = setDeepValue({ ...localFormData }, path, newValue)
+		const newData = updateFormField({ ...localFormData }, path, newValue)
 
 		setLocalFormData(newData)
 
@@ -104,7 +104,7 @@ export function useFormState<T extends keyof PageTypeMap>(
 		)
 		const path = Object.keys(nextChange.changes)[0]
 		const value = Object.values(nextChange.changes)[0]
-		const newData = setDeepValue({ ...localFormData }, path, value)
+		const newData = updateFormField({ ...localFormData }, path, value)
 		setLocalFormData(newData)
 
 		const result = parseSchema(schema, newData)
@@ -114,11 +114,6 @@ export function useFormState<T extends keyof PageTypeMap>(
 			setErrors({})
 		}
 	}
-
-	createEffect(() => {
-		console.log("field changed:", fieldChanged())
-		console.log("history:", history)
-	})
 	return {
 		errors,
 		localFormData,

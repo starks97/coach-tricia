@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/solid-query"
 import { updateSectionData } from "@lib/api/client/document/queries"
 import type { PageTypeMap } from "@lib/db/types"
-import { setDeepValue } from "@utils/setDeepVal"
+import { updateFormField } from "@utils/setDeepVal"
 
 export function useFormMutation() {
 	const queryClient = useQueryClient()
@@ -29,7 +29,7 @@ export function useFormMutation() {
 				if (!old) return old
 				const updated = { ...old }
 				Object.entries(variables.data).forEach(([path, value]) => {
-					setDeepValue(updated, path, value)
+					updateFormField(updated, path, value)
 				})
 				return updated
 			})
