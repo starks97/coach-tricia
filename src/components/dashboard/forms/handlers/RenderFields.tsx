@@ -1,8 +1,6 @@
 import { For } from "solid-js"
 
-import type { PageTypeKeys } from "@lib/db/types"
-import type { RenderFieldsProps } from "../types"
-
+import type { PageTypeKeys, RenderFieldsProps } from "~/types"
 
 import { BaseInput } from "./BaseInput"
 
@@ -15,19 +13,25 @@ export default function RenderFields<T extends PageTypeKeys>({
 	errors,
 	handleUpdateField,
 }: RenderFieldsProps<T>) {
-	if (!data || typeof data !== "object") {
+	const currentData = data()
+	if (!currentData || typeof currentData !== "object") {
 		return null
 	}
 
 	return (
 		<>
-			{Object.entries(data).map(([key, value]) => {
+			{Object.entries(currentData).map(([key, value]) => {
 				const currentPath = path ? `${path}.${key}` : key
 				const error = errors[currentPath]
 				const label = formatLabel(key)
 
 				// Caso: objeto anidado
 				if (typeof value === "object" && value !== null && !Array.isArray(value)) {
+					const nestedData = () => {
+						const parentData = data()
+						return getDeepValue(parentData, currentPath)
+					}
+
 					return (
 						<div class="nested-section mb-6 rounded-lg bg-gray-50 p-4">
 							<h3 class="font-prata text-taupe text-size-4 mb-3 font-semibold">
@@ -35,7 +39,7 @@ export default function RenderFields<T extends PageTypeKeys>({
 							</h3>
 							<div class="section-fields space-y-4">
 								<RenderFields
-									data={value}
+									data={nestedData}  // ✅ Pasa el Accessor
 									path={currentPath}
 									errors={errors}
 									handleUpdateField={handleUpdateField}
@@ -73,11 +77,17 @@ export default function RenderFields<T extends PageTypeKeys>({
 										{(arrayIndex) => {
 											const arrayPath = `${currentPath}.${arrayIndex}`
 											const itemError = errors[arrayPath] || ""
-											const itemValue = value[arrayIndex] !== undefined ? value[arrayIndex] : ""
+
+											// 🔥 Accessor para el item del array
+											const arrayItemData = () => {
+												const parentData = data()
+												return getDeepValue(parentData, arrayPath)
+											}
+
+											const itemValue = arrayItemData()
 											const itemLabel = `${label} ${arrayIndex + 1}`
 
-											const { id, ...restValues } = itemValue;
-
+											const { id, ...restValues } = itemValue || {}
 
 											return (
 												<Accordion.Item>
@@ -88,7 +98,7 @@ export default function RenderFields<T extends PageTypeKeys>({
 														<div class="array-item p-4 flex flex-col">
 															{typeof itemValue === "object" && itemValue !== null ? (
 																<RenderFields
-																	data={restValues}
+																	data={() => restValues}  // ✅ Para objetos simples
 																	path={arrayPath}
 																	errors={errors}
 																	handleUpdateField={handleUpdateField}
@@ -96,7 +106,7 @@ export default function RenderFields<T extends PageTypeKeys>({
 															) : (
 																<BaseInput
 																	path={arrayPath}
-																	value={restValues}
+																	value={itemValue}
 																	label={itemLabel}
 																	onChange={handleUpdateField}
 																	error={itemError}
@@ -111,22 +121,28 @@ export default function RenderFields<T extends PageTypeKeys>({
 									</For>
 								</Accordion>
 							) : (
-								// Array de valores primitivos - comportamiento original
+								// Array de valores primitivos
 								<For each={allIndexes}>
 									{(arrayIndex) => {
 										const arrayPath = `${currentPath}.${arrayIndex}`
 										const itemError = errors[arrayPath] || ""
-										const itemValue = value[arrayIndex] !== undefined ? value[arrayIndex] : ""
+
+										// 🔥 Accessor para item del array
+										const arrayItemData = () => {
+											const parentData = data()
+											return getDeepValue(parentData, arrayPath)
+										}
+
+										const itemValue = arrayItemData()
 										const itemLabel = `${label} ${arrayIndex + 1}`
 
 										return (
 											<div class="array-item">
 												{typeof itemValue === "object" && itemValue !== null ? (
 													<RenderFields
-														data={itemValue}
+														data={() => itemValue}
 														path={arrayPath}
 														errors={errors}
-
 														handleUpdateField={handleUpdateField}
 													/>
 												) : (
@@ -146,7 +162,6 @@ export default function RenderFields<T extends PageTypeKeys>({
 							)}
 						</div>
 					)
-
 				}
 
 				// Caso: valor primitivo
@@ -164,4 +179,13 @@ export default function RenderFields<T extends PageTypeKeys>({
 	)
 }
 
-
+// 🔥 Necesitas esta función helper
+function getDeepValue(obj: any, path: string): any {
+	const keys = path.split('.').filter(key => key !== '')
+	let current = obj
+	for (const key of keys) {
+		if (current === undefined || current === null) return undefined
+		current = current[key]
+	}
+	return current
+}

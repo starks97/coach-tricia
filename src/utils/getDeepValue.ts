@@ -5,5 +5,6 @@ export function getDeepValue(obj: any, path: string): any {
 		if (current === undefined || current === null) return undefined
 		current = current[key]
 	}
+
 	return current
 }

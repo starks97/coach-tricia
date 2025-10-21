@@ -20,7 +20,7 @@ export interface GeneralFormProps<T extends PageTypeKeys> {
 }
 
 export interface RenderFieldsProps<T extends PageTypeKeys> {
-	data: Accessor<PageTypeMap[T]>
+	data: PageTypeMap[T]
 	path: string
 	errors: FieldErrors
 	handleUpdateField: (path: string, value: any) => void

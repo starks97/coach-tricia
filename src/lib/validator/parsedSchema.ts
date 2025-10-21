@@ -28,12 +28,11 @@ function parsedZodError(error: z.ZodError) {
 		if (issue.path.length > 0) {
 			// Convert the path array into a dot-separated string
 			// Example: ['user', 'profile', 'email'] → 'user.profile.email'
+
 			const fieldPath = issue.path.join(".")
 			fieldErrors[fieldPath] = issue.message
 		}
 	})
-
-	console.log(fieldErrors)
 
 	return fieldErrors
 }
