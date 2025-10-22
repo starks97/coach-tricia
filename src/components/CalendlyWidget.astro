@@ -1,0 +1,40 @@
+---
+
+---
+
+<div class="calendly-container">
+    <button class="btn-calendly">Schedule a Meeting</button>
+	<div
+		class="calendly-inline-widget"
+		data-url="https://calendly.com/cazcodavid/30min"
+		style="min-width:320px;height:630px; display:none"
+	>
+	</div>
+</div>
+
+<!-- Script normal que funciona en localhost -->
+<script is:inline src="https://assets.calendly.com/assets/external/widget.js" defer></script>
+<script>
+    const btn = document.querySelector(".btn-calendly") as HTMLButtonElement;
+    const widget = document.querySelector(".calendly-inline-widget") as HTMLElement;
+
+    btn.addEventListener("click", () => {
+        if (widget.style.display === "none") {
+            widget.style.display = "block";
+            btn.textContent = "Close Scheduler";
+        } else {
+            widget.style.display = "none";
+            btn.textContent = "Schedule a Meeting";
+        }
+    });
+</script>
+
+<style>
+	.calendly-container {
+		width: 100%;
+		margin: 0 auto;
+		border-radius: 12px;
+		overflow: hidden;
+		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	}
+</style>
