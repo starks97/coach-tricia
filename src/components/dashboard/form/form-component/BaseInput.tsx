@@ -3,6 +3,8 @@ import Accordion from "@corvu/accordion";
 
 import type { BaseInputProps } from "../types"
 
+import WidgetImage from "./WidgetImage";
+
 const ErrorMessage = ({ error }: { error: string }) => (
 	<Show when={error}>
 		<span class="mt-1 block text-sm text-red-500">{error}</span>
@@ -10,7 +12,9 @@ const ErrorMessage = ({ error }: { error: string }) => (
 )
 
 export function BaseInput({ error, onBlur, path, value, isArray, label }: BaseInputProps) {
-	const [localValue, setLocalValue] = createSignal(value)
+	const [localValue, setLocalValue] = createSignal(value);
+
+	const isImage = path.toLowerCase().includes("image") || path.toLowerCase().includes("img");
 
 	return (
 		<div class="field-group mb-4">
@@ -23,7 +27,7 @@ export function BaseInput({ error, onBlur, path, value, isArray, label }: BaseIn
 							</label>
 							<Accordion.Content>
 								<input
-									type={typeof value === "number" ? "number" : "text"}
+									type={typeof localValue() === "number" ? "number" : "text"}
 									id={path}
 									name={path}
 									value={localValue() ?? ""}
@@ -41,15 +45,21 @@ export function BaseInput({ error, onBlur, path, value, isArray, label }: BaseIn
 					<label class="font-tajawal text-size-3 mb-2 block font-medium text-black" for={path}>
 						{label}
 					</label>
-					<input
-						type={typeof value === "number" ? "number" : "text"}
-						id={path}
-						name={path}
-						value={localValue() ?? ""}
-						onBlur={() => onBlur(path, localValue())}
-						onInput={(e) => setLocalValue(e.currentTarget.value)}
-						class="w-full rounded border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none"
-					/>
+					{
+						isImage ? (
+							<WidgetImage src={localValue() as string} />
+						) : (
+							<input
+								type={typeof localValue() === "number" ? "number" : "text"}
+								id={path}
+								name={path}
+								value={localValue() ?? ""}
+								onInput={(e) => setLocalValue(e.currentTarget.value)}
+								onBlur={() => onBlur(path, localValue())}
+								class="w-full rounded border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none"
+							/>
+						)
+					}
 					<ErrorMessage error={error} />
 				</>
 			)}

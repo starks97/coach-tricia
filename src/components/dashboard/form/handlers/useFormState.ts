@@ -3,8 +3,8 @@ import { createStore, reconcile, produce } from "solid-js/store"
 import type { FieldErrors, SchemaType, HistoryType } from "../types"
 import type { PageTypeMap } from "~/lib/db/types"
 
-import { updateFormField } from "~/utils/setDeepVal"
 import { parseSchema } from "@lib/validator/parsedSchema"
+import { FormEngine } from "../formEngine"
 
 export function useFormState<T extends keyof PageTypeMap>(
 	initialData: PageTypeMap[T],
@@ -23,7 +23,7 @@ export function useFormState<T extends keyof PageTypeMap>(
 	const onBlurField = (path: string, value: any) => {
 		const newValue = value === "" ? null : value
 
-		const newData = updateFormField({ ...draftFormData }, path, newValue)
+		const newData = FormEngine.setDeepValue({ ...draftFormData }, path, newValue)
 
 		setHistory(
 			produce((h) => {
@@ -57,7 +57,7 @@ export function useFormState<T extends keyof PageTypeMap>(
 		let newData = { ...realFormData }
 
 		for (const [path, value] of Object.entries(formData)) {
-			newData = updateFormField(newData, path, value)
+			newData = FormEngine.setDeepValue(newData, path, value)
 		}
 
 		const result = parseSchema(schema, newData)
@@ -104,7 +104,7 @@ export function useFormState<T extends keyof PageTypeMap>(
 				h.future = remainingFuture
 			})
 		)
-		const newData = updateFormField(
+		const newData = FormEngine.setDeepValue(
 			{ ...nextChange.previusData },
 			Object.keys(nextChange.changes)[0],
 			Object.values(nextChange.changes)[0]

@@ -1,4 +1,3 @@
-import { parseSchema } from "@lib/validator/parsedSchema"
 import { reconcile } from "solid-js/store"
 import { createEffect } from "solid-js"
 import type { PageTypeKeys } from "@lib/db/types"
