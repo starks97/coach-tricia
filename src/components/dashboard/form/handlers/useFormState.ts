@@ -1,7 +1,6 @@
 import { createStore, reconcile, produce } from "solid-js/store"
-import { createSignal } from "solid-js"
 
-import type { FieldErrors, SchemaType } from "../types"
+import type { FieldErrors, SchemaType, HistoryType } from "../types"
 import type { PageTypeMap } from "~/lib/db/types"
 
 import { updateFormField } from "~/utils/setDeepVal"
@@ -11,33 +10,20 @@ export function useFormState<T extends keyof PageTypeMap>(
 	initialData: PageTypeMap[T],
 	schema: SchemaType
 ) {
-	const [history, setHistory] = createStore<{
-		past: Array<{
-			changes: Record<string, any>
-			timestamp: number
-			previusData: PageTypeMap[T]
-		}>
-		future: Array<{
-			changes: Record<string, any>
-			timestamp: number
-			previusData: PageTypeMap[T]
-		}>
-	}>({
+	const [history, setHistory] = createStore<HistoryType<T>>({
 		past: [],
 		future: [],
 	})
 
 	const [errors, setErrors] = createStore<FieldErrors>({})
-	const [fieldChanged, setFieldChanged] = createSignal<Record<string, any> | null>(null)
-	const [localFormData, setLocalFormData] = createStore<PageTypeMap[T]>(initialData)
 
-	const handleUpdateField = (path: string, value: any) => {
+	const [realFormData, setRealFormData] = createStore<PageTypeMap[T]>(initialData)
+	const [draftFormData, setDraftFormData] = createStore<PageTypeMap[T]>(initialData)
+
+	const onBlurField = (path: string, value: any) => {
 		const newValue = value === "" ? null : value
 
-		//set the field that changed
-		setFieldChanged({ [path]: newValue })
-
-		const previousState = { ...localFormData }
+		const newData = updateFormField({ ...draftFormData }, path, newValue)
 
 		setHistory(
 			produce((h) => {
@@ -45,7 +31,7 @@ export function useFormState<T extends keyof PageTypeMap>(
 					{
 						changes: { [path]: newValue },
 						timestamp: Date.now(),
-						previusData: previousState,
+						previusData: { ...draftFormData },
 					},
 					...h.past.slice(0, 49),
 				]
@@ -53,13 +39,9 @@ export function useFormState<T extends keyof PageTypeMap>(
 			})
 		)
 
-		//validation on real time
-		const newData = updateFormField({ ...localFormData }, path, newValue)
-
-		setLocalFormData(newData)
-
-		const result = parseSchema(schema, newData)
-
+		setDraftFormData(newData)
+		setRealFormData(reconcile(newData))
+		const result = parseSchema(schema, draftFormData)
 		if (!result.success) {
 			setErrors(reconcile(result.errors))
 		} else {
@@ -69,6 +51,26 @@ export function useFormState<T extends keyof PageTypeMap>(
 				})
 			)
 		}
+	}
+
+	const handleSubmit = (formData: Record<string, any>) => {
+		let newData = { ...realFormData }
+
+		for (const [path, value] of Object.entries(formData)) {
+			newData = updateFormField(newData, path, value)
+		}
+
+		const result = parseSchema(schema, newData)
+		if (!result.success) {
+			setErrors(reconcile(result.errors))
+			return false
+		}
+
+		setRealFormData(newData)
+		setDraftFormData(newData)
+		setErrors({})
+
+		return true
 	}
 
 	const undo = () => {
@@ -83,7 +85,7 @@ export function useFormState<T extends keyof PageTypeMap>(
 			})
 		)
 
-		setLocalFormData(lastChange.previusData)
+		setDraftFormData(lastChange.previusData)
 		const result = parseSchema(schema, lastChange.previusData)
 		if (!result.success) {
 			setErrors(reconcile(result.errors))
@@ -102,10 +104,13 @@ export function useFormState<T extends keyof PageTypeMap>(
 				h.future = remainingFuture
 			})
 		)
-		const path = Object.keys(nextChange.changes)[0]
-		const value = Object.values(nextChange.changes)[0]
-		const newData = updateFormField({ ...localFormData }, path, value)
-		setLocalFormData(newData)
+		const newData = updateFormField(
+			{ ...nextChange.previusData },
+			Object.keys(nextChange.changes)[0],
+			Object.values(nextChange.changes)[0]
+		)
+
+		setDraftFormData(newData)
 
 		const result = parseSchema(schema, newData)
 		if (!result.success) {
@@ -114,16 +119,19 @@ export function useFormState<T extends keyof PageTypeMap>(
 			setErrors({})
 		}
 	}
+
 	return {
 		errors,
-		localFormData,
-		fieldChanged,
-		handleUpdateField,
-		setLocalFormData,
+		localFormData: draftFormData,
+		handleSubmit,
+		setLocalFormData: setDraftFormData,
 		setErrors,
 		undo,
 		redo,
 		canRedo: () => history.future.length > 0,
 		canUndo: () => history.past.length > 0,
+		onBlurField,
+		history,
+		setRealFormData,
 	}
 }

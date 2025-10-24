@@ -13,7 +13,7 @@ export default function RenderFields<T extends PageTypeKeys>({
 	data,
 	path,
 	errors,
-	handleUpdateField,
+	onBlurField,
 }: RenderFieldsProps<T>) {
 	if (!data || typeof data !== "object") {
 		return null
@@ -38,7 +38,7 @@ export default function RenderFields<T extends PageTypeKeys>({
 									data={value}
 									path={currentPath}
 									errors={errors}
-									handleUpdateField={handleUpdateField}
+									onBlurField={onBlurField}
 								/>
 							</div>
 						</div>
@@ -77,8 +77,6 @@ export default function RenderFields<T extends PageTypeKeys>({
 											const itemLabel = `${label} ${arrayIndex + 1}`
 
 											const { id, ...restValues } = itemValue;
-
-
 											return (
 												<Accordion.Item>
 													<Accordion.Trigger class="flex w-full justify-between border-b border-corvu-300 bg-corvu-100 px-4 py-3 text-left font-medium transition-all duration-100 hover:bg-corvu-200 focus-visible:bg-corvu-200 focus-visible:outline-hidden">
@@ -91,16 +89,17 @@ export default function RenderFields<T extends PageTypeKeys>({
 																	data={restValues}
 																	path={arrayPath}
 																	errors={errors}
-																	handleUpdateField={handleUpdateField}
+																	onBlurField={onBlurField}
+
 																/>
 															) : (
 																<BaseInput
 																	path={arrayPath}
 																	value={restValues}
 																	label={itemLabel}
-																	onChange={handleUpdateField}
 																	error={itemError}
 																	isArray={true}
+																	onBlur={onBlurField}
 																/>
 															)}
 														</div>
@@ -126,17 +125,17 @@ export default function RenderFields<T extends PageTypeKeys>({
 														data={itemValue}
 														path={arrayPath}
 														errors={errors}
+														onBlurField={onBlurField}
 
-														handleUpdateField={handleUpdateField}
 													/>
 												) : (
 													<BaseInput
 														path={arrayPath}
 														value={itemValue}
 														label={itemLabel}
-														onChange={handleUpdateField}
 														error={itemError}
 														isArray={true}
+														onBlur={onBlurField}
 													/>
 												)}
 											</div>
@@ -146,17 +145,15 @@ export default function RenderFields<T extends PageTypeKeys>({
 							)}
 						</div>
 					)
-
 				}
-
 				// Caso: valor primitivo
 				return (
 					<BaseInput
 						path={currentPath}
 						value={value}
 						label={label}
-						onChange={handleUpdateField}
 						error={error}
+						onBlur={onBlurField}
 					/>
 				)
 			})}

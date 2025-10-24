@@ -23,5 +23,34 @@ export interface RenderFieldsProps<T extends PageTypeKeys> {
 	data: PageTypeMap[T]
 	path: string
 	errors: FieldErrors
-	handleUpdateField: (path: string, value: any) => void
+	onBlurField: (path: string, value: any) => void
+}
+
+export interface BaseInputProps {
+	path: string
+	value: any
+	onBlur: (path: string, value: any) => void
+	label?: string
+	error: string
+	isArray?: boolean
+}
+
+export interface ArrayInputProps {
+	value: any[]
+	errors: FieldErrors
+	currentPath: string
+	label: string
+}
+
+export type HistoryType<T extends PageTypeKeys> = {
+	past: Array<{
+		changes: Record<string, any>
+		timestamp: number
+		previusData: PageTypeMap[T]
+	}>
+	future: Array<{
+		changes: Record<string, any>
+		timestamp: number
+		previusData: PageTypeMap[T]
+	}>
 }

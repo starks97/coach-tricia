@@ -14,27 +14,29 @@ export default function GeneralForm<T extends PageTypeKeys>({ ...props }: Genera
 	const mutation = useFormMutation();
 
 	createEffect(() => {
-		// Sync local form data when props.data changes, unless there are unsaved changes
-		if (Object.keys(formState.fieldChanged).length === 0) {
+		// Solo sincronizar si no hay cambios pendientes
+		if (formState.history.past.length === 0) {
 			formState.setLocalFormData(reconcile(props.data()))
-
+			formState.setRealFormData(reconcile(props.data()))
 		}
 	})
 
 	const handleSubmit = (e: Event) => {
 		e.preventDefault()
 
-		const result = parseSchema(props.schema, formState.localFormData)
+		const formData = new FormData(e.target as HTMLFormElement)
+		const formDataObject = Object.fromEntries(formData.entries());
 
-		if (!result.success) {
-			formState.setErrors(result.errors)
+
+		const success = formState.handleSubmit(formDataObject)
+
+		if (success) {
+			mutation.mutate({
+				id: props.currentSection().key,
+				page: props.currentSection().value,
+				data: formDataObject
+			})
 		}
-
-		result.success && mutation.mutate({
-			id: props.currentSection().key,
-			page: props.currentSection().value,
-			data: formState.fieldChanged() ?? {}
-		})
 	}
 
 	return (
@@ -47,10 +49,8 @@ export default function GeneralForm<T extends PageTypeKeys>({ ...props }: Genera
 					data={formState.localFormData}
 					errors={formState.errors}
 					path=""
-					handleUpdateField={formState.handleUpdateField}
+					onBlurField={formState.onBlurField}
 				/>
-
-
 				<div class="flex items-center justify-between w-full">
 					<button class="font-tajawal text-taupe mb-2 border-2 px-5 py-2.5 text-center text-xl font-extrabold tracking-[0.07em] uppercase cursor-pointer hover:bg-taupe hover:text-white transition-colors duration-300" onClick={formState.undo} disabled={!formState.canUndo()}>Undo</button>
 					<button class="font-tajawal text-taupe mb-2 border-2 px-5 py-2.5 text-center text-xl font-extrabold tracking-[0.07em] uppercase cursor-pointer hover:bg-taupe hover:text-white transition-colors duration-300" onClick={formState.redo} disabled={!formState.canRedo()}>Redo</button>
