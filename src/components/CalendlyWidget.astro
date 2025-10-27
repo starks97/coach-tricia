@@ -2,10 +2,14 @@
 
 ---
 
-<div class="calendly-container">
-    <button class="btn-calendly">Schedule a Meeting</button>
+<div class="mx-auto flex w-full flex-col items-center justify-center p-2">
+	<button
+		class="btn-calendly font-tajawal text-taupe mb-2 w-auto border-2 px-5 py-2.5 text-center text-xl font-extrabold tracking-[0.07em] uppercase"
+		>Schedule a Meeting</button
+	>
 	<div
-		class="calendly-inline-widget"
+		class="calendly-inline-widget w-full opacity-0 transition-opacity duration-500"
+		:class="intersect ? 'animate-fade-up animate-ease-in-out  animate-delay-500 ' : 'opacity-0'"
 		data-url="https://calendly.com/cazcodavid/30min"
 		style="min-width:320px;height:630px; display:none"
 	>
@@ -13,28 +17,18 @@
 </div>
 
 <!-- Script normal que funciona en localhost -->
-<script is:inline src="https://assets.calendly.com/assets/external/widget.js" defer></script>
+<script type="text/partytown" src="https://assets.calendly.com/assets/external/widget.js"></script>
 <script>
-    const btn = document.querySelector(".btn-calendly") as HTMLButtonElement;
-    const widget = document.querySelector(".calendly-inline-widget") as HTMLElement;
+	const btn = document.querySelector(".btn-calendly") as HTMLButtonElement
+	const widget = document.querySelector(".calendly-inline-widget") as HTMLElement
 
-    btn.addEventListener("click", () => {
-        if (widget.style.display === "none") {
-            widget.style.display = "block";
-            btn.textContent = "Close Scheduler";
-        } else {
-            widget.style.display = "none";
-            btn.textContent = "Schedule a Meeting";
-        }
-    });
+	btn.addEventListener("click", () => {
+		if (widget.style.display === "none") {
+			widget.style.display = "flex"
+			btn.textContent = "Close Scheduler"
+		} else {
+			widget.style.display = "none"
+			btn.textContent = "Schedule a Meeting"
+		}
+	})
 </script>
-
-<style>
-	.calendly-container {
-		width: 100%;
-		margin: 0 auto;
-		border-radius: 12px;
-		overflow: hidden;
-		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-	}
-</style>
