@@ -17,13 +17,18 @@ export function useFormState<T extends keyof PageTypeMap>(
 
 	const [errors, setErrors] = createStore<FieldErrors>({})
 
-	const [realFormData, setRealFormData] = createStore<PageTypeMap[T]>(initialData)
-	const [draftFormData, setDraftFormData] = createStore<PageTypeMap[T]>(initialData)
+	// ✅ SOLO UN STORE para los datos que se renderizan
+	const [formData, setFormData] = createStore<PageTypeMap[T]>(initialData)
+
+	const cloneDeep = (obj: any) => JSON.parse(JSON.stringify(obj))
 
 	const onBlurField = (path: string, value: any) => {
+		const currentValue = FormEngine.getDeepValue(formData, path)
 		const newValue = value === "" ? null : value
 
-		const newData = FormEngine.setDeepValue({ ...draftFormData }, path, newValue)
+		if (currentValue === newValue) return
+
+		const newData = FormEngine.setDeepValue(cloneDeep(formData), path, newValue)
 
 		setHistory(
 			produce((h) => {
@@ -31,7 +36,7 @@ export function useFormState<T extends keyof PageTypeMap>(
 					{
 						changes: { [path]: newValue },
 						timestamp: Date.now(),
-						previusData: { ...draftFormData },
+						previusData: cloneDeep(formData), // ✅ Usar formData
 					},
 					...h.past.slice(0, 49),
 				]
@@ -39,9 +44,10 @@ export function useFormState<T extends keyof PageTypeMap>(
 			})
 		)
 
-		setDraftFormData(newData)
-		setRealFormData(reconcile(newData))
-		const result = parseSchema(schema, draftFormData)
+		// ✅ Actualizar el store que se renderiza
+		setFormData(reconcile(newData))
+
+		const result = parseSchema(schema, newData)
 		if (!result.success) {
 			setErrors(reconcile(result.errors))
 		} else {
@@ -51,26 +57,6 @@ export function useFormState<T extends keyof PageTypeMap>(
 				})
 			)
 		}
-	}
-
-	const handleSubmit = (formData: Record<string, any>) => {
-		let newData = { ...realFormData }
-
-		for (const [path, value] of Object.entries(formData)) {
-			newData = FormEngine.setDeepValue(newData, path, value)
-		}
-
-		const result = parseSchema(schema, newData)
-		if (!result.success) {
-			setErrors(reconcile(result.errors))
-			return false
-		}
-
-		setRealFormData(newData)
-		setDraftFormData(newData)
-		setErrors({})
-
-		return true
 	}
 
 	const undo = () => {
@@ -85,7 +71,9 @@ export function useFormState<T extends keyof PageTypeMap>(
 			})
 		)
 
-		setDraftFormData(lastChange.previusData)
+		// ✅ Actualizar el store que se renderiza
+		setFormData(reconcile(cloneDeep(lastChange.previusData)))
+
 		const result = parseSchema(schema, lastChange.previusData)
 		if (!result.success) {
 			setErrors(reconcile(result.errors))
@@ -104,13 +92,16 @@ export function useFormState<T extends keyof PageTypeMap>(
 				h.future = remainingFuture
 			})
 		)
+
+		const previusDataClone = cloneDeep(nextChange.previusData)
 		const newData = FormEngine.setDeepValue(
-			{ ...nextChange.previusData },
+			previusDataClone,
 			Object.keys(nextChange.changes)[0],
 			Object.values(nextChange.changes)[0]
 		)
 
-		setDraftFormData(newData)
+		// ✅ Actualizar el store que se renderiza
+		setFormData(reconcile(newData))
 
 		const result = parseSchema(schema, newData)
 		if (!result.success) {
@@ -120,18 +111,34 @@ export function useFormState<T extends keyof PageTypeMap>(
 		}
 	}
 
+	const handleSubmit = () => {
+		const result = parseSchema(schema, formData)
+		if (!result.success) {
+			setErrors(reconcile(result.errors))
+			return false
+		}
+
+		setErrors({})
+		return true
+	}
+
+	const syncWithExternalData = (externalData: PageTypeMap[T]) => {
+		if (history.past.length === 0) {
+			setFormData(reconcile(externalData))
+		}
+	}
+
 	return {
 		errors,
-		localFormData: draftFormData,
 		handleSubmit,
-		setLocalFormData: setDraftFormData,
 		setErrors,
+		formData,
 		undo,
 		redo,
 		canRedo: () => history.future.length > 0,
 		canUndo: () => history.past.length > 0,
 		onBlurField,
 		history,
-		setRealFormData,
+		syncWithExternalData,
 	}
 }

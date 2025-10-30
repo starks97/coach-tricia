@@ -49,6 +49,17 @@ export class FormEngine {
 		return newObj
 	}
 
+	static getDeepValue(obj: any, path: string): any {
+		const keys = path.split(".").filter((key) => key !== "")
+		let current = obj
+		for (const key of keys) {
+			if (current === undefined || current === null) return undefined
+			current = current[key]
+		}
+
+		return current
+	}
+
 	static addArrayItem(obj: any, path: string, value: any): any {
 		const newObj = cloneDeepPlain(obj)
 		const keys = path.split(".").filter((key) => key !== "")

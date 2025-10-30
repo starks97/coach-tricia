@@ -22,10 +22,10 @@ export default function DynamicSectionCard<T extends PageTypeKeys>({
 
 	return (
 		<div>
-			<Show when={schema()} keyed={true}>
+			<Show when={schema()}>
 				{(currentSchema) => (<GeneralForm
 					data={data}
-					schema={currentSchema}
+					schema={currentSchema()}
 					currentSection={sectionPage}
 				/>)}
 			</Show>

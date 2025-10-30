@@ -12,9 +12,26 @@ const ErrorMessage = ({ error }: { error: string }) => (
 )
 
 export function BaseInput({ error, onBlur, path, value, isArray, label }: BaseInputProps) {
-	const [localValue, setLocalValue] = createSignal(value);
+
 
 	const isImage = path.toLowerCase().includes("image") || path.toLowerCase().includes("img");
+
+	const isNumber = typeof value === "number";
+
+	const handleBlur = (e: Event) => {
+		const input = e.currentTarget as HTMLInputElement;
+		let finalValue: string | number = input.value;
+
+
+		if (isNumber && input.value !== "") {
+			finalValue = Number(input.value);
+			if (isNaN(finalValue as number)) {
+				finalValue = input.value;
+			}
+		}
+
+		onBlur(path, finalValue);
+	}
 
 	return (
 		<div class="field-group mb-4">
@@ -27,12 +44,11 @@ export function BaseInput({ error, onBlur, path, value, isArray, label }: BaseIn
 							</label>
 							<Accordion.Content>
 								<input
-									type={typeof localValue() === "number" ? "number" : "text"}
+									type={typeof value === "number" ? "number" : "text"}
 									id={path}
 									name={path}
-									value={localValue() ?? ""}
-									onInput={(e) => setLocalValue(e.currentTarget.value)}
-									onBlur={() => onBlur(path, localValue())}
+									value={value ?? ""}
+									onBlur={handleBlur}
 									class="w-full rounded border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none"
 								/>
 
@@ -47,15 +63,14 @@ export function BaseInput({ error, onBlur, path, value, isArray, label }: BaseIn
 					</label>
 					{
 						isImage ? (
-							<WidgetImage src={localValue() as string} />
+							<WidgetImage src={value as string} path={path} />
 						) : (
 							<input
-								type={typeof localValue() === "number" ? "number" : "text"}
+								type={typeof value === "number" ? "number" : "text"}
 								id={path}
 								name={path}
-								value={localValue() ?? ""}
-								onInput={(e) => setLocalValue(e.currentTarget.value)}
-								onBlur={() => onBlur(path, localValue())}
+								value={value ?? ""}
+								onBlur={handleBlur}
 								class="w-full rounded border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none"
 							/>
 						)

@@ -6,6 +6,7 @@ import { fetchPageData } from "@lib/api/client/document/queries.ts"
 import SectionSelector from "./SectionSelector.tsx"
 import DynamicSectionCard from "./SectionCard.tsx"
 import type { PageTypeKeys } from "@lib/db/types.ts"
+import Spinner from "../Spinner.tsx"
 
 export default function SectionWrapper() {
 	const defaultSection: { key: string; value: PageTypeKeys } = {
@@ -29,7 +30,7 @@ export default function SectionWrapper() {
 	return (
 		<div class="w-full">
 			<SectionSelector onSelect={setCurrentSection} />
-			<Show when={sectionQuery.data} fallback={<div>Loading...</div>} >
+			<Show when={sectionQuery.data} fallback={<Spinner />} >
 				{(data) => <DynamicSectionCard data={data} sectionPage={currentSection} key={`${currentSection().value}-${currentSection().key}`} />}
 			</Show>
 		</div>

@@ -6,47 +6,46 @@ import { scale } from "@cloudinary/url-gen/actions/resize"
 
 import { extractPublicID } from "../helpers/extractID"
 
+const imageCache: Map<string, string> = new Map()
+const cldInstance = new cloudOptm({
+	cloud: {
+		cloudName: "dyrtdhsl0",
+	},
+})
+
 export function useImageState() {
 	const [isEditing, setIsEditing] = createSignal(false)
-	const [localValue, setLocalValue] = createSignal<string | null>(null)
+	const [localValue, setLocalValue] = createSignal<Record<string, string>>({})
 	const [uploadProgress, setUploadProgress] = createSignal(0)
 	const [dragActive, setDragActive] = createSignal(false)
 
-	const cld = new cloudOptm({
-		cloud: {
-			cloudName: "dyrtdhsl0",
-		},
-	})
-
-	const optimizeImageDisplay = (src: string, width: number = 100, height: number = 100) => {
-		return cld
+	const optimizeImageDisplay = (src: string, width: number = 150, height: number = 150) => {
+		const cacheKey = `${src}-${width}x${height}`
+		if (imageCache.has(cacheKey)) {
+			return imageCache.get(cacheKey)!
+		}
+		const optimizedUrl = cldInstance
 			.image(extractPublicID(src))
 			.quality("auto")
 			.format("auto")
-			.resize(
-				scale()
-					.width(width || 100)
-					.height(height || 100)
-			)
+			.resize(scale().width(width).height(height))
 			.toURL()
+
+		imageCache.set(cacheKey, optimizedUrl)
+		return optimizedUrl
 	}
 
-	const handleEditToggle = (src: string) => {
+	const handleEditToggle = (src: string, path: string) => {
 		setIsEditing(!isEditing())
-		setLocalValue(isEditing() ? src : null)
+		setLocalValue(isEditing() ? { [path]: src } : {})
 	}
 
 	const closeEditToggle = () => {
 		setIsEditing(false)
-		setLocalValue(null)
+		setLocalValue({})
 	}
 
-	createEffect(() => {
-		console.log("Image State Changed:", {
-			isEditing: isEditing(),
-			localValue: localValue(),
-		})
-	})
+	createEffect(() => {})
 
 	return {
 		optimizeImageDisplay,

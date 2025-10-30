@@ -34,6 +34,8 @@ export function useFormMutation() {
 				return updated
 			})
 
+			console.log("data was updated optimistically")
+
 			return { previousData }
 		},
 
