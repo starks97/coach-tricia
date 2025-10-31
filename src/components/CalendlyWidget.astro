@@ -1,34 +1,52 @@
 ---
+interface Props {
+    btnLabel: string
+}
+
+const { btnLabel } = Astro.props
+
 
 ---
 
 <div class="mx-auto flex w-full flex-col items-center justify-center p-2">
-	<button
-		class="btn-calendly font-tajawal text-taupe mb-2 w-auto border-2 px-5 py-2.5 text-center text-xl font-extrabold tracking-[0.07em] uppercase"
-		>Schedule a Meeting</button
-	>
-	<div
-		class="calendly-inline-widget w-full opacity-0 transition-opacity duration-500"
-		:class="intersect ? 'animate-fade-up animate-ease-in-out  animate-delay-500 ' : 'opacity-0'"
-		data-url="https://calendly.com/cazcodavid/30min"
-		style="min-width:320px;height:630px; display:none"
-	>
-	</div>
+    <button
+        id="calendly-btn"
+        class="btn-calendly font-tajawal text-taupe mb-2 w-auto border-2 px-5 py-2.5 text-center text-xl font-extrabold tracking-[0.07em] uppercase"
+        type="button"
+    >{btnLabel}</button>
+    
+    <div id="calendly-container" style="display: none; width: 100%;">
+        <iframe 
+            id="calendly-iframe"
+            src="https://calendly.com/cazcodavid/30min?embed_domain=coachtriciarago.com&embed_type=Inline"
+            width="100%" 
+            height="630" 
+            frameborder="0"
+            style="min-width: 320px;"
+        ></iframe>
+    </div>
 </div>
 
-<!-- Script normal que funciona en localhost -->
-<script is:inline src="https://assets.calendly.com/assets/external/widget.js" defer></script>
-<script>
-	const btn = document.querySelector(".btn-calendly") as HTMLButtonElement
-	const widget = document.querySelector(".calendly-inline-widget") as HTMLElement
-
-	btn.addEventListener("click", () => {
-		if (widget.style.display === "none") {
-			widget.style.display = "flex"
-			btn.textContent = "Close Scheduler"
-		} else {
-			widget.style.display = "none"
-			btn.textContent = "Schedule a Meeting"
-		}
-	})
+<script is:inline>
+    const btn = document.getElementById('calendly-btn');
+    const container = document.getElementById('calendly-container');
+    const iframe = document.getElementById('calendly-iframe');
+    
+    const currentDomain = window.location.hostname;
+	
+    iframe.src = iframe.src.replace('localhost', currentDomain);
+    
+    btn.addEventListener('click', () => {
+        if (container.style.display === 'none') {
+            container.style.display = 'block';
+            btn.textContent = 'Close Scheduler';
+            
+            if (container.style.display === 'block') {
+                iframe.src = iframe.src.split('?')[0] + '?embed_domain=' + currentDomain + '&embed_type=Inline&t=' + Date.now();
+            }
+        } else {
+            container.style.display = 'none';
+            btn.textContent = 'Schedule a Meeting';
+        }
+    });
 </script>

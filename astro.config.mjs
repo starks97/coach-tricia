@@ -3,24 +3,22 @@ import { defineConfig, envField } from "astro/config"
 import tailwindcss from "@tailwindcss/vite"
 import alpine from "@astrojs/alpinejs"
 
-import vercel from "@astrojs/vercel";
+import vercel from "@astrojs/vercel"
 
-import solidJs from "@astrojs/solid-js";
-
-import partytown from "@astrojs/partytown";
+import solidJs from "@astrojs/solid-js"
 
 // https://astro.build/config
 export default defineConfig({
-  vite: {
-      plugins: [tailwindcss()],
-    },
-  integrations: [alpine(), solidJs(), partytown()],
-  adapter: vercel(),
-  env: {
-    schema: {
-      RESEND_API_KEY: envField.string({context: "server", access: "secret" }),
-      MONGO_DB_URI: envField.string({context: "server", access: "secret" }),
-    }
-  },
-  output: "server"
+	vite: {
+		plugins: [tailwindcss()],
+	},
+	integrations: [alpine(), solidJs()],
+	adapter: vercel(),
+	env: {
+		schema: {
+			RESEND_API_KEY: envField.string({ context: "server", access: "secret" }),
+			MONGO_DB_URI: envField.string({ context: "server", access: "secret" }),
+		},
+	},
+	output: "server",
 })

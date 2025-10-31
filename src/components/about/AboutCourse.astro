@@ -1,5 +1,5 @@
 ---
-import CallToAction from "../CallToAction.astro"
+import CalendlyWidget from "../CalendlyWidget.astro"
 import Wrapper from "../Wrapper.astro"
 
 interface Props {
@@ -19,30 +19,42 @@ const paragraph = aboutCourse.split("\n\n")
 		class="laptop:grid-cols-2 grid grid-cols-1 items-center justify-center justify-items-center gap-2"
 	>
 		<!-- Image Section -->
-
-		<img
-			src={image}
-			alt="hero"
-			class="laptop:h-[550px] laptop:w-[470px] object-coverp h-96 w-[400px]"
-		/>
+		<figure>
+			<img
+				src={image}
+				alt="hero"
+				class="laptop:h-[550px] laptop:w-[470px] object-cover h-96 w-[400px]"
+			/>
+		</figure>
 
 		<!-- Text Section -->
-		<div class="tablet:max-w-lg laptop:max-w-full w-full space-y-4 px-5">
-			<h3
+		<section class="tablet:max-w-lg laptop:max-w-full w-full space-y-4 px-5">
+			<h2
 				class="font-prata tablet:text-[2.3rem] laptop:text-left text-justify text-[1.85rem] opacity-0"
-				:class="intersect ? 'animate-fade-up animate-ease-in-out  animate-delay-100 ' : 'opacity-0'"
+				:class="intersect ? 'animate-fade-up animate-ease-in-out animate-delay-100' : 'opacity-0'"
 			>
 				{title}
-			</h3>
+			</h2>
 
-			{
-				paragraph.map((paragraph) => (
-					<p class="font-tajawal text-justify text-lg text-[16px] opacity-0" :class="intersect ? 'animate-fade animate-ease-in  animate-delay-300 ' : 'opacity-0'">{paragraph}</p>
-				))
-			}
-			<div class="flex justify-center gap-5 opacity-0" :class="intersect ? 'animate-fade-up animate-ease-in  animate-delay-300 ' : 'opacity-0'">
-				<CallToAction href="/contact" aria="Book a free consultation with Tricia Rago.">Book a Consultation</CallToAction>
+			<div>
+				{
+					paragraph.map((paragraph) => (
+						<p 
+							class="font-tajawal text-justify text-lg text-[16px] opacity-0" 
+							:class="intersect ? 'animate-fade animate-ease-in animate-delay-300' : 'opacity-0'"
+						>
+							{paragraph}
+						</p>
+					))
+				}
 			</div>
-		</div>
+			
+			<div 
+				class="w-full flex justify-center gap-5 opacity-0" 
+				:class="intersect ? 'animate-fade-up animate-ease-in animate-delay-300' : 'opacity-0'"
+			>
+				<CalendlyWidget btnLabel="Schedule a Meeting" />
+			</div>
+		</section>
 	</div>
 </Wrapper>
