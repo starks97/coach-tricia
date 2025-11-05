@@ -15,7 +15,7 @@ const data = await getPage<ContactPageZodSchemaType>(
 )
 
 const seoData = await getSEO("seo_id", "seo", "contact")
-const heroData = data.sections.hero
+const heroData = data.hero
 
 Astro.response.headers.set("Cache-Control", "public, s-maxage=300, stale-while-revalidate=3600")
 ---

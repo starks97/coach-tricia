@@ -1,52 +1,43 @@
 ---
-interface Props {
-    btnLabel: string
-}
-
-const { btnLabel } = Astro.props
-
-
 ---
 
 <div class="mx-auto flex w-full flex-col items-center justify-center p-2">
-    <button
-        id="calendly-btn"
-        class="btn-calendly font-tajawal text-taupe mb-2 w-auto border-2 px-5 py-2.5 text-center text-xl font-extrabold tracking-[0.07em] uppercase"
-        type="button"
-    >{btnLabel}</button>
-    
-    <div id="calendly-container" style="display: none; width: 100%;">
-        <iframe 
-            id="calendly-iframe"
-            src="https://calendly.com/cazcodavid/30min?embed_domain=coachtriciarago.com&embed_type=Inline"
-            width="100%" 
-            height="630" 
-            frameborder="0"
-            style="min-width: 320px;"
-        ></iframe>
-    </div>
+	<button
+		class="btn-calendly font-tajawal text-taupe mb-2 w-auto border-2 px-5 py-2.5 text-center text-xl font-extrabold tracking-[0.07em] uppercase"
+		onclick="window.toggleCalendly()">Schedule a Meeting</button
+	>
+	<iframe
+		id="calendly-iframe"
+		src="https://calendly.com/cazcodavid/30min?embed_domain=coachtriciarago.com&embed_type=Inline"
+		style="min-width:320px;height:630px; display:none; width: 100%; border: none;"></iframe>
 </div>
 
-<script is:inline>
-    const btn = document.getElementById('calendly-btn');
-    const container = document.getElementById('calendly-container');
-    const iframe = document.getElementById('calendly-iframe');
-    
-    const currentDomain = window.location.hostname;
-	
-    iframe.src = iframe.src.replace('localhost', currentDomain);
-    
-    btn.addEventListener('click', () => {
-        if (container.style.display === 'none') {
-            container.style.display = 'block';
-            btn.textContent = 'Close Scheduler';
-            
-            if (container.style.display === 'block') {
-                iframe.src = iframe.src.split('?')[0] + '?embed_domain=' + currentDomain + '&embed_type=Inline&t=' + Date.now();
-            }
-        } else {
-            container.style.display = 'none';
-            btn.textContent = 'Schedule a Meeting';
-        }
-    });
+<script>
+	declare global {
+		interface Window {
+			toggleCalendly: () => void
+		}
+	}
+	window.toggleCalendly = function () {
+		const iframe = document.getElementById("calendly-iframe") as HTMLIFrameElement
+		const btn = document.querySelector(".btn-calendly") as HTMLButtonElement
+
+		if (!iframe || !btn) {
+			return
+		}
+
+		if (iframe.style.display === "none" || iframe.style.display === "") {
+			iframe.style.display = "block"
+			btn.textContent = "Close Scheduler"
+		} else {
+			iframe.style.display = "none"
+			btn.textContent = "Schedule a Meeting"
+		}
+	}
+
+	// reset button onclick on page load (for SPA navigation)
+	document.addEventListener("astro:page-load", function () {
+		const btn = document.querySelector(".btn-calendly") as HTMLButtonElement
+		if (btn) btn.setAttribute("onclick", "window.toggleCalendly()")
+	})
 </script>

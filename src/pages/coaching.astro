@@ -18,10 +18,10 @@ const data = await getPage<CoachingPageZodSchemaType>(
 	CoachingPageSchema
 )
 
-const { description, image, subtitle, title } = data.sections.hero
-const connect = data.sections.connect
-const guide = data.sections.guide
-const paymentPlan = data.sections.payment_plan
+const { description, image, subtitle, title } = data.hero
+const connect = data.connect
+const guide = data.guide
+const paymentPlan = data.payment_plan
 
 Astro.response.headers.set("Cache-Control", "public, s-maxage=300, stale-while-revalidate=3600")
 ---

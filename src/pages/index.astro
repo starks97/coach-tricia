@@ -13,10 +13,10 @@ import getSEO from "@lib/db/queries/getSEO.ts"
 const data = await getPage<HomePageZodSchemaType>("home_page_id", "home", HomePageSchema)
 const seoData = await getSEO("seo_id", "seo", "home")
 
-const heroPage = data.sections.hero
-const coachingData = data.sections.coaching_info
-const benefitsData = data.sections.benefits
-const userPainPointsData = data.sections.user_pain_points
+const heroPage = data.hero
+const coachingData = data.coaching_info
+const benefitsData = data.benefits
+const userPainPointsData = data.user_pain_points
 
 Astro.response.headers.set("Cache-Control", "public, s-maxage=300, stale-while-revalidate=3600")
 ---

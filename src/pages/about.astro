@@ -13,10 +13,10 @@ const data = await getPage<AboutPageZodSchemaType>("about_page_id", "about", Abo
 
 const seoData = await getSEO("seo_id", "seo", "about")
 
-const heroData = data.sections.hero
-const storyData = data.sections.story
-const funFactsData = data.sections["fun-facts"]
-const aboutCourseData = data.sections.enough
+const heroData = data.hero
+const storyData = data.story
+const funFactsData = data["fun-facts"]
+const aboutCourseData = data.enough
 
 Astro.response.headers.set("Cache-Control", "public, s-maxage=300, stale-while-revalidate=3600")
 ---

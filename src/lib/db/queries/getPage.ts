@@ -1,13 +1,15 @@
-import { type OptionalUnlessRequiredId, ObjectId, type Filter } from "mongodb"
+import { ObjectId, type Filter } from "mongodb"
 import type { ZodObject, ZodRawShape } from "zod"
 
-import MongoService from "../mongoService.ts"
+import MongoService from "../mongoService"
 
-export default async function getPage<T extends { _id: string | ObjectId }>(
+export default async function getPage<
+	T extends { _id: string | ObjectId; page_name: string; sections: any },
+>(
 	id: string,
 	collectionName: string,
-	schema?: ZodObject<ZodRawShape, any, any, OptionalUnlessRequiredId<T>, any>
-): Promise<Omit<T, "_id">> {
+	schema?: ZodObject<ZodRawShape, any>
+): Promise<T["sections"]> {
 	const mongoService = await MongoService.init<T>(collectionName, schema)
 
 	const queryId = id.match(/^[0-9a-fA-F]{24}$/) ? new ObjectId(id) : id
@@ -18,7 +20,5 @@ export default async function getPage<T extends { _id: string | ObjectId }>(
 		throw new Error("Page not found")
 	}
 
-	const { _id, ...pageWithoutId } = page
-
-	return pageWithoutId as Omit<T, "_id">
+	return page.sections as T["sections"]
 }
