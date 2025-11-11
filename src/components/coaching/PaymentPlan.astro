@@ -14,6 +14,8 @@ interface Props {
 }
 
 const { payment } = Astro.props as Props
+
+const email = "patricia@coachtriciarago.com"
 ---
 
 <section
@@ -37,7 +39,7 @@ const { payment } = Astro.props as Props
 			Choose Your Experience
 		</h5>
 	</div>
-	<div class={`mx-auto grid h-auto grid-cols-1 justify-items-center gap-0 tablet:gap-10 `}>
+	<div class={`mx-auto grid h-auto grid-cols-1 justify-items-center gap-0 tablet:gap-10 w-full`}>
 		{
 			payment.map((item) => {
 				let isPair = item.id % 2 === 0
@@ -53,14 +55,14 @@ const { payment } = Astro.props as Props
 						<div
 							class={`tablet:p-15 w-full flex-1 p-7 ${isPair ? "bg-light-gray" : "bg-[#fbf4f2]"}`}
 						>
-							<div class="flex h-full w-full flex-col justify-center space-y-[10px]">
+							<div class="flex h-full w-full flex-col justify-center space-y-2.5">
 								<h3 class="text-size-5 tablet:text-size-4 laptop:text-[30px] w-full text-center">
 									{item.title}
 								</h3>
 								<p class="text-justify">{item.description}</p>
 								<i class="text-size-3 text-center font-bold">Cost: {item.price}</i>
 								<div class="tablet:justify-center flex w-full justify-center gap-5">
-									<CallToAction href="/contact">Enroll Now</CallToAction>
+									<CallToAction href={`mailto:${email}`}>Enroll Now</CallToAction>
 								</div>
 
 								<p class="mt-2 text-center text-[13px] text-gray-600 italic">

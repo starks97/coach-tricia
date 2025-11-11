@@ -1,6 +1,7 @@
 ---
 import CallToAction from "../CallToAction.astro"
 import HeroWrapper from "../HeroWrapper.astro"
+import { MAIN_EMAIL } from "astro:env/server"
 
 interface Props {
 	title: string
@@ -9,7 +10,6 @@ interface Props {
 	image: string
 }
 
-const email = "patricia@coachtriciarago.com"
 
 const { title, description, subtitle, image } = Astro.props as Props
 ---
@@ -29,6 +29,6 @@ const { title, description, subtitle, image } = Astro.props as Props
 		<i class="font-italic">{subtitle} </i>
 	</h2>
 	<div class="w-full flex justify-center tablet:justify-start">
-		<CallToAction href={`mailto:${email}`}>Send Email</CallToAction>
+		<CallToAction href={`mailto:${MAIN_EMAIL}`}>Email Me</CallToAction>
 	</div>
 </HeroWrapper>

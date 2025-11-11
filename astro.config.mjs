@@ -18,6 +18,8 @@ export default defineConfig({
 		schema: {
 			RESEND_API_KEY: envField.string({ context: "server", access: "secret" }),
 			MONGO_DB_URI: envField.string({ context: "server", access: "secret" }),
+			MAIN_EMAIL: envField.string({ context: "server", access: "public" }),
+			CALENDLY_LINK: envField.string({ context: "server", access: "public" }),
 		},
 	},
 	output: "server",

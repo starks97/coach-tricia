@@ -1,14 +1,15 @@
 ---
+import { CALENDLY_LINK } from "astro:env/server";
 ---
 
 <div class="mx-auto flex w-full flex-col items-center justify-center p-2">
 	<button
 		class="btn-calendly font-tajawal text-taupe mb-2 w-auto border-2 px-5 py-2.5 text-center text-xl font-extrabold tracking-[0.07em] uppercase"
-		onclick="window.toggleCalendly()">Schedule a Meeting</button
+		onclick="window.toggleCalendly()">Book a Free Call</button
 	>
 	<iframe
 		id="calendly-iframe"
-		src="https://calendly.com/cazcodavid/30min?embed_domain=coachtriciarago.com&embed_type=Inline"
+		src={`${CALENDLY_LINK}&embed_domain=coachtriciarago.com&embed_type=Inline`}
 		style="min-width:320px;height:630px; display:none; width: 100%; border: none;"></iframe>
 </div>
 
@@ -31,7 +32,7 @@
 			btn.textContent = "Close Scheduler"
 		} else {
 			iframe.style.display = "none"
-			btn.textContent = "Schedule a Meeting"
+			btn.textContent = "Book a Free Call"
 		}
 	}
 

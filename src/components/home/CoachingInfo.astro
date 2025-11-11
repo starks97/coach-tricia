@@ -1,6 +1,7 @@
 ---
 import CallToAction from "../CallToAction.astro"
 import Wrapper from "../Wrapper.astro"
+import { MAIN_EMAIL } from "astro:env/server"
 
 interface Props {
 	title: string
@@ -11,14 +12,13 @@ interface Props {
 
 const { title, subtitle, image, description } = Astro.props as Props
 
-const email = "patricia@coachtriciarago.com"
 ---
 
 <Wrapper class="tablet:grid-cols-2 laptop:gap-5 grid grid-cols-1 items-center gap-11 bg-[#fbf4f2]">
 	<div class="tablet:items-start mx-auto w-full max-w-lg space-y-5">
 		<h3
-			class="font-blackstone text-light-rose text-size-7 tablet:text-left tablet:text-size-6 laptop:text-[3.5rem] text-center opacity-0"
-			:class="intersect ? 'animate-fade-right  animate-delay-0 ' : 'opacity-0'"
+			class="font-blackstone text-light-rose text-size-7 tablet:text-left tablet:text-size-6 laptop:text-size-8 text-center opacity-0"
+			:class="intersect ? 'animate-fade-right  animate-delay-none ' : 'opacity-0'"
 		>
 			I'm here to support you
 		</h3>
@@ -36,7 +36,7 @@ const email = "patricia@coachtriciarago.com"
 		</p>
 
 		<div class="tablet:justify-start flex justify-center">
-			<CallToAction href={`mailto:${email}`}>Learn More</CallToAction>
+			<CallToAction href={`mailto:${MAIN_EMAIL}`}>Learn More</CallToAction>
 		</div>
 	</div>
 	<figure class="flex flex-col items-center justify-center px-5">

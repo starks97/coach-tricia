@@ -1,5 +1,5 @@
 ---
-import CallToAction from "../CallToAction.astro"
+import CalendlyWidget from "../CalendlyWidget.astro"
 
 interface Props {
 	title: string
@@ -49,11 +49,9 @@ const { title, img, description, subtitle } = Astro.props as Props
 					{description}
 				</span>
 
-				<CallToAction
-					href="/contact"
-					aria="contact to Tricia to make an free consultation"
-					slot="cta">30-minutes Free Consultation</CallToAction
-				>
+				<div class="tablet:justify-center flex w-full justify-center gap-5">
+					<CalendlyWidget btnLabel="Book a Free Call" />
+				</div>
 			</div>
 
 			<img
