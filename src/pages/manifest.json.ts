@@ -23,10 +23,16 @@ export const GET: APIRoute = async () => {
 
 	const manifest = {
 		name: "Coach Tricia Rago",
-		description: "Welcome to Coach Tricia Rago's website!",
+		short_name: "Tricia Rago",
+		description:
+			"Transformational relationship coaching for women who are looking to create the life of their dreams.",
 		start_url: "/",
 		display: "standalone",
-		id: "some-unique-id",
+		background_color: "#f3f3e8",
+		theme_color: "#fbefec",
+		lang: "en",
+		orientation: "portrait",
+		id: "coach-tricia-rago",
 		icons,
 	}
 

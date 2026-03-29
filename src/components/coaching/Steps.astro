@@ -17,40 +17,40 @@ const ipad = "https://res.cloudinary.com/dyrtdhsl0/image/upload/v1752198057/tabl
 
 ---
 
-<div class="section mx-auto w-full px-10"
+<section class="section mx-auto w-full px-10"
         x-data="{ intersect: false }"
         x-intersect:enter="intersect = true"
         x-intersect:leave="intersect = false">
 	<!-- Section Title -->
 	<div class="h-auto w-full " >
-		<h1 class="w-full tablet:text-left; text-center font-prata text-[30px] text-light-rose tablet:text-size-6 laptop:text-size-7">
+		<p class="w-full tablet:text-left; text-center font-prata text-[30px] text-light-rose tablet:text-size-6 laptop:text-size-7">
 			{title}:
-		</h1>
-		<h5
+		</p>
+		<h2
 			class="ml-4 w-full text-center font-tajawal text-xl font-semibold leading-14 tablet:text-2xl"
 		>
 			{subtitle}<span class="font-bold text-light-rose"> Even</span> After
-		</h5>
+		</h2>
 
 	</div>
 	<div class="mx-auto w-full tablet:max-w-lg laptop:max-w-3xl opacity-0" 	:class="intersect ? 'animate-fade-up animate-ease-in-out  animate-delay-200 ' : 'opacity-0'">
-		<h5
+		<p
 			class="text-justify font-tajawal text-size-2 font-thin leading-9 tablet:text-size-3"
 		>
 			{description}
-		</h5>
+		</p>
 	</div>
-	   <h3 class="text-center font-prata text-size-6 laptop:text-size-7 font-light leading-[4rem] mt-[4rem] w-full text-light-rose">Take a peek inside...</h3>
+	   <h3 class="text-center font-prata text-size-6 laptop:text-size-7 font-light leading-16 mt-16 w-full text-light-rose">Take a peek inside...</h3>
 
-	<span class="hidden laptop:flex mx-auto max-w-5xl laptop:flex-col px-20 font-blackstone text-7xl laptop:-rotate-[25deg] laptop:-translate-y-32 laptop:-translate-x-20">the goods</span>
+	<p class="hidden laptop:flex mx-auto max-w-5xl laptop:flex-col px-20 font-blackstone text-7xl laptop:-rotate-25 laptop:-translate-y-32 laptop:-translate-x-20">the goods</p>
 
 	<!-- Steps Grid -->
-	<div class="grid h-auto grid-cols-1 justify-items-center">
+	<ol class="grid h-auto grid-cols-1 justify-items-center">
 		{
 			steps.map((item) => {
 				const isPair = item.id % 2 === 0
 				return (
-					<div
+					<li
 						class={`flex flex-col px-0 tablet:px-5 laptop:px-10 items-center gap-2 tablet:flex-row ${isPair ? "tablet:flex-row-reverse" : ""}`}
 					    x-data="{ visible: false }"
                         x-intersect:enter.once="visible = true"
@@ -66,30 +66,31 @@ const ipad = "https://res.cloudinary.com/dyrtdhsl0/image/upload/v1752198057/tabl
 							</p>
 
 							<h3
-								class={`font-prata text-[18px] tablet:text-[20px] laptop:text-[22px] font-semibold text-center tablet:text-left`}
+								class={`font-prata text-size-3 tablet:text-size-4 laptop:text-[22px] font-semibold text-center tablet:text-left`}
 							>
 								{item.title}
 							</h3>
 
-							<p class="text-gray-700 text-[16px] tablet:text-[1.20rem] leading-[22px] laptop:text-size-2 tablet:max-w-sm text-justify font-tajawal tablet:text-left">
+							<p class="text-gray-700 text-size-2 tablet:text-[1.20rem] leading-5.5 laptop:text-size-2 tablet:max-w-sm text-justify font-tajawal tablet:text-left">
 								{item.description}
 							</p>
 						</div>
 
 						{/* Image */}
-						<div class="z-10">
-						<div class={`relative w-[300px] h-[300px] tablet:w-[350px] tablet:h-[350px] laptop:w-[450px] laptop:h-[450px]`}
-     style={{ backgroundImage: `url(${ipad})`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat' }}>
-						  <img src={item.image} class="absolute w-[162px] h-[215px] top-[34px] left-[52px] tablet:w-[190px] tablet:h-[253px] tablet:top-[39px] tablet:left-[60px] laptop:top-[50px] laptop:right-[0px] laptop:left-[78px] laptop:w-[243px] laptop:h-[325px] object-cover rounded-md"/>
-                        </div>
-						</div>
+						<figure class="z-10">
+    						<div class={`relative w-75 h-75 tablet:w-87.5 tablet:h-87.5 laptop:w-112.5 laptop:h-112.5`}
+                                style={{ backgroundImage: `url(${ipad})`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat' }}
+                            >
+    						  <img src={item.image} alt={`Step ${item.id} - ${item.title}`} class="absolute w-[162px] h-[215px] top-[34px] left-[52px] tablet:w-[190px] tablet:h-[253px] tablet:top-[39px] tablet:left-[60px] laptop:top-[50px] laptop:right-[0px] laptop:left-[78px] laptop:w-[243px] laptop:h-[325px] object-cover rounded-md"/>
+                            </div>
+						</figure>
 
-					</div>
+					</li>
 					<div
-						class="border-terracotta border-[1px] border-hero_color2 mx-auto max-w-5xl w-full translate-y-0 tablet:-translate-y-[60px] laptop:-translate-y-[80px]"
+						class="border-terracotta border border-hero_color2 mx-auto max-w-5xl w-full translate-y-0 tablet:-translate-y-15 laptop:-translate-y-20"
 					/>
 				)
 			})
 		}
-	</div>
-</div>
+	</ol>
+</section>

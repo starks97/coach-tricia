@@ -1,42 +1,83 @@
 ---
-// Import the global.css file here so that it is included on
-// all pages through the use of the <BaseHead /> component.
-
 import Favicon from "./Favicon.astro"
 
 interface Props {
 	title: string
 	description: string
 	image: string
-	keywords: string[]
 }
 
-const { title, description, image, keywords = [] } = Astro.props
+const { title, description, image } = Astro.props
 
-const keywordsString = keywords.join(', ')
+const canonicalURL = new URL(Astro.url.pathname, Astro.site)
+const imageURL = new URL(image, Astro.url).toString()
 
+const jsonLdPerson = {
+	"@context": "https://schema.org",
+	"@type": "Person",
+	"name": "Tricia Rago",
+	"url": "https://www.coachtriciarago.com",
+	"image": imageURL,
+	"jobTitle": "Conscious Uncoupling & Divorce Coach",
+	"description":
+		"Certified Conscious Uncoupling coach helping women navigate divorce and heartbreak with grace, clarity, and strength.",
+	"sameAs": [
+		"https://facebook.com/tricia.rago",
+		"https://www.instagram.com/coachtriciarago",
+		"https://www.linkedin.com/in/tricia-rago-781216388/",
+	],
+}
+
+const jsonLdService = {
+	"@context": "https://schema.org",
+	"@type": "ProfessionalService",
+	"name": "Tricia Rago Coaching",
+	"url": "https://www.coachtriciarago.com",
+	"image": imageURL,
+	"description":
+		"Private coaching for women navigating divorce or breakup. Heal, rebuild confidence, and create a fulfilling new life.",
+	"provider": {
+		"@type": "Person",
+		"name": "Tricia Rago",
+	},
+	"serviceType": "Life Coaching",
+	"areaServed": {
+		"@type": "Place",
+		"name": "Worldwide",
+	},
+	"availableChannel": {
+		"@type": "ServiceChannel",
+		"serviceUrl": "https://www.coachtriciarago.com/contact",
+		"serviceType": "Online",
+	},
+}
 ---
 
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <meta name="generator" content={Astro.generator} />
 
-<!-- Font preloads -->
-<link rel="preconnect" href="https://static.showit.co" />
+<!-- Google Verification -->
+<meta name="google-site-verification" content="UsQQTtoUkf_X4VdVkRWE9TyezexDG3G6O7THHpEezXM" />
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" type="image/png" href="/favicon.png" />
+<link rel="apple-touch-icon" href="/favicon.png" />
+<Favicon />
+<link rel="manifest" href="/manifest.json" />
+
+<!-- Canonical URL -->
+<link rel="canonical" href={canonicalURL} />
+
+<!-- Fonts — unificadas en una sola llamada -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link
-	href="https://fonts.googleapis.com/css?family=Tajawal:700|Prata:regular|Tajawal:regular"
-	rel="stylesheet"
-	type="text/css"
-/>
-<link
-	href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Prata&display=swap"
+	href="https://fonts.googleapis.com/css2?family=Prata&family=Tajawal:wght@400;700&family=Figtree:ital,wght@0,300..900;1,300..900&display=swap"
 	rel="stylesheet"
 />
-
 <style>
 	@font-face {
 		font-family: Blackstone;
@@ -44,59 +85,37 @@ const keywordsString = keywords.join(', ')
 	}
 </style>
 
-<!-- Favicon -->
-<Favicon />
-<link rel="manifest" href="/manifest.json" />
-
-<!-- Canonical URL -->
-
-
-
 <!-- Primary Meta Tags -->
 <title>{title}</title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />
 
-<!-- keywords -->
-<meta name="keywords" content={keywordsString} />
-
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
-<meta property="og:url" content={Astro.url} />
+<meta property="og:url" content={canonicalURL} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="og:image" content={new URL(image, Astro.url)} />
+<meta property="og:image" content={imageURL} />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content={Astro.url} />
+<meta property="twitter:url" content={canonicalURL} />
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={new URL(image, Astro.url)} />
-
-
+<meta property="twitter:image" content={imageURL} />
 
 <!-- JSON-LD -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebPage",
-  "name": {title},
-  "description": {description},
-  "url": {Astro.url},
-  "image": {new URL(image, Astro.url)}
-}
-</script>
+<script type="application/ld+json" set:html={JSON.stringify(jsonLdPerson)} is:inline />
+<script type="application/ld+json" set:html={JSON.stringify(jsonLdService)} is:inline />
 
+<!-- Calendly preconnect -->
+<link rel="dns-prefetch" href="https://assets.calendly.com" />
+<link rel="preconnect" href="https://assets.calendly.com" />
+<link rel="dns-prefetch" href="https://calendly.com" />
+<link rel="preconnect" href="https://calendly.com" />
 
 <!-- Alpine Plugins -->
-<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.x.x/dist/cdn.min.js"></script>
-
+<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.x.x/dist/cdn.min.js" is:inline
+></script>
 <!-- Alpine Core -->
-<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
-<!-- Partytown Calendly -->
- <link rel="dns-prefetch" href="https://assets.calendly.com">
-  <link rel="preconnect" href="https://assets.calendly.com">
-  <link rel="dns-prefetch" href="https://calendly.com">
-  <link rel="preconnect" href="https://calendly.com">
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" is:inline></script>

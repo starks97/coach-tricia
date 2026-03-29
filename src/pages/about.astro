@@ -21,12 +21,37 @@ const aboutCourseData = data.enough
 Astro.response.headers.set("Cache-Control", "public, s-maxage=300, stale-while-revalidate=3600")
 ---
 
-<Layout
-	title={seoData!.title}
-	description={seoData!.description}
-	image={heroData.image}
-	keywords={seoData!.keywords}
->
+<Layout title={seoData!.title} description={seoData!.description} image={heroData.image}>
+	<script
+		slot="jsonld"
+		type="application/ld+json"
+		set:html={JSON.stringify({
+			"@context": "https://schema.org",
+			"@type": "ProfilePage",
+			"mainEntity": {
+				"@type": "Person",
+				"name": "Tricia Rago",
+				"url": "https://www.coachtriciarago.com/about",
+				"image": heroData.image,
+				"jobTitle": "Conscious Uncoupling & Divorce Coach",
+				"description":
+					"Certified Conscious Uncoupling coach helping women navigate divorce and heartbreak with grace, clarity, and strength.",
+				"knowsAbout": [
+					"Conscious Uncoupling",
+					"Divorce Coaching",
+					"Breakup Recovery",
+					"Women Empowerment",
+					"Emotional Healing",
+				],
+				"sameAs": [
+					"https://facebook.com/tricia.rago",
+					"https://www.instagram.com/coachtriciarago",
+					"https://www.linkedin.com/in/tricia-rago-781216388/",
+				],
+			},
+		})}
+		is:inline
+	/>
 	<Hero
 		title={heroData.title}
 		description={heroData.description}

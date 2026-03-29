@@ -25,9 +25,17 @@ export const resources = [
 ]
 
 export const socialLinks = [
-	{ name: "Facebook", icon: "/icons/facebook.svg", href: "https://facebook.com" },
-	{ name: "Instagram", icon: "/icons/instagram.svg", href: "https://instagram.com" },
-	{ name: "LinkedIn", icon: "/icons/linkedin.svg", href: "https://linkedin.com" },
+	{ name: "Facebook", icon: "/icons/facebook.svg", href: "https://facebook.com/tricia.rago" },
+	{
+		name: "Instagram",
+		icon: "/icons/instagram.svg",
+		href: "https://www.instagram.com/coachtriciarago",
+	},
+	{
+		name: "LinkedIn",
+		icon: "/icons/linkedin.svg",
+		href: "https://www.linkedin.com/in/tricia-rago-781216388/",
+	},
 ]
 
 export const subDomain: string = "<form@notifications.coachtriciarago.com>"

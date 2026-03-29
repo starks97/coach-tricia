@@ -6,8 +6,8 @@ export async function sendEmail(options: SendMailOptions) {
 	const transporter = await getEmailTransporter()
 
 	try {
-		const info = transporter.sendMail({
-			from: `"Coach Tricia" ${subDomain}`,
+		const info = await transporter.sendMail({
+			from: `"Coach Tricia" <${subDomain}>`,
 			to: options.to,
 			subject: options.subject,
 			html: options.html,
@@ -22,17 +22,12 @@ export async function sendEmail(options: SendMailOptions) {
 }
 
 async function getEmailTransporter(): Promise<Transporter> {
-	if (!RESEND_API_KEY) {
-		throw new Error("RESEND_API_KEY is not set")
-	}
-	return new Promise((resolve, _) => {
-		const transporter = createTransport({
-			host: "smtp.resend.com",
-			secure: true,
-			port: 465,
-			auth: { user: "resend", pass: RESEND_API_KEY },
-		})
+	if (!RESEND_API_KEY) throw new Error("RESEND_API_KEY is not set")
 
-		resolve(transporter)
+	return createTransport({
+		host: "smtp.resend.com",
+		secure: true,
+		port: 465,
+		auth: { user: "resend", pass: RESEND_API_KEY },
 	})
 }

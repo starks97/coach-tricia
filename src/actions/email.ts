@@ -1,5 +1,5 @@
 import { defineAction } from "astro:actions"
-import { z } from "astro:schema"
+import { z } from "astro/zod"
 import { sendEmail } from "@lib/email/config"
 import { myEmail } from "~/consts"
 
@@ -9,7 +9,7 @@ export const email = {
 		input: z.object({
 			name: z.string(),
 			lastName: z.string(),
-			email: z.string().email(),
+			email: z.email(),
 			message: z.string(),
 		}),
 		handler: async (input) => {

@@ -3,7 +3,7 @@ import { resources, socialLinks } from "../consts"
 ---
 
 <footer
-	class="border-t-light-rose border-t-[2px] bg-[var(--color-cream)] py-12 text-black"
+	class="border-t-light-rose bg-cream border-t-2 py-12 text-black"
 	x-data="{ intersect: false }"
 	x-intersect:enter="intersect = true"
 	x-intersect:leave="intersect = false"
@@ -13,25 +13,25 @@ import { resources, socialLinks } from "../consts"
 	>
 		<!-- Left Section: Title -->
 		<div class="max-w-md space-y-6">
-			<h3
+			<p
 				class="font-prata tablet:text-left tablet:text-2xl text-center text-xl leading-tight font-bold opacity-0"
 				:class="intersect ? 'animate-fade animate-ease-in  ' : 'opacity-0'"
 			>
 				Transformational relationship coaching for women who are looking to create the life of their
 				dreams.
-			</h3>
-			<h1
+			</p>
+			<p
 				class="font-blackstone tablet:text-7xl text-center text-5xl opacity-0"
 				:class="intersect ? 'animate-fade-right animate-delay-200 animate-ease-in  ' : 'opacity-0'"
 			>
 				Tricia Rago
-			</h1>
+			</p>
 		</div>
 
 		<!-- Center Section: Resources -->
-		<nav class="space-y-4">
+		<nav class="space-y-4" aria-label="Footer resources">
 			<h4
-				class="font-prata text-size-4 tablet:text-left border-b-light-rose border-b-[2px] text-center"
+				class="font-prata text-size-4 tablet:text-left border-b-light-rose border-b-2 text-center"
 			>
 				Resources
 			</h4>
@@ -42,6 +42,7 @@ import { resources, socialLinks } from "../consts"
 						<li class="tablet:text-left text-center">
 							<a
 								href={resource.href}
+								aria-label={`Follow Tricia on ${resource.name}`}
 								class="font-tajawal text-size-3 hover:text-light-rose transition-colors duration-300"
 							>
 								{resource.name}
@@ -55,7 +56,7 @@ import { resources, socialLinks } from "../consts"
 		<!-- Right Section: Social Media -->
 		<div class="space-y-4">
 			<h4
-				class="font-prata text-size-4 tablet:text-left border-b-light-rose border-b-[2px] text-center"
+				class="font-prata text-size-4 tablet:text-left border-b-light-rose border-b-2 text-center"
 			>
 				Follow Me
 			</h4>
@@ -67,6 +68,7 @@ import { resources, socialLinks } from "../consts"
 								href={link.href}
 								target="_blank"
 								rel="noopener noreferrer"
+								aria-label={`Follow Tricia on ${link.name}`}
 								class="font-tajawal hover:text-light-rose flex items-center gap-4 text-lg transition-colors duration-300"
 							>
 								<img src={link.icon} alt={link.name} class="hover:text-light-rose h-8 w-8" />

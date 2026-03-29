@@ -22,38 +22,31 @@ const newImage = "https://res.cloudinary.com/dyrtdhsl0/image/upload/v1749081005/
 		<div class="tablet:max-w-lg laptop:order-1 order-2 items-center space-y-3">
 			<img
 				src={first.image}
-				alt="hero"
-				class="laptop:h-[400px] laptop:flex hidden h-96 w-auto"
+				alt="Tricia Rago portrait"
+				class="laptop:h-100 laptop:flex hidden h-96 w-auto"
 				:class="intersect ? 'animate-fade-left animate-ease-in-out  animate-delay-400 ' : 'opacity-0'"
 			/>
-			<h1 class="font-tajawal text-taupe text-size-5 text-center font-normal uppercase">
+			<h2 class="font-tajawal text-taupe text-size-5 text-center font-normal uppercase">
 				{second.title}
-			</h1>
-			<h4 class="font-prata text-size-6 tablet:text-size-7 text-center">
-				<i class="font-italic text-justify">{second.description}</i>
-			</h4>
-			<p class="font-tajawal tablet:text-left text-justify text-[16px] text-[#515151]">
+			</h2>
+			<p class="font-prata text-size-6 tablet:text-size-7 text-center">
+				<em class="font-italic text-justify">{second.description}</em>
+			</p>
+			<p class="font-tajawal tablet:text-left text-size-2 text-justify text-[#515151]">
 				<ReplaceTarget
 					target={" Just as a recipe, with the right ingredients and care, can be transformed into something amazing, we can transform our lives in the very same way after loss."}
 					str={second.content}
 					className="font-bold"
 				/>
 			</p>
-
-			<img
-				src={first.image}
-				alt="hero"
-				class="laptop:h-[400px] laptop:hidden flex h-96 w-auto"
-				:class="intersect ? 'animate-fade-left animate-ease-in-out  animate-delay-400 ' : 'opacity-0'"
-			/>
 		</div>
 		<div class="tablet:max-w-lg laptop:order-2 order-1 flex flex-col items-center space-y-3">
-			<h1
+			<h2
 				class="font-prata laptop:text-left text-size-6 tablet:text-size-7 text-center opacity-0"
 				:class="intersect ? 'animate-fade-left animate-ease-in  animate-delay-200 ' : 'opacity-0'"
 			>
-				<i class="font-italic">{first.title}</i>
-			</h1>
+				<em class="font-italic">{first.title}</em>
+			</h2>
 			<p
 				class="font-tajawal text-size-2 text-justify text-[#515151] opacity-0"
 				:class="intersect ? 'animate-fade animate-ease-in animate-delay-400 ' : 'opacity-0'"
@@ -79,8 +72,8 @@ const newImage = "https://res.cloudinary.com/dyrtdhsl0/image/upload/v1749081005/
 			<div class="flex flex-col justify-center">
 				<img
 					src={newImage}
-					alt="hero"
-					class="laptop:h-[450px] h-96 w-auto opacity-0"
+					alt="Book cover - Conscious Uncoupling"
+					class="laptop:h-112.5 h-96 w-auto opacity-0"
 					:class="intersect ? 'animate-fade-right animate-ease-in  animate-delay-200 ' : 'opacity-0'"
 				/>
 			</div>

@@ -21,11 +21,11 @@ const { title, img, description, subtitle } = Astro.props as Props
 		class="h-auto w-full opacity-0"
 		:class="intersect ? 'animate-fade-up animate-ease-in  animate-delay-200 ' : 'opacity-0'"
 	>
-		<h1
+		<h2
 			class="font-prata tablet:text-size-7 laptop:text-[3rem] text-size-5 w-full text-center leading-14 font-light"
 		>
 			Free Consultation
-		</h1>
+		</h2>
 	</div>
 	<div
 		class="mx-auto grid h-auto grid-cols-1 justify-items-center opacity-0"
@@ -35,19 +35,19 @@ const { title, img, description, subtitle } = Astro.props as Props
 			class="tablet:flex-row tablet:space-y-0 flex scale-100 flex-col items-center justify-center space-y-10"
 		>
 			<div
-				class="tablet:max-w-sm tablet:translate-x-5 tablet:p-5 laptop:max-w-lg laptop:p-11 z-40 mx-auto flex w-full translate-x-0 flex-col space-y-3 bg-[#fcfdf8] p-10"
+				class="tablet:max-w-sm tablet:translate-x-5 tablet:p-5 laptop:max-w-lg laptop:p-11 bg-light-cream z-40 mx-auto flex w-full translate-x-0 flex-col space-y-3 p-10"
 			>
-				<h5
+				<h3
 					class="font-prata text-size-5 tablet:text-size-6 laptop:text-size-7 tablet:text-left text-center text-3xl"
 				>
 					{title}
-				</h5>
+				</h3>
 				<p class="font-tajawal text-light-rose tablet:text-size-5 laptop:text-3xl text-xl">
 					{subtitle}
 				</p>
-				<span class="font-tajawal tablet:text-lg text-size-3">
+				<p class="font-tajawal tablet:text-lg text-size-3">
 					{description}
-				</span>
+				</p>
 
 				<div class="tablet:justify-center flex w-full justify-center gap-5">
 					<CalendlyWidget btnLabel="Book a Free Call" />
@@ -56,8 +56,8 @@ const { title, img, description, subtitle } = Astro.props as Props
 
 			<img
 				src={img}
-				alt="hero image"
-				class="tablet:h-[400px] tablet:w-[400px] tablet:-translate-x-5 laptop:h-[500px] laptop:w-[500px] h-64 w-full translate-x-0 object-cover"
+				alt="Tricia Rago coaching consultation"
+				class="tablet:h-100 tablet:w-100 tablet:-translate-x-5 laptop:h-125 laptop:w-125 h-64 w-full translate-x-0 object-cover"
 			/>
 		</div>
 	</div>

@@ -21,34 +21,34 @@ const { funFacts } = Astro.props as Props
 		:class="intersect ? 'animate-fade-up animate-ease-in-out  animate-delay-400 ' : 'opacity-0'"
 	>
 		<div class="justify-self-end">
-			<h1
-				class="font-blackstone tablet:text-start text-size-7 tablet:text-size-6 laptop:text-[4.5rem] tablet:hidden text-taupe mb-10 w-full text-center"
+			<h2
+				class="font-blackstone tablet:text-start text-size-7 tablet:text-size-6 laptop:text-size-9 tablet:hidden text-taupe mb-10 w-full text-center"
 			>
 				fun facts about me!
-			</h1>
+			</h2>
 			<Gallery />
 		</div>
 		<div class="mt-5 flex w-full flex-col">
-			<h1
-				class="font-blackstone tablet:text-start text-size-6 tablet:text-size-6 laptop:text-[4.5rem] tablet:[display:flex] text-taupe mb-10 hidden w-full text-center"
+			<h2
+				class="font-blackstone tablet:text-start text-size-6 tablet:text-size-6 laptop:text-size-9 tablet:flex text-taupe mb-10 hidden w-full text-center"
 			>
 				fun facts about me!
-			</h1>
+			</h2>
 
 			<ul class="laptop:max-w-xl w-full space-y-10">
 				{
 					funFacts.map((item, index) => (
-						<div class="border-taupe flex flex-row items-center justify-center gap-5 border-b-2 last:border-0">
+						<li
+							value={index + 1}
+							class="border-taupe flex flex-row items-center justify-center gap-5 border-b-2 last:border-0"
+						>
 							<span class="text-size-7 font-prata w-2/12 font-bold text-[#e6dbd4]">
 								0{index + 1}
 							</span>
-							<li
-								value={index + 1}
-								class="font-tajawal text-size-3 tablet:text-size-3 laptop:text-[22px] w-full text-start text-black"
-							>
+							<span class="font-tajawal text-size-3 tablet:text-size-3 laptop:text-[22px] w-full text-start text-black">
 								{item.title}
-							</li>
-						</div>
+							</span>
+						</li>
 					))
 				}
 			</ul>

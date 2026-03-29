@@ -19,7 +19,7 @@ const email = "patricia@coachtriciarago.com"
 ---
 
 <section
-	class="section tablet:max-w-5xl mx-auto my-[7rem] h-auto w-full space-y-20 px-10"
+	class="section tablet:max-w-5xl mx-auto my-28 h-auto w-full space-y-20 px-10"
 	x-data="{ intersect: false }"
 	x-intersect:enter="intersect = true"
 	x-intersect:leave="intersect = false"
@@ -28,16 +28,16 @@ const email = "patricia@coachtriciarago.com"
 		class="h-auto w-full space-y-5"
 		:class="intersect ? 'animate-fade-up animate-ease-in  animate-delay-200 ' : 'opacity-0'"
 	>
-		<h1
+		<p
 			class="font-tajawal text-light-rose tablet:text-size-6 ml-4 w-full text-center text-xl leading-14 font-semibold"
 		>
 			Lets Work Together!
-		</h1>
-		<h5
+		</p>
+		<h2
 			class="tablet:text-left; font-prata tablet:text-size-7 laptop:text-[3rem] text-size-5 text-center"
 		>
 			Choose Your Experience
-		</h5>
+		</h2>
 	</div>
 	<div class={`mx-auto grid h-auto grid-cols-1 justify-items-center gap-0 tablet:gap-10 w-full`}>
 		{
@@ -49,8 +49,8 @@ const email = "patricia@coachtriciarago.com"
 					>
 						<img
 							src={item.image}
-							alt="hero image"
-							class="tablet:h-full tablet:w-[342px] laptop:h-[500px] laptop:w-[470px] h-64 w-full object-cover"
+							alt={`${item.title} coaching program`}
+							class="tablet:h-full tablet:w-85.5 laptop:h-125 laptop:w-117.5 h-64 w-full object-cover"
 						/>
 						<div
 							class={`tablet:p-15 w-full flex-1 p-7 ${isPair ? "bg-light-gray" : "bg-[#fbf4f2]"}`}
@@ -60,7 +60,9 @@ const email = "patricia@coachtriciarago.com"
 									{item.title}
 								</h3>
 								<p class="text-justify">{item.description}</p>
-								<i class="text-size-3 text-center font-bold">Cost: {item.price}</i>
+								<p class="text-size-3 text-center font-bold">
+									Cost: <em>{item.price}</em>
+								</p>
 								<div class="tablet:justify-center flex w-full justify-center gap-5">
 									<CallToAction href={`mailto:${email}`}>Enroll Now</CallToAction>
 								</div>

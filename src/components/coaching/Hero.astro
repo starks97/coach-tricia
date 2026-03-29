@@ -17,12 +17,12 @@ const { title, description, image, subtitle } = Astro.props as Props
 	>
 		{title}
 	</h1>
-	<h2
+	<p
 		class="font-prata tablet:text-left text-size-6 tablet:text-size-5 laptop:text-size-6 text-center opacity-0"
 		:class="intersect ? 'animate-fade-left animate-ease-in-out  animate-delay-300 ' : 'opacity-0'"
 	>
-		<i class="font-italic">{subtitle}</i>
-	</h2>
+		<em class="font-italic">{subtitle}</em>
+	</p>
 
 	<p
 		class="font-tajawal tablet:text-left laptop:text-2xl text-size-3 text-justify opacity-0"

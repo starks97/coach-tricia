@@ -5,5 +5,19 @@
       "backend": false,
       "*": false
     }
-  }
+  },
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "coachtriciarago.com" }],
+      "destination": "https://www.coachtriciarago.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "coach-tricia.vercel.app" }],
+      "destination": "https://www.coachtriciarago.com/:path*",
+      "permanent": true
+    }
+  ]
 }

@@ -26,12 +26,46 @@ const paymentPlan = data.payment_plan
 Astro.response.headers.set("Cache-Control", "public, s-maxage=300, stale-while-revalidate=3600")
 ---
 
-<Layout
-	title={seoData!.title}
-	description={seoData!.description}
-	image={image}
-	keywords={seoData!.keywords}
->
+<Layout title={seoData!.title} description={seoData!.description} image={image}>
+	<script
+		slot="jsonld"
+		type="application/ld+json"
+		set:html={JSON.stringify({
+			"@context": "https://schema.org",
+			"@type": "Service",
+			"name": "Conscious Uncoupling & Divorce Coaching",
+			"url": "https://www.coachtriciarago.com/coaching",
+			"image": image,
+			"description":
+				"Private coaching for women navigating divorce or breakup. Rebuild confidence and create a fulfilling new life with structured, compassionate guidance.",
+			"provider": {
+				"@type": "Person",
+				"name": "Tricia Rago",
+				"url": "https://www.coachtriciarago.com",
+			},
+			"serviceType": "Life Coaching",
+			"audience": {
+				"@type": "Audience",
+				"audienceType": "Women navigating divorce or breakup",
+			},
+			"areaServed": {
+				"@type": "Place",
+				"name": "Worldwide",
+			},
+			"availableChannel": {
+				"@type": "ServiceChannel",
+				"serviceUrl": "https://www.coachtriciarago.com/contact",
+				"serviceType": "Online",
+			},
+			"offers": {
+				"@type": "Offer",
+				"url": "https://www.coachtriciarago.com/coaching",
+				"priceCurrency": "USD",
+				"availability": "https://schema.org/InStock",
+			},
+		})}
+		is:inline
+	/>
 	<main>
 		<Hero title={title} description={description} image={image} subtitle={subtitle} />
 		<Steps

@@ -1,6 +1,5 @@
 ---
 import CalendlyWidget from "../CalendlyWidget.astro"
-import CallToAction from "../CallToAction.astro"
 import Icon from "../Icon.astro"
 import Wrapper from "../Wrapper.astro"
 
@@ -14,25 +13,26 @@ const { title, benefits, image } = Astro.props as Props
 ---
 
 <Wrapper class="container flex flex-col items-center justify-center space-y-10">
-	<h3
+	<h2
 		class="font-prata text-taupe text-size-6 tablet:text-size-7 laptop:text-[3rem] tablet:w-8/12 w-full text-center leading-13 opacity-0"
 		:class="intersect ? 'animate-fade-up  animate-delay-200 ' : 'opacity-0'"
 	>
 		{title}
-	</h3>
+	</h2>
 
-	<div
-		class="tablet:grid-cols-[var(--grid-40-60)] grid grid-cols-1 items-center justify-center gap-5"
-	>
-		<img
-			src={image}
-			alt="hero"
-			class="tablet:h-[400px] tablet:w-[300px] laptop:h-[400px] laptop:w-[400px] tablet:block hidden h-64 w-full object-cover"
-		/>
+	<div class="tablet:grid-cols-(--grid-40-60) grid grid-cols-1 items-center justify-center gap-5">
+		<figure class="tablet:block hidden">
+			<img
+				src={image}
+				alt="Benefits of coaching with Tricia Rago"
+				class="tablet:h-100 tablet:w-75 laptop:h-100 laptop:w-100 h-64 w-full object-cover"
+			/>
+		</figure>
+
 		<div class="border-btn_bg tablet:hidden w-full border-2 border-solid"></div>
 
-		<div
-			class="bg-cream tablet:h-[400px] tablet:p-2 laptop:h-[400px] laptop:p-7 flex h-full flex-col justify-center p-5"
+		<article
+			class="bg-cream tablet:h-100 tablet:p-2 laptop:h-100 laptop:p-7 flex h-full flex-col justify-center p-5"
 		>
 			<ul class="flex h-full list-none flex-col justify-evenly space-y-4">
 				{
@@ -53,7 +53,7 @@ const { title, benefits, image } = Astro.props as Props
 					)
 				}
 			</ul>
-		</div>
+		</article>
 	</div>
 
 	<div

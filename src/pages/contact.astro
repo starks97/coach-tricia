@@ -20,12 +20,31 @@ const heroData = data.hero
 Astro.response.headers.set("Cache-Control", "public, s-maxage=300, stale-while-revalidate=3600")
 ---
 
-<Layout
-	title={seoData!.title}
-	description={seoData!.description}
-	image={heroData.image}
-	keywords={seoData!.keywords}
->
+<Layout title={seoData!.title} description={seoData!.description} image={heroData.image}>
+	<script
+		slot="jsonld"
+		type="application/ld+json"
+		set:html={JSON.stringify({
+			"@context": "https://schema.org",
+			"@type": "ContactPage",
+			"name": "Book a Free Discovery Call | Tricia Rago Coaching",
+			"url": "https://www.coachtriciarago.com/contact",
+			"description":
+				"Book a free discovery call with Tricia Rago and take your first step toward healing after divorce or heartbreak.",
+			"mainEntity": {
+				"@type": "Person",
+				"name": "Tricia Rago",
+				"url": "https://www.coachtriciarago.com",
+				"contactPoint": {
+					"@type": "ContactPoint",
+					"contactType": "customer support",
+					"availableLanguage": "English",
+					"url": "https://www.coachtriciarago.com/contact",
+				},
+			},
+		})}
+		is:inline
+	/>
 	<Hero
 		title={heroData.title}
 		description={heroData.description}

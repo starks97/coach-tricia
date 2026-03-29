@@ -1,7 +1,7 @@
 ---
+import { MAIN_EMAIL } from "astro:env/server"
 import CallToAction from "../CallToAction.astro"
 import HeroWrapper from "../HeroWrapper.astro"
-import { MAIN_EMAIL } from "astro:env/server"
 
 interface Props {
 	title: string
@@ -9,7 +9,6 @@ interface Props {
 	subtitle: string
 	image: string
 }
-
 
 const { title, description, subtitle, image } = Astro.props as Props
 ---
@@ -22,13 +21,13 @@ const { title, description, subtitle, image } = Astro.props as Props
 		{title}
 	</h1>
 
-	<h2
+	<p
 		class="font-prata laptop:text-left tablet:text-size-5 laptop:text-size-6 text-justify text-[2rem] opacity-0"
 		:class="intersect ? 'animate-fade-left animate-ease-in-out  animate-delay-300 ' : 'opacity-0'"
 	>
-		<i class="font-italic">{subtitle} </i>
-	</h2>
-	<div class="w-full flex justify-center tablet:justify-start">
+		<em class="font-italic">{subtitle} </em>
+	</p>
+	<div class="tablet:justify-start flex w-full justify-center">
 		<CallToAction href={`mailto:${MAIN_EMAIL}`}>Email Me</CallToAction>
 	</div>
 </HeroWrapper>

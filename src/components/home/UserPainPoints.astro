@@ -25,12 +25,12 @@ const { title, subtitle, pain_points, reviews } = Astro.props as Props
 			{title}
 		</h2>
 
-		<h3
+		<p
 			class="font-prata text-taupe tablet:text-3xl tablet:text-left text-center text-2xl opacity-0"
 			:class="intersect ? 'animate-fade-left animate-ease-in  animate-delay-200 ' : 'opacity-0'"
 		>
 			{subtitle}
-		</h3>
+		</p>
 
 		<ul
 			class="flex flex-col space-y-2 opacity-0"

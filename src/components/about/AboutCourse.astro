@@ -22,8 +22,8 @@ const paragraph = aboutCourse.split("\n\n")
 		<figure>
 			<img
 				src={image}
-				alt="hero"
-				class="laptop:h-[550px] laptop:w-[470px] object-cover h-96 w-[400px]"
+				alt="Tricia Rago life coach portrait"
+				class="laptop:h-137.5 laptop:w-117.5 object-cover h-96 w-100"
 			/>
 		</figure>
 
@@ -39,8 +39,8 @@ const paragraph = aboutCourse.split("\n\n")
 			<div>
 				{
 					paragraph.map((paragraph) => (
-						<p 
-							class="font-tajawal text-justify text-lg text-[16px] opacity-0" 
+						<p
+							class="font-tajawal text-justify text-lg text-size-2 opacity-0"
 							:class="intersect ? 'animate-fade animate-ease-in animate-delay-300' : 'opacity-0'"
 						>
 							{paragraph}
@@ -48,9 +48,9 @@ const paragraph = aboutCourse.split("\n\n")
 					))
 				}
 			</div>
-			
-			<div 
-				class="w-full flex justify-center gap-5 opacity-0" 
+
+			<div
+				class="w-full flex justify-center gap-5 opacity-0"
 				:class="intersect ? 'animate-fade-up animate-ease-in animate-delay-300' : 'opacity-0'"
 			>
 				<CalendlyWidget btnLabel="Schedule a Meeting" />

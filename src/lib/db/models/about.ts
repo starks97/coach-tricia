@@ -4,7 +4,7 @@ const heroAboutSchema = z.object({
 	title: z.string().min(1, "The title cannot be empty"),
 	subtitle: z.string().min(1, "The subtitle cannot be empty"),
 	description: z.string().min(1, "The description cannot be empty"),
-	image: z.string().min(1).url("The image must be a valid URL"),
+	image: z.url("The image must be a valid URL"),
 })
 
 const storyFirstContentSchema = z.object({
@@ -16,14 +16,14 @@ const storyFirstContentSchema = z.object({
 const storyFirstSchema = z.object({
 	title: z.string().min(1, "The title cannot be empty"),
 	content: storyFirstContentSchema,
-	image: z.string().min(1).url("The image must be a valid URL"),
+	image: z.url("The image must be a valid URL"),
 })
 
 const storySecondSchema = z.object({
 	title: z.string().min(1, "The title cannot be empty"),
 	description: z.string().min(1, "The description cannot be empty"),
 	content: z.string().min(1, "The content cannot be empty"),
-	image: z.string().min(1).url("The image must be a valid URL"),
+	image: z.url("The image must be a valid URL"),
 })
 
 const storySchema = z.object({

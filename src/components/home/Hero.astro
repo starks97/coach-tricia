@@ -19,14 +19,14 @@ const { title, subtitle, description, image } = Astro.props as Props
 	>
 		{title}
 	</h1>
-	<h5
+	<p
 		slot="subtitle"
 		class="hero_subtitle opacity-0"
 		:class="intersect ? 'animate-fade-left animate-ease-in-out  animate-delay-700 ' : 'opacity-0'"
 	>
 		{subtitle}
-	</h5>
-	<h3 slot="description" class="hero_description">
+	</p>
+	<p slot="description" class="hero_description">
 		{description}
-	</h3>
+	</p>
 </HomeHero>
